@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>База знаний 2040World</title>
-    <!-- Исправлен путь к CSS -->
-    <link rel="stylesheet" href="Main_Site/assets/css/style.css">
+    <title>База знаний 2040World клана Legion 2040</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="sidebar" id="sidebar">
+    <!-- Кнопка для открытия/закрытия панели -->
+    <button class="toggle-btn" id="toggle-btn" onclick="toggleMenu()">&#9776;</button>
+
+    <!-- Боковая панель -->
+    <div id="sidebar" class="sidebar">
         <div class="menu">
             <h2>Категории</h2>
             <ul>
-                <!-- Обновлен путь к Resources.html -->
-                <li><a href="Main_Site/guides/Resources.html">Ресурсы</a></li>
+                <li><a href="Guides/Resources.html">Ресурсы</a></li>
                 <li><a href="#">Мобы</a></li>
                 <li><a href="#">Руда</a></li>
                 <li><a href="#">Оружие</a></li>
@@ -23,9 +25,6 @@
             </ul>
         </div>
     </div>
-
-    <!-- Кнопка всегда видна на экране -->
-    <button class="toggle-btn" id="toggle-btn" onclick="toggleMenu()">&#9776;</button>
 
     <header>
         <h1>База знаний 2040World клана <span class="highlight">Legion 2040</span></h1>
@@ -39,17 +38,15 @@
         </div>
     </section>
 
-    <!-- Скрипт для работы боковой панели -->
     <script>
         function toggleMenu() {
-            const sidebar = document.getElementById("sidebar");
-            const toggleBtn = document.getElementById("toggle-btn");
-            if (sidebar.style.transform === "translateX(-250px)") {
-                sidebar.style.transform = "translateX(0)";
-                toggleBtn.style.left = "250px"; // сдвинуть кнопку при открытии
+            const sidebar = document.getElementById('sidebar');
+            const toggleBtn = document.getElementById('toggle-btn');
+
+            if (sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
             } else {
-                sidebar.style.transform = "translateX(-250px)";
-                toggleBtn.style.left = "10px"; // вернуть кнопку к краю экрана
+                sidebar.classList.add('open');
             }
         }
     </script>
