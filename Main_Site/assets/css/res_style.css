@@ -1,0 +1,179 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #333;
+    color: #00BFFF;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.welcome-text {
+    padding: 20px;
+    background-color: #444;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ddd;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-grow: 1;
+}
+
+.left-panel {
+    width: 50%;
+    padding: 20px;
+    background-color: #222;
+    overflow-y: auto;
+}
+
+.right-panel {
+    width: 50%;
+    padding: 20px;
+    background-color: #111;
+    position: sticky;
+    top: 15%;
+    height: auto;
+    max-height: 70vh;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-panel-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.right-panel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 200px;
+}
+
+.right-panel img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 5px;
+}
+
+.right-panel img.small {
+    width: 150px;
+    height: 150px;
+}
+
+.right-panel img.extra-small {
+    width: 100px;
+    height: 100px;
+}
+
+.right-panel p {
+    color: white;
+    text-align: center;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.resource-item img {
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s ease;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.resource-item:hover img {
+    transform: scale(1.5); /* Увеличение при наведении */
+}
+
+/* Визуальная обратная связь при наведении */
+.resource-item:hover {
+    outline: 2px solid #00BFFF; /* Голубая рамка */
+}
+
+.resource-item p {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.resource-item {
+    text-align: center;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resource-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+section {
+    border-bottom: 2px solid #555;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #00BFFF;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Огненный текст */
+.clan-title-fire {
+    font-family: 'Arial', sans-serif; /* Жирный шрифт */
+    font-size: 40px;
+    color: #d94e1f; /* Приглушённый оранжевый */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px; /* Обычное расстояние */
+    animation: flicker 2.5s infinite alternate; /* Мерцание */
+    text-shadow: 
+        0 0 4px rgba(217, 78, 31, 0.6), 
+        0 0 8px rgba(255, 87, 34, 0.5), 
+        0 0 12px rgba(255, 138, 101, 0.4); /* Слабое свечение */
+    margin: 0;
+}
+
+@keyframes flicker {
+    0% {
+        text-shadow: 
+            0 0 4px rgba(217, 78, 31, 0.6), 
+            0 0 8px rgba(255, 87, 34, 0.5), 
+            0 0 12px rgba(255, 138, 101, 0.4);
+        color: #d94e1f;
+    }
+    50% {
+        text-shadow: 
+            0 0 2px rgba(255, 69, 0, 0.4), 
+            0 0 5px rgba(255, 99, 71, 0.3), 
+            0 0 8px rgba(255, 140, 0, 0.4);
+        color: #cc3a00;
+    }
+    100% {
+        text-shadow: 
+            0 0 1px rgba(139, 62, 0, 0.3), 
+            0 0 4px rgba(255, 87, 34, 0.2), 
+            0 0 6px rgba(255, 87, 34, 0.3);
+        color: #b33900;
+    }
+}
