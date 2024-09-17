@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>База знаний 2040World</title>
+    <!-- Исправлен путь к CSS -->
+    <link rel="stylesheet" href="Main_Site/assets/css/style.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="menu">
+            <h2>Категории</h2>
+            <ul>
+                <!-- Обновлен путь к Resources.html -->
+                <li><a href="Main_Site/guides/Resources.html">Ресурсы</a></li>
+                <li><a href="#">Мобы</a></li>
+                <li><a href="#">Руда</a></li>
+                <li><a href="#">Оружие</a></li>
+                <li><a href="#">Броня</a></li>
+                <li><a href="#">Промышленность</a></li>
+                <li><a href="#">Карты</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Кнопка всегда видна на экране -->
+    <button class="toggle-btn" id="toggle-btn" onclick="toggleMenu()">&#9776;</button>
+
+    <header>
+        <h1>База знаний 2040World клана <span class="highlight">Legion 2040</span></h1>
+        <input type="text" placeholder="Найди меня...">
+    </header>
+
+    <section class="welcome-section">
+        <div class="welcome-message">
+            <h2>Добро пожаловать в базу знаний World2040</h2>
+            <p>Выберите гайд из списка или используйте строку поиска, чтобы найти интересующую информацию.</p>
+        </div>
+    </section>
+
+    <!-- Скрипт для работы боковой панели -->
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById("sidebar");
+            const toggleBtn = document.getElementById("toggle-btn");
+            if (sidebar.style.transform === "translateX(-250px)") {
+                sidebar.style.transform = "translateX(0)";
+                toggleBtn.style.left = "250px"; // сдвинуть кнопку при открытии
+            } else {
+                sidebar.style.transform = "translateX(-250px)";
+                toggleBtn.style.left = "10px"; // вернуть кнопку к краю экрана
+            }
+        }
+    </script>
+</body>
+</html>
