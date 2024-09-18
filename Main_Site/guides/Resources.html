@@ -5,157 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>База знаний 2040World</title>
     <link rel="stylesheet" href="assets/css/res_style.css">
+    <style>
+        /* Стили для правой панели */
+        .right-panel-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .right-panel-item {
+            margin: 10px;
+            text-align: center;
+        }
+        .right-panel-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .right-panel-item p {
+            margin-top: 10px;
+            color: #fff;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
+
     <header>
         <h1>Сайт является собственностью клана Legion 2040</h1>
         <h2>База знаний 2040World</h2>
     </header>
 
-    <section class="intro">
-        <p>В мире 2040 есть множество ресурсов, которые сейчас используются для создания аватаров. В будущем они также будут нужны для производства оружия, брони, расходных материалов и прочего. Вы сможете арендовать производство у других игроков или приобрести собственное. Но об этом мы поговорим позже.</p>
-        <p>Сейчас давайте рассмотрим, что вам нужно знать о ресурсах.</p>
-        <p>Ресурсы можно получить как с тел убитых монстров, так и из руды, которую можно найти на всей карте. Различные виды ресурсов добываются из разных источников. В таблице ниже вы найдете всю необходимую информацию.</p>
-        <p><em>*Таблица будет дополняться и изменяться по мере добавления новых ресурсов, мобов, руды и других источников, с которыми столкнётся игрок.</em></p>
+    <section>
+        <p>В мире 2040 есть множество ресурсов, которые сейчас используются для создания аватаров...</p>
     </section>
 
-    <section class="resources">
-        <h3>Ресурсы</h3>
-        <ul class="resource-list">
-            <li>
-                <img src="assets/images/Lithium_Ore.png" alt="Lithium Ore">
-                <p>Lithium Ore</p>
-            </li>
-            <li>
-                <img src="assets/images/Quartz.png" alt="Quartz">
-                <p>Quartz</p>
-            </li>
-            <li>
-                <img src="assets/images/Rare_Earth_Elements.png" alt="Rare Earth Elements">
-                <p>Rare Earth Elements</p>
-            </li>
-            <li>
-                <img src="assets/images/Magnetite.png" alt="Magnetite">
-                <p>Magnetite</p>
-            </li>
-            <li>
-                <img src="assets/images/Robotic_Module.png" alt="Robotic Module">
-                <p>Robotic Module</p>
-            </li>
-            <li>
-                <img src="assets/images/Energy_Crystal.png" alt="Energy Crystal">
-                <p>Energy Crystal</p>
-            </li>
-            <li>
-                <img src="assets/images/Photon_Gel.png" alt="Photon Gel">
-                <p>Photon Gel</p>
-            </li>
-            <li>
-                <img src="assets/images/Plasma_Condensate.png" alt="Plasma Condensate">
-                <p>Plasma Condensate</p>
-            </li>
-            <li>
-                <img src="assets/images/Organic_Polymers.png" alt="Organic Polymers">
-                <p>Organic Polymers</p>
-            </li>
-            <li>
-                <img src="assets/images/Biological_Extract.png" alt="Biological Extract">
-                <p>Biological Extract</p>
-            </li>
-            <li>
-                <img src="assets/images/Genetically_Modified_Enzymes.png" alt="Genetically Modified Enzymes">
-                <p>Genetically Modified Enzymes</p>
-            </li>
-            <li>
-                <img src="assets/images/Protein_Fiber.png" alt="Protein Fiber">
-                <p>Protein Fiber</p>
-            </li>
-            <li>
-                <img src="assets/images/Heat_Regulating_Glands.png" alt="Heat Regulating Glands">
-                <p>Heat Regulating Glands</p>
-            </li>
-            <li>
-                <img src="assets/images/Radioactive_Isotopes.png" alt="Radioactive Isotopes">
-                <p>Radioactive Isotopes</p>
-            </li>
-            <li>
-                <img src="assets/images/Epic_Shard.png" alt="Epic Shard">
-                <p>Epic Shard</p>
-            </li>
-            <li>
-                <img src="assets/images/Uncommon_Shard.png" alt="Uncommon Shard">
-                <p>Uncommon Shard</p>
-            </li>
-            <li>
-                <img src="assets/images/Rare_Shard.png" alt="Rare Shard">
-                <p>Rare Shard</p>
-            </li>
+    <h3>Ресурсы</h3>
+    <div id="resource-list">
+        <!-- Ресурсы -->
+        <ul>
+            <li onclick="showInRightPanel(['assets/images/Lithium_Ore.png'], 'Lithium Ore')">Lithium Ore</li>
+            <li onclick="showInRightPanel(['assets/images/Quartz.png'], 'Quartz')">Quartz</li>
+            <li onclick="showInRightPanel(['assets/images/Rare_Earth_Elements.png'], 'Rare Earth Elements')">Rare Earth Elements</li>
+            <li onclick="showInRightPanel(['assets/images/Magnetite.png'], 'Magnetite')">Magnetite</li>
+            <li onclick="showInRightPanel(['assets/images/Robotic_Module.png'], 'Robotic Module')">Robotic Module</li>
+            <li onclick="showInRightPanel(['assets/images/Energy_Crystal.png'], 'Energy Crystal')">Energy Crystal</li>
+            <li onclick="showInRightPanel(['assets/images/Photon_Gel.png'], 'Photon Gel')">Photon Gel</li>
+            <li onclick="showInRightPanel(['assets/images/Plasma_Condensate.png'], 'Plasma Condensate')">Plasma Condensate</li>
+            <li onclick="showInRightPanel(['assets/images/Organic_Polymers.png'], 'Organic Polymers')">Organic Polymers</li>
+            <li onclick="showInRightPanel(['assets/images/Biological_Extract.png'], 'Biological Extract')">Biological Extract</li>
+            <li onclick="showInRightPanel(['assets/images/Genetically_Modified_Enzymes.png'], 'Genetically-Modified Enzymes')">Genetically-Modified Enzymes</li>
+            <li onclick="showInRightPanel(['assets/images/Heat_Regulating_Glands.png'], 'Heat Regulating Glands')">Heat Regulating Glands</li>
+            <li onclick="showInRightPanel(['assets/images/Protein_Fiber.png'], 'Protein Fiber')">Protein Fiber</li>
+            <li onclick="showInRightPanel(['assets/images/Radioactive_Isotopes.png'], 'Radioactive Isotopes')">Radioactive Isotopes</li>
+            <li onclick="showInRightPanel(['assets/images/Epic_Shard.png'], 'Epic Shard')">Epic Shard</li>
+            <li onclick="showInRightPanel(['assets/images/Iron_Ore.png'], 'Iron Ore')">Iron Ore</li>
         </ul>
-    </section>
+    </div>
 
-    <section class="ores">
-        <h3>Руда</h3>
-        <ul class="ore-list">
-            <li>
-                <img src="assets/images/Камень_Синий.png" alt="Камень Синий">
-                <p>Камень Синий</p>
-            </li>
-            <li>
-                <img src="assets/images/Камень_Жёлтый.png" alt="Камень Жёлтый">
-                <p>Камень Жёлтый</p>
-            </li>
-            <li>
-                <img src="assets/images/Камень_Фиолетовый.png" alt="Камень Фиолетовый">
-                <p>Камень Фиолетовый</p>
-            </li>
-            <li>
-                <img src="assets/images/Камень_Тёмный.png" alt="Камень Тёмный">
-                <p>Камень Тёмный</p>
-            </li>
+    <h3>Мобы</h3>
+    <div id="mob-list">
+        <!-- Мобы -->
+        <ul>
+            <li onclick="showInRightPanel(['assets/images/Лицензионный_Аватар.png'], 'Лицензионный Аватар')">Лицензионный Аватар</li>
+            <li onclick="showInRightPanel(['assets/images/Серый_Аватар1.png'], 'Серый Аватар')">Серый Аватар</li>
+            <li onclick="showInRightPanel(['assets/images/Улитка.png'], 'Улитка')">Улитка</li>
+            <li onclick="showInRightPanel(['assets/images/Горилла.png'], 'Горилла')">Горилла</li>
+            <li onclick="showInRightPanel(['assets/images/Жаба.png'], 'Жаба')">Жаба</li>
+            <li onclick="showInRightPanel(['assets/images/Баран.png'], 'Баран')">Баран</li>
+            <li onclick="showInRightPanel(['assets/images/Дрон.png'], 'Дрон')">Дрон</li>
+            <li onclick="showInRightPanel(['assets/images/Турель.png'], 'Турель')">Турель</li>
+            <li onclick="showInRightPanel(['assets/images/Гвард.png'], 'Гвард')">Гвард</li>
         </ul>
-    </section>
+    </div>
 
-    <section class="mobs">
-        <h3>Мобы</h3>
-        <ul class="mob-list">
-            <li>
-                <img src="assets/images/Лицензионный_Аватар.png" alt="Лицензионный Аватар">
-                <p>Лицензионный Аватар</p>
-            </li>
-            <li>
-                <img src="assets/images/Серый_Аватар1.png" alt="Серый Аватар">
-                <p>Серый Аватар</p>
-            </li>
-            <li>
-                <img src="assets/images/Улитка.png" alt="Улитка">
-                <p>Улитка</p>
-            </li>
-            <li>
-                <img src="assets/images/Горилла.png" alt="Горилла">
-                <p>Горилла</p>
-            </li>
-            <li>
-                <img src="assets/images/Жаба.png" alt="Жаба">
-                <p>Жаба</p>
-            </li>
-            <li>
-                <img src="assets/images/Баран.png" alt="Баран">
-                <p>Баран</p>
-            </li>
-            <li>
-                <img src="assets/images/Гвард.png" alt="Гвард">
-                <p>Гвард</п>
-            </li>
-            <li>
-                <img src="assets/images/Дрон.png" alt="Дрон">
-                <p>Дрон</p>
-            </li>
-            <li>
-                <img src="assets/images/Турель.png" alt="Турель">
-                <p>Турель</p>
-            </li>
+    <h3>Руда</h3>
+    <div id="ore-list">
+        <!-- Руда -->
+        <ul>
+            <li onclick="showInRightPanel(['assets/images/Камень_Зелёный.png'], 'Камень Зелёный')">Камень Зелёный</li>
+            <li onclick="showInRightPanel(['assets/images/Камень_Синий.png'], 'Камень Синий')">Камень Синий</li>
+            <li onclick="showInRightPanel(['assets/images/Камень_Фиолетовый.png'], 'Камень Фиолетовый')">Камень Фиолетовый</li>
+            <li onclick="showInRightPanel(['assets/images/Камень_Жёлтый.png'], 'Камень Жёлтый')">Камень Жёлтый</li>
+            <li onclick="showInRightPanel(['assets/images/Камень_Тёмный.png'], 'Камень Тёмный')">Камень Тёмный</li>
         </ul>
-    </section>
+    </div>
+
+    <div class="right-panel">
+        <h3>Выбранный объект</h3>
+        <div class="right-panel-content"></div>
+    </div>
+
+    <script>
+        // Функция для отображения информации в правой панели
+        function showInRightPanel(images, title) {
+            const rightPanelContent = document.querySelector('.right-panel-content');
+            rightPanelContent.innerHTML = '';
+
+            images.forEach((image) => {
+                const panelItem = document.createElement('div');
+                panelItem.className = 'right-panel-item';
+
+                const imgElement = document.createElement('img');
+                imgElement.src = image;
+
+                panelItem.appendChild(imgElement);
+
+                // Извлекаем название изображения из пути, удаляя .png и заменяя _ на пробелы
+                const imageName = image.split('/').pop().replace('.png', '').replace(/_/g, ' ');
+                const titleElement = document.createElement('p');
+                titleElement.textContent = imageName;
+
+                panelItem.appendChild(titleElement);
+                rightPanelContent.appendChild(panelItem);
+            });
+        }
+    </script>
 
 </body>
 </html>
