@@ -100,12 +100,13 @@
             ]
         };
 
+        // Функция для генерации элементов на странице
         function generateGrid(sectionId, items) {
             const grid = document.getElementById(sectionId);
             items.forEach(item => {
                 const div = document.createElement('div');
                 div.classList.add('resource-item');
-                div.onmouseover = () => showInRightPanel([item.image], item.name);
+                div.onmouseover = () => showInRightPanel(item.sources || item.drops, item.name);
                 div.onmouseout = clearRightPanel;
 
                 const img = document.createElement('img');
@@ -121,32 +122,41 @@
             });
         }
 
+        // Генерация разделов
         generateGrid('resources-grid', data.resources);
         generateGrid('mobs-grid', data.mobs);
         generateGrid('ores-grid', data.ores);
 
+        // Функция для отображения связанных объектов в правой панели
         function showInRightPanel(images, title) {
             const rightPanelContent = document.querySelector('.right-panel-content');
-            rightPanelContent.innerHTML = '';
+            rightPanelContent.innerHTML = ''; // Очищаем правую панель
 
-            images.forEach((image) => {
-                const panelItem = document.createElement('div');
-                panelItem.className = 'right-panel-item';
+            if (images && images.length > 0) {
+                images.forEach((image) => {
+                    const panelItem = document.createElement('div');
+                    panelItem.className = 'right-panel-item';
 
-                const imgElement = document.createElement('img');
-                imgElement.src = image;
+                    const imgElement = document.createElement('img');
+                    imgElement.src = image;
 
-                panelItem.appendChild(imgElement);
+                    panelItem.appendChild(imgElement);
 
-                const titleElement = document.createElement('p');
-                const imageName = image.split('/').pop().replace('.png', '').replace(/_/g, ' ');
-                titleElement.textContent = imageName;
-                panelItem.appendChild(titleElement);
+                    const titleElement = document.createElement('p');
+                    const imageName = image.split('/').pop().replace('.png', '').replace(/_/g, ' ');
+                    titleElement.textContent = imageName;
+                    panelItem.appendChild(titleElement);
 
-                rightPanelContent.appendChild(panelItem);
-            });
+                    rightPanelContent.appendChild(panelItem);
+                });
+            } else {
+                const noDataMessage = document.createElement('p');
+                noDataMessage.textContent = `Нет связанных элементов для ${title}`;
+                rightPanelContent.appendChild(noDataMessage);
+            }
         }
 
+        // Функция для очистки правой панели
         function clearRightPanel() {
             document.querySelector('.right-panel-content').innerHTML = '';
         }
