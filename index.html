@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>База знаний 2040World</title>
-    <!-- Исправлен путь к CSS -->
     <link rel="stylesheet" href="Main_Site/assets/css/style.css">
 </head>
 <body>
@@ -12,7 +11,6 @@
         <div class="menu">
             <h2>Категории</h2>
             <ul>
-                <!-- Обновлен путь к Resources.html -->
                 <li><a href="Main_Site/guides/Resources.html">Ресурсы</a></li>
                 <li><a href="#">Мобы</a></li>
                 <li><a href="#">Руда</a></li>
@@ -25,7 +23,9 @@
     </div>
 
     <!-- Кнопка всегда видна на экране -->
-    <button class="toggle-btn" id="toggle-btn" onclick="toggleMenu()">&#9776;</button>
+    <button class="toggle-btn" id="toggle-btn" onclick="toggleMenu()">
+        <span id="arrow">&rarr;</span>
+    </button>
 
     <header>
         <h1>База знаний 2040World клана <span class="highlight">Legion 2040</span></h1>
@@ -39,19 +39,37 @@
         </div>
     </section>
 
-    <!-- Скрипт для работы боковой панели -->
     <script>
+        // Инициализация: переменные для панели и кнопки
+        const sidebar = document.getElementById("sidebar");
+        const toggleBtn = document.getElementById("toggle-btn");
+        const arrow = document.getElementById("arrow");
+
+        // Переменная для отслеживания состояния панели
+        let isSidebarOpen = false;
+
+        // Функция открытия/закрытия панели
         function toggleMenu() {
-            const sidebar = document.getElementById("sidebar");
-            const toggleBtn = document.getElementById("toggle-btn");
-            if (sidebar.style.transform === "translateX(-250px)") {
-                sidebar.style.transform = "translateX(0)";
-                toggleBtn.style.left = "250px"; // сдвинуть кнопку при открытии
-            } else {
+            if (isSidebarOpen) {
+                // Закрыть панель
                 sidebar.style.transform = "translateX(-250px)";
-                toggleBtn.style.left = "10px"; // вернуть кнопку к краю экрана
+                toggleBtn.style.left = "10px"; // Вернуть кнопку к краю экрана
+                arrow.innerHTML = "&rarr;"; // Меняем на стрелку вправо
+            } else {
+                // Открыть панель
+                sidebar.style.transform = "translateX(0)";
+                toggleBtn.style.left = "250px"; // Сдвинуть кнопку при открытии
+                arrow.innerHTML = "&larr;"; // Меняем на стрелку влево
             }
+            isSidebarOpen = !isSidebarOpen;
         }
+
+        // Изначально панель скрыта, но кнопку нужно инициализировать корректно
+        window.onload = function() {
+            sidebar.style.transform = "translateX(-250px)";
+            toggleBtn.style.left = "10px"; // Кнопка на краю экрана
+            arrow.innerHTML = "&rarr;"; // Установить стрелку вправо
+        };
     </script>
 </body>
 </html>
