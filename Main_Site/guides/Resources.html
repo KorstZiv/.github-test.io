@@ -4,98 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>База знаний 2040World</title>
-    <link rel="stylesheet" href="../assets/css/res_style.css">
-    <style>
-        /* Стили для правой панели */
-        .right-panel-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        .right-panel-item {
-            margin: 10px;
-            text-align: center;
-        }
-        .right-panel-item img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
-        .right-panel-item p {
-            margin-top: 10px;
-            color: #fff;
-            font-size: 16px;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/res_style.css"> <!-- Подключение внешнего CSS -->
 </head>
 <body>
 
     <header>
-        <h1>Сайт является собственностью клана Legion 2040</h1>
-        <h2>База знаний 2040World</h2>
+        <!-- Светящийся текст -->
+        <h2 class="clan-title-fire">Сайт является собственностью клана Legion 2040</h2>
+        <h1>База знаний 2040World</h1>
     </header>
 
-    <section>
-        <p>В мире 2040 есть множество ресурсов, которые сейчас используются для создания аватаров...</p>
-    </section>
+    <!-- Блок с текстом приветствия -->
+    <div class="welcome-text">
+        <p>В мире 2040 есть множество ресурсов, которые сейчас используются для создания аватаров. В будущем они также будут нужны для производства оружия, брони, расходных материалов и прочего. Вы сможете арендовать производство у других игроков или приобрести собственное. Но об этом мы поговорим позже.</p>
 
-    <h3>Ресурсы</h3>
-    <div id="resource-list">
-        <!-- Ресурсы -->
-        <ul>
-            <li onclick="showInRightPanel(['assets/images/Lithium_Ore.png'], 'Lithium Ore')">Lithium Ore</li>
-            <li onclick="showInRightPanel(['assets/images/Quartz.png'], 'Quartz')">Quartz</li>
-            <li onclick="showInRightPanel(['assets/images/Rare_Earth_Elements.png'], 'Rare Earth Elements')">Rare Earth Elements</li>
-            <li onclick="showInRightPanel(['assets/images/Magnetite.png'], 'Magnetite')">Magnetite</li>
-            <li onclick="showInRightPanel(['assets/images/Robotic_Module.png'], 'Robotic Module')">Robotic Module</li>
-            <li onclick="showInRightPanel(['assets/images/Energy_Crystal.png'], 'Energy Crystal')">Energy Crystal</li>
-            <li onclick="showInRightPanel(['assets/images/Photon_Gel.png'], 'Photon Gel')">Photon Gel</li>
-            <li onclick="showInRightPanel(['assets/images/Plasma_Condensate.png'], 'Plasma Condensate')">Plasma Condensate</li>
-            <li onclick="showInRightPanel(['assets/images/Organic_Polymers.png'], 'Organic Polymers')">Organic Polymers</li>
-            <li onclick="showInRightPanel(['assets/images/Biological_Extract.png'], 'Biological Extract')">Biological Extract</li>
-            <li onclick="showInRightPanel(['assets/images/Genetically_Modified_Enzymes.png'], 'Genetically-Modified Enzymes')">Genetically-Modified Enzymes</li>
-            <li onclick="showInRightPanel(['assets/images/Heat_Regulating_Glands.png'], 'Heat Regulating Glands')">Heat Regulating Glands</li>
-            <li onclick="showInRightPanel(['assets/images/Protein_Fiber.png'], 'Protein Fiber')">Protein Fiber</li>
-            <li onclick="showInRightPanel(['assets/images/Radioactive_Isotopes.png'], 'Radioactive Isotopes')">Radioactive Isotopes</li>
-            <li onclick="showInRightPanel(['assets/images/Epic_Shard.png'], 'Epic Shard')">Epic Shard</li>
-            <li onclick="showInRightPanel(['assets/images/Iron_Ore.png'], 'Iron Ore')">Iron Ore</li>
-        </ul>
+        <p>Сейчас давайте рассмотрим, что вам нужно знать о ресурсах.</p>
+
+        <p>Ресурсы можно получить как с тел убитых монстров, так и из руды, которую можно найти на всей карте. Различные виды ресурсов добываются из разных источников. В таблице ниже вы найдёте всю необходимую информацию.</p>
+
+        <p><em>*Таблица будет дополняться и изменяться по мере добавления новых ресурсов, мобов, руды и других источников, с которыми столкнётся игрок.</em></p>
     </div>
 
-    <h3>Мобы</h3>
-    <div id="mob-list">
-        <!-- Мобы -->
-        <ul>
-            <li onclick="showInRightPanel(['assets/images/Лицензионный_Аватар.png'], 'Лицензионный Аватар')">Лицензионный Аватар</li>
-            <li onclick="showInRightPanel(['assets/images/Серый_Аватар1.png'], 'Серый Аватар')">Серый Аватар</li>
-            <li onclick="showInRightPanel(['assets/images/Улитка.png'], 'Улитка')">Улитка</li>
-            <li onclick="showInRightPanel(['assets/images/Горилла.png'], 'Горилла')">Горилла</li>
-            <li onclick="showInRightPanel(['assets/images/Жаба.png'], 'Жаба')">Жаба</li>
-            <li onclick="showInRightPanel(['assets/images/Баран.png'], 'Баран')">Баран</li>
-            <li onclick="showInRightPanel(['assets/images/Дрон.png'], 'Дрон')">Дрон</li>
-            <li onclick="showInRightPanel(['assets/images/Турель.png'], 'Турель')">Турель</li>
-            <li onclick="showInRightPanel(['assets/images/Гвард.png'], 'Гвард')">Гвард</li>
-        </ul>
-    </div>
+    <main>
+        <!-- Левая панель с разделами -->
+        <div class="left-panel">
+            <!-- Раздел ресурсов -->
+            <section id="resources">
+                <h2>Ресурсы</h2>
+                <div class="resource-grid" id="resources-grid"></div>
+            </section>
 
-    <h3>Руда</h3>
-    <div id="ore-list">
-        <!-- Руда -->
-        <ul>
-            <li onclick="showInRightPanel(['assets/images/Камень_Зелёный.png'], 'Камень Зелёный')">Камень Зелёный</li>
-            <li onclick="showInRightPanel(['assets/images/Камень_Синий.png'], 'Камень Синий')">Камень Синий</li>
-            <li onclick="showInRightPanel(['assets/images/Камень_Фиолетовый.png'], 'Камень Фиолетовый')">Камень Фиолетовый</li>
-            <li onclick="showInRightPanel(['assets/images/Камень_Жёлтый.png'], 'Камень Жёлтый')">Камень Жёлтый</li>
-            <li onclick="showInRightPanel(['assets/images/Камень_Тёмный.png'], 'Камень Тёмный')">Камень Тёмный</li>
-        </ul>
-    </div>
+            <!-- Раздел мобов -->
+            <section id="mobs">
+                <h2>Мобы</h2>
+                <div class="resource-grid" id="mobs-grid"></div>
+            </section>
 
-    <div class="right-panel">
-        <h3>Выбранный объект</h3>
-        <div class="right-panel-content"></div>
-    </div>
+            <!-- Раздел руды -->
+            <section id="ores">
+                <h2>Руда</h2>
+                <div class="resource-grid" id="ores-grid"></div>
+            </section>
+        </div>
+
+        <!-- Правая панель -->
+        <div class="right-panel" id="right-panel">
+            <div class="right-panel-content">
+                <!-- Иконки и названия будут отображаться здесь -->
+            </div>
+        </div>
+    </main>
 
     <script>
+        const data = {
+            resources: [
+                { name: 'Lithium Ore', image: '../assets/images/Lithium_Ore.png', sources: ['../assets/images/Камень_Синий.png'] },
+                { name: 'Quartz', image: '../assets/images/Quartz.png', sources: ['../assets/images/Камень_Жёлтый.png', '../assets/images/Камень_Синий.png', '../assets/images/Камень_Фиолетовый.png'] },
+                { name: 'Rare Earth Elements', image: '../assets/images/Rare_Earth_Elements.png', sources: ['../assets/images/Камень_Зелёный.png', '../assets/images/Камень_Фиолетовый.png', '../assets/images/Камень_Синий.png'] },
+                { name: 'Magnetite', image: '../assets/images/Magnetite.png', sources: ['../assets/images/Камень_Фиолетовый.png', '../assets/images/Камень_Зелёный.png'] },
+                { name: 'Robotic Module', image: '../assets/images/Robotic_Module.png', sources: ['../assets/images/Дрон.png', '../assets/images/Турель.png'] },
+                { name: 'Energy Crystal', image: '../assets/images/Energy_Crystal.png', sources: ['../assets/images/Дрон.png'] },
+                { name: 'Photon Gel', image: '../assets/images/Photon_Gel.png', sources: ['../assets/images/Турель.png'] },
+                { name: 'Plasma Condensate', image: '../assets/images/Plasma_Condensate.png', sources: ['../assets/images/Дрон.png', '../assets/images/Турель.png'] },
+                { name: 'Organic Polymers', image: '../assets/images/Organic_Polymers.png', sources: ['../assets/images/Баран.png', '../assets/images/Лазер_гриб.png'] },
+                { name: 'Biological Extract', image: '../assets/images/Biological_Extract.png', sources: ['../assets/images/Жаба.png', '../assets/images/Мама_жаба.png', '../assets/images/Лазер_гриб.png'] },
+                { name: 'Genetically-Modified Enzymes', image: '../assets/images/Genetically_Modified_Enzymes.png', sources: ['../assets/images/Мама_жаба.png', '../assets/images/Турель.png'] },
+                { name: 'Exotic Spores', image: '../assets/images/Exotic_Spores.png', sources: ['../assets/images/Лазер_гриб.png', '../assets/images/Горилла.png'] },
+                { name: 'Heat Regulating Glands', image: '../assets/images/Heat_Regulating_Glands.png', sources: ['../assets/images/Мама_жаба.png', '../assets/images/Баран.png', '../assets/images/Жаба.png'] },
+                { name: 'Protein Fiber', image: '../assets/images/Protein_Fiber.png', sources: ['../assets/images/Баран.png', '../assets/images/Лазер_гриб.png'] },
+                { name: 'Nanofibers', image: '../assets/images/Nanofibers.png', sources: ['../assets/images/Горилла.png', '../assets/images/Баран.png'] },
+                { name: 'Radioactive Isotopes', image: '../assets/images/Radioactive_Isotopes.png', sources: ['../assets/images/Камень_Зелёный.png'] },
+                { name: 'Uncommon Shard', image: '../assets/images/Uncommon_Shard.png', sources: ['../assets/images/Зелёный_Аватар.png', '../assets/images/Камень_Зелёный.png', '../assets/images/Камень_Синий.png', '../assets/images/Камень_Фиолетовый.png', '../assets/images/Улитка.png', '../assets/images/Мама_жаба.png', '../assets/images/Баран.png', '../assets/images/Турель.png', '../assets/images/Жаба.png', '../assets/images/Лазер_гриб.png', '../assets/images/Камень_Тёмный.png'] },
+                { name: 'Rare Shard', image: '../assets/images/Rare_Shard.png', sources: ['../assets/images/Синий_Аватар.png', '../assets/images/Гвард.png', '../assets/images/Улитка.png', '../assets/images/Горилла.png', '../assets/images/Турель.png', '../assets/images/Мама_жаба.png'] },
+                { name: 'Epic Shard', image: '../assets/images/Epic_Shard.png', sources: ['../assets/images/Фиолетовый_Аватар.png', '../assets/images/Гвард.png', '../assets/images/Горилла.png', '../assets/images/Улитка.png'] },
+                { name: 'Rare Lootbox', image: '../assets/images/Rare_Lootbox.png', sources: ['../assets/images/Горилла.png', '../assets/images/Гвард.png', '../assets/images/Улитка.png', '../assets/images/Турель.png', '../assets/images/Мама_жаба.png'] },
+                { name: 'Coal', image: '../assets/images/Coal.png', sources: ['../assets/images/Камень_Тёмный.png', '../assets/images/Камень_Жёлтый.png', '../assets/images/Камень_Фиолетовый.png', '../assets/images/Камень_Зелёный.png'] },
+                { name: 'Copper Ore', image: '../assets/images/Copper_Ore.png', sources: ['../assets/images/Камень_Тёмный.png', '../assets/images/Камень_Жёлтый.png', '../assets/images/Камень_Синий.png'] },
+                { name: 'Acid', image: '../assets/images/Acid.png', sources: ['../assets/images/Жаба.png', '../assets/images/Мама_жаба.png'] },
+                { name: 'Rare Key', image: '../assets/images/Rare_Key.png', sources: ['../assets/images/Улитка.png', '../assets/images/Горилла.png', '../assets/images/Гвард.png', '../assets/images/Турель.png', '../assets/images/Мама_жаба.png', '../assets/images/Дрон.png'] },
+                { name: 'Epic Lootbox', image: '../assets/images/Epic_Lootbox.png', sources: ['../assets/images/Гвард.png', '../assets/images/Улитка.png', '../assets/images/Горилла.png'] },
+                { name: 'Iron Ore', image: '../assets/images/Iron_Ore.png', sources: ['../assets/images/Камень_Тёмный.png', '../assets/images/Камень_Жёлтый.png'] },
+                { name: 'Epic Key', image: '../assets/images/Epic_Key.png', sources: ['../assets/images/Гвард.png', '../assets/images/Улитка.png'] },
+                { name: 'Uncommon Lootbox', image: '../assets/images/Uncommon_Lootbox.png', sources: ['../assets/images/Горилла.png', '../assets/images/Гвард.png', '../assets/images/Улитка.png', '../assets/images/Мама_жаба.png', '../assets/images/Турель.png', '../assets/images/Баран.png', '../assets/images/Жаба.png', '../assets/images/Лазер_гриб.png'] },
+                { name: 'Uncommon Key', image: '../assets/images/Uncommon_Key.png', sources: ['../assets/images/Горилла.png', '../assets/images/Гвард.png', '../assets/images/Улитка.png', '../assets/images/Мама_жаба.png', '../assets/images/Турель.png', '../assets/images/Баран.png', '../assets/images/Жаба.png', '../assets/images/Лазер_гриб.png'] }
+            ],
+            mobs: [
+                { name: 'Лицензионный Аватар', image: '../assets/images/Лицензионный_Аватар.png', drops: ['../assets/images/Epic_Shard.png', '../assets/images/Rare_Shard.png', '../assets/images/Uncommon_Shard.png'] },
+                { name: 'Серый Аватар', image: '../assets/images/Серый_Аватар1.png', drops: ['../assets/images/Серый_Аватар.png'] },
+                { name: 'Жаба', image: '../assets/images/Жаба.png', drops: ['../assets/images/Biological_Extract.png', '../assets/images/Acid.png', '../assets/images/Heat_Regulating_Glands.png'] },
+                { name: 'Улитка', image: '../assets/images/Улитка.png', drops: ['../assets/images/Uncommon_Shard.png', '../assets/images/Rare_Shard.png', '../assets/images/Epic_Shard.png'] },
+                { name: 'Горилла', image: '../assets/images/Горилла.png', drops: ['../assets/images/Nanofibers.png', '../assets/images/Epic_Shard.png', '../assets/images/Exotic_Spores.png'] },
+                { name: 'Баран', image: '../assets/images/Баран.png', drops: ['../assets/images/Protein_Fiber.png', '../assets/images/Heat_Regulating_Glands.png', '../assets/images/Nanofibers.png'] },
+                { name: 'Мама-жаба', image: '../assets/images/Мама_жаба.png', drops: ['../assets/images/Biological_Extract.png', '../assets/images/Acid.png', '../assets/images/Heat_Regulating_Glands.png'] },
+                { name: 'Дрон', image: '../assets/images/Дрон.png', drops: ['../assets/images/Robotic_Module.png', '../assets/images/Plasma_Condensate.png'] },
+                { name: 'Гвард', image: '../assets/images/Гвард.png', drops: ['../assets/images/Epic_Shard.png', '../assets/images/Rare_Shard.png', '../assets/images/Uncommon_Shard.png'] },
+                { name: 'Лазер-гриб', image: '../assets/images/Лазер_гриб.png', drops: ['../assets/images/Exotic_Spores.png', '../assets/images/Protein_Fiber.png'] },
+                { name: 'Турель', image: '../assets/images/Турель.png', drops: ['../assets/images/Photon_Gel.png', '../assets/images/Plasma_Condensate.png'] }
+            ],
+            ores: [
+                { name: 'Камень Синий', image: '../assets/images/Камень_Синий.png', drops: ['../assets/images/Lithium_Ore.png', '../assets/images/Uncommon_Shard.png', '../assets/images/Quartz.png'] },
+                { name: 'Камень Жёлтый', image: '../assets/images/Камень_Жёлтый.png', drops: ['../assets/images/Quartz.png', '../assets/images/Coal.png', '../assets/images/Copper_Ore.png', '../assets/images/Iron_Ore.png'] },
+                { name: 'Камень Фиолетовый', image: '../assets/images/Камень_Фиолетовый.png', drops: ['../assets/images/Quartz.png', '../assets/images/Magnetite.png', '../assets/images/Rare_Earth_Elements.png'] },
+                { name: 'Камень Зелёный', image: '../assets/images/Камень_Зелёный.png', drops: ['../assets/images/Rare_Earth_Elements.png', '../assets/images/Magnetite.png', '../assets/images/Radioactive_Isotopes.png'] },
+                { name: 'Камень Тёмный', image: '../assets/images/Камень_Тёмный.png', drops: ['../assets/images/Coal.png', '../assets/images/Copper_Ore.png', '../assets/images/Iron_Ore.png'] }
+            ]
+        };
+
+        // Функция для генерации элементов на странице
+        function generateGrid(sectionId, items) {
+            const grid = document.getElementById(sectionId);
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('resource-item');
+                div.onmouseover = () => showInRightPanel(item.drops || item.sources, item.name);
+                div.onmouseout = clearRightPanel;
+
+                const img = document.createElement('img');
+                img.src = item.image;
+                img.alt = item.name;
+                div.appendChild(img);
+
+                const p = document.createElement('p');
+                p.textContent = item.name;
+                div.appendChild(p);
+
+                grid.appendChild(div);
+            });
+        }
+
+        // Генерация разделов
+        generateGrid('resources-grid', data.resources);
+        generateGrid('mobs-grid', data.mobs);
+        generateGrid('ores-grid', data.ores);
+
         // Функция для отображения информации в правой панели
         function showInRightPanel(images, title) {
             const rightPanelContent = document.querySelector('.right-panel-content');
@@ -110,14 +151,18 @@
 
                 panelItem.appendChild(imgElement);
 
-                // Извлекаем название изображения из пути, удаляя .png и заменяя _ на пробелы
-                const imageName = image.split('/').pop().replace('.png', '').replace(/_/g, ' ');
                 const titleElement = document.createElement('p');
+                const imageName = image.replace('.png', '').replace(/_/g, ' ');
                 titleElement.textContent = imageName;
-
                 panelItem.appendChild(titleElement);
+
                 rightPanelContent.appendChild(panelItem);
             });
+        }
+
+        // Функция для очистки правой панели
+        function clearRightPanel() {
+            document.querySelector('.right-panel-content').innerHTML = '';
         }
     </script>
 
