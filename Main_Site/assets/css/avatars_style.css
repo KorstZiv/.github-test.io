@@ -9,7 +9,7 @@ main {
     display: flex;
     flex-direction: column;
     background-color: #2a2a2a; /* Добавим фон для видимости */
-    padding: 20px;
+    padding: 10px;
 }
 
 .center-panel {
@@ -18,7 +18,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center; /* Меняем на center */
     margin: 0 20px;
     height: 100%;
     padding: 20px 0;
@@ -36,7 +36,7 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     flex-grow: 1;
     padding: 20px;
 }
@@ -53,12 +53,12 @@ main {
     justify-content: center;
     align-items: center;
     background-color: #333;
-    height: 120px; /* Увеличим высоту для лучшего отображения */
+    height: 140px; /* Увеличиваем высоту */
 }
 
 .avatar-image {
-    max-width: 90%; /* Увеличим максимальную ширину */
-    max-height: 100px; /* Увеличим максимальную высоту */
+    max-width: 100%;
+    max-height: 120px; /* Увеличиваем максимальную высоту */
     object-fit: contain;
 }
 
@@ -95,5 +95,5 @@ main {
     width: 80px;
     height: 80px;
     object-fit: contain;
-    margin: 5px 0;
+    margin: 10px 0; /* Увеличиваем отступ между иконками */
 }
