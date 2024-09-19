@@ -57,36 +57,26 @@ main {
     cursor: pointer;
 }
 
-.avatar-item:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Легкая подсветка при наведении */
-}
-
-.avatar-item.selected {
+.avatar-item:hover, .avatar-item.hovered, .avatar-item.selected {
     background-color: rgba(255, 255, 255, 0.2); /* Более заметная подсветка для выбранного аватара */
     border-color: #fff;
 }
 
-.avatar-item[data-avatar="Зелёный Аватар"] {
-    border-color: #00FF00; /* Яркий зеленый */
-}
-
-.avatar-item[data-avatar="Синий Аватар"] {
-    border-color: #00BFFF; /* Яркий голубой */
-}
-
-.avatar-item[data-avatar="Фиолетовый Аватар"] {
-    border-color: #8A2BE2; /* Яркий фиолетовый */
-}
-
-.avatar-item.selected[data-avatar="Зелёный Аватар"] {
+.avatar-item[data-avatar="Зелёный Аватар"]:hover,
+.avatar-item[data-avatar="Зелёный Аватар"].hovered,
+.avatar-item[data-avatar="Зелёный Аватар"].selected {
     background-color: rgba(0, 255, 0, 0.2); /* Полупрозрачный зеленый */
 }
 
-.avatar-item.selected[data-avatar="Синий Аватар"] {
+.avatar-item[data-avatar="Синий Аватар"]:hover,
+.avatar-item[data-avatar="Синий Аватар"].hovered,
+.avatar-item[data-avatar="Синий Аватар"].selected {
     background-color: rgba(0, 191, 255, 0.2); /* Полупрозрачный голубой */
 }
 
-.avatar-item.selected[data-avatar="Фиолетовый Аватар"] {
+.avatar-item[data-avatar="Фиолетовый Аватар"]:hover,
+.avatar-item[data-avatar="Фиолетовый Аватар"].hovered,
+.avatar-item[data-avatar="Фиолетовый Аватар"].selected {
     background-color: rgba(138, 43, 226, 0.2); /* Полупрозрачный фиолетовый */
 }
 
