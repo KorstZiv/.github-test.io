@@ -21,18 +21,18 @@
         <p>Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от него зависит ваш игровой опыт.</p>
     </div>
 
-    <main>
-        <div class="left-panel">
+    <main style="display: flex; justify-content: space-between;">
+        <div class="left-panel" style="width: 30%;">
             <h2>Виды аватаров</h2>
-            <div class="avatar-grid" id="avatar-grid"></div>
+            <div class="avatar-grid" id="avatar-grid" style="display: flex; flex-direction: column; gap: 20px;"></div>
             <p class="grey-avatar-link" onmouseover="showGreyAvatarVideo()" onmouseout="hideGreyAvatarVideo()">Серый Аватар</p>
         </div>
 
-        <div class="center-panel" id="center-panel">
+        <div class="center-panel" id="center-panel" style="width: 70px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 10px;">
             <!-- Центральные иконки будут добавлены здесь -->
         </div>
 
-        <div class="right-panel" id="right-panel">
+        <div class="right-panel" id="right-panel" style="width: calc(70% - 90px);">
             <div class="right-panel-content">
                 <!-- Информация об аватаре будет отображаться здесь -->
             </div>
