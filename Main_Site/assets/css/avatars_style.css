@@ -5,28 +5,33 @@ main {
 
 .left-panel {
     width: 30%;
+    display: flex;
+    flex-direction: column;
 }
 
 .center-panel {
-    width: 70px;
+    width: 140px; /* Увеличена ширина в два раза */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; /* Равномерное распределение */
-    margin: 0 10px;
-    height: 100%; /* Занимает всю высоту */
-    padding: 20px 0; /* Добавлен отступ сверху и снизу */
-    transition: background-color 0.3s ease; /* Плавное изменение цвета фона */
+    justify-content: space-between;
+    margin: 0 20px;
+    height: 100%;
+    padding: 20px 0;
+    transition: background-color 0.3s ease;
+    border-left: 1px solid #444; /* Добавлена левая граница */
+    border-right: 1px solid #444; /* Добавлена правая граница */
 }
 
 .right-panel {
-    width: calc(70% - 90px); /* 70% минус ширина центральной панели и ее отступы */
+    width: calc(70% - 180px); /* Учитываем новую ширину центральной панели */
 }
 
 .avatar-grid {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex-grow: 1; /* Заполняет доступное пространство */
 }
 
 .avatar-item {
@@ -36,27 +41,15 @@ main {
     border-radius: 5px;
     text-align: center;
     transition: background-color 0.3s ease;
-}
-
-.avatar-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.avatar-item[data-avatar="Зелёный Аватар"]:hover {
-    background-color: rgba(0, 255, 0, 0.2); /* Увеличена яркость */
-}
-
-.avatar-item[data-avatar="Синий Аватар"]:hover {
-    background-color: rgba(0, 191, 255, 0.2); /* Увеличена яркость */
-}
-
-.avatar-item[data-avatar="Фиолетовый Аватар"]:hover {
-    background-color: rgba(238, 130, 238, 0.2); /* Увеличена яркость */
+    flex-grow: 1; /* Равномерно распределяет пространство между элементами */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .avatar-image {
     width: 100%;
-    height: 100px;
+    height: auto; /* Автоматическая высота для сохранения пропорций */
     object-fit: contain;
 }
 
@@ -84,10 +77,12 @@ main {
     cursor: pointer;
     text-decoration: underline;
     color: blue;
+    text-align: center;
+    margin-top: 20px; /* Отступ сверху */
 }
 
 .center-icon {
-    width: 60px; /* Увеличен размер */
-    height: 60px; /* Увеличен размер */
+    width: 120px; /* Увеличен размер пропорционально */
+    height: 120px; /* Увеличен размер пропорционально */
     margin: 10px 0;
 }
