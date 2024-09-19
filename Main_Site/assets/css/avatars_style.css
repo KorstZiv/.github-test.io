@@ -12,8 +12,11 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Равномерное распределение */
     margin: 0 10px;
+    height: 100%; /* Занимает всю высоту */
+    padding: 20px 0; /* Добавлен отступ сверху и снизу */
+    transition: background-color 0.3s ease; /* Плавное изменение цвета фона */
 }
 
 .right-panel {
@@ -40,15 +43,15 @@ main {
 }
 
 .avatar-item[data-avatar="Зелёный Аватар"]:hover {
-    background-color: rgba(0, 255, 0, 0.1);
+    background-color: rgba(0, 255, 0, 0.2); /* Увеличена яркость */
 }
 
 .avatar-item[data-avatar="Синий Аватар"]:hover {
-    background-color: rgba(0, 191, 255, 0.1);
+    background-color: rgba(0, 191, 255, 0.2); /* Увеличена яркость */
 }
 
 .avatar-item[data-avatar="Фиолетовый Аватар"]:hover {
-    background-color: rgba(238, 130, 238, 0.1);
+    background-color: rgba(238, 130, 238, 0.2); /* Увеличена яркость */
 }
 
 .avatar-image {
@@ -84,7 +87,7 @@ main {
 }
 
 .center-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px; /* Увеличен размер */
+    height: 60px; /* Увеличен размер */
     margin: 10px 0;
 }
