@@ -160,6 +160,15 @@
 
                     rightPanelContent.appendChild(panelItem);
                 });
+
+                // Изменяем размер иконок, если их меньше 4
+                const items = rightPanelContent.querySelectorAll('.right-panel-item');
+                if (items.length < 4) {
+                    items.forEach(item => {
+                        item.style.width = `calc(${100 / items.length}% - 20px)`;
+                        item.style.maxWidth = '300px'; // Увеличиваем максимальную ширину
+                    });
+                }
             } else {
                 const noDataMessage = document.createElement('p');
                 noDataMessage.textContent = `Нет связанных элементов для ${title}`;
