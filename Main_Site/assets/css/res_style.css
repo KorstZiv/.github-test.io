@@ -183,18 +183,19 @@ h2 {
     top: 20px;
     left: 20px;
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #00aaff; /* Синий цвет */
     border-radius: 50%;
     padding: 10px;
     transition: background-color 0.3s ease;
 }
 
 .home-button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #0088cc; /* Немного темнее синий при наведении */
 }
 
 .home-icon {
     width: 30px;
     height: 30px;
     display: block;
+    filter: invert(1); /* Это сделает иконку белой, если она изначально черная */
 }
