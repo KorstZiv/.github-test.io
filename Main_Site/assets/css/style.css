@@ -140,3 +140,49 @@ header input {
         font-size: 16px;
     }
 }
+
+.search-container {
+    position: relative;
+    width: 300px;
+    margin: 20px auto;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #00BFFF;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #444;
+    border: 1px solid #00BFFF;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none;
+}
+
+.search-result-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #555;
+}
+
+.search-result-item:hover {
+    background-color: #555;
+}
+
+.search-result-category {
+    font-weight: bold;
+    color: #00BFFF;
+    margin-bottom: 5px;
+}
