@@ -178,6 +178,15 @@ h2 {
     }
 }
 
+@keyframes highlight {
+    0% { background-color: rgba(255, 255, 255, 0.2); }
+    100% { background-color: transparent; }
+}
+
+.highlight-section {
+    animation: highlight 2s ease-out;
+}
+
 .home-button {
     position: fixed;
     top: 20px;
