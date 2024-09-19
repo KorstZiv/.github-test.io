@@ -53,7 +53,7 @@ main {
     padding: 10px;
     text-align: center;
     transition: all 0.3s ease;
-    transform: scale(1.15); /* Увеличиваем размер на 15% */
+    transform: scale(1.15);
     cursor: pointer;
 }
 
@@ -62,22 +62,28 @@ main {
     border-color: #fff;
 }
 
-.avatar-item[data-avatar="Зелёный Аватар"]:hover,
-.avatar-item[data-avatar="Зелёный Аватар"].hovered,
+.avatar-item[data-avatar="Зелёный Аватар"]:hover {
+    background-color: rgba(0, 255, 0, 0.1); /* Легкая подсветка зеленым */
+}
+
+.avatar-item[data-avatar="Синий Аватар"]:hover {
+    background-color: rgba(0, 191, 255, 0.1); /* Легкая подсветка синим */
+}
+
+.avatar-item[data-avatar="Фиолетовый Аватар"]:hover {
+    background-color: rgba(138, 43, 226, 0.1); /* Легкая подсветка фиолетовым */
+}
+
 .avatar-item[data-avatar="Зелёный Аватар"].selected {
-    background-color: rgba(0, 255, 0, 0.2); /* Полупрозрачный зеленый */
+    background-color: rgba(0, 255, 0, 0.3); /* Яркая подсветка зеленым */
 }
 
-.avatar-item[data-avatar="Синий Аватар"]:hover,
-.avatar-item[data-avatar="Синий Аватар"].hovered,
 .avatar-item[data-avatar="Синий Аватар"].selected {
-    background-color: rgba(0, 191, 255, 0.2); /* Полупрозрачный голубой */
+    background-color: rgba(0, 191, 255, 0.3); /* Яркая подсветка синим */
 }
 
-.avatar-item[data-avatar="Фиолетовый Аватар"]:hover,
-.avatar-item[data-avatar="Фиолетовый Аватар"].hovered,
 .avatar-item[data-avatar="Фиолетовый Аватар"].selected {
-    background-color: rgba(138, 43, 226, 0.2); /* Полупрозрачный фиолетовый */
+    background-color: rgba(138, 43, 226, 0.3); /* Яркая подсветка фиолетовым */
 }
 
 .avatar-image {
