@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аватары - База знаний 2040World</title>
+    <link rel="stylesheet" href="../assets/css/res_style.css">
+    <link rel="stylesheet" href="../assets/css/avatars_style.css">
+</head>
+<body>
+    <a href="https://korstziv.github.io/.github-test.io/" class="home-button">
+        <img src="../assets/images/home_icon.png" alt="Домой" class="home-icon">
+    </a>
+
+    <header>
+        <h2 class="clan-title-fire">Аватары 2040World</h2>
+        <h1>База знаний 2040World</h1>
+    </header>
+
+    <div class="welcome-text">
+        <p>Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от него зависит ваш игровой опыт.</p>
+    </div>
+
+    <main>
+        <div class="left-panel">
+            <h2>Виды аватаров</h2>
+            <div class="avatar-grid" id="avatar-grid"></div>
+            <p class="grey-avatar-link" onmouseover="showGreyAvatarVideo()" onmouseout="hideGreyAvatarVideo()">Серый Аватар</p>
+        </div>
+
+        <div class="center-panel" id="center-panel">
+            <!-- Центральные иконки будут добавлены здесь -->
+        </div>
+
+        <div class="right-panel" id="right-panel">
+            <div class="right-panel-content">
+                <!-- Информация об аватаре будет отображаться здесь -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const avatarData = [
+            { name: "Зелёный Аватар", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
+            { name: "Синий Аватар", image: "../assets/images/Avatars/Drop_Pods__Rare.png", resources: ["Magnetite", "Robotic Module", "Energy Crystal"] },
+            { name: "Фиолетовый Аватар", image: "../assets/images/Avatars/Drop_Pods__Epic.png", resources: ["Photon Gel", "Plasma Condensate", "Organic Polymers"] },
+        ];
+
+        const centerIcons = [
+            "courier.png", "explorer.png", "survivor.png", "maradeur.png", "warrior.png"
+        ];
+
+        const resourceData = {
+            // Здесь нужно добавить данные о ресурсах, мобах и руде из гайда Ресурсы
+            // Пример:
+            "Lithium Ore": { mobs: ["Камень_Синий"], ores: ["Камень_Синий"] },
+            // ... добавьте остальные ресурсы
+        };
+
+        function generateAvatarGrid() {
+            const grid = document.getElementById('avatar-grid');
+            avatarData.forEach(avatar => {
+                const div = document.createElement('div');
+                div.classList.add('avatar-item');
+                div.setAttribute('data-avatar', avatar.name);
+                div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" class="avatar-image"><p>${avatar.name}</p>`;
+                div.onmouseover = () => showAvatarInfo(avatar);
+                grid.appendChild(div);
+            });
+        }
+
+        function generateCenterIcons() {
+            const centerPanel = document.getElementById('center-panel');
+            centerIcons.forEach(icon => {
+                const img = document.createElement('img');
+                img.src = `../assets/images/Avatars/${icon}`;
+                img.alt = icon.replace('.png', '');
+                img.classList.add('center-icon');
+                centerPanel.appendChild(img);
+            });
+        }
+
+        function showAvatarInfo(avatar) {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = `
+                <h3>${avatar.name}</h3>
+                <img src="${avatar.image}" alt="${avatar.name}" class="avatar-image" style="max-width: 200px;">
+                <h4>Необходимые ресурсы:</h4>
+                <ul class="resource-list">
+                    ${avatar.resources.map(resource => `
+                        <li class="resource-item" onmouseover="showMobsAndOres('${resource}')" onmouseout="hideMobsAndOres('${resource}')">
+                            ${resource}
+                            <div class="mob-ore-list" id="${resource.replace(/\s+/g, '-')}-list"></div>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+        }
+
+        function showGreyAvatarVideo() {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = `
+                <video width="100%" height="auto" autoplay loop muted>
+                    <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        }
+
+        function hideGreyAvatarVideo() {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
+        }
+
+        function showMobsAndOres(resource) {
+            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
+            if (resourceData[resource]) {
+                listElement.innerHTML = `
+                    ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
+                    ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
+                `;
+                listElement.style.display = 'block';
+            }
+        }
+
+        function hideMobsAndOres(resource) {
+            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
+            listElement.style.display = 'none';
+        }
+
+        window.onload = function() {
+            generateAvatarGrid();
+            generateCenterIcons();
+        };
+    </script>
+</body>
+</html>
