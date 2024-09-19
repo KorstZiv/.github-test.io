@@ -82,6 +82,23 @@
 
         function showAvatarInfo(avatar) {
             const rightPanel = document.querySelector('.right-panel-content');
+            const centerPanel = document.getElementById('center-panel');
+            
+            // Устанавливаем цвет центральной панели
+            switch(avatar.name) {
+                case "Зелёный Аватар":
+                    centerPanel.style.backgroundColor = "rgba(0, 255, 0, 0.2)";
+                    break;
+                case "Синий Аватар":
+                    centerPanel.style.backgroundColor = "rgba(0, 191, 255, 0.2)";
+                    break;
+                case "Фиолетовый Аватар":
+                    centerPanel.style.backgroundColor = "rgba(238, 130, 238, 0.2)";
+                    break;
+                default:
+                    centerPanel.style.backgroundColor = "transparent";
+            }
+
             rightPanel.innerHTML = `
                 <h3>${avatar.name}</h3>
                 <img src="${avatar.image}" alt="${avatar.name}" class="avatar-image" style="max-width: 200px;">
