@@ -25,7 +25,7 @@
         <div class="left-panel">
             <h2>Виды аватаров</h2>
             <div class="avatar-grid" id="avatar-grid"></div>
-            <p class="grey-avatar-link" onmouseover="showGreyAvatarVideo()" onmouseout="hideGreyAvatarVideo()">Серый Аватар</p>
+            <p class="grey-avatar-link" onclick="showGreyAvatarVideo()">Серый Аватар</p>
         </div>
 
         <div class="center-panel" id="center-panel">
@@ -64,14 +64,7 @@
                 div.classList.add('avatar-item');
                 div.setAttribute('data-avatar', avatar.name);
                 div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" class="avatar-image"><p>${avatar.name}</p>`;
-                div.onmouseover = () => {
-                    showAvatarInfo(avatar);
-                    highlightCenterPanel(avatar.name);
-                    selectAvatar(div);
-                };
-                div.onmouseout = () => {
-                    unhighlightCenterPanel();
-                };
+                div.onmouseover = () => showAvatarInfo(avatar);
                 grid.appendChild(div);
             });
         }
@@ -87,30 +80,47 @@
             });
         }
 
-        function highlightCenterPanel(avatarName) {
-            const centerPanel = document.getElementById('center-panel');
-            if (avatarName === "Зелёный Аватар") {
-                centerPanel.style.backgroundColor = 'rgba(0, 255, 0, 0.2)';
-            } else if (avatarName === "Синий Аватар") {
-                centerPanel.style.backgroundColor = 'rgba(0, 123, 255, 0.2)';
-            } else if (avatarName === "Фиолетовый Аватар") {
-                centerPanel.style.backgroundColor = 'rgba(138, 43, 226, 0.2)';
-            } else {
-                centerPanel.style.backgroundColor = 'transparent';
+        function showAvatarInfo(avatar) {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = `
+                <h3>${avatar.name}</h3>
+                <img src="${avatar.image}" alt="${avatar.name}" class="avatar-image" style="max-width: 200px;">
+                <h4>Необходимые ресурсы:</h4>
+                <ul class="resource-list">
+                    ${avatar.resources.map(resource => `
+                        <li class="resource-item" onmouseover="showMobsAndOres('${resource}')" onmouseout="hideMobsAndOres('${resource}')">
+                            ${resource}
+                            <div class="mob-ore-list" id="${resource.replace(/\s+/g, '-')}-list"></div>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+        }
+
+        function showGreyAvatarVideo() {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = `
+                <video width="100%" height="auto" autoplay loop muted>
+                    <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        }
+
+        function showMobsAndOres(resource) {
+            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
+            if (resourceData[resource]) {
+                listElement.innerHTML = `
+                    ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
+                    ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
+                `;
+                listElement.style.display = 'block';
             }
         }
 
-        function unhighlightCenterPanel() {
-            const centerPanel = document.getElementById('center-panel');
-            centerPanel.style.backgroundColor = 'transparent';
-        }
-
-        function selectAvatar(selectedDiv) {
-            const avatarItems = document.querySelectorAll('.avatar-item');
-            avatarItems.forEach(item => {
-                item.classList.remove('selected');
-            });
-            selectedDiv.classList.add('selected');
+        function hideMobsAndOres(resource) {
+            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
+            listElement.style.display = 'none';
         }
 
         window.onload = function() {
