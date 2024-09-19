@@ -5,44 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Аватары - База знаний 2040World</title>
     <link rel="stylesheet" href="../assets/css/res_style.css">
-    <style>
-        .avatar-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        .avatar-item {
-            cursor: pointer;
-            padding: 10px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .avatar-item:hover {
-            background-color: #444;
-        }
-        .avatar-image {
-            max-width: 100%;
-            height: auto;
-            object-fit: contain;
-        }
-        .resource-list {
-            list-style-type: none;
-            padding: 0;
-        }
-        .resource-item {
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .mob-ore-list {
-            display: none;
-            margin-left: 20px;
-        }
-        .mob-ore-item {
-            display: inline-block;
-            margin-right: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/avatars_style.css">
 </head>
 <body>
     <a href="https://korstziv.github.io/.github-test.io/" class="home-button">
@@ -62,6 +25,11 @@
         <div class="left-panel">
             <h2>Виды аватаров</h2>
             <div class="avatar-grid" id="avatar-grid"></div>
+            <p class="grey-avatar-link" onmouseover="showGreyAvatarVideo()">Серый Аватар</p>
+        </div>
+
+        <div class="center-panel" id="center-panel">
+            <!-- Центральные иконки будут добавлены здесь -->
         </div>
 
         <div class="right-panel" id="right-panel">
@@ -77,6 +45,7 @@
             { name: "Зелёный Аватар", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
             { name: "Синий Аватар", image: "../assets/images/Avatars/Drop_Pods__Rare.png", resources: ["Magnetite", "Robotic Module", "Energy Crystal"] },
             { name: "Фиолетовый Аватар", image: "../assets/images/Avatars/Drop_Pods__Epic.png", resources: ["Photon Gel", "Plasma Condensate", "Organic Polymers"] },
+            { name: "Легендарный Аватар", image: "../assets/images/Avatars/Drop_Pods_Legendary.png", resources: ["Biological Extract", "Genetically-Modified Enzymes", "Exotic Spores"] },
         ];
 
         const resourceData = {
