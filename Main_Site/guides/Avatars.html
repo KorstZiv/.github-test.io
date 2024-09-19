@@ -116,6 +116,17 @@
                 newSelected.classList.add('selected');
             }
 
+            // Подсвечиваем центральную панель
+            const centerPanel = document.querySelector('.center-panel');
+            centerPanel.classList.remove('green-glow', 'blue-glow', 'purple-glow');
+            if (avatar.name === "Зелёный Аватар") {
+                centerPanel.classList.add('green-glow');
+            } else if (avatar.name === "Синий Аватар") {
+                centerPanel.classList.add('blue-glow');
+            } else if (avatar.name === "Фиолетовый Аватар") {
+                centerPanel.classList.add('purple-glow');
+            }
+
             selectedAvatar = avatar.name;
         }
 
