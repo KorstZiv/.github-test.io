@@ -23,7 +23,7 @@
 
     <main>
         <div class="left-panel">
-            <h2>Виды аватаров</h2>
+            <h2>Виды Аватаров</h2>
             <div class="avatar-grid" id="avatar-grid"></div>
             <p class="grey-avatar-link" onmouseover="showGreyAvatarVideo()" onmouseout="hideGreyAvatarVideo()">Серый Аватар</p>
         </div>
@@ -95,6 +95,16 @@
                     `).join('')}
                 </ul>
             `;
+
+            // Добавляем подсветку выбранного аватара
+            const avatarItems = document.querySelectorAll('.avatar-item');
+            avatarItems.forEach(item => {
+                if (item.getAttribute('data-avatar') === avatar.name) {
+                    item.classList.add('selected');
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
         }
 
         function showGreyAvatarVideo() {
