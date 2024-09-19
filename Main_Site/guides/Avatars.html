@@ -25,24 +25,24 @@
         <div class="left-panel">
             <div class="avatar-grid">
                 <div class="avatar-item" data-avatar="Зелёный Аватар">
-                    <img src="../assets/images/Avatars/Drop_Pods_Uncommon.png" alt="Зелёный Аватар" class="avatar-image">
+                    <img src="/Main_Site/assets/images/Avatars/Drop_Pods_Uncommon.png" alt="Зелёный Аватар" class="avatar-image">
                 </div>
                 <div class="avatar-item" data-avatar="Синий Аватар">
-                    <img src="../assets/images/Avatars/Drop_Pods__Rare.png" alt="Синий Аватар" class="avatar-image">
+                    <img src="/Main_Site/assets/images/Avatars/Drop_Pods__Rare.png" alt="Синий Аватар" class="avatar-image">
                 </div>
                 <div class="avatar-item" data-avatar="Фиолетовый Аватар">
-                    <img src="../assets/images/Avatars/Drop_Pods__Epic.png" alt="Фиолетовый Аватар" class="avatar-image">
+                    <img src="/Main_Site/assets/images/Avatars/Drop_Pods__Epic.png" alt="Фиолетовый Аватар" class="avatar-image">
                 </div>
             </div>
             <div class="grey-avatar-link" onclick="showGreyAvatarInfo()">Серый аватар</div>
         </div>
 
         <div class="center-panel">
-            <img src="../assets/images/Avatars/courier.png" alt="Courier" class="center-icon">
-            <img src="../assets/images/Avatars/explorer.png" alt="Explorer" class="center-icon">
-            <img src="../assets/images/Avatars/maradeur.png" alt="Maradeur" class="center-icon">
-            <img src="../assets/images/Avatars/survivor.png" alt="Survivor" class="center-icon">
-            <img src="../assets/images/Avatars/warrior.png" alt="Warrior" class="center-icon">
+            <img src="/Main_Site/assets/images/Avatars/courier.png" alt="Courier" class="center-icon">
+            <img src="/Main_Site/assets/images/Avatars/explorer.png" alt="Explorer" class="center-icon">
+            <img src="/Main_Site/assets/images/Avatars/maradeur.png" alt="Maradeur" class="center-icon">
+            <img src="/Main_Site/assets/images/Avatars/survivor.png" alt="Survivor" class="center-icon">
+            <img src="/Main_Site/assets/images/Avatars/warrior.png" alt="Warrior" class="center-icon">
         </div>
 
         <div class="right-panel" id="right-panel">
@@ -157,6 +157,36 @@
             const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
             listElement.style.display = 'none';
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const avatarItems = document.querySelectorAll('.avatar-item');
+            const centerPanel = document.querySelector('.center-panel');
+
+            avatarItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Удаляем класс selected у всех аватаров
+                    avatarItems.forEach(i => i.classList.remove('selected'));
+                    
+                    // Добавляем класс selected выбранному аватару
+                    this.classList.add('selected');
+
+                    // Меняем цвет центральной панели
+                    switch(this.dataset.avatar) {
+                        case "Зелёный Аватар":
+                            centerPanel.style.backgroundColor = "rgba(0, 255, 0, 0.2)";
+                            break;
+                        case "Синий Аватар":
+                            centerPanel.style.backgroundColor = "rgba(0, 191, 255, 0.2)";
+                            break;
+                        case "Фиолетовый Аватар":
+                            centerPanel.style.backgroundColor = "rgba(238, 130, 238, 0.2)";
+                            break;
+                        default:
+                            centerPanel.style.backgroundColor = "#333";
+                    }
+                });
+            });
+        });
 
         window.onload = function() {
             generateAvatarGrid();
