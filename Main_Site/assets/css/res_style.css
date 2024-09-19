@@ -54,7 +54,7 @@ main {
 .right-panel-content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center; /* Изменено с space-around на center */
     align-items: flex-start;
     width: 100%;
     padding: 10px;
@@ -68,6 +68,12 @@ main {
     width: calc(25% - 20px); /* 4 иконки в ряд с учетом отступов */
     min-width: 120px;
     max-width: 200px;
+}
+
+/* Новое правило для случая с двумя иконками */
+.right-panel-content:has(.right-panel-item:nth-child(2):last-child) .right-panel-item {
+    width: calc(40% - 20px); /* Уменьшаем ширину для двух иконок */
+    margin: 10px 5px; /* Уменьшаем горизонтальные отступы */
 }
 
 .right-panel img {
