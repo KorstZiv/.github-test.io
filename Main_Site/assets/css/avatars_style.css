@@ -3,8 +3,21 @@ main {
     justify-content: space-between;
 }
 
-.left-panel, .center-panel, .right-panel {
+.left-panel {
     width: 30%;
+}
+
+.center-panel {
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+
+.right-panel {
+    width: calc(70% - 90px); /* 70% минус ширина центральной панели и ее отступы */
 }
 
 .avatar-grid {
@@ -19,10 +32,23 @@ main {
     border: 1px solid #444;
     border-radius: 5px;
     text-align: center;
+    transition: background-color 0.3s ease;
 }
 
 .avatar-item:hover {
-    background-color: #444;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.avatar-item[data-avatar="Зелёный Аватар"]:hover {
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+.avatar-item[data-avatar="Синий Аватар"]:hover {
+    background-color: rgba(0, 191, 255, 0.1);
+}
+
+.avatar-item[data-avatar="Фиолетовый Аватар"]:hover {
+    background-color: rgba(238, 130, 238, 0.1);
 }
 
 .avatar-image {
@@ -55,13 +81,6 @@ main {
     cursor: pointer;
     text-decoration: underline;
     color: blue;
-}
-
-.center-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .center-icon {
