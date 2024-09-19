@@ -161,11 +161,18 @@
                     rightPanelContent.appendChild(panelItem);
                 });
 
+                // Добавляем специальный класс для случая с двумя иконками
+                if (images.length === 2) {
+                    rightPanelContent.classList.add('two-icons');
+                } else {
+                    rightPanelContent.classList.remove('two-icons');
+                }
+
                 // Изменяем размер иконок, если их меньше 4
                 const items = rightPanelContent.querySelectorAll('.right-panel-item');
                 if (items.length < 4) {
                     items.forEach(item => {
-                        item.style.width = `calc(${100 / items.length}% - 20px)`;
+                        item.style.width = `calc(${100 / items.length}% - ${items.length === 2 ? '10' : '20'}px)`;
                         item.style.maxWidth = '300px'; // Увеличиваем максимальную ширину
                     });
                 }
