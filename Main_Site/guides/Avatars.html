@@ -41,7 +41,6 @@
 
     <script>
         let selectedAvatar = null;
-        let hoveredAvatar = null;
 
         const avatarData = [
             { name: "Зелёный Аватар", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
@@ -69,16 +68,6 @@
                 div.setAttribute('data-avatar', avatar.name);
                 div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" class="avatar-image"><p>${avatar.name}</p>`;
                 div.onclick = () => showAvatarInfo(avatar);
-                div.onmouseenter = () => showAvatarInfo(avatar, true);
-                div.onmouseleave = () => {
-                    if (selectedAvatar) {
-                        showAvatarInfo(avatarData.find(a => a.name === selectedAvatar));
-                    } else {
-                        document.querySelectorAll('.avatar-item').forEach(item => {
-                            item.classList.remove('hovered');
-                        });
-                    }
-                };
                 if (avatar.name === selectedAvatar) {
                     div.classList.add('selected');
                 }
@@ -97,7 +86,7 @@
             });
         }
 
-        function showAvatarInfo(avatar, isHover = false) {
+        function showAvatarInfo(avatar) {
             const rightPanel = document.querySelector('.right-panel-content');
             rightPanel.innerHTML = `
                 <h3>${avatar.name}</h3>
@@ -113,23 +102,21 @@
                 </ul>
             `;
 
-            // Снимаем подсветку со всех аватаров
-            document.querySelectorAll('.avatar-item').forEach(item => {
-                item.classList.remove('selected', 'hovered');
-            });
+            // Снимаем подсветку с предыдущего выбранного аватара
+            if (selectedAvatar) {
+                const prevSelected = document.querySelector(`.avatar-item[data-avatar="${selectedAvatar}"]`);
+                if (prevSelected) {
+                    prevSelected.classList.remove('selected');
+                }
+            }
 
-            // Подсвечиваем новый аватар
+            // Подсвечиваем новый выбранный аватар
             const newSelected = document.querySelector(`.avatar-item[data-avatar="${avatar.name}"]`);
             if (newSelected) {
-                newSelected.classList.add(isHover ? 'hovered' : 'selected');
+                newSelected.classList.add('selected');
             }
 
-            if (!isHover) {
-                selectedAvatar = avatar.name;
-                hoveredAvatar = null;
-            } else {
-                hoveredAvatar = avatar.name;
-            }
+            selectedAvatar = avatar.name;
         }
 
         function showGreyAvatarVideo() {
