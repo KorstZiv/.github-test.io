@@ -25,7 +25,7 @@
         <div class="left-panel">
             <h2>Виды аватаров</h2>
             <div class="avatar-grid" id="avatar-grid"></div>
-            <p class="grey-avatar-link" onmouseover="showGreyAvatarVideo()">Серый Аватар</p>
+            <p class="grey-avatar-link" onmouseover="showGreyAvatarVideo()" onmouseout="hideGreyAvatarVideo()">Серый Аватар</p>
         </div>
 
         <div class="center-panel" id="center-panel">
@@ -44,6 +44,10 @@
             { name: "Зелёный Аватар", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
             { name: "Синий Аватар", image: "../assets/images/Avatars/Drop_Pods__Rare.png", resources: ["Magnetite", "Robotic Module", "Energy Crystal"] },
             { name: "Фиолетовый Аватар", image: "../assets/images/Avatars/Drop_Pods__Epic.png", resources: ["Photon Gel", "Plasma Condensate", "Organic Polymers"] },
+        ];
+
+        const centerIcons = [
+            "courier.png", "explorer.png", "survivor.png", "maradeur.png", "warrior.png"
         ];
 
         const resourceData = {
@@ -65,6 +69,17 @@
             });
         }
 
+        function generateCenterIcons() {
+            const centerPanel = document.getElementById('center-panel');
+            centerIcons.forEach(icon => {
+                const img = document.createElement('img');
+                img.src = `../assets/images/Avatars/${icon}`;
+                img.alt = icon.replace('.png', '');
+                img.classList.add('center-icon');
+                centerPanel.appendChild(img);
+            });
+        }
+
         function showAvatarInfo(avatar) {
             const rightPanel = document.querySelector('.right-panel-content');
             rightPanel.innerHTML = `
@@ -80,6 +95,21 @@
                     `).join('')}
                 </ul>
             `;
+        }
+
+        function showGreyAvatarVideo() {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = `
+                <video width="100%" height="auto" autoplay loop muted>
+                    <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        }
+
+        function hideGreyAvatarVideo() {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
         }
 
         function showMobsAndOres(resource) {
@@ -98,7 +128,10 @@
             listElement.style.display = 'none';
         }
 
-        window.onload = generateAvatarGrid;
+        window.onload = function() {
+            generateAvatarGrid();
+            generateCenterIcons();
+        };
     </script>
 </body>
 </html>
