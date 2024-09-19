@@ -43,7 +43,7 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 30px; /* Увеличиваем расстояние между аватарами */
     padding: 15px;
 }
 
@@ -66,16 +66,28 @@ main {
     border-color: #fff;
 }
 
+.avatar-item[data-avatar="Зелёный Аватар"] {
+    border-color: #00FF00; /* Яркий зеленый */
+}
+
 .avatar-item[data-avatar="Синий Аватар"] {
     border-color: #00BFFF; /* Яркий голубой */
 }
 
-.avatar-item[data-avatar="Голубой Аватар"] {
-    border-color: #1E90FF; /* Яркий синий */
-}
-
 .avatar-item[data-avatar="Фиолетовый Аватар"] {
     border-color: #8A2BE2; /* Яркий фиолетовый */
+}
+
+.avatar-item.selected[data-avatar="Зелёный Аватар"] {
+    background-color: rgba(0, 255, 0, 0.2); /* Полупрозрачный зеленый */
+}
+
+.avatar-item.selected[data-avatar="Синий Аватар"] {
+    background-color: rgba(0, 191, 255, 0.2); /* Полупрозрачный голубой */
+}
+
+.avatar-item.selected[data-avatar="Фиолетовый Аватар"] {
+    background-color: rgba(138, 43, 226, 0.2); /* Полупрозрачный фиолетовый */
 }
 
 .avatar-image {
