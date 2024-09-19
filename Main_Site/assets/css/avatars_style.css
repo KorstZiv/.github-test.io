@@ -87,54 +87,6 @@
             });
         }
 
-        function showAvatarInfo(avatar) {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = `
-                <h3>${avatar.name}</h3>
-                <img src="${avatar.image}" alt="${avatar.name}" class="avatar-image" style="max-width: 200px;">
-                <h4>Необходимые ресурсы:</h4>
-                <ul class="resource-list">
-                    ${avatar.resources.map(resource => `
-                        <li class="resource-item" onmouseover="showMobsAndOres('${resource}')" onmouseout="hideMobsAndOres('${resource}')">
-                            ${resource}
-                            <div class="mob-ore-list" id="${resource.replace(/\s+/g, '-')}-list"></div>
-                        </li>
-                    `).join('')}
-                </ul>
-            `;
-        }
-
-        function showGreyAvatarVideo() {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = `
-                <video width="100%" height="auto" autoplay loop muted>
-                    <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            `;
-        }
-
-        function hideGreyAvatarVideo() {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
-        }
-
-        function showMobsAndOres(resource) {
-            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
-            if (resourceData[resource]) {
-                listElement.innerHTML = `
-                    ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
-                    ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
-                `;
-                listElement.style.display = 'block';
-            }
-        }
-
-        function hideMobsAndOres(resource) {
-            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
-            listElement.style.display = 'none';
-        }
-
         function highlightCenterPanel(avatarName) {
             const centerPanel = document.getElementById('center-panel');
             if (avatarName === "Зелёный Аватар") {
