@@ -77,13 +77,31 @@
 
         function generateCenterIcons() {
             const centerPanel = document.getElementById('center-panel');
-            centerIcons.forEach(icon => {
+            centerPanel.innerHTML = ''; // Очищаем панель перед генерацией
+            
+            // Создаем контейнер для верхних трех иконок
+            const topContainer = document.createElement('div');
+            topContainer.className = 'center-icon-container';
+            
+            // Создаем контейнер для нижних двух иконок
+            const bottomContainer = document.createElement('div');
+            bottomContainer.className = 'center-icon-container';
+
+            centerIcons.forEach((icon, index) => {
                 const img = document.createElement('img');
                 img.src = `../assets/images/Avatars/${icon}`;
                 img.alt = icon.replace('.png', '');
                 img.classList.add('center-icon');
-                centerPanel.appendChild(img);
+                
+                if (index < 3) {
+                    topContainer.appendChild(img);
+                } else {
+                    bottomContainer.appendChild(img);
+                }
             });
+
+            centerPanel.appendChild(topContainer);
+            centerPanel.appendChild(bottomContainer);
         }
 
         function showAvatarInfo(avatar) {
