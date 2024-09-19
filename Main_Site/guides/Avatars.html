@@ -40,6 +40,8 @@
     </main>
 
     <script>
+        let selectedAvatar = null;
+
         const avatarData = [
             { name: "Зелёный Аватар", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
             { name: "Синий Аватар", image: "../assets/images/Avatars/Drop_Pods__Rare.png", resources: ["Magnetite", "Robotic Module", "Energy Crystal"] },
@@ -59,12 +61,16 @@
 
         function generateAvatarGrid() {
             const grid = document.getElementById('avatar-grid');
+            grid.innerHTML = ''; // Очищаем сетку перед генерацией
             avatarData.forEach(avatar => {
                 const div = document.createElement('div');
                 div.classList.add('avatar-item');
                 div.setAttribute('data-avatar', avatar.name);
                 div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" class="avatar-image"><p>${avatar.name}</p>`;
-                div.onmouseover = () => showAvatarInfo(avatar);
+                div.onclick = () => showAvatarInfo(avatar);
+                if (avatar.name === selectedAvatar) {
+                    div.classList.add('selected');
+                }
                 grid.appendChild(div);
             });
         }
@@ -96,15 +102,21 @@
                 </ul>
             `;
 
-            // Добавляем подсветку выбранного аватара
-            const avatarItems = document.querySelectorAll('.avatar-item');
-            avatarItems.forEach(item => {
-                if (item.getAttribute('data-avatar') === avatar.name) {
-                    item.classList.add('selected');
-                } else {
-                    item.classList.remove('selected');
+            // Снимаем подсветку с предыдущего выбранного аватара
+            if (selectedAvatar) {
+                const prevSelected = document.querySelector(`.avatar-item[data-avatar="${selectedAvatar}"]`);
+                if (prevSelected) {
+                    prevSelected.classList.remove('selected');
                 }
-            });
+            }
+
+            // Подсвечиваем новый выбранный аватар
+            const newSelected = document.querySelector(`.avatar-item[data-avatar="${avatar.name}"]`);
+            if (newSelected) {
+                newSelected.classList.add('selected');
+            }
+
+            selectedAvatar = avatar.name;
         }
 
         function showGreyAvatarVideo() {
