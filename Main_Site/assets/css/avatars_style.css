@@ -1,25 +1,25 @@
 main {
     display: flex;
     justify-content: space-between;
-    height: calc(100vh - 100px); /* Примерная высота, вычтите высоту header и footer */
+    height: calc(100vh - 200px); /* Уменьшаем высоту на 100px */
 }
 
 .left-panel {
-    width: 30%;
+    width: 25%;
     display: flex;
     flex-direction: column;
-    background-color: #2a2a2a; /* Добавим фон для видимости */
+    background-color: #2a2a2a;
     padding: 10px;
 }
 
 .center-panel {
-    flex-grow: 1;
-    max-width: 140px;
+    flex-grow: 0;
+    width: 120px; /* Увеличиваем ширину */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Меняем на center */
-    margin: 0 20px;
+    justify-content: space-between; /* Равномерное распределение */
+    margin: 0 15px;
     height: 100%;
     padding: 20px 0;
     transition: background-color 0.3s ease;
@@ -29,8 +29,8 @@ main {
 }
 
 .right-panel {
-    width: calc(70% - 180px);
-    background-color: #2a2a2a; /* Добавим фон для видимости */
+    flex-grow: 1;
+    background-color: #2a2a2a;
 }
 
 .avatar-grid {
@@ -38,27 +38,26 @@ main {
     flex-direction: column;
     gap: 10px;
     flex-grow: 1;
-    padding: 20px;
 }
 
 .avatar-item {
     cursor: pointer;
     padding: 10px;
-    border: 1px solid #444;
+    border: 2px solid transparent; /* Прозрачная рамка */
     border-radius: 5px;
     text-align: center;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #333;
-    height: 140px; /* Увеличиваем высоту */
+    height: 100px; /* Уменьшаем высоту */
 }
 
 .avatar-image {
     max-width: 100%;
-    max-height: 120px; /* Увеличиваем максимальную высоту */
+    max-height: 80px; /* Уменьшаем максимальную высоту */
     object-fit: contain;
 }
 
@@ -92,8 +91,8 @@ main {
 }
 
 .center-icon {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
     margin: 10px 0; /* Увеличиваем отступ между иконками */
 }
