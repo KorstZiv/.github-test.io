@@ -54,35 +54,31 @@ main {
 .right-panel-content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Изменено с center на space-around */
-    align-items: flex-start; /* Изменено с center на flex-start */
+    justify-content: space-around;
+    align-items: flex-start;
     width: 100%;
-    padding: 10px; /* Добавлен отступ */
+    padding: 10px;
 }
 
 .right-panel-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10px; /* Добавлен отступ со всех сторон */
-    width: 180px; /* Уменьшена ширина */
+    margin: 10px;
+    width: calc(25% - 20px); /* 4 иконки в ряд с учетом отступов */
+    min-width: 120px;
+    max-width: 200px;
 }
 
 .right-panel img {
-    width: 150px; /* Уменьшен размер изображения */
-    height: auto; /* Изменено с фиксированной высоты на auto */
-    margin-bottom: 10px; /* Увеличен отступ снизу */
-    object-fit: contain; /* Сохраняет пропорции изображения */
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    object-fit: contain;
 }
 
-.right-panel img.small {
-    width: 120px; /* Уменьшен размер маленьких изображений */
-    height: auto; /* Изменено с фиксированной высоты на auto */
-}
-
-.right-panel img.extra-small {
-    width: 80px; /* Уменьшен размер очень маленьких изображений */
-    height: auto; /* Изменено с фиксированной высоты на auto */
+.right-panel img[src*="Lootbox"] {
+    width: 90%; /* Немного меньше для Lootbox */
 }
 
 .right-panel p {
@@ -90,24 +86,24 @@ main {
     text-align: center;
     margin: 0;
     word-wrap: break-word;
-    font-size: 14px; /* Уменьшен размер шрифта */
+    font-size: 14px;
 }
 
 .resource-item img {
     width: 100px;
-    height: auto; /* Изменено с фиксированной высоты на auto */
+    height: auto;
     transition: transform 0.3s ease;
     margin-bottom: 5px;
     display: block;
 }
 
 .resource-item:hover img {
-    transform: scale(1.5); /* Увеличение при наведении */
+    transform: scale(1.5);
 }
 
 /* Визуальная обратная связь при наведении */
 .resource-item:hover {
-    outline: 2px solid #00BFFF; /* Голубая рамка */
+    outline: 2px solid #00BFFF;
 }
 
 .resource-item p {
@@ -143,17 +139,17 @@ h2 {
 
 /* Огненный текст */
 .clan-title-fire {
-    font-family: 'Arial', sans-serif; /* Жирный шрифт */
+    font-family: 'Arial', sans-serif;
     font-size: 40px;
-    color: #d94e1f; /* Приглушённый оранжевый */
+    color: #d94e1f;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 4px; /* Обычное расстояние */
-    animation: flicker 2.5s infinite alternate; /* Мерцание */
+    letter-spacing: 4px;
+    animation: flicker 2.5s infinite alternate;
     text-shadow: 
         0 0 4px rgba(217, 78, 31, 0.6), 
         0 0 8px rgba(255, 87, 34, 0.5), 
-        0 0 12px rgba(255, 138, 101, 0.4); /* Слабое свечение */
+        0 0 12px rgba(255, 138, 101, 0.4);
     margin: 0;
 }
 
@@ -195,19 +191,19 @@ h2 {
     top: 20px;
     left: 20px;
     z-index: 1000;
-    background-color: #00aaff; /* Синий цвет */
+    background-color: #00aaff;
     border-radius: 50%;
     padding: 10px;
     transition: background-color 0.3s ease;
 }
 
 .home-button:hover {
-    background-color: #0088cc; /* Немного темнее синий при наведении */
+    background-color: #0088cc;
 }
 
 .home-icon {
     width: 30px;
     height: 30px;
     display: block;
-    filter: invert(1); /* Это сделает иконку белой, если она изначально черная */
+    filter: invert(1);
 }
