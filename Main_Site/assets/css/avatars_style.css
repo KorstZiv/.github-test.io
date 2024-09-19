@@ -42,15 +42,15 @@ main {
 }
 
 .center-panel.green-glow {
-    background-color: rgba(0, 255, 0, 0.1);
+    background-color: rgba(0, 255, 0, 0.3);
 }
 
 .center-panel.blue-glow {
-    background-color: rgba(0, 191, 255, 0.1);
+    background-color: rgba(0, 191, 255, 0.3);
 }
 
 .center-panel.purple-glow {
-    background-color: rgba(138, 43, 226, 0.1);
+    background-color: rgba(138, 43, 226, 0.3);
 }
 
 .right-panel {
