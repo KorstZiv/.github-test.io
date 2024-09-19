@@ -64,7 +64,11 @@
                 div.classList.add('avatar-item');
                 div.setAttribute('data-avatar', avatar.name);
                 div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" class="avatar-image"><p>${avatar.name}</p>`;
-                div.onmouseover = () => showAvatarInfo(avatar);
+                div.onmouseover = () => {
+                    showAvatarInfo(avatar);
+                    highlightCenterPanel(avatar.name);
+                    selectAvatar(div);
+                };
                 grid.appendChild(div);
             });
         }
@@ -126,6 +130,27 @@
         function hideMobsAndOres(resource) {
             const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
             listElement.style.display = 'none';
+        }
+
+        function highlightCenterPanel(avatarName) {
+            const centerPanel = document.getElementById('center-panel');
+            if (avatarName === "Зелёный Аватар") {
+                centerPanel.style.backgroundColor = 'rgba(0, 255, 0, 0.2)';
+            } else if (avatarName === "Синий Аватар") {
+                centerPanel.style.backgroundColor = 'rgba(0, 123, 255, 0.2)';
+            } else if (avatarName === "Фиолетовый Аватар") {
+                centerPanel.style.backgroundColor = 'rgba(138, 43, 226, 0.2)';
+            } else {
+                centerPanel.style.backgroundColor = 'transparent';
+            }
+        }
+
+        function selectAvatar(selectedDiv) {
+            const avatarItems = document.querySelectorAll('.avatar-item');
+            avatarItems.forEach(item => {
+                item.classList.remove('selected');
+            });
+            selectedDiv.classList.add('selected');
         }
 
         window.onload = function() {
