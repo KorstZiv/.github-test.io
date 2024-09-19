@@ -16,9 +16,15 @@
             padding: 10px;
             border: 1px solid #444;
             border-radius: 5px;
+            text-align: center;
         }
         .avatar-item:hover {
             background-color: #444;
+        }
+        .avatar-image {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
         }
         .resource-list {
             list-style-type: none;
@@ -39,7 +45,7 @@
     </style>
 </head>
 <body>
-    <a href="../index.html" class="home-button">
+    <a href="https://korstziv.github.io/.github-test.io/" class="home-button">
         <img src="../assets/images/home_icon.png" alt="Домой" class="home-icon">
     </a>
 
@@ -86,7 +92,7 @@
             avatarData.forEach(avatar => {
                 const div = document.createElement('div');
                 div.classList.add('avatar-item');
-                div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" style="width:100px;height:100px;"><p>${avatar.name}</p>`;
+                div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" class="avatar-image"><p>${avatar.name}</p>`;
                 div.onmouseover = () => showAvatarInfo(avatar);
                 grid.appendChild(div);
             });
@@ -96,7 +102,7 @@
             const rightPanel = document.querySelector('.right-panel-content');
             rightPanel.innerHTML = `
                 <h3>${avatar.name}</h3>
-                <img src="${avatar.image}" alt="${avatar.name}" style="width:200px;height:200px;">
+                <img src="${avatar.image}" alt="${avatar.name}" class="avatar-image" style="max-width: 200px;">
                 <h4>Необходимые ресурсы:</h4>
                 <ul class="resource-list">
                     ${avatar.resources.map(resource => `
