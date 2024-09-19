@@ -1,6 +1,23 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    flex-shrink: 0;
+}
+
 main {
+    flex: 1;
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
+}
+
+.left-panel, .right-panel {
+    overflow-y: auto;
 }
 
 .left-panel {
@@ -49,6 +66,11 @@ main {
 
 .avatar-item[data-avatar="Фиолетовый Аватар"]:hover {
     background-color: rgba(238, 130, 238, 0.1);
+}
+
+.avatar-item.selected {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
 }
 
 .avatar-image {
