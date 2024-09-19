@@ -171,6 +171,25 @@
         function clearRightPanel() {
             document.querySelector('.right-panel-content').innerHTML = '';
         }
+
+        // Добавьте этот код в конец существующего <script> тега
+        function highlightSection() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const section = document.getElementById(hash);
+                if (section) {
+                    section.scrollIntoView();
+                    section.classList.add('highlight-section');
+                    setTimeout(() => {
+                        section.classList.remove('highlight-section');
+                    }, 2000); // Удаляем подсветку через 2 секунды
+                }
+            }
+        }
+
+        // Вызываем функцию при загрузке страницы
+        window.addEventListener('load', highlightSection);
+        window.addEventListener('hashchange', highlightSection);
     </script>
 
 </body>
