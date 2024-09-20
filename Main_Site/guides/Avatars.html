@@ -41,6 +41,7 @@
 
     <script>
         let selectedAvatar = null;
+        let selectedCenterIcon = null;
 
         const avatarData = [
             { name: "Зелёный Аватар", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
@@ -94,17 +95,22 @@
                 wrapper.appendChild(img);
                 wrapper.addEventListener('click', () => {
                     if (selectedAvatar) {
+                        if (selectedCenterIcon) {
+                            selectedCenterIcon.classList.remove('clicked');
+                        }
+                        wrapper.classList.add('clicked');
+                        selectedCenterIcon = wrapper;
                         showClassInfo(icon.replace('.png', ''));
                     }
                 });
                 
-                wrapper.addEventListener('mouseover', (e) => {
+                wrapper.addEventListener('mousemove', (e) => {
                     if (!selectedAvatar) {
-                        showTooltip(e.target, "Выберите качество Аватара");
+                        showTooltip(e, "Выберите качество Аватара");
                     }
                 });
                 
-                wrapper.addEventListener('mouseout', () => {
+                wrapper.addEventListener('mouseleave', () => {
                     hideTooltip();
                 });
                 
@@ -217,21 +223,23 @@
             centerIcons.forEach(icon => {
                 if (selectedAvatar) {
                     icon.classList.add('active');
+                    icon.classList.remove('clicked');
                 } else {
-                    icon.classList.remove('active');
+                    icon.classList.remove('active', 'clicked');
                 }
             });
+            selectedCenterIcon = null;
         }
 
-        function showTooltip(element, text) {
+        function showTooltip(e, text) {
+            hideTooltip(); // Удаляем предыдущий тултип, если он есть
             const tooltip = document.createElement('div');
             tooltip.className = 'tooltip';
             tooltip.textContent = text;
             document.body.appendChild(tooltip);
 
-            const rect = element.getBoundingClientRect();
-            tooltip.style.left = `${rect.left + window.scrollX}px`;
-            tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
+            tooltip.style.left = `${e.clientX + 10}px`;
+            tooltip.style.top = `${e.clientY + 10}px`;
         }
 
         function hideTooltip() {
@@ -240,6 +248,13 @@
                 tooltip.remove();
             }
         }
+
+        // Добавляем обработчик для скрытия тултипа при движении мыши вне иконок
+        document.addEventListener('mousemove', (e) => {
+            if (!e.target.closest('.center-icon-wrapper')) {
+                hideTooltip();
+            }
+        });
 
         window.onload = function() {
             generateAvatarGrid();
