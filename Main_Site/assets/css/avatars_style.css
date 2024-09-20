@@ -37,8 +37,8 @@ main {
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     transition: background-color 0.3s ease;
-    padding: 20px 0; /* Уменьшен отступ сверху и снизу */
-    height: calc(100% - 40px); /* Учитываем padding */
+    padding: 0; /* Убираем отступы */
+    height: 100%; /* Занимает всю высоту */
 }
 
 .center-panel.green-glow {
@@ -60,7 +60,7 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 40px; /* Увеличиваем расстояние между аватарами на 10px */
+    gap: 55px; /* Увеличиваем расстояние между аватарами на 15px */
     padding: 15px;
 }
 
@@ -149,9 +149,8 @@ main {
 }
 
 .center-icon {
-    width: 80px; /* Уменьшен размер иконок */
+    width: 80px;
     height: 80px;
-    margin: 0; /* Убран отступ между иконками */
 }
 
 .center-icon-container {
@@ -160,13 +159,14 @@ main {
     align-items: center;
     justify-content: space-between;
     height: 100%; /* Занимает всю высоту центральной панели */
-    padding: 10px 0; /* Добавлен отступ сверху и снизу */
+    padding: 0;
 }
 
-.center-icon-container:first-child {
-    padding-bottom: 0; /* Убран дополнительный отступ снизу */
+/* Добавляем новые стили для позиционирования иконок */
+.center-icon:first-child {
+    margin-top: 15px; /* Отступ сверху для первой иконки */
 }
 
-.center-icon-container:last-child {
-    padding-top: 0; /* Убран дополнительный отступ сверху */
+.center-icon:last-child {
+    margin-bottom: 15px; /* Отступ снизу для последней иконки */
 }
