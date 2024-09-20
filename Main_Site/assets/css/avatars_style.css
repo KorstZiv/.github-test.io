@@ -42,15 +42,18 @@ main {
 }
 
 .center-panel.green-glow {
-    background-color: rgba(0, 255, 0, 0.3);
+    background-color: rgba(0, 255, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
 }
 
 .center-panel.blue-glow {
-    background-color: rgba(0, 191, 255, 0.3);
+    background-color: rgba(0, 191, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
 }
 
 .center-panel.purple-glow {
-    background-color: rgba(138, 43, 226, 0.3);
+    background-color: rgba(138, 43, 226, 0.2);
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
 }
 
 .right-panel {
@@ -87,7 +90,7 @@ main {
     background-color: rgba(0, 191, 255, 0.1); /* Легкая подсветка синим */
 }
 
-.avatar-item[data-avatar="Фиолетовый Аватар"]:hover {
+.avatar-item[data-avatar="Фиолетовый Аатар"]:hover {
     background-color: rgba(138, 43, 226, 0.1); /* Легкая подсветка фиолетовым */
 }
 
@@ -101,6 +104,11 @@ main {
 
 .avatar-item[data-avatar="Фиолетовый Аватар"].selected {
     background-color: rgba(138, 43, 226, 0.3); /* Яркая подсветка фиолетовым */
+}
+
+.avatar-item.selected {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
 }
 
 .avatar-image {
@@ -136,7 +144,7 @@ main {
     cursor: pointer;
     font-weight: bold;
     color: #808080; /* Серый цвет */
-    transition: color 0.3s ease; /* Плавный переход цвета */
+    transition: color 0.3s ease; /* Плавный преход цвета */
 }
 
 .grey-avatar-link:hover {
