@@ -206,3 +206,14 @@ main {
 }
 
 /* Удаляем стили для .center-icon:first-child и .center-icon:last-child */
+
+.tooltip {
+    position: fixed;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
+    pointer-events: none;
+}
