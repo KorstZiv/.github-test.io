@@ -165,14 +165,24 @@ main {
     margin: 5px 0;
     transition: all 0.3s ease;
     cursor: pointer;
+    opacity: 0.5;
+}
+
+.center-icon-wrapper.active {
+    opacity: 1;
 }
 
 .center-icon-wrapper:hover {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.center-icon-wrapper.active {
+.center-icon-wrapper.active:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.center-icon-wrapper.clicked {
     background-color: black;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .center-icon {
@@ -181,8 +191,18 @@ main {
     transition: all 0.3s ease;
 }
 
-.center-icon-wrapper.active .center-icon {
+.center-icon-wrapper.clicked .center-icon {
     filter: brightness(0) invert(1);
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
 }
 
 /* Удаляем стили для .center-icon:first-child и .center-icon:last-child */
