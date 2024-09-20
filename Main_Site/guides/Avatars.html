@@ -79,13 +79,9 @@
             const centerPanel = document.getElementById('center-panel');
             centerPanel.innerHTML = ''; // Очищаем панель перед генерацией
             
-            // Создаем контейнер для верхних трех иконок
-            const topContainer = document.createElement('div');
-            topContainer.className = 'center-icon-container';
-            
-            // Создаем контейнер для нижних двух иконок
-            const bottomContainer = document.createElement('div');
-            bottomContainer.className = 'center-icon-container';
+            // Создаем один контейнер для всех иконок
+            const iconContainer = document.createElement('div');
+            iconContainer.className = 'center-icon-container';
 
             centerIcons.forEach((icon, index) => {
                 const img = document.createElement('img');
@@ -93,15 +89,10 @@
                 img.alt = icon.replace('.png', '');
                 img.classList.add('center-icon');
                 
-                if (index < 3) {
-                    topContainer.appendChild(img);
-                } else {
-                    bottomContainer.appendChild(img);
-                }
+                iconContainer.appendChild(img);
             });
 
-            centerPanel.appendChild(topContainer);
-            centerPanel.appendChild(bottomContainer);
+            centerPanel.appendChild(iconContainer);
         }
 
         function showAvatarInfo(avatar) {
