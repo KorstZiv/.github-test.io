@@ -166,6 +166,10 @@ main {
     transition: all 0.3s ease;
     cursor: pointer;
     opacity: 0.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px; /* Увеличиваем ширину */
 }
 
 .center-icon-wrapper.active {
@@ -189,6 +193,14 @@ main {
 
 .center-icon-wrapper.clicked .center-icon {
     filter: brightness(0) invert(1);
+}
+
+.center-icon-name {
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+    word-wrap: break-word;
 }
 
 .tooltip {
