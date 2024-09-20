@@ -255,6 +255,19 @@
             }
         }
 
+        // Обновляем обработчик события mousemove для центральных иконок
+        centerIcons.forEach((icon, index) => {
+            // ... (остальной код остается без изменений) ...
+            
+            wrapper.addEventListener('mousemove', (e) => {
+                if (!selectedAvatar) {
+                    showTooltip(e, "Выберите качество Аватара");
+                }
+            });
+            
+            // ... (остальной код остается без изменений) ...
+        });
+
         // Добавляем обработчик для скрытия тултипа при движении мыши вне иконок
         document.addEventListener('mousemove', (e) => {
             if (!e.target.closest('.center-icon-wrapper')) {
