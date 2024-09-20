@@ -1,0 +1,205 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    flex-shrink: 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.left-panel, .right-panel {
+    overflow-y: auto;
+}
+
+.left-panel {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.center-panel {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    transition: background-color 0.3s ease;
+    padding: 0; /* Убираем отступы */
+    height: 100%; /* Занимает всю высоту */
+}
+
+.center-panel.green-glow {
+    background-color: rgba(0, 255, 0, 0.3);
+}
+
+.center-panel.blue-glow {
+    background-color: rgba(0, 191, 255, 0.3);
+}
+
+.center-panel.purple-glow {
+    background-color: rgba(138, 43, 226, 0.3);
+}
+
+.right-panel {
+    width: calc(70% - 90px); /* 70% минус ширина центральной панели и ее отступы */
+}
+
+.avatar-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 55px; /* Расстояние между аватарами */
+    padding: 15px;
+}
+
+.avatar-item {
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    transform: scale(1.15);
+    cursor: pointer;
+}
+
+.avatar-item:hover, .avatar-item.hovered, .avatar-item.selected {
+    background-color: rgba(255, 255, 255, 0.2); /* Более заметная подсветка для выбранного аватара */
+    border-color: #fff;
+}
+
+.avatar-item[data-avatar="Зелёный Аватар"]:hover {
+    background-color: rgba(0, 255, 0, 0.1); /* Легкая подсветка зеленым */
+}
+
+.avatar-item[data-avatar="Синий Аватар"]:hover {
+    background-color: rgba(0, 191, 255, 0.1); /* Легкая подсветка синим */
+}
+
+.avatar-item[data-avatar="Фиолетовый Аватар"]:hover {
+    background-color: rgba(138, 43, 226, 0.1); /* Легкая подсветка фиолетовым */
+}
+
+.avatar-item[data-avatar="Зелёный Аватар"].selected {
+    background-color: rgba(0, 255, 0, 0.3); /* Яркая подсветка зеленым */
+}
+
+.avatar-item[data-avatar="Синий Аватар"].selected {
+    background-color: rgba(0, 191, 255, 0.3); /* Яркая подсветка синим */
+}
+
+.avatar-item[data-avatar="Фиолетовый Аватар"].selected {
+    background-color: rgba(138, 43, 226, 0.3); /* Яркая подсветка фиолетовым */
+}
+
+.avatar-image {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+}
+
+.resource-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.resource-item {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.mob-ore-list {
+    display: none;
+    margin-left: 20px;
+}
+
+.mob-ore-item {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.grey-avatar-link {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #808080; /* Серый цвет */
+    transition: color 0.3s ease; /* Плавный переход цвета */
+}
+
+.grey-avatar-link:hover {
+    color: #FF4500; /* Красноватый цвет, как в шапке */
+}
+
+/* Если у вас нет класса clan-title-fire, добавьте его сюда */
+.clan-title-fire {
+    color: #FF4500;
+}
+
+.center-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(100% - 240px);
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.center-icon-wrapper {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.center-icon-wrapper.active {
+    opacity: 1;
+}
+
+.center-icon-wrapper:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.center-icon-wrapper.clicked {
+    background-color: black;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.center-icon {
+    width: 60px;
+    height: 60px;
+    transition: all 0.3s ease;
+}
+
+.center-icon-wrapper.clicked .center-icon {
+    filter: brightness(0) invert(1);
+}
+
+.tooltip {
+    position: fixed;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Удаляем стили для .center-icon:first-child и .center-icon:last-child */
