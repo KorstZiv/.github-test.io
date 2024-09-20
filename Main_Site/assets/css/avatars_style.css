@@ -60,7 +60,7 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 55px; /* Увеличиваем расстояние между аватарами на 15px */
+    gap: 55px; /* Расстояние между аватарами */
     padding: 15px;
 }
 
@@ -148,18 +148,19 @@ main {
     color: #FF4500;
 }
 
-.center-icon {
-    width: 60px; /* Уменьшаем размер иконок */
-    height: 60px;
-}
-
 .center-icon-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: calc(100% - 30px); /* Уменьшаем высоту контейнера */
-    padding: 15px 0; /* Добавляем отступы сверху и снизу */
+    height: calc(100% - 240px); /* Уменьшаем высоту контейнера */
+    margin-top: 120px; /* Отступ сверху для выравнивания с внутренней стороной рамки зеленого аватара */
+    margin-bottom: 120px; /* Отступ снизу для выравнивания с внутренней стороной рамки фиолетового аватара */
+}
+
+.center-icon {
+    width: 60px;
+    height: 60px;
 }
 
 /* Удаляем стили для .center-icon:first-child и .center-icon:last-child */
