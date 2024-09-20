@@ -79,27 +79,27 @@ main {
     border-color: #fff;
 }
 
-.avatar-item[data-avatar="Зелёный Аватар"]:hover {
+.avatar-item[data-avatar="Uncommon"]:hover {
     background-color: rgba(0, 255, 0, 0.1); /* Легкая подсветка зеленым */
 }
 
-.avatar-item[data-avatar="Синий Аватар"]:hover {
+.avatar-item[data-avatar="Rare"]:hover {
     background-color: rgba(0, 191, 255, 0.1); /* Легкая подсветка синим */
 }
 
-.avatar-item[data-avatar="Фиолетовый Аватар"]:hover {
+.avatar-item[data-avatar="Epic"]:hover {
     background-color: rgba(138, 43, 226, 0.1); /* Легкая подсветка фиолетовым */
 }
 
-.avatar-item[data-avatar="Зелёный Аватар"].selected {
+.avatar-item[data-avatar="Uncommon"].selected {
     background-color: rgba(0, 255, 0, 0.3); /* Яркая подсветка зеленым */
 }
 
-.avatar-item[data-avatar="Синий Аватар"].selected {
+.avatar-item[data-avatar="Rare"].selected {
     background-color: rgba(0, 191, 255, 0.3); /* Яркая подсветка синим */
 }
 
-.avatar-item[data-avatar="Фиолетовый Аватар"].selected {
+.avatar-item[data-avatar="Epic"].selected {
     background-color: rgba(138, 43, 226, 0.3); /* Яркая подсветка фиолетовым */
 }
 
