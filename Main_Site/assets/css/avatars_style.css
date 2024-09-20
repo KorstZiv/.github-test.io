@@ -149,8 +149,8 @@ main {
 }
 
 .center-icon {
-    width: 80px;
-    height: 80px;
+    width: 60px; /* Уменьшаем размер иконок */
+    height: 60px;
 }
 
 .center-icon-container {
@@ -158,15 +158,8 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100%; /* Занимает всю высоту центральной панели */
-    padding: 0;
+    height: calc(100% - 30px); /* Уменьшаем высоту контейнера */
+    padding: 15px 0; /* Добавляем отступы сверху и снизу */
 }
 
-/* Добавляем новые стили для позиционирования иконок */
-.center-icon:first-child {
-    margin-top: 15px; /* Отступ сверху для первой иконки */
-}
-
-.center-icon:last-child {
-    margin-bottom: 15px; /* Отступ снизу для последней иконки */
-}
+/* Удаляем стили для .center-icon:first-child и .center-icon:last-child */
