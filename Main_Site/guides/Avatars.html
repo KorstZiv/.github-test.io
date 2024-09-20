@@ -92,7 +92,21 @@
                 img.classList.add('center-icon');
                 
                 wrapper.appendChild(img);
-                wrapper.addEventListener('click', () => showClassInfo(icon.replace('.png', '')));
+                wrapper.addEventListener('click', () => {
+                    if (selectedAvatar) {
+                        showClassInfo(icon.replace('.png', ''));
+                    }
+                });
+                
+                wrapper.addEventListener('mouseover', (e) => {
+                    if (!selectedAvatar) {
+                        showTooltip(e.target, "Выберите качество Аватара");
+                    }
+                });
+                
+                wrapper.addEventListener('mouseout', () => {
+                    hideTooltip();
+                });
                 
                 iconContainer.appendChild(wrapper);
             });
@@ -142,6 +156,7 @@
             }
 
             selectedAvatar = avatar.name;
+            updateCenterIconsState();
         }
 
         function showGreyAvatarVideo() {
@@ -197,9 +212,39 @@
             `;
         }
 
+        function updateCenterIconsState() {
+            const centerIcons = document.querySelectorAll('.center-icon-wrapper');
+            centerIcons.forEach(icon => {
+                if (selectedAvatar) {
+                    icon.classList.add('active');
+                } else {
+                    icon.classList.remove('active');
+                }
+            });
+        }
+
+        function showTooltip(element, text) {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = text;
+            document.body.appendChild(tooltip);
+
+            const rect = element.getBoundingClientRect();
+            tooltip.style.left = `${rect.left + window.scrollX}px`;
+            tooltip.style.top = `${rect.bottom + window.scrollY + 5}px`;
+        }
+
+        function hideTooltip() {
+            const tooltip = document.querySelector('.tooltip');
+            if (tooltip) {
+                tooltip.remove();
+            }
+        }
+
         window.onload = function() {
             generateAvatarGrid();
             generateCenterIcons();
+            updateCenterIconsState();
         };
     </script>
 </body>
