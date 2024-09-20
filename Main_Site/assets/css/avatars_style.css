@@ -153,14 +153,36 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: calc(100% - 240px); /* Уменьшаем высоту контейнера */
-    margin-top: 120px; /* Отступ сверху для выравнивания с внутренней стороной рамки зеленого аватара */
-    margin-bottom: 120px; /* Отступ снизу для выравнивания с внутренней стороной рамки фиолетового аватара */
+    height: calc(100% - 240px);
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.center-icon-wrapper {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.center-icon-wrapper:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.center-icon-wrapper.active {
+    background-color: black;
 }
 
 .center-icon {
     width: 60px;
     height: 60px;
+    transition: all 0.3s ease;
+}
+
+.center-icon-wrapper.active .center-icon {
+    filter: brightness(0) invert(1);
 }
 
 /* Удаляем стили для .center-icon:first-child и .center-icon:last-child */
