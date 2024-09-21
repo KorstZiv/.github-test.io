@@ -320,12 +320,18 @@
             const videoOverlay = document.getElementById('videoOverlay');
             const videoPlayer = document.getElementById('videoPlayer');
 
+            let videoTimeout;
+
             greyAvatarLink.addEventListener('mouseenter', function() {
-                videoOverlay.style.display = 'block';
-                videoPlayer.play();
+                clearTimeout(videoTimeout);
+                videoTimeout = setTimeout(() => {
+                    videoOverlay.style.display = 'block';
+                    videoPlayer.play().catch(e => console.error("Error playing video:", e));
+                }, 300); // Небольшая задержка перед воспроизведением
             });
 
             greyAvatarLink.addEventListener('mouseleave', function() {
+                clearTimeout(videoTimeout);
                 videoOverlay.style.display = 'none';
                 videoPlayer.pause();
                 videoPlayer.currentTime = 0;
