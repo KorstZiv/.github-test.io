@@ -169,7 +169,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 120px; /* Увеличиваем высоту для размещения текста */
+    width: 80px; /* Фиксированная ширина */
+    height: 100px; /* Увеличенная высота */
     justify-content: space-between;
 }
 
@@ -187,8 +188,8 @@ main {
 }
 
 .center-icon {
-    width: 60px;
-    height: 60px;
+    width: 40px; /* Уменьшаем размер иконки */
+    height: 40px;
     transition: all 0.3s ease;
 }
 
@@ -199,7 +200,7 @@ main {
 .center-icon-text {
     color: white;
     margin-top: 5px;
-    font-size: 12px;
+    font-size: 10px; /* Уменьшаем размер шрифта */
     text-align: center;
 }
 
