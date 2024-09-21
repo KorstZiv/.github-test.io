@@ -325,3 +325,36 @@ main {
     height: 100%;
     object-fit: cover; /* Растягиваем видео на всю область, сохраняя пропорции */
 }
+
+main {
+    display: flex;
+    height: calc(100vh - 100px); /* Подстройте значение, если нужно */
+    overflow: hidden;
+}
+
+.left-panel, .center-panel, .right-panel {
+    height: 100%;
+}
+
+.left-panel {
+    width: 30%;
+    // ... остальные стили левой панели ...
+}
+
+.center-panel {
+    width: 10%;
+    // ... остальные стили центральной панели ...
+}
+
+.right-panel {
+    width: 60%;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-panel-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
