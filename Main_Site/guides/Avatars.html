@@ -55,13 +55,6 @@
         </div>
     </main>
 
-    <div id="videoOverlay">
-        <video id="videoPlayer" controls>
-            <source src="../assets/videos/Grey_Avatar.mp4" type="video/mp4">
-            Ваш браузер не поддерживает видео тег.
-        </video>
-    </div>
-
     <script>
         let selectedAvatar = null;
         let selectedCenterIcon = null;
@@ -85,7 +78,7 @@
 
         function generateAvatarGrid() {
             const grid = document.getElementById('avatar-grid');
-            grid.innerHTML = ''; // Очищаем сетку перед генерацией
+            grid.innerHTML = ''; // Очищаем сетку п��ред генерацией
             avatarData.forEach(avatar => {
                 const div = document.createElement('div');
                 div.classList.add('avatar-item');
@@ -317,30 +310,26 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const greyAvatarLink = document.querySelector('.grey-avatar-link');
-            const videoOverlay = document.getElementById('videoOverlay');
-            const videoPlayer = document.getElementById('videoPlayer');
-
-            let videoTimeout;
+            const rightPanel = document.querySelector('.right-panel-content');
+            let videoElement = null;
 
             greyAvatarLink.addEventListener('mouseenter', function() {
-                clearTimeout(videoTimeout);
-                videoTimeout = setTimeout(() => {
-                    videoOverlay.style.display = 'block';
-                    videoPlayer.play().catch(e => console.error("Error playing video:", e));
-                }, 300); // Небольшая задержка перед воспроизведением
+                rightPanel.innerHTML = `
+                    <video id="greyAvatarVideo" autoplay loop muted>
+                        <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео тег.
+                    </video>
+                `;
+                videoElement = document.getElementById('greyAvatarVideo');
+                videoElement.play().catch(e => console.error("Error playing video:", e));
             });
 
             greyAvatarLink.addEventListener('mouseleave', function() {
-                clearTimeout(videoTimeout);
-                videoOverlay.style.display = 'none';
-                videoPlayer.pause();
-                videoPlayer.currentTime = 0;
-            });
-
-            videoOverlay.addEventListener('click', function() {
-                videoOverlay.style.display = 'none';
-                videoPlayer.pause();
-                videoPlayer.currentTime = 0;
+                if (videoElement) {
+                    videoElement.pause();
+                    videoElement.currentTime = 0;
+                }
+                rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
             });
         });
     </script>
