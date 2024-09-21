@@ -92,7 +92,12 @@
                 img.alt = icon.replace('.png', '');
                 img.classList.add('center-icon');
                 
+                const text = document.createElement('span');
+                text.className = 'center-icon-text';
+                text.textContent = icon.replace('.png', '');
+                
                 wrapper.appendChild(img);
+                wrapper.appendChild(text);
                 wrapper.addEventListener('click', () => {
                     if (selectedAvatar) {
                         if (selectedCenterIcon) {
