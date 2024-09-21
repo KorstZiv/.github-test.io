@@ -22,7 +22,7 @@ main {
 
 .left-panel {
     width: 30%; /* 30% от ширины экрана */
-    padding: 15px;
+    padding: 15px 50px; /* Отступы по 50px слева и справа */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -68,24 +68,22 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Уменьшаем отступ между элементами */
-    width: 90%; /* Чтобы оставить небольшой отступ по краям */
-    max-width: 300px; /* Максимальная ширина для очень широких экранов */
-    margin-left: 30px; /* Небольшой отступ слева */
-    padding: 0;
+    gap: 10px; /* Уменьшаем отступ между элементами */
+    width: 100%;
 }
 
 .avatar-item {
     width: 100%; /* Занимает всю ширину родителя */
     box-sizing: border-box;
     display: flex;
-    flex-direction: column; /* Меняем на вертикальное расположение */
+    flex-direction: row; /* Горизонтальное расположение */
     align-items: center; /* Центрируем содержимое */
-    justify-content: center;
+    justify-content: space-between;
     border: 2px solid;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 5px; /* Уменьшаем скругление углов */
+    padding: 5px 10px;
     margin: 0;
+    height: 70px; /* Фиксированная высота */
     aspect-ratio: 16 / 9; /* Задаем соотношение сторон */
     text-align: center;
     transition: all 0.3s ease;
@@ -123,15 +121,15 @@ main {
 }
 
 .avatar-image {
-    width: 70%; /* Увеличиваем размер изображения */
-    height: auto;
+    width: 60px; /* Уменьшаем размер изображения */
+    height: 60px;
     object-fit: contain;
     margin-bottom: 10px; /* Добавляем отступ справа */
 }
 
 .avatar-name {
     font-size: 16px; /* Увеличиваем размер шрифта */
-    text-align: center; /* Изменено на center */
+    text-align: right; /* Изменено на right */
     word-wrap: break-word; /* Переносим длинные слова */
     margin-left: 10px;
     flex-grow: 1;
@@ -160,7 +158,7 @@ main {
 .grey-avatar-link {
     text-align: center;
     padding: 10px 0;
-    margin-top: 15px;
+    margin-top: 10px;
     cursor: pointer;
     font-weight: bold;
     color: #808080; /* Серый цвет */
