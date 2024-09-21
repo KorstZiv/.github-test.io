@@ -11,8 +11,8 @@ header {
 
 main {
     display: flex;
-    height: 80vh; /* Уменьшаем высоту на 20% */
-    margin-top: 120px; /* Добавляем отступ сверху для панели описания */
+    height: 80vh; /* Оставляем уменьшенную высоту */
+    margin-top: 150px; /* Увеличиваем отступ сверху для панели описания */
     overflow: hidden;
 }
 
@@ -219,7 +219,7 @@ main {
 .center-icon {
     width: 60px; /* Увеличиваем размер иконки */
     height: 60px;
-    margin-bottom: 10px; /* Добавляем отступ снизу */
+    margin-bottom: 10px; /* Добавляем отсту�� снизу */
     transition: all 0.3s ease;
 }
 
@@ -313,7 +313,7 @@ main {
 
 .description-toggle {
     position: fixed;
-    top: 100px; /* Оставляем на том же месте */
+    top: 120px; /* Опускаем немного ниже */
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -326,7 +326,7 @@ main {
 
 .expandable-description {
     position: fixed;
-    top: 140px; /* Опускаем немного ниже */
+    top: 160px; /* Опускаем еще ниже */
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.8);
