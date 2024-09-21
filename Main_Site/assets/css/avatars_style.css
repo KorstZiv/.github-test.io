@@ -219,23 +219,22 @@ main {
 /* Удаляем стили для .center-icon:first-child и .center-icon:last-child */
 
 .welcome-text-container {
+    position: relative;
     background-color: rgba(128, 128, 128, 0.5);
     border-radius: 5px;
     margin-bottom: 20px;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
-}
-
-.welcome-text-container.collapsed {
     max-height: 30px;
 }
 
-.welcome-text-container:not(.collapsed) {
+.welcome-text-container.expanded {
     max-height: 200px; /* Подстройте это значение под высоту вашего текста */
 }
 
 .welcome-text {
     padding: 15px;
+    padding-top: 30px; /* Чтобы текст не перекрывался с кнопкой */
 }
 
 .description {
@@ -243,13 +242,18 @@ main {
 }
 
 .toggle-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     text-align: center;
     padding: 5px;
     cursor: pointer;
     color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
 }
 
-.welcome-text-container:not(.collapsed) .toggle-description {
-    text-align: right;
-    padding: 5px 15px;
+.toggle-description:hover {
+    background-color: rgba(0, 0, 0, 0.5);
 }
