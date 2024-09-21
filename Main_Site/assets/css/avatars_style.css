@@ -21,7 +21,7 @@ main {
 }
 
 .left-panel {
-    width: 350px; /* Уменьшаем ширину левой панели */
+    width: 30%; /* 30% от ширины экрана */
     padding: 15px;
     box-sizing: border-box;
     display: flex;
@@ -68,9 +68,9 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Уменьшен отступ между элементами */
-    width: 100%; /* Убеждаемся, что сетка занимает всю ширину */
-    max-width: 300px; /* Увеличиваем максимальную ширину */
+    gap: 15px; /* Уменьшаем отступ между элементами */
+    width: 90%; /* Чтобы оставить небольшой отступ по краям */
+    max-width: 300px; /* Максимальная ширина для очень широких экранов */
     margin-left: 30px; /* Небольшой отступ слева */
     padding: 0;
 }
@@ -79,14 +79,13 @@ main {
     width: 100%; /* Занимает всю ширину родителя */
     box-sizing: border-box;
     display: flex;
-    flex-direction: row; /* Изменено на горизонтальное расположение */
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column; /* Меняем на вертикальное расположение */
+    align-items: center; /* Центрируем содержимое */
+    justify-content: center;
     border: 2px solid;
     border-radius: 10px;
     padding: 10px;
     margin: 0;
-    height: 80px; /* Фиксированная высота */
     aspect-ratio: 16 / 9; /* Задаем соотношение сторон */
     text-align: center;
     transition: all 0.3s ease;
@@ -124,15 +123,15 @@ main {
 }
 
 .avatar-image {
-    width: 60px; /* Уменьшен размер изображения */
-    height: 60px;
+    width: 70%; /* Увеличиваем размер изображения */
+    height: auto;
     object-fit: contain;
-    margin-bottom: 10px; /* Добавляем отступ снизу */
+    margin-bottom: 10px; /* Добавляем отступ справа */
 }
 
 .avatar-name {
-    font-size: 16px; /* Уменьшен размер шрифта */
-    text-align: right;
+    font-size: 16px; /* Увеличиваем размер шрифта */
+    text-align: center; /* Изменено на center */
     word-wrap: break-word; /* Переносим длинные слова */
     margin-left: 10px;
     flex-grow: 1;
