@@ -11,7 +11,8 @@ header {
 
 main {
     display: flex;
-    height: calc(100vh - 100px); /* Учитываем высоту header */
+    height: 80vh; /* Уменьшаем высоту на 20% */
+    margin-top: 120px; /* Добавляем отступ сверху для панели описания */
     overflow: hidden;
 }
 
@@ -28,8 +29,9 @@ main {
 
 .center-panel {
     width: 120px;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    height: 100%;
+    border-left: 1px solid #444;
+    border-right: 1px solid #444;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -51,6 +53,8 @@ main {
 
 .right-panel {
     flex-grow: 1;
+    height: 100%;
+    overflow-y: auto;
     padding: 0; /* Убираем отступы */
     display: flex;
     justify-content: center;
@@ -308,21 +312,21 @@ main {
 }
 
 .description-toggle {
+    position: fixed;
+    top: 100px; /* Оставляем на том же месте */
+    left: 0;
+    right: 0;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     text-align: center;
     padding: 10px;
     cursor: pointer;
-    position: fixed;
-    top: 100px; /* Учитываем высоту header */
-    left: 0;
-    right: 0;
     z-index: 1000;
 }
 
 .expandable-description {
     position: fixed;
-    top: 140px; /* Учитываем высоту header и кнопки */
+    top: 140px; /* Опускаем немного ниже */
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.8);
