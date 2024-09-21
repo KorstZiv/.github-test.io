@@ -20,7 +20,7 @@
     <div class="welcome-text-container collapsed">
         <div class="toggle-description">Развернуть описание</div>
         <div class="welcome-text">
-            <p class="description">Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от него зависит ваш игровой опыт.</p>
+            <p class="description">Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от него зависит ваш и��ровой опыт.</p>
         </div>
     </div>
 
@@ -28,15 +28,15 @@
         <div class="left-panel">
             <h2>Качества Аватаров</h2>
             <div class="avatar-grid" id="avatar-grid">
-                <div class="avatar-item">
+                <div class="avatar-item" data-avatar="Uncommon">
                     <img src="../assets/images/Avatars/Drop_Pods_Uncommon.png" alt="Uncommon" class="avatar-image">
                     <span class="avatar-name">Uncommon</span>
                 </div>
-                <div class="avatar-item">
+                <div class="avatar-item" data-avatar="Rare">
                     <img src="../assets/images/Avatars/Drop_Pods__Rare.png" alt="Rare" class="avatar-image">
                     <span class="avatar-name">Rare</span>
                 </div>
-                <div class="avatar-item">
+                <div class="avatar-item" data-avatar="Epic">
                     <img src="../assets/images/Avatars/Drop_Pods__Epic.png" alt="Epic" class="avatar-image">
                     <span class="avatar-name">Epic</span>
                 </div>
@@ -218,7 +218,7 @@
         }
 
         function showClassInfo(className) {
-            // Удаляем активный класс у всех иконок
+            // Уда��яем активный класс у всех иконок
             document.querySelectorAll('.center-icon-wrapper').forEach(wrapper => {
                 wrapper.classList.remove('active');
             });
