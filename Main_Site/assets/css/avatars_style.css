@@ -306,3 +306,37 @@ main {
     max-height: 100%;
     object-fit: contain;
 }
+
+.description-toggle {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    position: fixed;
+    top: 100px; /* Учитываем высоту header */
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.expandable-description {
+    position: fixed;
+    top: 140px; /* Учитываем высоту header и кнопки */
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    z-index: 999;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.expandable-description.expanded {
+    max-height: 300px; /* Или другое подходящее значение */
+}
+
+.description-content {
+    padding: 20px;
+}
