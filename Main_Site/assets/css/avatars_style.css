@@ -11,7 +11,7 @@ header {
 
 main {
     position: relative; /* Добавлено */
-    padding-top: 40px; /* Добавлено, подстройте значение */
+    padding-top: 80px; /* Изменено с 40px на 80px */
     display: flex;
     justify-content: space-between;
     height: calc(100vh - 100px); /* Учитываем высоту header */
@@ -94,7 +94,7 @@ main {
 }
 
 .avatar-item:hover, .avatar-item.hovered, .avatar-item.selected {
-    background-color: rgba(255, 255, 255, 0.2); /* Более заметная подсветка для выбранного аватара */
+    background-color: rgba(255, 255, 255, 0.2); /* Более заметная подсветк�� для выбранного аватара */
     border-color: #fff;
 }
 
@@ -131,7 +131,7 @@ main {
 
 .avatar-name {
     font-size: 18px; /* Увеличиваем размер шрифта */
-    text-align: center; /* Изменен�� на center */
+    text-align: center; /* Изменен на center */
     word-wrap: break-word; /* Переносим длинные слова */
     margin-left: 10px;
     flex-grow: 1;
@@ -245,7 +245,7 @@ main {
 
 .welcome-text-container {
     position: absolute; /* Изменено с relative на absolute */
-    top: 100px; /* Примерное значение, подстройте под вашу верстку */
+    top: 140px; /* Изменено со 100px на 140px */
     left: 0;
     right: 0;
     background-color: rgba(128, 128, 128, 0.5);
