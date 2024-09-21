@@ -66,9 +66,12 @@ main {
 }
 
 .avatar-item {
+    display: flex;
+    align-items: center;
     border: 2px solid;
     border-radius: 10px;
-    padding: 15px; /* Увеличиваем внутренние отступы */
+    padding: 10px;
+    margin-bottom: 15px;
     text-align: center;
     transition: all 0.3s ease;
     transform: scale(1); /* Возвращаем к исходному размеру */
@@ -105,9 +108,10 @@ main {
 }
 
 .avatar-image {
-    width: 100%;
-    height: 150px; /* Увеличиваем высоту изображения */
+    width: 100px; /* Увеличиваем размер иконки */
+    height: 100px;
     object-fit: contain;
+    margin-right: 15px; /* Добавляем отступ справа от иконки */
 }
 
 .resource-list {
@@ -162,17 +166,14 @@ main {
 .center-icon-wrapper {
     border: 2px solid #ccc;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px 10px;
     margin: 10px 0;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    opacity: 0.5;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90px; /* Немного увеличиваем ширину */
-    height: 120px; /* Увеличиваем высоту */
     justify-content: space-between;
+    height: 120px; /* Увеличиваем высоту */
+    width: 100px; /* Увеличиваем ширину */
 }
 
 .center-icon-wrapper.active {
@@ -189,8 +190,9 @@ main {
 }
 
 .center-icon {
-    width: 50px; /* Увеличиваем размер иконки */
-    height: 50px;
+    width: 60px; /* Увеличиваем размер иконки */
+    height: 60px;
+    margin-bottom: 10px; /* Добавляем отступ снизу */
     transition: all 0.3s ease;
 }
 
@@ -199,10 +201,10 @@ main {
 }
 
 .center-icon-text {
-    color: white;
-    margin-top: 5px;
-    font-size: 12px; /* Увеличиваем размер шрифта */
+    font-size: 14px; /* Увеличиваем размер шрифта */
     text-align: center;
+    word-wrap: break-word; /* Переносим длинные слова */
+    max-width: 100%; /* Ограничиваем ширину текста */
 }
 
 .tooltip {
