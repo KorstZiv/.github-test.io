@@ -21,12 +21,13 @@ main {
 }
 
 .left-panel {
-    width: 400px; /* Увеличиваем ширину, чтобы рамки аватаров полностью помещались */
+    width: 350px; /* Уменьшаем ширину левой панели */
     padding: 15px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
 }
 
 .center-panel {
@@ -53,7 +54,11 @@ main {
 
 .right-panel {
     width: calc(100% - 520px); /* 100% минус ширина левой и центральной панелей */
-    padding: 15px;
+    padding: 0; /* Убираем отступы */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Скрываем содержимое, выходящее за границы */
 }
 
 .avatar-grid {
@@ -62,6 +67,7 @@ main {
     gap: 20px; /* Увеличиваем расстояние между аватарами */
     margin-left: 30px; /* Небольшой отступ слева */
     padding: 0;
+    width: 100%; /* Убеждаемся, что сетка занимает всю ширину */
 }
 
 .avatar-item {
@@ -77,6 +83,7 @@ main {
     transition: all 0.3s ease;
     transform: scale(1); /* Возвращаем к исходному размеру */
     cursor: pointer;
+    box-sizing: border-box; /* Учитываем padding в общей ширине */
 }
 
 .avatar-item:hover, .avatar-item.hovered, .avatar-item.selected {
@@ -109,14 +116,14 @@ main {
 }
 
 .avatar-image {
-    width: 120px;
-    height: 120px;
+    width: 80px; /* Уменьшаем размер изображения */
+    height: 80px;
     object-fit: contain;
-    margin-right: 15px; /* Добавляем отступ справа от иконки */
+    margin-right: 10px; /* Добавляем отступ справа от иконки */
 }
 
 .avatar-name {
-    font-size: 20px; /* Увеличиваем размер шрифта */
+    font-size: 18px; /* Уменьшаем размер шрифта */
     font-weight: bold;
     margin-left: 15px; /* Немного увеличиваем отступ от иконки */
     flex-grow: 1; /* Позволяет тексту занимать оставшееся пространство */
@@ -147,7 +154,7 @@ main {
 .grey-avatar-link {
     text-align: center;
     margin-top: auto;
-    padding: 10px;
+    padding: 10px 0;
     cursor: pointer;
     font-weight: bold;
     color: #808080; /* Серый цвет */
@@ -291,4 +298,18 @@ main {
     transform: translate(-50%, -50%);
     max-width: 90%;
     max-height: 90%;
+}
+
+.right-panel-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#greyAvatarVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполняем всю область, сохраняя пропорции */
 }
