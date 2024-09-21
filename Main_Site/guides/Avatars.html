@@ -17,12 +17,7 @@
         <h1>База знаний 2040World</h1>
     </header>
 
-    <div class="welcome-text-container collapsed">
-        <div class="toggle-description">Развернуть описание</div>
-        <div class="welcome-text">
-            <p class="description">Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от него зависит ваш игровой опыт.</p>
-        </div>
-    </div>
+    <hr class="header-separator">
 
     <main>
         <div class="left-panel">
@@ -282,31 +277,6 @@
             generateCenterIcons();
             updateCenterIconsState();
         };
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleButton = document.querySelector('.toggle-description');
-            const container = document.querySelector('.welcome-text-container');
-
-            if (toggleButton && container) {
-                console.log('Elements found');
-                toggleButton.addEventListener('click', function() {
-                    console.log('Button clicked');
-                    if (container.classList.contains('collapsed')) {
-                        container.classList.remove('collapsed');
-                        container.classList.add('expanded');
-                        this.textContent = 'Свернуть описание';
-                        console.log('Panel expanded');
-                    } else {
-                        container.classList.remove('expanded');
-                        container.classList.add('collapsed');
-                        this.textContent = 'Развернуть описание';
-                        console.log('Panel collapsed');
-                    }
-                });
-            } else {
-                console.error('Required elements not found');
-            }
-        });
 
         document.addEventListener('DOMContentLoaded', function() {
             const greyAvatarLink = document.querySelector('.grey-avatar-link');
