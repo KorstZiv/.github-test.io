@@ -32,6 +32,7 @@ main {
     align-items: center; /* Центрируем содержимое по горизонтали */
     overflow-y: auto;
     overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
+    padding-top: 40px; /* Добавляем отступ сверху */
 }
 
 .center-panel {
@@ -72,6 +73,7 @@ main {
     flex-direction: column;
     gap: 20px; /* Увеличиваем отступ между элементами */
     width: 100%;
+    margin-top: 25px; /* Добавляем отступ сверху */
 }
 
 .avatar-item {
@@ -94,7 +96,7 @@ main {
 }
 
 .avatar-item:hover, .avatar-item.hovered, .avatar-item.selected {
-    background-color: rgba(255, 255, 255, 0.2); /* Более заметная подсветк�� для выбранного аватара */
+    background-color: rgba(255, 255, 255, 0.2); /* Более заметная подсветк для выбранного аватара */
     border-color: #fff;
 }
 
