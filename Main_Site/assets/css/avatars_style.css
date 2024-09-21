@@ -21,22 +21,17 @@ main {
 }
 
 .left-panel {
-    width: 450px; /* Фиксированная ширина */
-    padding: 15px 30px;
+    width: 400px; /* Увеличиваем ширину, чтобы рамки аватаров полностью помещались */
+    padding: 15px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 20px; /* Добавляем отступы */
 }
 
 .center-panel {
-    width: 140px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 20px;
+    width: 120px;
+    margin: 0; /* Убираем отступы */
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     transition: background-color 0.3s ease;
@@ -57,7 +52,8 @@ main {
 }
 
 .right-panel {
-    width: calc(70% - 90px); /* 70% минус ширин центральной панели и ее отступы */
+    width: calc(100% - 520px); /* 100% минус ширина левой и центральной панелей */
+    padding: 15px;
 }
 
 .avatar-grid {
@@ -65,18 +61,18 @@ main {
     flex-direction: column;
     gap: 20px; /* Увеличиваем расстояние между аватарами */
     margin-left: 30px; /* Небольшой отступ слева */
-    padding: 15px;
+    padding: 0;
 }
 
 .avatar-item {
+    width: 100%; /* Занимает всю ширину родителя */
+    height: auto; /* Автоматическая высота */
     display: flex;
     align-items: center;
     border: 2px solid;
     border-radius: 10px;
     padding: 10px;
-    height: 140px; /* Немного уменьшаем высоту */
-    width: 390px; /* 450px - 60px (отступы) */
-    margin: 0 auto; /* Центрируем рамку */
+    margin: 0;
     text-align: center;
     transition: all 0.3s ease;
     transform: scale(1); /* Возвращаем к исходному размеру */
