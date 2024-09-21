@@ -20,7 +20,7 @@
     <div class="welcome-text-container collapsed">
         <div class="toggle-description">Развернуть описание</div>
         <div class="welcome-text">
-            <p class="description">Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от него зависи�� ваш игровой опыт.</p>
+            <p class="description">Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от него зависи ваш игровой опыт.</p>
         </div>
     </div>
 
@@ -296,6 +296,21 @@
                 button.textContent = 'Развернуть описание';
                 button.style.alignSelf = 'center';
             }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.querySelector('.toggle-description');
+            const container = document.querySelector('.welcome-text-container');
+
+            toggleButton.addEventListener('click', function() {
+                if (container.classList.contains('expanded')) {
+                    container.classList.remove('expanded');
+                    this.textContent = 'Развернуть описание';
+                } else {
+                    container.classList.add('expanded');
+                    this.textContent = 'Свернуть описание';
+                }
+            });
         });
     </script>
 </body>
