@@ -7,12 +7,17 @@ body {
 
 header {
     flex-shrink: 0;
+    padding-bottom: 20px; /* Увеличиваем отступ снизу */
+}
+
+header h1, header h2 {
+    margin-bottom: 10px; /* Добавляем отступ между заголовками */
 }
 
 main {
     display: flex;
-    height: 80vh; /* Оставляем уменьшенную высоту */
-    margin-top: 150px; /* Увеличиваем отступ сверху для панели описания */
+    height: calc(80vh - 40px); /* Уменьшаем высоту, учитывая увеличенный отступ шапки */
+    margin-top: 0; /* Убираем верхний отступ */
     overflow: hidden;
 }
 
@@ -219,7 +224,7 @@ main {
 .center-icon {
     width: 60px; /* Увеличиваем размер иконки */
     height: 60px;
-    margin-bottom: 10px; /* Добавляем отсту�� снизу */
+    margin-bottom: 10px; /* Добавляем отсту снизу */
     transition: all 0.3s ease;
 }
 
@@ -313,7 +318,7 @@ main {
 
 .description-toggle {
     position: fixed;
-    top: 120px; /* Опускаем немного ниже */
+    bottom: calc(80vh - 40px); /* Располагаем кнопку прямо над основными панелями */
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.7);
@@ -326,7 +331,7 @@ main {
 
 .expandable-description {
     position: fixed;
-    top: 160px; /* Опускаем еще ниже */
+    bottom: calc(80vh - 40px); /* Располагаем панель прямо над основными панелями */
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.8);
@@ -339,6 +344,8 @@ main {
 
 .expandable-description.expanded {
     max-height: 300px; /* Или другое подходящее значение */
+    bottom: auto; /* Отменяем позиционирование от низа при раскрытии */
+    top: calc(20vh + 40px); /* Располагаем сверху при раскрытии */
 }
 
 .description-content {
