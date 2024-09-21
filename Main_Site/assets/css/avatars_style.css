@@ -21,7 +21,8 @@ main {
 }
 
 .left-panel {
-    width: 30%;
+    width: 30%; /* Оставляем прежнюю ширину */
+    padding: 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -61,7 +62,7 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* Увеличиваем расстояние между аватарами */
+    gap: 20px; /* Увеличиваем расстояние между аватарами */
     padding: 15px;
 }
 
@@ -71,6 +72,7 @@ main {
     border: 2px solid;
     border-radius: 10px;
     padding: 10px;
+    height: 140px; /* Фиксированная высота для всех рамок */
     margin-bottom: 15px;
     text-align: center;
     transition: all 0.3s ease;
@@ -108,10 +110,19 @@ main {
 }
 
 .avatar-image {
-    width: 100px; /* Увеличиваем размер иконки */
-    height: 100px;
+    width: 120px; /* Увеличиваем размер иконки */
+    height: 120px;
     object-fit: contain;
     margin-right: 15px; /* Добавляем отступ справа от иконки */
+}
+
+.avatar-name {
+    font-size: 18px; /* Увеличиваем размер шрифта */
+    font-weight: bold;
+    margin-left: 10px; /* Отступ от иконки */
+    flex-grow: 1; /* Позволяет тексту занимать оставшееся пространство */
+    text-align: right; /* Выравниваем текст по правому краю */
+    word-wrap: break-word; /* Переносим длинные слова */
 }
 
 .resource-list {
