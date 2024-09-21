@@ -225,6 +225,9 @@ main {
     margin-bottom: 20px;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
+}
+
+.welcome-text-container.collapsed {
     max-height: 30px;
 }
 
