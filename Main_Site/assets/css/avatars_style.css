@@ -21,9 +21,9 @@ main {
 }
 
 .left-panel {
-    width: calc(30% + 360px); /* Уменьшаем ширину левой панели */
-    padding: 15px 30px; /* Добавляем отступы слева и справа */
-    box-sizing: border-box; /* Учитываем padding в общей ширине */
+    width: 450px; /* Фиксированная ширина */
+    padding: 15px 30px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -64,7 +64,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px; /* Увеличиваем расстояние между аватарами */
-    margin-left: 300px; /* Оставляем сдвиг содержимого вправо */
+    margin-left: 30px; /* Небольшой отступ слева */
     padding: 15px;
 }
 
@@ -74,8 +74,8 @@ main {
     border: 2px solid;
     border-radius: 10px;
     padding: 10px;
-    height: 160px; /* Увеличиваем высоту для большей иконки */
-    width: calc(100% - 60px); /* Учитываем отступы слева и справа */
+    height: 140px; /* Немного уменьшаем высоту */
+    width: 390px; /* 450px - 60px (отступы) */
     margin: 0 auto; /* Центрируем рамку */
     text-align: center;
     transition: all 0.3s ease;
@@ -113,14 +113,14 @@ main {
 }
 
 .avatar-image {
-    width: 144px; /* Увеличиваем размер иконки на 20% (120px * 1.2) */
-    height: 144px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     margin-right: 15px; /* Добавляем отступ справа от иконки */
 }
 
 .avatar-name {
-    font-size: 22px; /* Увеличиваем размер шрифта */
+    font-size: 20px; /* Увеличиваем размер шрифта */
     font-weight: bold;
     margin-left: 15px; /* Немного увеличиваем отступ от иконки */
     flex-grow: 1; /* Позволяет тексту занимать оставшееся пространство */
