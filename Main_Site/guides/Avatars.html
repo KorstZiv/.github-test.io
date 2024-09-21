@@ -271,6 +271,19 @@
         };
 
         document.querySelector('.toggle-description').addEventListener('click', function() {
+            const container = document.querySelector('.welcome-text-container');
+            const toggleText = this;
+            
+            if (container.classList.contains('collapsed')) {
+                container.classList.remove('collapsed');
+                toggleText.textContent = 'Скрыть описание';
+            } else {
+                container.classList.add('collapsed');
+                toggleText.textContent = 'Развернуть описание';
+            }
+        });
+
+        document.querySelector('.toggle-description').addEventListener('click', function() {
             const welcomeText = document.querySelector('.welcome-text');
             const button = this;
             
@@ -282,19 +295,6 @@
                 welcomeText.classList.add('collapsed');
                 button.textContent = 'Развернуть описание';
                 button.style.alignSelf = 'center';
-            }
-        });
-
-        document.querySelector('.toggle-description').addEventListener('click', function() {
-            const container = document.querySelector('.welcome-text-container');
-            const toggleText = this;
-            
-            if (container.classList.contains('collapsed')) {
-                container.classList.remove('collapsed');
-                toggleText.textContent = 'Скрыть описание';
-            } else {
-                container.classList.add('collapsed');
-                toggleText.textContent = 'Развернуть описание';
             }
         });
     </script>
