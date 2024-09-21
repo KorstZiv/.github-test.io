@@ -18,10 +18,10 @@
     </header>
 
     <div class="welcome-text-container collapsed">
-        <div class="welcome-text">
-            <p class="description">Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от него зависит ваш игровой опыт.</p>
-        </div>
         <div class="toggle-description">Развернуть описание</div>
+        <div class="welcome-text">
+            <p class="description">Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от него зависи�� ваш игровой опыт.</p>
+        </div>
     </div>
 
     <main>
@@ -274,12 +274,12 @@
             const container = document.querySelector('.welcome-text-container');
             const toggleText = this;
             
-            if (container.classList.contains('collapsed')) {
-                container.classList.remove('collapsed');
-                toggleText.textContent = 'Скрыть описание';
-            } else {
-                container.classList.add('collapsed');
+            if (container.classList.contains('expanded')) {
+                container.classList.remove('expanded');
                 toggleText.textContent = 'Развернуть описание';
+            } else {
+                container.classList.add('expanded');
+                toggleText.textContent = 'Свернуть описание';
             }
         });
 
