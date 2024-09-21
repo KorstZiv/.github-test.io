@@ -57,92 +57,39 @@ main {
 }
 
 .right-panel {
-    flex-grow: 1;
-    padding: 0; /* Убираем отступы */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Скрываем содержимое, выходящее за границы */
+    background-color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    color: #e0e0e0;
+    padding: 20px;
 }
 
-.avatar-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Увеличиваем отступ между элементами */
-    width: 100%;
+.right-panel-content {
+    height: 100%;
 }
 
-.avatar-item {
-    width: 100%; /* Занимает всю ширину родителя */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column; /* Вертикальное расположение */
-    align-items: center; /* Центрируем содержимое */
-    justify-content: center;
-    border: 2px solid;
-    border-radius: 10px; /* Увеличиваем скругление углов */
-    padding: 15px;
-    margin: 0;
-    height: 210px; /* Увеличиваем высоту в три раза */
-    aspect-ratio: 16 / 9; /* Задаем соотношение сторон */
-    text-align: center;
-    transition: all 0.3s ease;
-    transform: scale(1); /* Возвращаем к исходному размеру */
-    cursor: pointer;
-}
-
-.avatar-item:hover, .avatar-item.hovered, .avatar-item.selected {
-    background-color: rgba(255, 255, 255, 0.2); /* Более заметная подсветка для выбранного аватара */
-    border-color: #fff;
-}
-
-.avatar-item[data-avatar="Uncommon"]:hover {
-    background-color: rgba(0, 255, 0, 0.1); /* Легкая подсветка зеленым */
-}
-
-.avatar-item[data-avatar="Rare"]:hover {
-    background-color: rgba(0, 191, 255, 0.1); /* Легкая подсветка синим */
-}
-
-.avatar-item[data-avatar="Epic"]:hover {
-    background-color: rgba(138, 43, 226, 0.1); /* Легкая подсветка фиолетовым */
-}
-
-.avatar-item[data-avatar="Uncommon"].selected {
-    background-color: rgba(0, 255, 0, 0.3); /* Яркая подсветка зеленым */
-}
-
-.avatar-item[data-avatar="Rare"].selected {
-    background-color: rgba(0, 191, 255, 0.3); /* Яркая подсветка синим */
-}
-
-.avatar-item[data-avatar="Epic"].selected {
-    background-color: rgba(138, 43, 226, 0.3); /* Яркая подсветка фиолетовым */
-}
-
-.avatar-image {
-    width: auto;
-    height: 150px; /* Увеличиваем размер изображения */
-    object-fit: contain;
-    margin-bottom: 10px; /* Добавляем отступ справа */
-}
-
-.avatar-name {
-    font-size: 18px; /* Увеличиваем размер шрифта */
-    text-align: center; /* Изменено на center */
-    word-wrap: break-word; /* Переносим длинные слова */
-    margin-left: 10px;
-    flex-grow: 1;
+.right-panel-content h3 {
+    color: #4a90e2;
+    font-size: 1.5em;
+    margin-bottom: 15px;
 }
 
 .resource-list {
-    list-style-type: none;
-    padding: 0;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .resource-item {
-    margin-bottom: 10px;
-    cursor: pointer;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background-color: #2c2c2c;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.resource-item:hover {
+    background-color: #3a3a3a;
 }
 
 .mob-ore-list {
