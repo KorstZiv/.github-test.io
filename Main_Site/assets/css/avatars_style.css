@@ -11,29 +11,21 @@ header {
 
 main {
     display: flex;
-    justify-content: space-between;
     height: calc(100vh - 100px); /* Учитываем высоту header */
     overflow: hidden;
 }
 
 .left-panel, .right-panel {
+    width: 30%;
+    height: 100%;
     overflow-y: auto;
-}
-
-.left-panel {
-    width: 30%; /* 30% от ширины экрана */
-    padding: 15px 50px; /* Отступы по 50px слева и справа */
+    padding: 15px 50px;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Изменено с space-between на flex-start */
-    align-items: center; /* Центрируем содержимое по горизонтали */
-    overflow-y: auto;
-    overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
 }
 
 .center-panel {
     width: 120px;
+    height: 100%;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     display: flex;
@@ -41,7 +33,6 @@ main {
     justify-content: space-around;
     align-items: center;
     padding: 10px 0;
-    height: 100%; /* Занимает всю высоту */
 }
 
 .center-panel.green-glow {
@@ -63,6 +54,14 @@ main {
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Скрываем содержимое, выходящее за границы */
+}
+
+.right-panel-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .avatar-grid {
@@ -97,7 +96,7 @@ main {
 }
 
 .avatar-item[data-avatar="Uncommon"]:hover {
-    background-color: rgba(0, 255, 0, 0.1); /* Легкая подсветка зеленым */
+    background-color: rgba(0, 255, 0, 0.1); /* Легкая подсветк�� зеленым */
 }
 
 .avatar-item[data-avatar="Rare"]:hover {
@@ -242,25 +241,25 @@ main {
 /* Удаляем стили для .center-icon:first-child и .center-icon:last-child */
 
 .welcome-text-container {
-    position: relative;
-    background-color: rgba(128, 128, 128, 0.5);
-    border-radius: 5px;
-    margin-bottom: 20px;
+    position: fixed;
+    top: 100px; /* Учитываем высоту header */
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный черный фон */
+    color: white;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
-}
-
-.welcome-text-container.collapsed {
-    max-height: 30px;
 }
 
 .welcome-text-container.expanded {
-    max-height: 200px; /* Подстройте это значение под высоту вашего текста */
+    max-height: 300px; /* Или другая подходящая высота */
 }
 
 .welcome-text {
-    padding: 15px;
-    padding-top: 30px; /* Чтобы текст не перекрывался с кнопкой */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .description {
@@ -268,16 +267,11 @@ main {
 }
 
 .toggle-description {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    padding: 5px;
-    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .toggle-description:hover {
@@ -304,16 +298,8 @@ main {
     max-height: 90%;
 }
 
-.right-panel-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #greyAvatarVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Растягиваем видео на всю область, сохраняя пропорции */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
