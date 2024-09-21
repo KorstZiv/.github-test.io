@@ -10,9 +10,9 @@ header {
 }
 
 main {
-    flex: 1;
     display: flex;
     justify-content: space-between;
+    height: calc(100vh - 100px); /* Учитываем высоту header */
     overflow: hidden;
 }
 
@@ -26,17 +26,21 @@ main {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center; /* Центрируем содержимое по горизонтали */
+    overflow-y: auto;
     overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
 }
 
 .center-panel {
     width: 120px;
-    margin: 0; /* Убираем отступы */
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
-    transition: background-color 0.3s ease;
-    padding: 0; /* Убираем отступы */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
     height: 100%; /* Занимает всю высоту */
 }
 
@@ -53,7 +57,7 @@ main {
 }
 
 .right-panel {
-    width: calc(100% - 470px); /* 100% минус ширина левой и центральной панелей */
+    flex-grow: 1;
     padding: 0; /* Убираем отступы */
     display: flex;
     justify-content: center;
@@ -64,7 +68,7 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Увеличиваем расстояние между ав��тарами */
+    gap: 20px; /* Увеличиваем расстояние между аватара */
     width: 100%; /* Убеждаемся, что сетка занимает всю ширину */
     max-width: 320px; /* Увеличиваем максимальную ширину */
     margin-left: 30px; /* Небольшой отступ слева */
