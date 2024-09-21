@@ -26,7 +26,7 @@ main {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start; /* Изменено с space-between на flex-start */
     align-items: center; /* Центрируем содержимое по горизонтали */
     overflow-y: auto;
     overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
@@ -68,9 +68,9 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Увеличиваем расстояние между аватара */
+    gap: 15px; /* Уменьшен отступ между элементами */
     width: 100%; /* Убеждаемся, что сетка занимает всю ширину */
-    max-width: 320px; /* Увеличиваем максимальную ширину */
+    max-width: 300px; /* Увеличиваем максимальную ширину */
     margin-left: 30px; /* Небольшой отступ слева */
     padding: 0;
 }
@@ -79,13 +79,14 @@ main {
     width: 100%; /* Занимает всю ширину родителя */
     box-sizing: border-box;
     display: flex;
-    flex-direction: column; /* Меняем направление на вертикальное */
+    flex-direction: row; /* Изменено на горизонтальное расположение */
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     border: 2px solid;
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px;
     margin: 0;
+    height: 80px; /* Фиксированная высота */
     aspect-ratio: 16 / 9; /* Задаем соотношение сторон */
     text-align: center;
     transition: all 0.3s ease;
@@ -123,17 +124,18 @@ main {
 }
 
 .avatar-image {
-    width: 80%; /* Уменьшаем размер изображения */
-    height: auto;
+    width: 60px; /* Уменьшен размер изображения */
+    height: 60px;
     object-fit: contain;
     margin-bottom: 10px; /* Добавляем отступ снизу */
 }
 
 .avatar-name {
-    font-size: 18px; /* Уменьшаем размер шрифта */
-    text-align: center;
+    font-size: 16px; /* Уменьшен размер шрифта */
+    text-align: right;
     word-wrap: break-word; /* Переносим длинные слова */
-    max-width: 100%; /* Ограничиваем ширину текста */
+    margin-left: 10px;
+    flex-grow: 1;
 }
 
 .resource-list {
@@ -159,7 +161,7 @@ main {
 .grey-avatar-link {
     text-align: center;
     padding: 10px 0;
-    margin-top: 20px;
+    margin-top: 15px;
     cursor: pointer;
     font-weight: bold;
     color: #808080; /* Серый цвет */
