@@ -166,6 +166,11 @@ main {
     transition: all 0.3s ease;
     cursor: pointer;
     opacity: 0.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 120px; /* Увеличиваем высоту для размещения текста */
+    justify-content: space-between;
 }
 
 .center-icon-wrapper.active {
@@ -189,6 +194,13 @@ main {
 
 .center-icon-wrapper.clicked .center-icon {
     filter: brightness(0) invert(1);
+}
+
+.center-icon-text {
+    color: white;
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: center;
 }
 
 .tooltip {
