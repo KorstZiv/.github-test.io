@@ -32,7 +32,7 @@ main {
     align-items: center; /* Центрируем содержимое по горизонтали */
     overflow-y: auto;
     overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
-    padding-top: 40px; /* Добавляем отступ сверху */
+    padding-top: 65px; /* Увеличено с 40px до 65px */
 }
 
 .center-panel {
@@ -77,11 +77,13 @@ main {
 }
 
 .avatar-item {
+    /* Сохраняем существующие стили */
+    position: relative;
+    display: flex;
+    align-items: center;
     width: 100%; /* Занимает всю ширину родителя */
     box-sizing: border-box;
-    display: flex;
     flex-direction: column; /* Вертикальное расположение */
-    align-items: center; /* Центрируем содержимое */
     justify-content: center;
     border: 2px solid;
     border-radius: 10px; /* Увеличиваем скругление углов */
@@ -125,18 +127,17 @@ main {
 }
 
 .avatar-image {
-    width: auto;
-    height: 150px; /* Увеличиваем размер изображения */
+    height: 90%; /* Увеличиваем высоту иконки до 90% от высоты рамки */
+    width: auto; /* Автоматическая ширина для сохранения пропорций */
     object-fit: contain;
-    margin-bottom: 10px; /* Добавляем отступ справа */
+    margin-left: 5px; /* Небольшой отступ слева */
 }
 
 .avatar-name {
-    font-size: 18px; /* Увеличиваем размер шрифта */
-    text-align: center; /* Изменен на center */
-    word-wrap: break-word; /* Переносим длинные слова */
-    margin-left: 10px;
-    flex-grow: 1;
+    position: absolute;
+    right: 10px; /* Отступ от правого края */
+    font-size: 18px;
+    color: #fff;
 }
 
 .resource-list {
