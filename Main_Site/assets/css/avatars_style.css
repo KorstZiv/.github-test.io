@@ -26,7 +26,7 @@ main {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center; /* Центрируем содержимое по горизонтали */
     overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
 }
 
@@ -53,7 +53,7 @@ main {
 }
 
 .right-panel {
-    width: calc(100% - 520px); /* 100% минус ширина левой и центральной панелей */
+    width: calc(100% - 470px); /* 100% минус ширина левой и центральной панелей */
     padding: 0; /* Убираем отступы */
     display: flex;
     justify-content: center;
@@ -64,26 +64,29 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Увеличиваем расстояние между аватарами */
+    gap: 20px; /* Увеличиваем расстояние между ав��тарами */
+    width: 100%; /* Убеждаемся, что сетка занимает всю ширину */
+    max-width: 320px; /* Увеличиваем максимальную ширину */
     margin-left: 30px; /* Небольшой отступ слева */
     padding: 0;
-    width: 100%; /* Убеждаемся, что сетка занимает всю ширину */
 }
 
 .avatar-item {
     width: 100%; /* Занимает всю ширину родителя */
-    height: auto; /* Автоматическая высота */
+    box-sizing: border-box;
     display: flex;
+    flex-direction: column; /* Меняем направление на вертикальное */
     align-items: center;
+    justify-content: center;
     border: 2px solid;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
     margin: 0;
+    aspect-ratio: 16 / 9; /* Задаем соотношение сторон */
     text-align: center;
     transition: all 0.3s ease;
     transform: scale(1); /* Возвращаем к исходному размеру */
     cursor: pointer;
-    box-sizing: border-box; /* Учитываем padding в общей ширине */
 }
 
 .avatar-item:hover, .avatar-item.hovered, .avatar-item.selected {
@@ -116,19 +119,17 @@ main {
 }
 
 .avatar-image {
-    width: 80px; /* Уменьшаем размер изображения */
-    height: 80px;
+    width: 80%; /* Уменьшаем размер изображения */
+    height: auto;
     object-fit: contain;
-    margin-right: 10px; /* Добавляем отступ справа от иконки */
+    margin-bottom: 10px; /* Добавляем отступ снизу */
 }
 
 .avatar-name {
     font-size: 18px; /* Уменьшаем размер шрифта */
-    font-weight: bold;
-    margin-left: 15px; /* Немного увеличиваем отступ от иконки */
-    flex-grow: 1; /* Позволяет тексту занимать оставшееся пространство */
-    text-align: right; /* Выравниваем текст по правому краю */
+    text-align: center;
     word-wrap: break-word; /* Переносим длинные слова */
+    max-width: 100%; /* Ограничиваем ширину текста */
 }
 
 .resource-list {
@@ -153,8 +154,8 @@ main {
 
 .grey-avatar-link {
     text-align: center;
-    margin-top: auto;
     padding: 10px 0;
+    margin-top: 20px;
     cursor: pointer;
     font-weight: bold;
     color: #808080; /* Серый цвет */
@@ -165,7 +166,7 @@ main {
     color: #FF4500; /* Красноватый цвет при наведении */
 }
 
-/* Если у вас нет класса clan-title-fire, добавьте его сюда */
+/* Если у вас нет класса clan-title-fire, дбавьте его сюда */
 .clan-title-fire {
     color: #FF4500;
 }
@@ -311,5 +312,5 @@ main {
 #greyAvatarVideo {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Заполняем всю область, сохраняя пропорции */
+    object-fit: cover; /* Растягиваем видео на всю область, сохраняя пропорции */
 }
