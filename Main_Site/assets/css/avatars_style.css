@@ -15,17 +15,19 @@ main {
     overflow: hidden;
 }
 
-.left-panel, .right-panel {
-    width: 30%;
+.left-panel, .center-panel, .right-panel {
     height: 100%;
     overflow-y: auto;
+}
+
+.left-panel, .right-panel {
+    width: 30%;
     padding: 15px 50px;
     box-sizing: border-box;
 }
 
 .center-panel {
     width: 120px;
-    height: 100%;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     display: flex;
@@ -82,7 +84,7 @@ main {
     border-radius: 10px; /* Увеличиваем скругление углов */
     padding: 15px;
     margin: 0;
-    height: 210px; /* Увеличиваем высоту в три раза */
+    height: 210px; /* Увеличиваем высо��у в три раза */
     aspect-ratio: 16 / 9; /* Задаем соотношение сторон */
     text-align: center;
     transition: all 0.3s ease;
@@ -96,7 +98,7 @@ main {
 }
 
 .avatar-item[data-avatar="Uncommon"]:hover {
-    background-color: rgba(0, 255, 0, 0.1); /* Легкая подсветк�� зеленым */
+    background-color: rgba(0, 255, 0, 0.1); /* Легкая подсветк зеленым */
 }
 
 .avatar-item[data-avatar="Rare"]:hover {
