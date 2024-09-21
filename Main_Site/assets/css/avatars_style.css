@@ -25,6 +25,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 20px; /* Добавляем отступы */
 }
 
 .center-panel {
@@ -60,17 +61,17 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 55px; /* Расстояние между аватарами */
+    gap: 30px; /* Увеличиваем расстояние между аватарами */
     padding: 15px;
 }
 
 .avatar-item {
     border: 2px solid;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px; /* Увеличиваем внутренние отступы */
     text-align: center;
     transition: all 0.3s ease;
-    transform: scale(0.8); /* Уменьшаем размер на 20% */
+    transform: scale(1); /* Возвращаем к исходному размеру */
     cursor: pointer;
 }
 
@@ -105,7 +106,7 @@ main {
 
 .avatar-image {
     width: 100%;
-    height: 100px;
+    height: 150px; /* Увеличиваем высоту изображения */
     object-fit: contain;
 }
 
@@ -153,24 +154,24 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: calc(100% - 240px);
-    margin-top: 120px;
-    margin-bottom: 120px;
+    height: calc(100% - 200px);
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 .center-icon-wrapper {
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 10px;
-    margin: 5px 0;
+    margin: 10px 0;
     transition: all 0.3s ease;
     cursor: pointer;
     opacity: 0.5;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80px; /* Фиксированная ширина */
-    height: 100px; /* Увеличенная высота */
+    width: 90px; /* Немного увеличиваем ширину */
+    height: 120px; /* Увеличиваем высоту */
     justify-content: space-between;
 }
 
@@ -188,8 +189,8 @@ main {
 }
 
 .center-icon {
-    width: 40px; /* Уменьшаем размер иконки */
-    height: 40px;
+    width: 50px; /* Увеличиваем размер иконки */
+    height: 50px;
     transition: all 0.3s ease;
 }
 
@@ -200,7 +201,7 @@ main {
 .center-icon-text {
     color: white;
     margin-top: 5px;
-    font-size: 10px; /* Уменьшаем размер шрифта */
+    font-size: 12px; /* Увеличиваем размер шрифта */
     text-align: center;
 }
 
