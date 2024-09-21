@@ -21,8 +21,9 @@ main {
 }
 
 .left-panel {
-    width: calc(30% + 300px); /* Увеличиваем ширину левой панели на 300px */
-    padding: 15px;
+    width: calc(30% + 360px); /* Уменьшаем ширину левой панели */
+    padding: 15px 30px; /* Добавляем отступы слева и справа */
+    box-sizing: border-box; /* Учитываем padding в общей ширине */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -63,7 +64,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px; /* Увеличиваем расстояние между аватарами */
-    margin-left: 300px; /* Сдвигаем содержимое вправо на 300px */
+    margin-left: 300px; /* Оставляем сдвиг содержимого вправо */
     padding: 15px;
 }
 
@@ -74,7 +75,8 @@ main {
     border-radius: 10px;
     padding: 10px;
     height: 160px; /* Увеличиваем высоту для большей иконки */
-    margin-bottom: 15px;
+    width: calc(100% - 60px); /* Учитываем отступы слева и справа */
+    margin: 0 auto; /* Центрируем рамку */
     text-align: center;
     transition: all 0.3s ease;
     transform: scale(1); /* Возвращаем к исходному размеру */
