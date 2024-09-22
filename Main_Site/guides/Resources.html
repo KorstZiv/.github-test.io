@@ -140,48 +140,68 @@
 
         // Функция для отображения связанных объектов в правой панели
         function showInRightPanel(images, title) {
-            const rightPanelContent = document.querySelector('.right-panel-content');
-            rightPanelContent.innerHTML = ''; // Очищаем правую панель
+    const rightPanelContent = document.querySelector('.right-panel-content');
+    rightPanelContent.innerHTML = ''; // Очищаем правую панель
 
-            if (images && images.length > 0) {
-                images.forEach((image) => {
-                    const panelItem = document.createElement('div');
-                    panelItem.className = 'right-panel-item';
+    if (images && images.length > 0) {
+        // Определяем базовый размер изображений
+        let baseImageSize = '80px';
+        const lootboxSize = '100px';
 
-                    const imgElement = document.createElement('img');
-                    imgElement.src = image;
-
-                    panelItem.appendChild(imgElement);
-
-                    const titleElement = document.createElement('p');
-                    const imageName = image.split('/').pop().replace('.png', '').replace(/_/g, ' ');
-                    titleElement.textContent = imageName;
-                    panelItem.appendChild(titleElement);
-
-                    rightPanelContent.appendChild(panelItem);
-                });
-
-                // Добавляем специальный класс для случая с двумя иконками
-                if (images.length === 2) {
-                    rightPanelContent.classList.add('two-icons');
-                } else {
-                    rightPanelContent.classList.remove('two-icons');
-                }
-
-                // Изменяем размер иконок, если их меньше 4
-                const items = rightPanelContent.querySelectorAll('.right-panel-item');
-                if (items.length < 4) {
-                    items.forEach(item => {
-                        item.style.width = `calc(${100 / items.length}% - ${items.length === 2 ? '10' : '20'}px)`;
-                        item.style.maxWidth = '300px'; // Увеличиваем максимальную ширину
-                    });
-                }
-            } else {
-                const noDataMessage = document.createElement('p');
-                noDataMessage.textContent = `Нет связанных элементов для ${title}`;
-                rightPanelContent.appendChild(noDataMessage);
-            }
+        // Если изображений больше 8, уменьшаем их размер
+        if (images.length > 8) {
+            baseImageSize = '60px';
         }
+
+        // Устанавливаем стиль для контейнера, чтобы изображения располагались в сетку
+        rightPanelContent.style.display = 'grid';
+        rightPanelContent.style.gridTemplateColumns = `repeat(auto-fill, minmax(${baseImageSize}, 1fr))`;
+        rightPanelContent.style.gap = '10px';
+        rightPanelContent.style.justifyContent = 'center';
+
+        images.forEach((image) => {
+            const panelItem = document.createElement('div');
+            panelItem.className = 'right-panel-item';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = image;
+            
+            // Проверяем, является ли изображение lootbox
+            if (image.toLowerCase().includes('lootbox')) {
+                imgElement.style.width = lootboxSize;
+                imgElement.style.height = lootboxSize;
+            } else {
+                imgElement.style.width = baseImageSize;
+                imgElement.style.height = baseImageSize;
+            }
+            
+            imgElement.style.objectFit = 'contain';
+
+            panelItem.appendChild(imgElement);
+
+            const titleElement = document.createElement('p');
+            const imageName = image.split('/').pop().replace('.png', '').replace(/_/g, ' ');
+            titleElement.textContent = imageName;
+            titleElement.style.fontSize = '12px';
+            titleElement.style.textAlign = 'center';
+            titleElement.style.marginTop = '5px';
+            panelItem.appendChild(titleElement);
+
+            rightPanelContent.appendChild(panelItem);
+        });
+
+        // Добавляем специальный класс для случая с двумя иконками
+        if (images.length === 2) {
+            rightPanelContent.classList.add('two-icons');
+        } else {
+            rightPanelContent.classList.remove('two-icons');
+        }
+    } else {
+        const noDataMessage = document.createElement('p');
+        noDataMessage.textContent = `Нет связанных элементов для ${title}`;
+        rightPanelContent.appendChild(noDataMessage);
+    }
+}
 
         // Функция для очистки правой панели
         function clearRightPanel() {
