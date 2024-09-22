@@ -61,24 +61,38 @@ const searchData = {
 const searchInput = document.getElementById('search-input');
 const searchResults = document.getElementById('search-results');
 
-searchInput.addEventListener('input', function() {
+// Добавляем иконку поиска
+const searchIcon = document.createElement('span');
+searchIcon.className = 'search-icon';
+searchIcon.innerHTML = '🔍';
+searchInput.parentNode.appendChild(searchIcon);
+
+searchInput.addEventListener('input', debounce(function() {
     const query = this.value.toLowerCase();
     if (query.length < 2) {
         searchResults.style.display = 'none';
         return;
     }
 
-    const results = searchData.resources.filter(item => item.name.toLowerCase().includes(query))
-        .map(item => ({ ...item, category: 'Ресурсы' }))
-        .concat(searchData.avatars.filter(item => item.name.toLowerCase().includes(query))
-            .map(item => ({ ...item, category: 'Аватары' })))
-        .concat(searchData.mobs.filter(item => item.name.toLowerCase().includes(query))
-            .map(item => ({ ...item, category: 'Мобы' })))
-        .concat(searchData.ores.filter(item => item.name.toLowerCase().includes(query))
-            .map(item => ({ ...item, category: 'Руда' })));
+    const results = Object.entries(searchData).flatMap(([category, items]) =>
+        items.filter(item => item.name.toLowerCase().includes(query))
+            .map(item => ({ ...item, category: category.charAt(0).toUpperCase() + category.slice(1) }))
+    );
 
     displayResults(results);
-});
+}, 300));
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
 
 function displayResults(results) {
     if (results.length === 0) {
@@ -101,8 +115,14 @@ function displayResults(results) {
         const resultElement = document.createElement('div');
         resultElement.className = 'search-result-item';
         resultElement.textContent = result.name;
+        resultElement.tabIndex = 0;
         resultElement.addEventListener('click', () => {
             window.location.href = result.url;
+        });
+        resultElement.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                window.location.href = result.url;
+            }
         });
         searchResults.appendChild(resultElement);
     });
@@ -110,21 +130,26 @@ function displayResults(results) {
     searchResults.style.display = 'block';
 }
 
-// Автозаполнение
+// Улучшенное автозаполнение
 searchInput.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-        e.preventDefault();
-        const items = searchResults.querySelectorAll('.search-result-item');
-        const currentIndex = Array.from(items).findIndex(item => item === document.activeElement);
-        let nextIndex;
+    const items = searchResults.querySelectorAll('.search-result-item');
+    const currentIndex = Array.from(items).findIndex(item => item === document.activeElement);
 
-        if (e.key === 'ArrowDown') {
-            nextIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
-        } else {
-            nextIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
-        }
-
-        items[nextIndex].focus();
+    switch (e.key) {
+        case 'ArrowDown':
+            e.preventDefault();
+            if (currentIndex < items.length - 1) items[currentIndex + 1].focus();
+            else items[0].focus();
+            break;
+        case 'ArrowUp':
+            e.preventDefault();
+            if (currentIndex > 0) items[currentIndex - 1].focus();
+            else items[items.length - 1].focus();
+            break;
+        case 'Escape':
+            searchResults.style.display = 'none';
+            searchInput.blur();
+            break;
     }
 });
 
