@@ -144,18 +144,20 @@
     rightPanelContent.innerHTML = ''; // Очищаем правую панель
 
     if (images && images.length > 0) {
-        // Определяем базовый размер изображений
-        let baseImageSize = '80px';
-        const lootboxSize = '100px';
+        // Определяем базовый размер изображений и максимальное количество в ряду
+        const baseImageSize = 80;
+        const maxImagesPerRow = 5;
+        const panelWidth = rightPanelContent.offsetWidth;
+        
+        // Вычисляем оптимальное количество изображений в ряду
+        let imagesPerRow = Math.min(maxImagesPerRow, Math.floor(panelWidth / baseImageSize));
+        
+        // Вычисляем размер изображения с учетом отступов
+        const imageSize = Math.floor((panelWidth - (imagesPerRow - 1) * 10) / imagesPerRow);
 
-        // Если изображений больше 8, уменьшаем их размер
-        if (images.length > 8) {
-            baseImageSize = '60px';
-        }
-
-        // Устанавливаем стиль для контейнера, чтобы изображения располагались в сетку
+        // Устанавливаем стиль для контейнера
         rightPanelContent.style.display = 'grid';
-        rightPanelContent.style.gridTemplateColumns = `repeat(auto-fill, minmax(${baseImageSize}, 1fr))`;
+        rightPanelContent.style.gridTemplateColumns = `repeat(${imagesPerRow}, 1fr)`;
         rightPanelContent.style.gap = '10px';
         rightPanelContent.style.justifyContent = 'center';
 
@@ -165,16 +167,8 @@
 
             const imgElement = document.createElement('img');
             imgElement.src = image;
-            
-            // Проверяем, является ли изображение lootbox
-            if (image.toLowerCase().includes('lootbox')) {
-                imgElement.style.width = lootboxSize;
-                imgElement.style.height = lootboxSize;
-            } else {
-                imgElement.style.width = baseImageSize;
-                imgElement.style.height = baseImageSize;
-            }
-            
+            imgElement.style.width = `${imageSize}px`;
+            imgElement.style.height = `${imageSize}px`;
             imgElement.style.objectFit = 'contain';
 
             panelItem.appendChild(imgElement);
@@ -189,13 +183,6 @@
 
             rightPanelContent.appendChild(panelItem);
         });
-
-        // Добавляем специальный класс для случая с двумя иконками
-        if (images.length === 2) {
-            rightPanelContent.classList.add('two-icons');
-        } else {
-            rightPanelContent.classList.remove('two-icons');
-        }
     } else {
         const noDataMessage = document.createElement('p');
         noDataMessage.textContent = `Нет связанных элементов для ${title}`;
