@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 resultElement.className = 'search-result-item';
                 resultElement.textContent = result.name;
                 resultElement.tabIndex = 0;
-                resultElement.addEventListener('click', () => {
+                resultElement.addEventListener('click', function() {
                     window.location.href = result.url;
                 });
                 searchResults.appendChild(resultElement);
