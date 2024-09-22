@@ -113,7 +113,7 @@ const searchData = {
         { name: 'Лицензионный Аватар', url: 'Main_Site/guides/Resources.html#licensed-avatar', keywords: ['лицензионный', 'зеленый'] },
         { name: 'Серый Аватар', url: 'Main_Site/guides/Resources.html#gray-avatar', keywords: ['серый'] },
         { name: 'Жаба', url: 'Main_Site/guides/Resources.html#frog', keywords: ['лягушка'] },
-        { name: 'Улитка', url: 'Main_Site/guides/Resources.html#snail', keywords: ['моллюск'] },
+        { name: 'Улитка', url: 'Main_Site/guides/Resources.html#snail', keywords: ['моллюск', 'ништяк'] },
         { name: 'Горилла', url: 'Main_Site/guides/Resources.html#gorilla', keywords: ['обезьяна'] },
         { name: 'Баран', url: 'Main_Site/guides/Resources.html#ram', keywords: ['овца'] },
         { name: 'Мама-жаба', url: 'Main_Site/guides/Resources.html#mother-frog', keywords: ['большая', 'лягушка'] },
