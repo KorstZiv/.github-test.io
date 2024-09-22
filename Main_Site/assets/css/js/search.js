@@ -110,26 +110,17 @@ const searchData = {
         { name: 'Серый Аватар', url: 'Main_Site/guides/Avatars.html#gray-avatar', keywords: ['серый'] }
     ],
     mobs: [
-        { name: 'Лицензионный Аватар', url: 'Main_Site/guides/Mobs.html#licensed-avatar', keywords: ['лицензионный', 'зеленый'], drops: [
-            { name: 'Robotic Module', url: 'Main_Site/guides/Resources.html#robotic-module' },
-            { name: 'Energy Crystal', url: 'Main_Site/guides/Resources.html#energy-crystal' }
-        ] },
-        { name: 'Серый Аватар', url: 'Main_Site/guides/Mobs.html#gray-avatar', keywords: ['серый'], drops: [
-            { name: 'Nanofibers', url: 'Main_Site/guides/Resources.html#nanofibers' },
-            { name: 'Plasma Condensate', url: 'Main_Site/guides/Resources.html#plasma-condensate' }
-        ] },
-        { name: 'Жаба', url: 'Main_Site/guides/Mobs.html#frog', keywords: ['лягушка'], drops: [
-            { name: 'Biological Extract', url: 'Main_Site/guides/Resources.html#biological-extract' },
-            { name: 'Exotic Spores', url: 'Main_Site/guides/Resources.html#exotic-spores' }
-        ] },
-        { name: 'Улитка', url: 'Main_Site/guides/Mobs.html#snail', keywords: ['моллюск'] },
-        { name: 'Горилла', url: 'Main_Site/guides/Mobs.html#gorilla', keywords: ['обезьяна'] },
-        { name: 'Баран', url: 'Main_Site/guides/Mobs.html#ram', keywords: ['овца'] },
-        { name: 'Мама-жаба', url: 'Main_Site/guides/Mobs.html#mother-frog', keywords: ['большая', 'лягушка'] },
-        { name: 'Дрон', url: 'Main_Site/guides/Mobs.html#drone', keywords: ['робот'] },
-        { name: 'Гвард', url: 'Main_Site/guides/Mobs.html#guard', keywords: ['охранник'] },
-        { name: 'Лазер-гриб', url: 'Main_Site/guides/Mobs.html#laser-mushroom', keywords: ['гриб', 'лазер'] },
-        { name: 'Турель', url: 'Main_Site/guides/Mobs.html#turret', keywords: ['пушка'] }
+        { name: 'Лицензионный Аватар', url: 'Main_Site/guides/Resources.html#licensed-avatar', keywords: ['лицензионный', 'зеленый'] },
+        { name: 'Серый Аватар', url: 'Main_Site/guides/Resources.html#gray-avatar', keywords: ['серый'] },
+        { name: 'Жаба', url: 'Main_Site/guides/Resources.html#frog', keywords: ['лягушка'] },
+        { name: 'Улитка', url: 'Main_Site/guides/Resources.html#snail', keywords: ['моллюск'] },
+        { name: 'Горилла', url: 'Main_Site/guides/Resources.html#gorilla', keywords: ['обезьяна'] },
+        { name: 'Баран', url: 'Main_Site/guides/Resources.html#ram', keywords: ['овца'] },
+        { name: 'Мама-жаба', url: 'Main_Site/guides/Resources.html#mother-frog', keywords: ['большая', 'лягушка'] },
+        { name: 'Дрон', url: 'Main_Site/guides/Resources.html#drone', keywords: ['робот'] },
+        { name: 'Гвард', url: 'Main_Site/guides/Resources.html#guard', keywords: ['охранник'] },
+        { name: 'Лазер-гриб', url: 'Main_Site/guides/Resources.html#laser-mushroom', keywords: ['гриб', 'лазер'] },
+        { name: 'Турель', url: 'Main_Site/guides/Resources.html#turret', keywords: ['пушка'] }
     ],
     ores: [
         { name: 'Камень Синий', url: 'Main_Site/guides/Resources.html#blue-stone', keywords: ['синий', 'камень'] },
