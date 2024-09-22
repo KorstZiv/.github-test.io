@@ -9,14 +9,82 @@ document.addEventListener('DOMContentLoaded', function() {
     if (searchInput && searchResults) {
         console.log('Элементы поиска найдены');
         
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', debounce(function() {
             const query = this.value.toLowerCase();
             console.log('Введен текст:', query);
             
-            // Остальной код...
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const results = Object.entries(searchData).flatMap(([category, items]) =>
+                items.filter(item => item.name.toLowerCase().includes(query))
+                    .map(item => ({ ...item, category }))
+            );
+
+            displayResults(results);
+        }, 300));
+
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = this.value.toLowerCase();
+                console.log('Выполнен поиск по запросу:', query);
+                // Здесь можно добавить дополнительную логику поиска
+            }
+        });
+
+        // Закрытие результатов поиска при клике вне области
+        document.addEventListener('click', function(event) {
+            if (!searchResults.contains(event.target) && event.target !== searchInput) {
+                searchResults.style.display = 'none';
+            }
         });
     } else {
         console.error('Элементы поиска не найдены');
+    }
+
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func.apply(this, args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    function displayResults(results) {
+        if (results.length === 0) {
+            searchResults.style.display = 'none';
+            return;
+        }
+
+        searchResults.innerHTML = '';
+        let currentCategory = '';
+
+        results.forEach(result => {
+            if (result.category !== currentCategory) {
+                currentCategory = result.category;
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'search-result-category';
+                categoryElement.textContent = currentCategory;
+                searchResults.appendChild(categoryElement);
+            }
+
+            const resultElement = document.createElement('div');
+            resultElement.className = 'search-result-item';
+            resultElement.textContent = result.name;
+            resultElement.addEventListener('click', () => {
+                window.location.href = result.url;
+            });
+            searchResults.appendChild(resultElement);
+        });
+
+        searchResults.style.display = 'block';
     }
 });
 
