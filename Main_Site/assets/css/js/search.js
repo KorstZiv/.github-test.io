@@ -18,11 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const results = Object.entries(searchData).flatMap(([category, items]) =>
-                items.filter(item => item.name.toLowerCase().includes(query))
-                    .map(item => ({ ...item, category }))
-            );
-
+            const results = searchAllData(query);
             displayResults(results);
         }, 300));
 
@@ -31,11 +27,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 const query = this.value.toLowerCase();
                 console.log('Выполнен поиск по запросу:', query);
-                // Здесь можно добавить дополнительную логику поиска
+                const results = searchAllData(query);
+                displayResults(results);
             }
         });
 
-        // Закрытие результатов поиска при клике вне области
         document.addEventListener('click', function(event) {
             if (!searchResults.contains(event.target) && event.target !== searchInput) {
                 searchResults.style.display = 'none';
@@ -55,6 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
         };
+    }
+
+    function searchAllData(query) {
+        return Object.entries(searchData).flatMap(([category, items]) =>
+            items.filter(item => 
+                item.name.toLowerCase().includes(query) || 
+                (item.keywords && item.keywords.some(keyword => keyword.toLowerCase().includes(query)))
+            ).map(item => ({ ...item, category }))
+        );
     }
 
     function displayResults(results) {
@@ -90,65 +95,73 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const searchData = {
     resources: [
-        { name: 'Lithium Ore', url: 'guides/Resources.html#resources' },
-        { name: 'Quartz', url: 'guides/Resources.html#resources' },
-        { name: 'Rare Earth Elements', url: 'guides/Resources.html#resources' },
-        { name: 'Magnetite', url: 'guides/Resources.html#resources' },
-        { name: 'Robotic Module', url: 'guides/Resources.html#resources' },
-        { name: 'Energy Crystal', url: 'guides/Resources.html#resources' },
-        { name: 'Photon Gel', url: 'guides/Resources.html#resources' },
-        { name: 'Plasma Condensate', url: 'guides/Resources.html#resources' },
-        { name: 'Organic Polymers', url: 'guides/Resources.html#resources' },
-        { name: 'Biological Extract', url: 'guides/Resources.html#resources' },
-        { name: 'Genetically-Modified Enzymes', url: 'guides/Resources.html#resources' },
-        { name: 'Exotic Spores', url: 'guides/Resources.html#resources' },
-        { name: 'Heat Regulating Glands', url: 'guides/Resources.html#resources' },
-        { name: 'Protein Fiber', url: 'guides/Resources.html#resources' },
-        { name: 'Nanofibers', url: 'guides/Resources.html#resources' },
-        { name: 'Radioactive Isotopes', url: 'guides/Resources.html#resources' },
-        { name: 'Uncommon Shard', url: 'guides/Resources.html#resources' },
-        { name: 'Rare Shard', url: 'guides/Resources.html#resources' },
-        { name: 'Epic Shard', url: 'guides/Resources.html#resources' },
-        { name: 'Rare Lootbox', url: 'guides/Resources.html#resources' },
-        { name: 'Coal', url: 'guides/Resources.html#resources' },
-        { name: 'Copper Ore', url: 'guides/Resources.html#resources' },
-        { name: 'Acid', url: 'guides/Resources.html#resources' },
-        { name: 'Rare Key', url: 'guides/Resources.html#resources' },
-        { name: 'Epic Lootbox', url: 'guides/Resources.html#resources' },
-        { name: 'Iron Ore', url: 'guides/Resources.html#resources' },
-        { name: 'Epic Key', url: 'guides/Resources.html#resources' },
-        { name: 'Uncommon Lootbox', url: 'guides/Resources.html#resources' },
-        { name: 'Uncommon Key', url: 'guides/Resources.html#resources' }
+        { name: 'Lithium Ore', url: 'guides/Resources.html#lithium-ore', keywords: ['литий', 'руда'] },
+        { name: 'Quartz', url: 'guides/Resources.html#quartz', keywords: ['кварц'] },
+        { name: 'Rare Earth Elements', url: 'guides/Resources.html#rare-earth-elements', keywords: ['редкоземельные', 'элементы'] },
+        { name: 'Magnetite', url: 'guides/Resources.html#magnetite', keywords: ['магнетит'] },
+        { name: 'Robotic Module', url: 'guides/Resources.html#robotic-module', keywords: ['робот', 'модуль'] },
+        { name: 'Energy Crystal', url: 'guides/Resources.html#energy-crystal', keywords: ['энергетический', 'кристалл'] },
+        { name: 'Photon Gel', url: 'guides/Resources.html#photon-gel', keywords: ['фотонный', 'гель'] },
+        { name: 'Plasma Condensate', url: 'guides/Resources.html#plasma-condensate', keywords: ['плазма', 'конденсат'] },
+        { name: 'Organic Polymers', url: 'guides/Resources.html#organic-polymers', keywords: ['органические', 'полимеры'] },
+        { name: 'Biological Extract', url: 'guides/Resources.html#biological-extract', keywords: ['биологический', 'экстракт'] },
+        { name: 'Genetically-Modified Enzymes', url: 'guides/Resources.html#genetically-modified-enzymes', keywords: ['генетически', 'модифицированные', 'ферменты'] },
+        { name: 'Exotic Spores', url: 'guides/Resources.html#exotic-spores', keywords: ['экзотические', 'споры'] },
+        { name: 'Heat Regulating Glands', url: 'guides/Resources.html#heat-regulating-glands', keywords: ['терморегулирующие', 'железы'] },
+        { name: 'Protein Fiber', url: 'guides/Resources.html#protein-fiber', keywords: ['протеиновое', 'волокно'] },
+        { name: 'Nanofibers', url: 'guides/Resources.html#nanofibers', keywords: ['нановолокна'] },
+        { name: 'Radioactive Isotopes', url: 'guides/Resources.html#radioactive-isotopes', keywords: ['радиоактивные', 'изотопы'] },
+        { name: 'Uncommon Shard', url: 'guides/Resources.html#uncommon-shard', keywords: ['необычный', 'осколок'] },
+        { name: 'Rare Shard', url: 'guides/Resources.html#rare-shard', keywords: ['редкий', 'осколок'] },
+        { name: 'Epic Shard', url: 'guides/Resources.html#epic-shard', keywords: ['эпический', 'осколок'] },
+        { name: 'Rare Lootbox', url: 'guides/Resources.html#rare-lootbox', keywords: ['редкая', 'лутбокс'] },
+        { name: 'Coal', url: 'guides/Resources.html#coal', keywords: ['уголь'] },
+        { name: 'Copper Ore', url: 'guides/Resources.html#copper-ore', keywords: ['медная', 'руда'] },
+        { name: 'Acid', url: 'guides/Resources.html#acid', keywords: ['кислота'] },
+        { name: 'Rare Key', url: 'guides/Resources.html#rare-key', keywords: ['редкий', 'ключ'] },
+        { name: 'Epic Lootbox', url: 'guides/Resources.html#epic-lootbox', keywords: ['эпическая', 'лутбокс'] },
+        { name: 'Iron Ore', url: 'guides/Resources.html#iron-ore', keywords: ['железная', 'руда'] },
+        { name: 'Epic Key', url: 'guides/Resources.html#epic-key', keywords: ['эпический', 'ключ'] },
+        { name: 'Uncommon Lootbox', url: 'guides/Resources.html#uncommon-lootbox', keywords: ['необычная', 'лутбокс'] },
+        { name: 'Uncommon Key', url: 'guides/Resources.html#uncommon-key', keywords: ['необычный', 'ключ'] }
     ],
     avatars: [
-        { name: 'Зелёный Аватар', url: 'guides/Avatars.html' },
-        { name: 'Синий Аватар', url: 'guides/Avatars.html' },
-        { name: 'Фиолетовый Аватар', url: 'guides/Avatars.html' },
-        { name: 'Серый Аватар', url: 'guides/Avatars.html' }
+        { name: 'Зелёный Аватар', url: 'guides/Avatars.html#green-avatar', keywords: ['зеленый', 'лицензионный'] },
+        { name: 'Синий Аватар', url: 'guides/Avatars.html#blue-avatar', keywords: ['синий'] },
+        { name: 'Фиолетовый Аватар', url: 'guides/Avatars.html#purple-avatar', keywords: ['фиолетовый'] },
+        { name: 'Серый Аватар', url: 'guides/Avatars.html#gray-avatar', keywords: ['серый'] }
     ],
     mobs: [
-        { name: 'Лицензионный Аватар', url: 'guides/Resources.html#mobs' },
-        { name: 'Серый Аватар', url: 'guides/Resources.html#mobs' },
-        { name: 'Жаба', url: 'guides/Resources.html#mobs' },
-        { name: 'Улитка', url: 'guides/Resources.html#mobs' },
-        { name: 'Горилла', url: 'guides/Resources.html#mobs' },
-        { name: 'Баран', url: 'guides/Resources.html#mobs' },
-        { name: 'Мама-жаба', url: 'guides/Resources.html#mobs' },
-        { name: 'Дрон', url: 'guides/Resources.html#mobs' },
-        { name: 'Гвард', url: 'guides/Resources.html#mobs' },
-        { name: 'Лазер-гриб', url: 'guides/Resources.html#mobs' },
-        { name: 'Турель', url: 'guides/Resources.html#mobs' }
+        { name: 'Лицензионный Аватар', url: 'guides/Mobs.html#licensed-avatar', keywords: ['лицензионный', 'зеленый'], drops: [
+            { name: 'Robotic Module', url: 'guides/Resources.html#robotic-module' },
+            { name: 'Energy Crystal', url: 'guides/Resources.html#energy-crystal' }
+        ] },
+        { name: 'Серый Аватар', url: 'guides/Mobs.html#gray-avatar', keywords: ['серый'], drops: [
+            { name: 'Nanofibers', url: 'guides/Resources.html#nanofibers' },
+            { name: 'Plasma Condensate', url: 'guides/Resources.html#plasma-condensate' }
+        ] },
+        { name: 'Жаба', url: 'guides/Mobs.html#frog', keywords: ['лягушка'], drops: [
+            { name: 'Biological Extract', url: 'guides/Resources.html#biological-extract' },
+            { name: 'Exotic Spores', url: 'guides/Resources.html#exotic-spores' }
+        ] },
+        { name: 'Улитка', url: 'guides/Mobs.html#snail', keywords: ['моллюск'] },
+        { name: 'Горилла', url: 'guides/Mobs.html#gorilla', keywords: ['обезьяна'] },
+        { name: 'Баран', url: 'guides/Mobs.html#ram', keywords: ['овца'] },
+        { name: 'Мама-жаба', url: 'guides/Mobs.html#mother-frog', keywords: ['большая', 'лягушка'] },
+        { name: 'Дрон', url: 'guides/Mobs.html#drone', keywords: ['робот'] },
+        { name: 'Гвард', url: 'guides/Mobs.html#guard', keywords: ['охранник'] },
+        { name: 'Лазер-гриб', url: 'guides/Mobs.html#laser-mushroom', keywords: ['гриб', 'лазер'] },
+        { name: 'Турель', url: 'guides/Mobs.html#turret', keywords: ['пушка'] }
     ],
     ores: [
-        { name: 'Камень Синий', url: 'guides/Resources.html#ores' },
-        { name: 'Камень Жёлтый', url: 'guides/Resources.html#ores' },
-        { name: 'Камень Фиолетовый', url: 'guides/Resources.html#ores' },
-        { name: 'Камень Зелёный', url: 'guides/Resources.html#ores' },
-        { name: 'Камень Тёмный', url: 'guides/Resources.html#ores' }
+        { name: 'Камень Синий', url: 'guides/Resources.html#blue-stone', keywords: ['синий', 'камень'] },
+        { name: 'Камень Жёлтый', url: 'guides/Resources.html#yellow-stone', keywords: ['желтый', 'камень'] },
+        { name: 'Камень Фиолетовый', url: 'guides/Resources.html#purple-stone', keywords: ['фиолетовый', 'камень'] },
+        { name: 'Камень Зелёный', url: 'guides/Resources.html#green-stone', keywords: ['зеленый', 'камень'] },
+        { name: 'Камень Тёмный', url: 'guides/Resources.html#dark-stone', keywords: ['темный', 'камень'] }
     ]
 };
 
-// Подсказки и исправления
 const suggestions = [
     { wrong: 'Литий', correct: 'Lithium Ore' },
     { wrong: 'Кварц', correct: 'Quartz' },
