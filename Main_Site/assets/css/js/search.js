@@ -1,3 +1,67 @@
+console.log('search.js загружен');
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM полностью загружен');
+    
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    if (searchInput && searchResults) {
+        console.log('Элементы поиска найдены');
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            console.log('Введен текст:', query);
+            
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            const results = Object.entries(searchData).flatMap(([category, items]) =>
+                items.filter(item => item.name.toLowerCase().includes(query))
+                    .map(item => ({ ...item, category: category.charAt(0).toUpperCase() + category.slice(1) }))
+            );
+
+            console.log('Результаты поиска:', results);
+            displayResults(results);
+        });
+
+        function displayResults(results) {
+            if (results.length === 0) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            searchResults.innerHTML = '';
+            let currentCategory = '';
+
+            results.forEach(result => {
+                if (result.category !== currentCategory) {
+                    currentCategory = result.category;
+                    const categoryElement = document.createElement('div');
+                    categoryElement.className = 'search-result-category';
+                    categoryElement.textContent = currentCategory;
+                    searchResults.appendChild(categoryElement);
+                }
+
+                const resultElement = document.createElement('div');
+                resultElement.className = 'search-result-item';
+                resultElement.textContent = result.name;
+                resultElement.tabIndex = 0;
+                resultElement.addEventListener('click', () => {
+                    window.location.href = result.url;
+                });
+                searchResults.appendChild(resultElement);
+            });
+
+            searchResults.style.display = 'block';
+        }
+    } else {
+        console.error('Элементы поиска не найдены');
+    }
+});
+
 const searchData = {
     resources: [
         { name: 'Lithium Ore', url: 'guides/Resources.html#resources' },
@@ -57,121 +121,6 @@ const searchData = {
         { name: 'Камень Тёмный', url: 'guides/Resources.html#ores' }
     ]
 };
-
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('search-input');
-    const searchResults = document.getElementById('search-results');
-
-    if (!searchInput || !searchResults) {
-        console.error('Элементы поиска не найдены');
-        return;
-    }
-
-    console.log('Поисковые элементы найдены'); // Отладочный вывод
-
-    // Добавляем иконку поиска
-    const searchIcon = document.createElement('span');
-    searchIcon.className = 'search-icon';
-    searchIcon.innerHTML = '🔍';
-    searchInput.parentNode.appendChild(searchIcon);
-
-    searchInput.addEventListener('input', debounce(function() {
-        const query = this.value.toLowerCase();
-        console.log('Поисковый запрос:', query); // Отладочный вывод
-        if (query.length < 2) {
-            searchResults.style.display = 'none';
-            return;
-        }
-
-        const results = Object.entries(searchData).flatMap(([category, items]) =>
-            items.filter(item => item.name.toLowerCase().includes(query))
-                .map(item => ({ ...item, category: category.charAt(0).toUpperCase() + category.slice(1) }))
-        );
-
-        console.log('Результаты поиска:', results); // Отладочный вывод
-        displayResults(results);
-    }, 300));
-
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func.apply(this, args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    function displayResults(results) {
-        if (results.length === 0) {
-            searchResults.style.display = 'none';
-            return;
-        }
-
-        searchResults.innerHTML = '';
-        let currentCategory = '';
-
-        results.forEach(result => {
-            if (result.category !== currentCategory) {
-                currentCategory = result.category;
-                const categoryElement = document.createElement('div');
-                categoryElement.className = 'search-result-category';
-                categoryElement.textContent = currentCategory;
-                searchResults.appendChild(categoryElement);
-            }
-
-            const resultElement = document.createElement('div');
-            resultElement.className = 'search-result-item';
-            resultElement.textContent = result.name;
-            resultElement.tabIndex = 0;
-            resultElement.addEventListener('click', () => {
-                window.location.href = result.url;
-            });
-            resultElement.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    window.location.href = result.url;
-                }
-            });
-            searchResults.appendChild(resultElement);
-        });
-
-        searchResults.style.display = 'block';
-    }
-
-    // Улучшенное автозаполнение
-    searchInput.addEventListener('keydown', function(e) {
-        const items = searchResults.querySelectorAll('.search-result-item');
-        const currentIndex = Array.from(items).findIndex(item => item === document.activeElement);
-
-        switch (e.key) {
-            case 'ArrowDown':
-                e.preventDefault();
-                if (currentIndex < items.length - 1) items[currentIndex + 1].focus();
-                else items[0].focus();
-                break;
-            case 'ArrowUp':
-                e.preventDefault();
-                if (currentIndex > 0) items[currentIndex - 1].focus();
-                else items[items.length - 1].focus();
-                break;
-            case 'Escape':
-                searchResults.style.display = 'none';
-                searchInput.blur();
-                break;
-        }
-    });
-
-    // Закрытие результатов поиска при клике вне области
-    document.addEventListener('click', function(event) {
-        if (!searchResults.contains(event.target) && event.target !== searchInput) {
-            searchResults.style.display = 'none';
-        }
-    });
-
-    console.log('Поисковая функциональность инициализирована'); // Отладочный вывод
-});
 
 // Подсказки и исправления
 const suggestions = [
