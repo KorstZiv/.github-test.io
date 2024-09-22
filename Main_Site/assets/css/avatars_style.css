@@ -66,6 +66,7 @@ main {
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Скрываем содержимое, выходящее за границы */
+    background-color: #000000; /* Добавляем черный фон */
 }
 
 .avatar-grid {
@@ -318,6 +319,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #ffffff; /* Добавляем белый цвет текста для контраста */
 }
 
 #greyAvatarVideo {
