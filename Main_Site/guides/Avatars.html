@@ -54,15 +54,15 @@
         <div class="left-panel">
             <h2>Качества Аватаров</h2>
             <div class="avatar-grid" id="avatar-grid">
-                <div class="avatar-item" data-avatar="Uncommon">
+                <div class="avatar-item" data-avatar="Uncommon" onclick="selectAvatar('uncommon')">
                     <img src="../assets/images/Avatars/Drop_Pods_Uncommon.png" alt="Uncommon" class="avatar-image">
                     <span class="avatar-name">Uncommon</span>
                 </div>
-                <div class="avatar-item" data-avatar="Rare">
+                <div class="avatar-item" data-avatar="Rare" onclick="selectAvatar('rare')">
                     <img src="../assets/images/Avatars/Drop_Pods__Rare.png" alt="Rare" class="avatar-image">
                     <span class="avatar-name">Rare</span>
                 </div>
-                <div class="avatar-item" data-avatar="Epic">
+                <div class="avatar-item" data-avatar="Epic" onclick="selectAvatar('epic')">
                     <img src="../assets/images/Avatars/Drop_Pods__Epic.png" alt="Epic" class="avatar-image">
                     <span class="avatar-name">Epic</span>
                 </div>
@@ -71,11 +71,32 @@
         </div>
 
         <div class="center-panel" id="center-panel">
-            <!-- Центральные иконки будут добавлены здесь -->
+            <div class="center-icon-container">
+                <div class="center-icon-wrapper" onclick="selectClass('courier')">
+                    <img src="../assets/images/Avatars/courier.png" alt="courier" class="center-icon">
+                    <span class="center-icon-text">Courier</span>
+                </div>
+                <div class="center-icon-wrapper" onclick="selectClass('explorer')">
+                    <img src="../assets/images/Avatars/explorer.png" alt="explorer" class="center-icon">
+                    <span class="center-icon-text">Explorer</span>
+                </div>
+                <div class="center-icon-wrapper" onclick="selectClass('survivor')">
+                    <img src="../assets/images/Avatars/survivor.png" alt="survivor" class="center-icon">
+                    <span class="center-icon-text">Survivor</span>
+                </div>
+                <div class="center-icon-wrapper" onclick="selectClass('marauder')">
+                    <img src="../assets/images/Avatars/marauder.png" alt="marauder" class="center-icon">
+                    <span class="center-icon-text">Marauder</span>
+                </div>
+                <div class="center-icon-wrapper" onclick="selectClass('warrior')">
+                    <img src="../assets/images/Avatars/warrior.png" alt="warrior" class="center-icon">
+                    <span class="center-icon-text">Warrior</span>
+                </div>
+            </div>
         </div>
 
         <div class="right-panel" id="right-panel">
-            <div class="right-panel-content">
+            <div class="right-panel-content" id="infoPanel">
                 <!-- Информация об аватаре будет отображаться здесь -->
             </div>
         </div>
@@ -83,281 +104,7 @@
 
     <script>
         let selectedAvatar = null;
-        let selectedCenterIcon = null;
-
-        const avatarData = [
-            { name: "Uncommon", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
-            { name: "Rare", image: "../assets/images/Avatars/Drop_Pods__Rare.png", resources: ["Magnetite", "Robotic Module", "Energy Crystal"] },
-            { name: "Epic", image: "../assets/images/Avatars/Drop_Pods__Epic.png", resources: ["Photon Gel", "Plasma Condensate", "Organic Polymers"] },
-        ];
-
-        const centerIcons = [
-            "courier.png", "explorer.png", "survivor.png", "marauder.png", "warrior.png"
-        ];
-
-        const resourceData = {
-            // Здесь нужно добавить данные о ресурсах, мобах и руде из гайда Ресурсы
-            // Пример:
-            "Lithium Ore": { mobs: ["Камень_Синий"], ores: ["Камень_Синий"] },
-            // ... добавьте остальные ресурсы
-        };
-
-        function generateAvatarGrid() {
-            const grid = document.getElementById('avatar-grid');
-            grid.innerHTML = ''; // Очищаем сетку пред генерацией
-            avatarData.forEach(avatar => {
-                const div = document.createElement('div');
-                div.classList.add('avatar-item');
-                div.setAttribute('data-avatar', avatar.name);
-                div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" class="avatar-image"><p>${avatar.name}</p>`;
-                div.onclick = () => showAvatarInfo(avatar);
-                if (avatar.name === selectedAvatar) {
-                    div.classList.add('selected');
-                }
-                grid.appendChild(div);
-            });
-        }
-
-        function generateCenterIcons() {
-            const centerPanel = document.getElementById('center-panel');
-            centerPanel.innerHTML = '';
-            
-            const iconContainer = document.createElement('div');
-            iconContainer.className = 'center-icon-container';
-
-            centerIcons.forEach((icon, index) => {
-                const wrapper = document.createElement('div');
-                wrapper.className = 'center-icon-wrapper';
-                
-                const img = document.createElement('img');
-                img.src = `../assets/images/Avatars/${icon}`;
-                img.alt = icon.replace('.png', '');
-                img.classList.add('center-icon');
-                
-                const text = document.createElement('span');
-                text.className = 'center-icon-text';
-                text.textContent = icon.replace('.png', '');
-                
-                wrapper.appendChild(img);
-                wrapper.appendChild(text);
-                wrapper.addEventListener('click', () => {
-                    if (selectedAvatar) {
-                        if (selectedCenterIcon) {
-                            selectedCenterIcon.classList.remove('clicked');
-                        }
-                        wrapper.classList.add('clicked');
-                        selectedCenterIcon = wrapper;
-                        showClassInfo(icon.replace('.png', ''));
-                    }
-                });
-                
-                wrapper.addEventListener('mousemove', (e) => {
-                    if (!selectedAvatar) {
-                        showTooltip(e, "Выберите качество Аватара");
-                    }
-                });
-                
-                wrapper.addEventListener('mouseleave', () => {
-                    hideTooltip();
-                });
-                
-                iconContainer.appendChild(wrapper);
-            });
-
-            centerPanel.appendChild(iconContainer);
-        }
-
-        function showAvatarInfo(avatar) {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = `
-                <h3>${avatar.name}</h3>
-                <img src="${avatar.image}" alt="${avatar.name}" class="avatar-image" style="max-width: 200px;">
-                <h4>Необходимые ресурсы:</h4>
-                <ul class="resource-list">
-                    ${avatar.resources.map(resource => `
-                        <li class="resource-item" onmouseover="showMobsAndOres('${resource}')" onmouseout="hideMobsAndOres('${resource}')">
-                            ${resource}
-                            <div class="mob-ore-list" id="${resource.replace(/\s+/g, '-')}-list"></div>
-                        </li>
-                    `).join('')}
-                </ul>
-            `;
-
-            // Снимаем подсветку с предыдущего выбранного аватара
-            if (selectedAvatar) {
-                const prevSelected = document.querySelector(`.avatar-item[data-avatar="${selectedAvatar}"]`);
-                if (prevSelected) {
-                    prevSelected.classList.remove('selected');
-                }
-            }
-
-            // Подсвечиваем новый выбранный аватар
-            const newSelected = document.querySelector(`.avatar-item[data-avatar="${avatar.name}"]`);
-            if (newSelected) {
-                newSelected.classList.add('selected');
-            }
-
-            // Подсвечиваем центральную панель
-            const centerPanel = document.querySelector('.center-panel');
-            centerPanel.classList.remove('green-glow', 'blue-glow', 'purple-glow');
-            if (avatar.name === "Uncommon") {
-                centerPanel.classList.add('green-glow');
-            } else if (avatar.name === "Rare") {
-                centerPanel.classList.add('blue-glow');
-            } else if (avatar.name === "Epic") {
-                centerPanel.classList.add('purple-glow');
-            }
-
-            selectedAvatar = avatar.name;
-            updateCenterIconsState();
-        }
-
-        function showGreyAvatarVideo() {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = `
-                <video width="100%" height="auto" autoplay loop muted>
-                    <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            `;
-        }
-
-        function hideGreyAvatarVideo() {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
-        }
-
-        function showMobsAndOres(resource) {
-            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
-            if (resourceData[resource]) {
-                listElement.innerHTML = `
-                    ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
-                    ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
-                `;
-                listElement.style.display = 'block';
-            }
-        }
-
-        function hideMobsAndOres(resource) {
-            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
-            listElement.style.display = 'none';
-        }
-
-        function showClassInfo(className) {
-            // Удаяем активный класс у всех иконок
-            document.querySelectorAll('.center-icon-wrapper').forEach(wrapper => {
-                wrapper.classList.remove('active');
-            });
-            
-            // Добавляем активный класс выбранной иконке
-            const selectedWrapper = document.querySelector(`.center-icon-wrapper img[alt="${className}"]`).parentNode;
-            selectedWrapper.classList.add('active');
-
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = `
-                <h3>${className}</h3>
-                <p>Описание класса ${className} будет добавлено позже.</p>
-                <div class="class-resources">
-                    <img src="../assets/images/placeholder_resource1.png" alt="Resource 1">
-                    <img src="../assets/images/placeholder_resource2.png" alt="Resource 2">
-                    <img src="../assets/images/placeholder_resource3.png" alt="Resource 3">
-                </div>
-            `;
-        }
-
-        function updateCenterIconsState() {
-            const centerIcons = document.querySelectorAll('.center-icon-wrapper');
-            centerIcons.forEach(icon => {
-                if (selectedAvatar) {
-                    icon.classList.add('active');
-                    icon.classList.remove('clicked');
-                } else {
-                    icon.classList.remove('active', 'clicked');
-                }
-            });
-            selectedCenterIcon = null;
-        }
-
-        function showTooltip(e, text) {
-            hideTooltip(); // Удаляем предыдущий тултип, если он есть
-            const tooltip = document.createElement('div');
-            tooltip.className = 'tooltip';
-            tooltip.textContent = text;
-            document.body.appendChild(tooltip);
-
-            tooltip.style.left = `${e.clientX + 10}px`;
-            tooltip.style.top = `${e.clientY + 10}px`;
-        }
-
-        function hideTooltip() {
-            const tooltip = document.querySelector('.tooltip');
-            if (tooltip) {
-                tooltip.remove();
-            }
-        }
-
-        // Добавляем обработчик для скрытия тултипа при движении мыши вне иконок
-        document.addEventListener('mousemove', (e) => {
-            if (!e.target.closest('.center-icon-wrapper')) {
-                hideTooltip();
-            }
-        });
-
-        window.onload = function() {
-            generateAvatarGrid();
-            generateCenterIcons();
-            updateCenterIconsState();
-        };
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleButton = document.querySelector('.toggle-description');
-            const container = document.querySelector('.welcome-text-container');
-
-            if (toggleButton && container) {
-                console.log('Elements found');
-                toggleButton.addEventListener('click', function() {
-                    console.log('Button clicked');
-                    if (container.classList.contains('collapsed')) {
-                        container.classList.remove('collapsed');
-                        container.classList.add('expanded');
-                        this.textContent = 'Свернуть описание';
-                        console.log('Panel expanded');
-                    } else {
-                        container.classList.remove('expanded');
-                        container.classList.add('collapsed');
-                        this.textContent = 'Развернуть описание';
-                        console.log('Panel collapsed');
-                    }
-                });
-            } else {
-                console.error('Required elements not found');
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const greyAvatarLink = document.querySelector('.grey-avatar-link');
-            const rightPanel = document.querySelector('.right-panel-content');
-            let videoElement = null;
-
-            greyAvatarLink.addEventListener('mouseenter', function() {
-                rightPanel.innerHTML = `
-                    <video id="greyAvatarVideo" autoplay loop muted>
-                        <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
-                        Ваш браузер не поддерживает видео тег.
-                    </video>
-                `;
-                videoElement = document.getElementById('greyAvatarVideo');
-                videoElement.play().catch(e => console.error("Error playing video:", e));
-            });
-
-            greyAvatarLink.addEventListener('mouseleave', function() {
-                if (videoElement) {
-                    videoElement.pause();
-                    videoElement.currentTime = 0;
-                }
-                rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
-            });
-        });
+        let selectedClass = null;
 
         const avatarData = {
             uncommon: {
@@ -414,27 +161,25 @@
             }
         }
 
-        function highlightAvatar(avatarId, quality) {
-            const avatars = document.querySelectorAll('.avatar');
-            avatars.forEach(avatar => avatar.classList.remove('highlighted'));
-            document.getElementById(avatarId).classList.add('highlighted');
+        function selectAvatar(quality) {
+            selectedAvatar = quality;
+            updateSelection();
+        }
 
-            const selectedClass = document.querySelector('.class.highlighted')?.id;
-            if (selectedClass) {
-                displayInfo(quality, selectedClass);
+        function selectClass(avatarClass) {
+            selectedClass = avatarClass;
+            updateSelection();
+        }
+
+        function updateSelection() {
+            if (selectedAvatar && selectedClass) {
+                displayInfo(selectedAvatar, selectedClass);
             }
         }
 
-        function highlightClass(classId, avatarClass) {
-            const classes = document.querySelectorAll('.class');
-            classes.forEach(cls => cls.classList.remove('highlighted'));
-            document.getElementById(classId).classList.add('highlighted');
-
-            const selectedQuality = document.querySelector('.avatar.highlighted')?.dataset.quality;
-            if (selectedQuality) {
-                displayInfo(selectedQuality, avatarClass);
-            }
-        }
+        window.onload = function() {
+            // Инициализация
+        };
     </script>
 </body>
 </html>
