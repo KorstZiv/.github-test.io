@@ -144,30 +144,32 @@
     rightPanelContent.innerHTML = ''; // Очищаем правую панель
 
     if (images && images.length > 0) {
-        // Определяем базовый размер изображений и максимальное количество в ряду
         const baseImageSize = 80;
         const maxImagesPerRow = 5;
         const panelWidth = rightPanelContent.offsetWidth;
         
         // Вычисляем оптимальное количество изображений в ряду
-        let imagesPerRow = Math.min(maxImagesPerRow, Math.floor(panelWidth / baseImageSize));
+        let imagesPerRow = Math.min(maxImagesPerRow, images.length, Math.floor(panelWidth / baseImageSize));
         
         // Вычисляем размер изображения с учетом отступов
         const imageSize = Math.floor((panelWidth - (imagesPerRow - 1) * 10) / imagesPerRow);
 
-        // Устанавливаем стиль для контейнера
-        rightPanelContent.style.display = 'grid';
-        rightPanelContent.style.gridTemplateColumns = `repeat(${imagesPerRow}, 1fr)`;
-        rightPanelContent.style.gap = '10px';
-        rightPanelContent.style.justifyContent = 'center';
+        // Создаем контейнер для изображений
+        const imageContainer = document.createElement('div');
+        imageContainer.style.display = 'flex';
+        imageContainer.style.flexWrap = 'wrap';
+        imageContainer.style.justifyContent = 'center';
+        imageContainer.style.alignItems = 'center';
+        imageContainer.style.gap = '10px';
 
         images.forEach((image) => {
             const panelItem = document.createElement('div');
             panelItem.className = 'right-panel-item';
+            panelItem.style.width = `${imageSize}px`;
 
             const imgElement = document.createElement('img');
             imgElement.src = image;
-            imgElement.style.width = `${imageSize}px`;
+            imgElement.style.width = '100%';
             imgElement.style.height = `${imageSize}px`;
             imgElement.style.objectFit = 'contain';
 
@@ -181,8 +183,10 @@
             titleElement.style.marginTop = '5px';
             panelItem.appendChild(titleElement);
 
-            rightPanelContent.appendChild(panelItem);
+            imageContainer.appendChild(panelItem);
         });
+
+        rightPanelContent.appendChild(imageContainer);
     } else {
         const noDataMessage = document.createElement('p');
         noDataMessage.textContent = `Нет связанных элементов для ${title}`;
