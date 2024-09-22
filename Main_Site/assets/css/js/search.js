@@ -13,50 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const query = this.value.toLowerCase();
             console.log('Введен текст:', query);
             
-            if (query.length < 2) {
-                searchResults.style.display = 'none';
-                return;
-            }
-
-            const results = Object.entries(searchData).flatMap(([category, items]) =>
-                items.filter(item => item.name.toLowerCase().includes(query))
-                    .map(item => ({ ...item, category: category.charAt(0).toUpperCase() + category.slice(1) }))
-            );
-
-            console.log('Результаты поиска:', results);
-            displayResults(results);
+            // Остальной код...
         });
-
-        function displayResults(results) {
-            if (results.length === 0) {
-                searchResults.style.display = 'none';
-                return;
-            }
-
-            searchResults.innerHTML = '';
-            let currentCategory = '';
-
-            results.forEach(result => {
-                if (result.category !== currentCategory) {
-                    currentCategory = result.category;
-                    const categoryElement = document.createElement('div');
-                    categoryElement.className = 'search-result-category';
-                    categoryElement.textContent = currentCategory;
-                    searchResults.appendChild(categoryElement);
-                }
-
-                const resultElement = document.createElement('div');
-                resultElement.className = 'search-result-item';
-                resultElement.textContent = result.name;
-                resultElement.tabIndex = 0;
-                resultElement.addEventListener('click', function() {
-                    window.location.href = result.url;
-                });
-                searchResults.appendChild(resultElement);
-            });
-
-            searchResults.style.display = 'block';
-        }
     } else {
         console.error('Элементы поиска не найдены');
     }
