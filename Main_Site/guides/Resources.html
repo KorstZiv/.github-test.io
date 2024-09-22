@@ -178,9 +178,10 @@
             const titleElement = document.createElement('p');
             const imageName = image.split('/').pop().replace('.png', '').replace(/_/g, ' ');
             titleElement.textContent = imageName;
-            titleElement.style.fontSize = '12px';
+            titleElement.style.fontSize = '15px';
             titleElement.style.textAlign = 'center';
-            titleElement.style.marginTop = '5px';
+            titleElement.style.marginTop = '8px';
+            titleElement.style.lineHeight = '1.2';
             panelItem.appendChild(titleElement);
 
             imageContainer.appendChild(panelItem);
