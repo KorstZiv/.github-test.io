@@ -30,7 +30,10 @@
 
     <header>
         <h1>База знаний 2040World клана <span class="highlight">Legion 2040</span></h1>
-        <input type="text" placeholder="Найди меня...">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Найди меня...">
+            <div id="search-results" class="search-results"></div>
+        </div>
     </header>
 
     <section class="welcome-section">
@@ -39,11 +42,6 @@
             <p>Выберите гайд из списка или используйте строку поиска, чтобы найти интересующую информацию.</p>
         </div>
     </section>
-
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Поиск ресурсов и аватаров...">
-        <div id="search-results" class="search-results"></div>
-    </div>
 
     <script src="assets/js/search.js"></script>
     <script>
