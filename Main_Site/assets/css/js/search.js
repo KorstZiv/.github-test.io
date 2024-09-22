@@ -83,25 +83,25 @@ const searchData = {
         { name: 'Plasma Condensate', url: 'Main_Site/guides/Resources.html#plasma-condensate', keywords: ['плазма', 'конденсат'] },
         { name: 'Organic Polymers', url: 'Main_Site/guides/Resources.html#organic-polymers', keywords: ['органические', 'полимеры'] },
         { name: 'Biological Extract', url: 'Main_Site/guides/Resources.html#biological-extract', keywords: ['биологический', 'экстракт'] },
-        { name: 'Genetically-Modified Enzymes', url: 'Main_Site/guides/Resources.html#genetically-modified-enzymes', keywords: ['генетически', 'модифицированные', 'ферменты'] },
+        { name: 'Genetically-Modified Enzymes', url: 'Main_Site/guides/Resources.html#genetically-modified-enzymes', keywords: ['генетически', 'модифицированные', 'ферменты', 'энзимы'] },
         { name: 'Exotic Spores', url: 'Main_Site/guides/Resources.html#exotic-spores', keywords: ['экзотические', 'споры'] },
-        { name: 'Heat Regulating Glands', url: 'Main_Site/guides/Resources.html#heat-regulating-glands', keywords: ['терморегулирующие', 'железы'] },
-        { name: 'Protein Fiber', url: 'Main_Site/guides/Resources.html#protein-fiber', keywords: ['протеиновое', 'волокно'] },
-        { name: 'Nanofibers', url: 'Main_Site/guides/Resources.html#nanofibers', keywords: ['нановолокна'] },
+        { name: 'Heat Regulating Glands', url: 'Main_Site/guides/Resources.html#heat-regulating-glands', keywords: ['гланды', 'железы'] },
+        { name: 'Protein Fiber', url: 'Main_Site/guides/Resources.html#protein-fiber', keywords: ['протеин', 'волокно', 'файбер'] },
+        { name: 'Nanofibers', url: 'Main_Site/guides/Resources.html#nanofibers', keywords: ['нановолокно', 'волокно'] },
         { name: 'Radioactive Isotopes', url: 'Main_Site/guides/Resources.html#radioactive-isotopes', keywords: ['радиоактивные', 'изотопы'] },
-        { name: 'Uncommon Shard', url: 'Main_Site/guides/Resources.html#uncommon-shard', keywords: ['необычный', 'осколок'] },
-        { name: 'Rare Shard', url: 'Main_Site/guides/Resources.html#rare-shard', keywords: ['редкий', 'осколок'] },
-        { name: 'Epic Shard', url: 'Main_Site/guides/Resources.html#epic-shard', keywords: ['эпический', 'осколок'] },
-        { name: 'Rare Lootbox', url: 'Main_Site/guides/Resources.html#rare-lootbox', keywords: ['редкая', 'лутбокс'] },
-        { name: 'Coal', url: 'Main_Site/guides/Resources.html#coal', keywords: ['уголь'] },
-        { name: 'Copper Ore', url: 'Main_Site/guides/Resources.html#copper-ore', keywords: ['медная', 'руда'] },
+        { name: 'Uncommon Shard', url: 'Main_Site/guides/Resources.html#uncommon-shard', keywords: ['зелёный', 'осколок', 'анкомон', 'шард'] },
+        { name: 'Rare Shard', url: 'Main_Site/guides/Resources.html#rare-shard', keywords: ['синий', 'осколок', 'шард', 'редкий'] },
+        { name: 'Epic Shard', url: 'Main_Site/guides/Resources.html#epic-shard', keywords: ['фиолетовый', 'осколок', 'шард', 'эпический'] },
+        { name: 'Rare Lootbox', url: 'Main_Site/guides/Resources.html#rare-lootbox', keywords: ['редкий', 'лутбокс', 'бокс', 'коробка', 'синий'] },
+        { name: 'Coal', url: 'Main_Site/guides/Resources.html#coal', keywords: ['уголь', 'черный'] },
+        { name: 'Copper Ore', url: 'Main_Site/guides/Resources.html#copper-ore', keywords: ['медная', 'руда', 'медь'] },
         { name: 'Acid', url: 'Main_Site/guides/Resources.html#acid', keywords: ['кислота'] },
-        { name: 'Rare Key', url: 'Main_Site/guides/Resources.html#rare-key', keywords: ['редкий', 'ключ'] },
-        { name: 'Epic Lootbox', url: 'Main_Site/guides/Resources.html#epic-lootbox', keywords: ['эпическая', 'лутбокс'] },
+        { name: 'Rare Key', url: 'Main_Site/guides/Resources.html#rare-key', keywords: ['редкий', 'ключ', 'синий'] },
+        { name: 'Epic Lootbox', url: 'Main_Site/guides/Resources.html#epic-lootbox', keywords: ['эпический', 'фиолетовый', 'бокс', 'коробка', 'лутбокс'] },
         { name: 'Iron Ore', url: 'Main_Site/guides/Resources.html#iron-ore', keywords: ['железная', 'руда'] },
         { name: 'Epic Key', url: 'Main_Site/guides/Resources.html#epic-key', keywords: ['эпический', 'ключ'] },
-        { name: 'Uncommon Lootbox', url: 'Main_Site/guides/Resources.html#uncommon-lootbox', keywords: ['необычная', 'лутбокс'] },
-        { name: 'Uncommon Key', url: 'Main_Site/guides/Resources.html#uncommon-key', keywords: ['необычный', 'ключ'] }
+        { name: 'Uncommon Lootbox', url: 'Main_Site/guides/Resources.html#uncommon-lootbox', keywords: ['зелёный', 'лутбокс', 'бокс', 'коробка', 'анкомон'] },
+        { name: 'Uncommon Key', url: 'Main_Site/guides/Resources.html#uncommon-key', keywords: ['зелёный', 'ключ', 'анкомон'] }
     ],
     avatars: [
         { name: 'Зелёный Аватар', url: 'Main_Site/guides/Avatars.html#green-avatar', keywords: ['зеленый', 'лицензионный'] },
@@ -110,26 +110,17 @@ const searchData = {
         { name: 'Серый Аватар', url: 'Main_Site/guides/Avatars.html#gray-avatar', keywords: ['серый'] }
     ],
     mobs: [
-        { name: 'Лицензионный Аватар', url: 'Main_Site/guides/Mobs.html#licensed-avatar', keywords: ['лицензионный', 'зеленый'], drops: [
-            { name: 'Robotic Module', url: 'Main_Site/guides/Resources.html#robotic-module' },
-            { name: 'Energy Crystal', url: 'Main_Site/guides/Resources.html#energy-crystal' }
-        ] },
-        { name: 'Серый Аватар', url: 'Main_Site/guides/Mobs.html#gray-avatar', keywords: ['серый'], drops: [
-            { name: 'Nanofibers', url: 'Main_Site/guides/Resources.html#nanofibers' },
-            { name: 'Plasma Condensate', url: 'Main_Site/guides/Resources.html#plasma-condensate' }
-        ] },
-        { name: 'Жаба', url: 'Main_Site/guides/Mobs.html#frog', keywords: ['лягушка'], drops: [
-            { name: 'Biological Extract', url: 'Main_Site/guides/Resources.html#biological-extract' },
-            { name: 'Exotic Spores', url: 'Main_Site/guides/Resources.html#exotic-spores' }
-        ] },
-        { name: 'Улитка', url: 'Main_Site/guides/Mobs.html#snail', keywords: ['моллюск'] },
-        { name: 'Горилла', url: 'Main_Site/guides/Mobs.html#gorilla', keywords: ['обезьяна'] },
-        { name: 'Баран', url: 'Main_Site/guides/Mobs.html#ram', keywords: ['овца'] },
-        { name: 'Мама-жаба', url: 'Main_Site/guides/Mobs.html#mother-frog', keywords: ['большая', 'лягушка'] },
-        { name: 'Дрон', url: 'Main_Site/guides/Mobs.html#drone', keywords: ['робот'] },
-        { name: 'Гвард', url: 'Main_Site/guides/Mobs.html#guard', keywords: ['охранник'] },
-        { name: 'Лазер-гриб', url: 'Main_Site/guides/Mobs.html#laser-mushroom', keywords: ['гриб', 'лазер'] },
-        { name: 'Турель', url: 'Main_Site/guides/Mobs.html#turret', keywords: ['пушка'] }
+        { name: 'Лицензионный Аватар', url: 'Main_Site/guides/Resources.html#licensed-avatar', keywords: ['лицензионный', 'зеленый', 'синий', 'фиолетовый'] },
+        { name: 'Серый Аватар', url: 'Main_Site/guides/Resources.html#gray-avatar', keywords: ['серый'] },
+        { name: 'Жаба', url: 'Main_Site/guides/Resources.html#frog', keywords: ['лягушка', 'жаба'] },
+        { name: 'Улитка', url: 'Main_Site/guides/Resources.html#snail', keywords: ['улитка'] },
+        { name: 'Горилла', url: 'Main_Site/guides/Resources.html#gorilla', keywords: ['обезьяна', 'макака'] },
+        { name: 'Баран', url: 'Main_Site/guides/Resources.html#ram', keywords: ['баран', 'овца', 'козёл'] },
+        { name: 'Мама-жаба', url: 'Main_Site/guides/Resources.html#mother-frog', keywords: ['большая', 'лягушка', 'мама', 'жаба'] },
+        { name: 'Дрон', url: 'Main_Site/guides/Resources.html#drone', keywords: ['робот'] },
+        { name: 'Гвард', url: 'Main_Site/guides/Resources.html#guard', keywords: ['робот', 'гвард'? 'охранник'] },
+        { name: 'Лазер-гриб', url: 'Main_Site/guides/Resources.html#laser-mushroom', keywords: ['гриб', 'лазер'] },
+        { name: 'Турель', url: 'Main_Site/guides/Resources.html#turret', keywords: ['робот'] }
     ],
     ores: [
         { name: 'Камень Синий', url: 'Main_Site/guides/Resources.html#blue-stone', keywords: ['синий', 'камень'] },
