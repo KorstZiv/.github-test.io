@@ -6,6 +6,20 @@
     <title>Аватары</title>
     <link rel="stylesheet" href="../assets/css/res_style.css">
     <link rel="stylesheet" href="../assets/css/avatars_style.css">
+    <style>
+        .highlighted {
+            border: 2px solid red;
+        }
+        .resource {
+            display: inline-block;
+            text-align: center;
+            margin: 10px;
+        }
+        .resource img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
     <a href="https://korstziv.github.io/.github-test.io/" class="home-button">
@@ -344,6 +358,83 @@
                 rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
             });
         });
+
+        const avatarData = {
+            uncommon: {
+                courier: [
+                    { name: "Biological Extract", quantity: 200, img: "../assets/images/Biological_Extract.png" },
+                    { name: "Organic Polymers", quantity: 200, img: "../assets/images/Organic_Polymers.png" },
+                    { name: "Coal", quantity: 200, img: "../assets/images/Coal.png" },
+                    { name: "Uncommon Shard", quantity: 20, img: "../assets/images/Uncommon_Shard.png" }
+                ],
+                explorer: [
+                    { name: "Acid", quantity: 200, img: "../assets/images/Acid.png" },
+                    { name: "Robotic Module", quantity: 200, img: "../assets/images/Robotic_Module.png" },
+                    { name: "Iron Ore", quantity: 200, img: "../assets/images/Iron_Ore.png" },
+                    { name: "Uncommon Shard", quantity: 20, img: "../assets/images/Uncommon_Shard.png" }
+                ],
+                survivor: [
+                    { name: "Coal", quantity: 200, img: "../assets/images/Coal.png" },
+                    { name: "Protein Fiber", quantity: 200, img: "../assets/images/Protein_Fiber.png" },
+                    { name: "Quartz", quantity: 200, img: "../assets/images/Quartz.png" },
+                    { name: "Uncommon Shard", quantity: 20, img: "../assets/images/Uncommon_Shard.png" }
+                ],
+                marauder: [
+                    { name: "Energy Crystal", quantity: 200, img: "../assets/images/Energy_Crystal.png" },
+                    { name: "Copper Ore", quantity: 200, img: "../assets/images/Copper_Ore.png" },
+                    { name: "Acid", quantity: 200, img: "../assets/images/Acid.png" },
+                    { name: "Uncommon Shard", quantity: 20, img: "../assets/images/Uncommon_Shard.png" }
+                ],
+                warrior: [
+                    { name: "Protein Fiber", quantity: 200, img: "../assets/images/Protein_Fiber.png" },
+                    { name: "Robotic Module", quantity: 200, img: "../assets/images/Robotic_Module.png" },
+                    { name: "Quartz", quantity: 200, img: "../assets/images/Quartz.png" },
+                    { name: "Uncommon Shard", quantity: 20, img: "../assets/images/Uncommon_Shard.png" }
+                ]
+            }
+        };
+
+        function displayInfo(quality, avatarClass) {
+            const infoPanel = document.getElementById('infoPanel');
+            infoPanel.innerHTML = ''; // Очистка панели
+
+            if (avatarData[quality] && avatarData[quality][avatarClass]) {
+                const resources = avatarData[quality][avatarClass];
+                resources.forEach(resource => {
+                    const resourceElement = document.createElement('div');
+                    resourceElement.className = 'resource';
+                    resourceElement.innerHTML = `
+                        <img src="${resource.img}" alt="${resource.name}" width="50" height="50">
+                        <div><strong>${resource.name}</strong>: ${resource.quantity} шт.</div>
+                    `;
+                    infoPanel.appendChild(resourceElement);
+                });
+            } else {
+                infoPanel.innerHTML = 'Информация не найдена.';
+            }
+        }
+
+        function highlightAvatar(avatarId, quality) {
+            const avatars = document.querySelectorAll('.avatar');
+            avatars.forEach(avatar => avatar.classList.remove('highlighted'));
+            document.getElementById(avatarId).classList.add('highlighted');
+
+            const selectedClass = document.querySelector('.class.highlighted')?.id;
+            if (selectedClass) {
+                displayInfo(quality, selectedClass);
+            }
+        }
+
+        function highlightClass(classId, avatarClass) {
+            const classes = document.querySelectorAll('.class');
+            classes.forEach(cls => cls.classList.remove('highlighted'));
+            document.getElementById(classId).classList.add('highlighted');
+
+            const selectedQuality = document.querySelector('.avatar.highlighted')?.dataset.quality;
+            if (selectedQuality) {
+                displayInfo(selectedQuality, avatarClass);
+            }
+        }
     </script>
 </body>
 </html>
