@@ -250,7 +250,7 @@ main {
 
 .welcome-text-container {
     position: absolute;
-    top: 140px; /* Оставляем как было */
+    top: 140px;
     left: 0;
     right: 0;
     background-color: rgba(128, 128, 128, 0.5);
@@ -258,6 +258,8 @@ main {
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     z-index: 1000;
+    width: 90%; /* Ограничиваем ширину контейнера */
+    margin: 0 auto; /* Центрируем контейнер */
 }
 
 .welcome-text-container.collapsed {
@@ -265,15 +267,14 @@ main {
 }
 
 .welcome-text-container.expanded {
-    max-height: 500px; /* Увеличиваем максимальную высоту */
+    max-height: 750px; /* Увеличиваем максимальную высоту на 50% */
 }
 
 .welcome-text {
-    padding: 15px;
-    padding-top: 30px;
-    font-size: 18px; /* Увеличиваем размер шрифта */
-    line-height: 1.5; /* Увеличиваем межстрочный интервал */
-    max-height: 470px;
+    padding: 30px; /* Увеличиваем отступы */
+    font-size: 20px;
+    line-height: 1.5;
+    max-height: 720px; /* Увеличиваем максимальную высоту текста */
     overflow-y: auto;
 }
 
