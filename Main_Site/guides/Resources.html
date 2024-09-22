@@ -159,13 +159,16 @@
         imageContainer.style.display = 'flex';
         imageContainer.style.flexWrap = 'wrap';
         imageContainer.style.justifyContent = 'center';
-        imageContainer.style.alignItems = 'center';
+        imageContainer.style.alignItems = 'flex-start';
         imageContainer.style.gap = '10px';
 
         images.forEach((image) => {
             const panelItem = document.createElement('div');
             panelItem.className = 'right-panel-item';
             panelItem.style.width = `${imageSize}px`;
+            panelItem.style.display = 'flex';
+            panelItem.style.flexDirection = 'column';
+            panelItem.style.alignItems = 'center';
 
             const imgElement = document.createElement('img');
             imgElement.src = image;
@@ -178,10 +181,12 @@
             const titleElement = document.createElement('p');
             const imageName = image.split('/').pop().replace('.png', '').replace(/_/g, ' ');
             titleElement.textContent = imageName;
-            titleElement.style.fontSize = '15px';
+            titleElement.style.fontSize = '14px';
             titleElement.style.textAlign = 'center';
-            titleElement.style.marginTop = '8px';
+            titleElement.style.marginTop = '5px';
             titleElement.style.lineHeight = '1.2';
+            titleElement.style.maxWidth = '100%';
+            titleElement.style.wordWrap = 'break-word';
             panelItem.appendChild(titleElement);
 
             imageContainer.appendChild(panelItem);
