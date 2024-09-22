@@ -140,65 +140,48 @@
 
         // Функция для отображения связанных объектов в правой панели
         function showInRightPanel(images, title) {
-    const rightPanelContent = document.querySelector('.right-panel-content');
-    rightPanelContent.innerHTML = ''; // Очищаем правую панель
+            const rightPanelContent = document.querySelector('.right-panel-content');
+            rightPanelContent.innerHTML = ''; // Очищаем правую панель
 
-    if (images && images.length > 0) {
-        const baseImageSize = 80;
-        const maxImagesPerRow = 5;
-        const panelWidth = rightPanelContent.offsetWidth;
-        
-        // Вычисляем оптимальное количество изображений в ряду
-        let imagesPerRow = Math.min(maxImagesPerRow, images.length, Math.floor(panelWidth / baseImageSize));
-        
-        // Вычисляем размер изображения с учетом отступов
-        const imageSize = Math.floor((panelWidth - (imagesPerRow - 1) * 10) / imagesPerRow);
+            if (images && images.length > 0) {
+                images.forEach((image) => {
+                    const panelItem = document.createElement('div');
+                    panelItem.className = 'right-panel-item';
 
-        // Создаем контейнер для изображений
-        const imageContainer = document.createElement('div');
-        imageContainer.style.display = 'flex';
-        imageContainer.style.flexWrap = 'wrap';
-        imageContainer.style.justifyContent = 'center';
-        imageContainer.style.alignItems = 'flex-start';
-        imageContainer.style.gap = '10px';
+                    const imgElement = document.createElement('img');
+                    imgElement.src = image;
 
-        images.forEach((image) => {
-            const panelItem = document.createElement('div');
-            panelItem.className = 'right-panel-item';
-            panelItem.style.width = `${imageSize}px`;
-            panelItem.style.display = 'flex';
-            panelItem.style.flexDirection = 'column';
-            panelItem.style.alignItems = 'center';
+                    panelItem.appendChild(imgElement);
 
-            const imgElement = document.createElement('img');
-            imgElement.src = image;
-            imgElement.style.width = '100%';
-            imgElement.style.height = `${imageSize}px`;
-            imgElement.style.objectFit = 'contain';
+                    const titleElement = document.createElement('p');
+                    const imageName = image.split('/').pop().replace('.png', '').replace(/_/g, ' ');
+                    titleElement.textContent = imageName;
+                    panelItem.appendChild(titleElement);
 
-            panelItem.appendChild(imgElement);
+                    rightPanelContent.appendChild(panelItem);
+                });
 
-            const titleElement = document.createElement('p');
-            const imageName = image.split('/').pop().replace('.png', '').replace(/_/g, ' ');
-            titleElement.textContent = imageName;
-            titleElement.style.fontSize = '14px';
-            titleElement.style.textAlign = 'center';
-            titleElement.style.marginTop = '5px';
-            titleElement.style.lineHeight = '1.2';
-            titleElement.style.maxWidth = '100%';
-            titleElement.style.wordWrap = 'break-word';
-            panelItem.appendChild(titleElement);
+                // Добавляем специальный класс для случая с двумя иконками
+                if (images.length === 2) {
+                    rightPanelContent.classList.add('two-icons');
+                } else {
+                    rightPanelContent.classList.remove('two-icons');
+                }
 
-            imageContainer.appendChild(panelItem);
-        });
-
-        rightPanelContent.appendChild(imageContainer);
-    } else {
-        const noDataMessage = document.createElement('p');
-        noDataMessage.textContent = `Нет связанных элементов для ${title}`;
-        rightPanelContent.appendChild(noDataMessage);
-    }
-}
+                // Изменяем размер иконок, если их меньше 4
+                const items = rightPanelContent.querySelectorAll('.right-panel-item');
+                if (items.length < 4) {
+                    items.forEach(item => {
+                        item.style.width = `calc(${100 / items.length}% - ${items.length === 2 ? '10' : '20'}px)`;
+                        item.style.maxWidth = '300px'; // Увеличиваем максимальную ширину
+                    });
+                }
+            } else {
+                const noDataMessage = document.createElement('p');
+                noDataMessage.textContent = `Нет связанных элементов для ${title}`;
+                rightPanelContent.appendChild(noDataMessage);
+            }
+        }
 
         // Функция для очистки правой панели
         function clearRightPanel() {
