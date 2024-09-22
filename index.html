@@ -44,7 +44,7 @@
         </div>
     </section>
 
-    <script src="..assets/js/search.js"></script>
+    <script src="Main_Site/assets/css/js/search.js"></script>
     <script>
         // Инициализация: переменные для панели и кнопки
         const sidebar = document.getElementById("sidebar");
@@ -76,6 +76,17 @@
             toggleBtn.style.left = "10px"; // Кнопка на краю экрана
             arrow.innerHTML = "&rarr;"; // Установить стрелку вправо
         };
+
+        // Добавляем обработчик события для клавиши Enter
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const query = this.value.toLowerCase();
+                console.log('Выполнен поиск по запросу:', query);
+                // Здесь можно добавить дополнительную логику поиска
+            }
+        });
     </script>
 </body>
 </html>
