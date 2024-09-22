@@ -11,7 +11,7 @@ header {
 
 main {
     position: relative; /* Добавлено */
-    padding-top: 0; /* Убираем верхний отступ */
+    padding-top: 80px; /* Изменено с 40px на 80px */
     display: flex;
     justify-content: space-between;
     height: calc(100vh - 100px); /* Учитываем высоту header */
@@ -66,8 +66,6 @@ main {
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Скрываем содержимое, выходящее за границы */
-    background-color: #000000; /* Добавляем черный фон */
-    height: 100%; /* Занимает всю высоту main */
 }
 
 .avatar-grid {
@@ -250,7 +248,7 @@ main {
 
 .welcome-text-container {
     position: absolute; /* Изменено с relative на absolute */
-    top: 40px; /* Уменьшаем отступ сверху */
+    top: 140px; /* Изменено со 100px на 140px */
     left: 0;
     right: 0;
     background-color: rgba(128, 128, 128, 0.5);
@@ -320,7 +318,6 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff; /* Добавляем белый цвет текста для контраста */
 }
 
 #greyAvatarVideo {
