@@ -90,7 +90,7 @@
             "Energy Crystal": { mobs: ["Дрон", "Турель"], ores: [] },
             "Organic Polymers": { mobs: ["Баран", "Лазер_гриб"], ores: [] },
             "Biological Extract": { mobs: ["Жаба", "Мама_жаба", "Лазер_гриб"], ores: [] },
-            "Genetically-Modified Enzymes": { mobs: ["Мама_жаба", "Турель"], ores: [] },
+            "Genetically-Modified Enzymes": { mobs: ["Мама_жаба", "Трель"], ores: [] },
             "Heat Regulating Glands": { mobs: ["Баран", "Жаба", "Мама_жаба"], ores: [] },
             "Photon Gel": { mobs: ["Турель"], ores: [] },
             "Plasma Condensate": { mobs: ["Дрон", "Турель"], ores: [] },
@@ -137,7 +137,7 @@
             },
             "Rare": {
                 "courier": ["Plasma_Condensate 300 шт", "Exotic_Spores 300 шт", "Magnetite 300 шт", "Rare_Shard 30 шт"],
-                "explorer": ["Genetically-Modified Enzymes 300 шт", "Rare_Earth_Elements 300 шт", "Lithium_Ore 300 шт", "Rare_Shard 30 шт"],
+                "explorer": ["Genetically_Modified_Enzymes 300 шт", "Rare_Earth_Elements 300 шт", "Lithium_Ore 300 шт", "Rare_Shard 30 шт"],
                 "marauder": ["Heat_Regulating_Glands 300 шт", "Radioactive_Isotopes 300 шт", "Photon_Gel 300 шт", "Rare_Shard 30 шт"],
                 "survivor": ["Lithium_Ore 300 шт", "Nanofibers 300 шт", "Magnetite 300 шт", "Rare_Shard 30 шт"],
                 "warrior": ["Rare_Earth_Elements 300 шт", "Exotic_Spores 300 шт", "Nanofibers 300 шт", "Rare_Shard 30 шт"]
@@ -146,8 +146,8 @@
                 "courier": ["Photon_Gel 570 шт", "Nanofibers 570 шт", "Lithium_Ore 570 шт", "Epic_Shard 40 шт"],
                 "explorer": ["Exotic_Spores 570 шт", "Radioactive_Isotopes 570 шт", "Photon_Gel 570 шт", "Epic_Shard 40 шт"],
                 "marauder": ["Rare_Earth_Elements 570 шт", "Heat_Regulating_Glands 570 шт", "Plasma_Condensate 570 шт", "Epic_Shard 40 шт"],
-                "survivor": ["Heat_Regulating_Glands 570 шт", "Radioactive_Isotopes 570 шт", "Genetically-Modified Enzymes 570 шт", "Epic_Shard 40 шт"],
-                "warrior": ["Plasma_Condensate 570 шт", "Genetically-Modified Enzymes 570 шт", "Magnetite 570 шт", "Epic_Shard 40 шт"]
+                "survivor": ["Heat_Regulating_Glands 570 шт", "Radioactive_Isotopes 570 шт", "Genetically_Modified_Enzymes 570 шт", "Epic_Shard 40 шт"],
+                "warrior": ["Plasma_Condensate 570 шт", "Genetically_Modified_Enzymes 570 шт", "Magnetite 570 шт", "Epic_Shard 40 шт"]
             }
         };
 
@@ -265,7 +265,7 @@
         }
 
         function showMobsAndOres(resource) {
-            const resourceId = resource.replace(/\s+/g, '-');
+            const resourceId = resource.replace(/[\s-]+/g, '-');
             const resourceElement = document.getElementById(resourceId);
             const containerId = `${resourceId}-mob-ore-container`;
             let containerElement = document.getElementById(containerId);
@@ -284,7 +284,7 @@
         }
 
         function hideMobsAndOres(resource) {
-            const containerId = `${resource.replace(/\s+/g, '-')}-mob-ore-container`;
+            const containerId = `${resource.replace(/[\s-]+/g, '-')}-mob-ore-container`;
             const containerElement = document.getElementById(containerId);
             if (containerElement) {
                 containerElement.style.display = 'none';
@@ -296,7 +296,7 @@
             let html = '';
             for (let i = 0; i < items.length; i += 8) {
                 const rowItems = items.slice(i, i + 8);
-                const rowHTML = rowItems.map(item => `<img src="../assets/images/${item.replace(/\s+/g, '_')}.png" alt="${item}" class="mob-ore-item">`).join('');
+                const rowHTML = rowItems.map(item => `<img src="../assets/images/${item.replace(/[\s-]+/g, '_')}.png" alt="${item}" class="mob-ore-item">`).join('');
                 html += `<div class="mob-ore-row">${rowHTML}</div>`;
             }
             return html;
@@ -343,7 +343,7 @@
                             <li class="resource-card" onmouseover="showMobsAndOres('${displayName}')" onmouseout="hideMobsAndOres('${displayName}')">
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
                                 <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
-                                <div id="${displayName.replace(/\s+/g, '-')}-mob-ore-container" class="mob-ore-container"></div>
+                                <div id="${displayName.replace(/[\s-]+/g, '-')}-mob-ore-container" class="mob-ore-container"></div>
                             </li>
                         `;
                     }).join('')}
