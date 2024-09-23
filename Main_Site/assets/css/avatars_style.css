@@ -13,6 +13,7 @@ main {
     flex-grow: 1;
     display: flex;
     overflow: hidden;
+    margin-top: 50px; /* Опускаем все панели на 50px */
 }
 
 .left-panel, .center-panel, .right-panel {
@@ -24,6 +25,8 @@ main {
 .right-panel {
     flex-grow: 1;
     background-color: #000000;
+    width: auto; /* Убираем фиксированную ширину, если она была */
+    max-width: none; /* Убираем ограничение максимальной ширины */
 }
 
 .right-panel-content {
@@ -33,12 +36,8 @@ main {
     justify-content: flex-start;
     align-items: center;
     overflow-y: auto;
-}
-
-#greyAvatarVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    width: 100%; /* Занимает всю ширину родителя */
+    height: 100%; /* Занимает всю высоту родителя */
 }
 
 /* Убедимся, что контент не выходит за пределы панели */
@@ -697,4 +696,43 @@ main {
         width: 80px;
         height: 80px;
     }
+}
+
+.mob-ore-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.mob-ore-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.mob-ore-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    text-align: center;
+}
+
+.mob-ore-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.mob-ore-item span {
+    margin-top: 5px;
+    font-size: 12px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
