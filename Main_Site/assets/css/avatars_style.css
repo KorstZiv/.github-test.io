@@ -154,7 +154,9 @@ main {
 
 .mob-ore-list {
     display: none;
-    margin-left: 20px;
+    margin-top: 10px; /* Отступ сверху */
+    justify-content: center; /* Центрируем содержимое */
+    gap: 10px; /* Отступ между элементами */
 }
 
 .mob-ore-item {
