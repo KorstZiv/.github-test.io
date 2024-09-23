@@ -67,14 +67,15 @@
 
         .mob-ore-list {
             display: none;
-            margin-top: 10px; /* Отступ сверху */
+            flex-wrap: wrap; /* Добавляем перенос строк */
             justify-content: center; /* Центрируем содержимое */
             gap: 10px; /* Отступ между элементами */
         }
 
         .mob-ore-item {
-            display: inline-block;
-            margin-right: 10px;
+            width: 80px; /* Размер иконок мобов и руды */
+            height: 80px; /* Размер иконок мобов и руды */
+            margin: 5px; /* Отступ между иконками */
         }
 
         .welcome-text {
@@ -178,7 +179,7 @@
             "Genetically-Modified Enzymes": { mobs: ["Мама_жаба", "Турель"], ores: [] },
             "Heat Regulating Glands": { mobs: ["Баран", "Жаба", "Мама_жаба"], ores: [] },
             "Photon Gel": { mobs: ["Турель"], ores: [] },
-            "Plasma Condensate": { mobs: ["Дрон", "Турель"], ores: [] },
+            "Plasma Condensate": { mobs: ["Дрон", "Турль"], ores: [] },
             "Exotic Spores": { mobs: ["Лазер_гриб", "Горилла"], ores: [] },
             "Nanofibers": { mobs: ["Баран", "Горилла"], ores: [] },
             "Uncommon Shard": { mobs: ["Лицензионный_Аватар", "Баран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
@@ -353,8 +354,8 @@
             const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
             if (resourceData[resource]) {
                 listElement.innerHTML = `
-                    ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
-                    ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
+                    ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item">`).join('')}
+                    ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item">`).join('')}
                 `;
                 listElement.style.display = 'flex';
             }
