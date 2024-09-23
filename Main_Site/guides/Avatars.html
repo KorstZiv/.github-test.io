@@ -296,7 +296,12 @@
             let html = '';
             for (let i = 0; i < items.length; i += 8) {
                 const rowItems = items.slice(i, i + 8);
-                const rowHTML = rowItems.map(item => `<img src="../assets/images/${item.replace(/[\s]+/g, '-')}.png" alt="${item}" class="mob-ore-item">`).join('');
+                const rowHTML = rowItems.map(item => `
+                    <div class="mob-ore-item">
+                        <img src="../assets/images/${item.replace(/[\s]+/g, '-')}.png" alt="${item}">
+                        <span class="mob-ore-name">${item}</span>
+                    </div>
+                `).join('');
                 html += `<div class="mob-ore-row">${rowHTML}</div>`;
             }
             return html;
