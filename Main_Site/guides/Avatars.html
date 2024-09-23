@@ -19,12 +19,38 @@
             flex-direction: column;
             text-align: center;
             width: 120px; /* Увеличиваем ширину для большего изображения */
+            border: 1px solid #ccc; /* Добавляем рамку */
+            padding: 10px; /* Добавляем отступ */
+            border-radius: 8px; /* Скругляем углы */
+            transition: transform 0.2s; /* Добавляем анимацию */
+        }
+
+        .resource-list li:hover {
+            transform: scale(1.05); /* Увеличиваем элемент при наведении */
         }
 
         .resource-image {
             width: 80px; /* Увеличиваем размер изображения */
             height: 80px; /* Увеличиваем размер изображения */
             margin-bottom: 10px; /* Добавляем отступ снизу */
+        }
+
+        .resource-name {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .class-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .class-icon {
+            width: 40px;
+            height: 40px;
         }
     </style>
 </head>
@@ -291,19 +317,33 @@
             const rightPanel = document.querySelector('.right-panel-content');
             const resources = classResources[selectedAvatar] ? classResources[selectedAvatar][className] : [];
 
+            // Определяем цвет текста в зависимости от качества аватара
+            let textColor;
+            if (selectedAvatar === "Uncommon") {
+                textColor = "green";
+            } else if (selectedAvatar === "Rare") {
+                textColor = "blue";
+            } else if (selectedAvatar === "Epic") {
+                textColor = "purple";
+            }
+
             rightPanel.innerHTML = `
-                <h3>${className}</h3>
+                <div class="class-header" style="color: ${textColor};">
+                    <img src="../assets/images/Avatars/${className}.png" alt="${className}" class="class-icon">
+                    <h3 style="font-size: 24px; text-align: center;">${className}</h3>
+                </div>
                 <h4>Ресурсы:</h4>
                 <ul class="resource-list">
                     ${resources.map(resource => {
                         const resourceName = resource.split(' ')[0].replace(' ', '_');
                         const resourceImage = resourceImages[resourceName] || '';
                         const displayName = resource.split(' ')[0].replace(/_/g, ' '); // Убираем нижнее подчёркивание в отображаемом тексте
+                        const quantity = resource.split(' ')[1]; // Количество ресурса
                         console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
                         return `
-                            <li>
+                            <li class="resource-card">
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
-                                ${displayName} ${resource.split(' ')[1]}
+                                <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
                             </li>
                         `;
                     }).join('')}
