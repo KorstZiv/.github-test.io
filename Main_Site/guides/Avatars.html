@@ -153,7 +153,7 @@
 
         // Добавьте этот массив в начало вашего JavaScript кода
         const availableImages = [
-            "Баран", "Горилла", "Гвард", "Дрон", "Жаба", "��амень_Жёлтый", "Камень_Зелёный", 
+            "Баран", "Горилла", "Гвард", "Дрон", "Жаба", "��мень_Жёлтый", "Камень_Зелёный", 
             "Камень_Синий", "Камень_Тёмный", "Камень_Фиолетовый", "Лазер_гриб", "Лицензионный_Аватар", 
             "Мама_жаба", "Турель", "Улитка"
         ];
@@ -170,8 +170,8 @@
             let html = `<div class="mob-ore-grid">`;
             
             allItems.forEach((item) => {
-                const imageName = availableImages.find(img => img.toLowerCase() === item.toLowerCase()) || item;
-                const displayName = imageName.replace(/_/g, ' ');
+                const imageName = item.toLowerCase().replace(/ /g, '_');
+                const displayName = item.replace(/_/g, ' ');
                 html += `
                     <div class="mob-ore-item">
                         <img src="../assets/images/${imageName}.png" alt="${displayName}" onerror="this.src='../assets/images/placeholder.png';">
