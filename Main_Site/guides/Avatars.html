@@ -165,19 +165,30 @@
             
             if (!data) return;
             
-            let html = '<div class="mob-ore-row">';
             const allItems = [...data.mobs, ...data.ores];
+            const itemCount = allItems.length;
             
-            allItems.forEach((item, index) => {
-                if (index > 0 && index % 9 === 0) {
-                    html += '</div><div class="mob-ore-row">';
-                }
+            let gridSize, itemSize;
+            if (itemCount <= 4) {
+                gridSize = 2;
+                itemSize = 120;
+            } else if (itemCount <= 9) {
+                gridSize = 3;
+                itemSize = 100;
+            } else {
+                gridSize = Math.ceil(Math.sqrt(itemCount));
+                itemSize = 80;
+            }
+            
+            let html = `<div class="mob-ore-grid" style="grid-template-columns: repeat(${gridSize}, ${itemSize}px); grid-template-rows: repeat(${gridSize}, ${itemSize}px);">`;
+            
+            allItems.forEach((item) => {
                 const imageName = availableImages.find(img => img.toLowerCase() === item.toLowerCase()) || item;
                 const displayName = imageName.replace(/_/g, ' ');
                 html += `
-                    <div class="mob-ore-item">
+                    <div class="mob-ore-item" style="width: ${itemSize}px; height: ${itemSize}px;">
                         <img src="../assets/images/${imageName}.png" alt="${displayName}" onerror="this.src='../assets/images/placeholder.png';">
-                        <span>${displayName}</span>
+                        <span class="mob-ore-name">${displayName}</span>
                     </div>
                 `;
             });
