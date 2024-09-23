@@ -11,7 +11,7 @@ header {
 
 main {
     position: relative;
-    padding-top: 80px;
+    padding-top: 50px; /* Изменено с 65px на 50px */
     display: flex;
     justify-content: space-between;
     height: calc(100vh - 100px);
@@ -32,7 +32,7 @@ main {
     align-items: center;
     overflow-y: auto;
     overflow-x: hidden;
-    padding-top: 65px;
+    padding-top: 35px; /* Изменено с 50px на 35px */
 }
 
 .center-panel {
