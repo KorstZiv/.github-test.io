@@ -375,6 +375,8 @@ main {
     width: 80px;
     height: 80px;
     object-fit: contain;
+    display: block;
+    margin: 0 auto; /* Центрирование изображения */
 }
 
 .mob-ore-name {
@@ -388,6 +390,7 @@ main {
     line-clamp: 2;
     -webkit-box-orient: vertical;
     margin-top: 5px;
+    text-align: center; /* Центрирование текста */
 }
 
 #greyAvatarVideo {
@@ -407,6 +410,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center; /* Центрирование ресурсов */
 }
 
 .resource-list li {
@@ -430,6 +434,9 @@ main {
     width: 80px;
     height: 80px;
     margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; /* Центрирование изображения ресурса */
 }
 
 .resource-name {
