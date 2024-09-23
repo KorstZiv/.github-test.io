@@ -18,22 +18,22 @@
             align-items: center;
             flex-direction: column;
             text-align: center;
-            width: 120px; /* Увеличиваем ширину для большего изображения */
-            height: 180px; /* Фиксируем высоту */
-            border: 1px solid #ccc; /* Добавляем рамку */
-            padding: 10px; /* Добавляем отступ */
-            border-radius: 8px; /* Скругляем углы */
-            transition: transform 0.2s; /* Добавляем анимацию */
+            width: 120px;
+            height: 180px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            transition: transform 0.2s;
         }
 
         .resource-list li:hover {
-            transform: scale(1.05); /* Увеличиваем элемент при наведении */
+            transform: scale(1.05);
         }
 
         .resource-image {
-            width: 80px; /* Увеличиваем размер изображения */
-            height: 80px; /* Увеличиваем размер изображения */
-            margin-bottom: 10px; /* Добавляем отступ снизу */
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
         }
 
         .resource-name {
@@ -47,51 +47,51 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 20px;
-            flex-direction: row; /* Перемещаем иконку и текст в одну строку */
+            flex-direction: row;
         }
 
         .class-icon {
             width: 40px;
             height: 40px;
-            margin-right: 10px; /* Добавляем отступ справа от иконки */
+            margin-right: 10px;
         }
 
         .right-panel-content {
             display: flex;
-            flex-direction: column; /* Перемещаем иконку класса и название наверх */
+            flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            color: #ffffff; /* Добавляем белый цвет текста для контраста */
+            color: #ffffff;
             width: 100%;
             height: 100%;
         }
 
         .mob-ore-container {
             display: flex;
-            flex-wrap: wrap; /* Добавляем перенос строк */
-            justify-content: center; /* Центрируем содержимое */
-            gap: 10px; /* Отступ между элементами */
-            margin-top: 10px; /* Отступ сверху */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .mob-ore-item {
-            width: 80px; /* Размер иконок мобов и руды */
-            height: 80px; /* Размер иконок мобов и руды */
-            margin: 5px; /* Отступ между иконками */
+            width: 80px;
+            height: 80px;
+            margin: 5px;
         }
 
         .welcome-text {
-            padding: 30px; /* Увеличиваем отступы */
-            font-size: 15px; /* Устанавливаем размер текста */
+            padding: 30px;
+            font-size: 15px;
             line-height: 1.5;
             max-height: 720px;
             overflow-y: auto;
-            text-align: left; /* Выравнивание по левому краю */
+            text-align: left;
         }
 
         .welcome-text p {
             margin-bottom: 18px;
-            text-align: left; /* Выравнивание по левому краю для каждого параграфа */
+            text-align: left;
         }
     </style>
 </head>
@@ -166,7 +166,7 @@
         const resourceData = {
             "Quartz": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Coal": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Iron Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Фиолетовый"] },
+            "Iron Ore": { mobs: [], ores: ["Камеь_Тёмный", "Камень_Жёлтый", "Камень_Фиолетовый"] },
             "Copper Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Radioactive Isotopes": { mobs: [], ores: ["Камень_Зелёный"] },
             "Rare Earth Elements": { mobs: [], ores: ["Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
@@ -184,7 +184,7 @@
             "Plasma Condensate": { mobs: ["Дрон", "Турель"], ores: [] },
             "Exotic Spores": { mobs: ["Лазер_гриб", "Горилла"], ores: [] },
             "Nanofibers": { mobs: ["Баран", "Горилла"], ores: [] },
-            "Uncommon Shard": { mobs: ["Лицензионный_Аватар", "Баран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Uncommon Shard": { mobs: ["Лицензионный_Аватар", "��аран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Rare Shard": { mobs: ["Лицензионный_Аватар", "Мама_жаба", "Турель", "Гвард", "Горилла", "Улитка"], ores: [] },
             "Epic Shard": { mobs: ["Лицензионный_Аватар", "Гвард", "Горилла", "Улитка"], ores: [] }
         };
@@ -365,12 +365,7 @@
             }
 
             if (resourceData[resource]) {
-                containerElement.innerHTML = `
-                    <div class="mob-ore-row">
-                        ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item">`).join('')}
-                        ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item">`).join('')}
-                    </div>
-                `;
+                containerElement.innerHTML = generateMobOreHTML(resourceData[resource]);
                 containerElement.style.display = 'flex';
                 containerElement.style.flexWrap = 'wrap';
                 containerElement.style.justifyContent = 'center';
@@ -463,6 +458,12 @@
             if (tooltip) {
                 tooltip.remove();
             }
+        }
+
+        function generateMobOreHTML(data) {
+            const mobsHTML = data.mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item">`).join('');
+            const oresHTML = data.ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item">`).join('');
+            return `<div class="mob-ore-row">${mobsHTML}${oresHTML}</div>`;
         }
 
         // Добавляем обработчик для скрытия тултипа при движении мыши вне иконок
