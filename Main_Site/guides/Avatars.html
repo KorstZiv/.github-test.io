@@ -64,6 +64,18 @@
             width: 100%;
             height: 100%;
         }
+
+        .mob-ore-list {
+            display: none;
+            margin-top: 10px; /* Отступ сверху */
+            justify-content: center; /* Центрируем содержимое */
+            gap: 10px; /* Отступ между элементами */
+        }
+
+        .mob-ore-item {
+            display: inline-block;
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -305,7 +317,7 @@
                     ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
                     ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
                 `;
-                listElement.style.display = 'block';
+                listElement.style.display = 'flex';
             }
         }
 
@@ -352,9 +364,10 @@
                         const quantity = resource.split(' ')[1]; // Количество ресурса
                         console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
                         return `
-                            <li class="resource-card">
+                            <li class="resource-card" onmouseover="showMobsAndOres('${displayName}')" onmouseout="hideMobsAndOres('${displayName}')">
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
                                 <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
+                                <div id="${displayName.replace(/\s+/g, '-')}-list" class="mob-ore-list"></div>
                             </li>
                         `;
                     }).join('')}
