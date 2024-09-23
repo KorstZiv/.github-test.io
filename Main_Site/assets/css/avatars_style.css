@@ -415,13 +415,14 @@ main {
     margin-top: 40px;
     padding: 10px;
     box-sizing: border-box;
+    background-color: transparent;
 }
 
 .mob-ore-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-    gap: 10px;
-    justify-content: center; /* Центрируем элементы */
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    justify-content: center;
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -430,29 +431,30 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90px;
-    height: 110px;
+    width: 120px;
+    height: 180px;
     text-align: center;
-    margin: 5px; /* Добавляем отступы для выравнивания */
+    margin: 5px;
+    background-color: transparent;
 }
 
 .mob-ore-item img {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
     margin-bottom: 5px;
 }
 
 .mob-ore-name {
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 5px;
     word-wrap: break-word;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: block; /* Изменено с -webkit-box */
-    max-height: 2.4em; /* Максимальная высота для двух строк текста */
-    line-height: 1.2em;
+    display: block;
+    max-height: 2.8em;
+    line-height: 1.4em;
 }
 
 .right-panel-content {
