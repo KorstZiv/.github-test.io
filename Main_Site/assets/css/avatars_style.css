@@ -412,7 +412,7 @@ main {
 .mob-ore-container {
     display: none;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 40px;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -421,8 +421,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    max-width: 800px; /* Ограничиваем ширину, чтобы было не более 8 иконок в ряду */
+    gap: 20px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -430,26 +430,26 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80px;
-    height: 100px; /* Фиксированная высота для всех элементов */
+    width: 100px;
+    height: 120px;
     text-align: center;
 }
 
 .mob-ore-item img {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
 }
 
 .mob-ore-name {
-    font-size: 12px;
-    margin-top: 5px;
+    font-size: 14px;
+    margin-top: 8px;
     word-wrap: break-word;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 2.4em; /* Высота для двух строк текста */
-    line-height: 1.2em; /* Высота строки */
+    height: 2.8em;
+    line-height: 1.4em;
 }
 
 .right-panel-content {
@@ -461,6 +461,7 @@ main {
     width: 100%;
     height: 100%;
     overflow-y: auto;
+    padding-bottom: 40px;
 }
 
 .mob-ore-row {
