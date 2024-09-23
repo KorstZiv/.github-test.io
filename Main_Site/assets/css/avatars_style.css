@@ -412,7 +412,7 @@ main {
 .mob-ore-container {
     display: none;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 20px;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -421,7 +421,7 @@ main {
     display: grid;
     grid-template-columns: repeat(9, 1fr); /* Ограничиваем количество иконок в ряду до 9 */
     gap: 10px;
-    justify-content: center; /* Центрируем элементы */
+    justify-content: center; /* Центри��уем элементы */
     max-width: 1000px;
     margin: 0 auto;
 }
