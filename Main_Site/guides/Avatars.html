@@ -81,7 +81,7 @@
             "Iron Ore": { mobs: [], ores: ["Камеь_Тёмный", "Камень_Жёлтый", "Камень_Фиолетовый"] },
             "Copper Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Radioactive Isotopes": { mobs: [], ores: ["Камень_Зелёный"] },
-            "Rare Earth Elements": { mobs: [], ores: ["Камень_Зелё��ый", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Rare Earth Elements": { mobs: [], ores: ["Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Magnetite": { mobs: [], ores: ["Камень_Зелёный", "Камень_Фиолетовый"] },
             "Lithium Ore": { mobs: [], ores: ["Камень_Синий"] },
             "Robotic Module": { mobs: ["Дрон", "Турель"], ores: [] },
@@ -265,8 +265,10 @@
         }
 
         function showMobsAndOres(resource) {
-            const resourceId = resource.replace(/[\s]+/g, '-');
-            const resourceElement = document.getElementById(resourceId);
+            const resourceId = resource.replace(/[\s-]+/g, '-');
+            const resourceElement = document.querySelector(`.resource-card:has(.resource-name:contains('${resource}'))`);
+            if (!resourceElement) return;
+            
             const containerId = `${resourceId}-mob-ore-container`;
             let containerElement = document.getElementById(containerId);
 
@@ -274,7 +276,7 @@
                 containerElement = document.createElement('div');
                 containerElement.id = containerId;
                 containerElement.className = 'mob-ore-container';
-                resourceElement.parentNode.insertBefore(containerElement, resourceElement.nextSibling);
+                resourceElement.appendChild(containerElement);
             }
 
             if (resourceData[resource]) {
@@ -284,7 +286,7 @@
         }
 
         function hideMobsAndOres(resource) {
-            const containerId = `${resource.replace(/[\s]+/g, '-')}-mob-ore-container`;
+            const containerId = `${resource.replace(/[\s-]+/g, '-')}-mob-ore-container`;
             const containerElement = document.getElementById(containerId);
             if (containerElement) {
                 containerElement.style.display = 'none';
@@ -339,15 +341,13 @@
                 </div>
                 <ul class="resource-list">
                     ${resources.map(resource => {
-                        const resourceName = resource.split(' ')[0].replace(' ', '_');
-                        const resourceImage = resourceImages[resourceName] || '';
-                        const displayName = resource.split(' ')[0].replace(/_/g, ' '); // Убираем нижнее подчёркивание в отображаемом тексте
-                        const quantity = resource.split(' ')[1]; // Количество ресурса
-                        console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
+                        const [resourceName, quantity] = resource.split(' ');
+                        const resourceImage = resourceImages[resourceName.replace(/-/g, '_')] || '';
+                        const displayName = resourceName.replace(/_/g, ' ');
                         return `
                             <li class="resource-card" onmouseover="showMobsAndOres('${displayName}')" onmouseout="hideMobsAndOres('${displayName}')">
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
-                                <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
+                                <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity} шт</span>
                                 <div id="${displayName.replace(/[\s-]+/g, '-')}-mob-ore-container" class="mob-ore-container"></div>
                             </li>
                         `;
