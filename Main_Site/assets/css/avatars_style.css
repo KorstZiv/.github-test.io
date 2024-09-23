@@ -599,16 +599,26 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 120px;
-    height: 180px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 8px;
-    transition: transform 0.2s;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .resource-card:hover, .avatar-card:hover {
     transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+    z-index: 1;
+}
+
+.resource-name, .avatar-name {
+    margin-top: 5px;
+    font-size: 12px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .resource-quantity, .avatar-quantity {
@@ -651,4 +661,15 @@ main {
     width: 100px;
     height: 100px;
     object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .resources-container, .avatars-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    
+    .resource-image, .avatar-image {
+        width: 80px;
+        height: 80px;
+    }
 }
