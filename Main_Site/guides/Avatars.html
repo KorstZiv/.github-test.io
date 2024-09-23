@@ -78,7 +78,7 @@
         const resourceData = {
             "Quartz": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Coal": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Iron Ore": { mobs: [], ores: ["Камеь_Тёмный", "Камень_Жёлтый", "Камень_Фиолетовый"] },
+            "Iron Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Фиолетовый"] },
             "Copper Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Radioactive Isotopes": { mobs: [], ores: ["Камень_Зелёный"] },
             "Rare Earth Elements": { mobs: [], ores: ["Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
@@ -269,9 +269,10 @@
             let html = '<div class="mob-ore-grid">';
             items.forEach(item => {
                 const itemName = item.replace(/_/g, ' ');
+                const imageName = item.replace(/_/g, '-');
                 html += `
                     <div class="mob-ore-item">
-                        <img src="../assets/images/${item.replace(/[\s]+/g, '-')}.png" alt="${itemName}">
+                        <img src="../assets/images/${imageName}.png" alt="${itemName}">
                         <span class="mob-ore-name">${itemName}</span>
                     </div>
                 `;
