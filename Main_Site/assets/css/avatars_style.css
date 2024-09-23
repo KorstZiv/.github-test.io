@@ -354,11 +354,12 @@ main {
 
 .mob-ore-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 20px 20px; /* Вертикальный и горизонтальный отступ 20px */
-    justify-content: start;
+    grid-template-columns: repeat(8, minmax(80px, 1fr));
+    gap: 20px;
+    justify-content: center;
     align-items: start;
     width: 100%;
+    overflow: visible; /* Позволяет содержимому выходить за границы контейнера */
 }
 
 .mob-ore-item {
@@ -367,13 +368,15 @@ main {
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    width: 80px; /* Фиксированная ширина */
+    width: 100%;
+    min-width: 80px;
 }
 
 .mob-ore-item img {
     width: 80px;
     height: 80px;
     object-fit: contain;
+    display: block;
 }
 
 .mob-ore-name {
