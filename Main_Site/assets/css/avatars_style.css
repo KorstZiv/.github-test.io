@@ -13,13 +13,14 @@ main {
     flex-grow: 1;
     display: flex;
     overflow: hidden;
-    margin-top: 50px; /* Опускаем все панели на 50px */
+    padding-top: 50px; /* Опускаем все панели на 50px */
 }
 
 .left-panel, .center-panel, .right-panel {
-    height: 100%;
+    height: calc(100% - 50px); /* Уменьшаем высоту панелей на 50px */
     display: flex;
     flex-direction: column;
+    margin-top: 50px; /* Добавляем отступ сверху */
 }
 
 .right-panel {
@@ -700,38 +701,38 @@ main {
 
 .mob-ore-container {
     display: none;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    width: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1000;
 }
 
-.mob-ore-row {
+.mob-ore-grid {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
-    margin-bottom: 10px;
 }
 
 .mob-ore-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100px;
-    text-align: center;
+    width: 80px;
 }
 
 .mob-ore-item img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
 }
 
-.mob-ore-item span {
+.mob-ore-name {
+    font-size: 10px;
+    text-align: center;
     margin-top: 5px;
-    font-size: 12px;
-    max-width: 100px;
+    max-width: 80px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
