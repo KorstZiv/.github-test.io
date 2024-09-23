@@ -334,6 +334,60 @@ main {
     width: 100%;
     height: 100%;
     overflow-y: auto;
+    padding-top: 40px; /* Добавлен отступ сверху */
+    padding-bottom: 60px;
+}
+
+.class-icon {
+    width: 50px; /* Увеличен размер иконки */
+    height: 50px;
+    margin-right: 10px;
+}
+
+.mob-ore-container {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.mob-ore-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.mob-ore-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.mob-ore-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.mob-ore-name {
+    font-size: 12px;
+    word-wrap: break-word;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-top: 5px;
 }
 
 #greyAvatarVideo {
@@ -407,65 +461,6 @@ main {
     width: 100%;
     height: 100%;
     overflow-y: auto;
-}
-
-.mob-ore-container {
-    display: none;
-    width: 100%;
-    margin-top: 40px;
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: transparent;
-}
-
-.mob-ore-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 20px;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.mob-ore-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 120px;
-    height: 180px;
-    text-align: center;
-    margin: 5px;
-    background-color: transparent;
-}
-
-.mob-ore-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 5px;
-}
-
-.mob-ore-name {
-    font-size: 14px;
-    margin-top: 5px;
-    word-wrap: break-word;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    max-height: 2.8em;
-    line-height: 1.4em;
-}
-
-.right-panel-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    color: #ffffff;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
     padding-bottom: 60px;
 }
 
@@ -493,54 +488,6 @@ main {
 .welcome-text p {
     margin-bottom: 18px;
     text-align: left;
-}
-
-.mob-ore-container {
-    display: none;
-    width: 100%;
-    margin-top: 20px;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.mob-ore-grid {
-    display: grid;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-.mob-ore-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-}
-
-.mob-ore-item img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.mob-ore-name {
-    font-size: 12px;
-    word-wrap: break-word;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    margin-top: 5px;
 }
 
 .resource-card {
