@@ -68,10 +68,15 @@
 
         .mob-ore-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
             gap: 10px;
             margin-top: 10px;
+        }
+
+        .mob-ore-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
 
         .mob-ore-item {
@@ -184,7 +189,7 @@
             "Plasma Condensate": { mobs: ["Дрон", "Турель"], ores: [] },
             "Exotic Spores": { mobs: ["Лазер_гриб", "Горилла"], ores: [] },
             "Nanofibers": { mobs: ["Баран", "Горилла"], ores: [] },
-            "Uncommon Shard": { mobs: ["Лицензионный_Аватар", "��аран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Uncommon Shard": { mobs: ["Лицензионный_Аватар", "Баран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Rare Shard": { mobs: ["Лицензионный_Аватар", "Мама_жаба", "Турель", "Гвард", "Горилла", "Улитка"], ores: [] },
             "Epic Shard": { mobs: ["Лицензионный_Аватар", "Гвард", "Горилла", "Улитка"], ores: [] }
         };
@@ -367,8 +372,6 @@
             if (resourceData[resource]) {
                 containerElement.innerHTML = generateMobOreHTML(resourceData[resource]);
                 containerElement.style.display = 'flex';
-                containerElement.style.flexWrap = 'wrap';
-                containerElement.style.justifyContent = 'center';
             }
         }
 
@@ -461,9 +464,14 @@
         }
 
         function generateMobOreHTML(data) {
-            const mobsHTML = data.mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item">`).join('');
-            const oresHTML = data.ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item">`).join('');
-            return `<div class="mob-ore-row">${mobsHTML}${oresHTML}</div>`;
+            const items = [...data.mobs, ...data.ores];
+            let html = '';
+            for (let i = 0; i < items.length; i += 8) {
+                const rowItems = items.slice(i, i + 8);
+                const rowHTML = rowItems.map(item => `<img src="../assets/images/${item}.png" alt="${item}" class="mob-ore-item">`).join('');
+                html += `<div class="mob-ore-row">${rowHTML}</div>`;
+            }
+            return html;
         }
 
         // Добавляем обработчик для скрытия тултипа при движении мыши вне иконок
