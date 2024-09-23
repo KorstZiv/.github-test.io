@@ -153,7 +153,7 @@
 
         // Добавьте этот массив в начало вашего JavaScript кода
         const availableImages = [
-            "Баран", "Горилла", "Гвард", "Дрон", "Жаба", "Камень_Жёлтый", "Камень_Зелёный", 
+            "Баран", "Горилла", "Гвард", "Дрон", "Жаба", "��амень_Жёлтый", "Камень_Зелёный", 
             "Камень_Синий", "Камень_Тёмный", "Камень_Фиолетовый", "Лазер_гриб", "Лицензионный_Аватар", 
             "Мама_жаба", "Турель", "Улитка"
         ];
@@ -169,7 +169,7 @@
             
             let html = `<div class="mob-ore-grid">`;
             
-            allItems.slice(0, 8).forEach((item) => {
+            allItems.forEach((item) => {
                 const imageName = availableImages.find(img => img.toLowerCase() === item.toLowerCase()) || item;
                 const displayName = imageName.replace(/_/g, ' ');
                 html += `
@@ -225,9 +225,8 @@
                     ${resources.map(resource => {
                         const resourceName = resource.split(' ')[0].replace(' ', '_');
                         const resourceImage = resourceImages[resourceName] || '';
-                        const displayName = resource.split(' ')[0].replace(/_/g, ' '); // Убираем нижнее подчёркивание в отображаемом тексте
-                        const quantity = resource.split(' ')[1]; // Количество ресурса
-                        console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
+                        const displayName = resource.split(' ')[0].replace(/_/g, ' ');
+                        const quantity = resource.split(' ')[1];
                         return `
                             <li class="resource-card" onmouseover="showMobsAndOres('${resourceName}')" onmouseout="hideMobsAndOres()">
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
