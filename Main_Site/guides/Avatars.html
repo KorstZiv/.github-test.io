@@ -286,13 +286,14 @@
 
         function showMobsAndOres(resource) {
             const containerElement = document.getElementById('mob-ore-container');
-            console.log(`Showing mobs and ores for resource: ${resource}`);
+            console.log(`Показываем мобов и руду для ресурса: ${resource}`);
 
             if (resourceData[resource]) {
                 containerElement.innerHTML = generateMobOreHTML(resourceData[resource]);
                 containerElement.style.display = 'block';
             } else {
-                console.log(`No data found for resource: ${resource}`);
+                console.log(`Данные не найдены для ресурса: ${resource}`);
+                containerElement.style.display = 'none';
             }
         }
 
@@ -333,21 +334,24 @@
                 </div>
                 <ul class="resource-list">
                     ${resources.map(resource => {
-                        const resourceName = resource.split(' ')[0].replace(' ', '_');
+                        const [resourceName, quantity] = resource.split(' ');
                         const resourceImage = resourceImages[resourceName] || '';
-                        const displayName = resource.split(' ')[0].replace(/_/g, ' '); // Убираем нижнее подчёркивание в отображаемом тексте
-                        const quantity = resource.split(' ')[1]; // Количество ресурса
-                        console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
+                        const displayName = resourceName.replace(/_/g, ' ');
                         return `
-                            <li class="resource-card" onmouseover="showMobsAndOres('${resourceName}')" onmouseout="hideMobsAndOres()">
+                            <li class="resource-card" 
+                                onmouseenter="showMobsAndOres('${resourceName}')" 
+                                onmouseleave="hideMobsAndOres()">
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
-                                <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
+                                <span class="resource-name">${displayName}</span> 
+                                <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
                             </li>
                         `;
                     }).join('')}
                 </ul>
-                <div id="mob-ore-container" class="mob-ore-container"></div>
             `;
+            
+            // Добавляем контейнер для мобов и руды после списка ресурсов
+            rightPanel.innerHTML += '<div id="mob-ore-container" class="mob-ore-container"></div>';
         }
 
         function updateCenterIconsState() {
