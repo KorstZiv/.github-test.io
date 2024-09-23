@@ -264,46 +264,24 @@
             rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
         }
 
-        function showMobsAndOres(resource) {
-            const resourceId = resource.replace(/[\s]+/g, '-');
-            const resourceElement = document.getElementById(resourceId);
-            const containerId = `${resourceId}-mob-ore-container`;
-            let containerElement = document.getElementById(containerId);
-
-            if (!containerElement) {
-                containerElement = document.createElement('div');
-                containerElement.id = containerId;
-                containerElement.className = 'mob-ore-container';
-                resourceElement.parentNode.insertBefore(containerElement, resourceElement.nextSibling);
-            }
-
-            if (resourceData[resource]) {
-                containerElement.innerHTML = generateMobOreHTML(resourceData[resource]);
-                containerElement.style.display = 'flex';
-            }
-        }
-
-        function hideMobsAndOres(resource) {
-            const containerId = `${resource.replace(/[\s]+/g, '-')}-mob-ore-container`;
-            const containerElement = document.getElementById(containerId);
-            if (containerElement) {
-                containerElement.style.display = 'none';
-            }
-        }
-
         function generateMobOreHTML(data) {
             const items = [...data.mobs, ...data.ores];
-            let html = '';
-            for (let i = 0; i < items.length; i += 8) {
-                const rowItems = items.slice(i, i + 8);
-                const rowHTML = rowItems.map(item => `<img src="../assets/images/${item.replace(/[\s]+/g, '-')}.png" alt="${item}" class="mob-ore-item">`).join('');
-                html += `<div class="mob-ore-row">${rowHTML}</div>`;
-            }
+            let html = '<div class="mob-ore-grid">';
+            items.forEach(item => {
+                const itemName = item.replace(/_/g, ' ');
+                html += `
+                    <div class="mob-ore-item">
+                        <img src="../assets/images/${item.replace(/[\s]+/g, '-')}.png" alt="${itemName}">
+                        <span class="mob-ore-name">${itemName}</span>
+                    </div>
+                `;
+            });
+            html += '</div>';
             return html;
         }
 
         function showClassInfo(className) {
-            if (!selectedAvatar) return; // Проверка на наличие выбранного аватара
+            if (!selectedAvatar) return;
 
             // Удаляем активный класс у всех иконок
             document.querySelectorAll('.center-icon-wrapper').forEach(wrapper => {
@@ -343,12 +321,26 @@
                             <li class="resource-card" onmouseover="showMobsAndOres('${displayName}')" onmouseout="hideMobsAndOres('${displayName}')">
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
                                 <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
-                                <div id="${displayName.replace(/[\s-]+/g, '-')}-mob-ore-container" class="mob-ore-container"></div>
                             </li>
                         `;
                     }).join('')}
                 </ul>
+                <div id="mob-ore-container" class="mob-ore-container"></div>
             `;
+        }
+
+        function showMobsAndOres(resource) {
+            const containerElement = document.getElementById('mob-ore-container');
+
+            if (resourceData[resource]) {
+                containerElement.innerHTML = generateMobOreHTML(resourceData[resource]);
+                containerElement.style.display = 'block';
+            }
+        }
+
+        function hideMobsAndOres() {
+            const containerElement = document.getElementById('mob-ore-container');
+            containerElement.style.display = 'none';
         }
 
         function updateCenterIconsState() {
