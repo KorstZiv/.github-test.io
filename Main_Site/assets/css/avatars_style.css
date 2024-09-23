@@ -418,8 +418,9 @@ main {
 }
 
 .mob-ore-grid {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr); /* 10 иконок в ряд */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Центрируем элементы */
     gap: 10px;
     max-width: 1000px;
     margin: 0 auto;
@@ -432,6 +433,7 @@ main {
     width: 90px;
     height: 110px;
     text-align: center;
+    margin: 5px; /* Добавляем отступы для выравнивания */
 }
 
 .mob-ore-item img {
