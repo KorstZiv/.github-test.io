@@ -265,7 +265,7 @@
         }
 
         function showMobsAndOres(resource) {
-            const resourceId = resource.replace(/[\s-]+/g, '-');
+            const resourceId = resource.replace(/[\s]+/g, '-');
             const resourceElement = document.getElementById(resourceId);
             const containerId = `${resourceId}-mob-ore-container`;
             let containerElement = document.getElementById(containerId);
@@ -284,7 +284,7 @@
         }
 
         function hideMobsAndOres(resource) {
-            const containerId = `${resource.replace(/[\s-]+/g, '-')}-mob-ore-container`;
+            const containerId = `${resource.replace(/[\s]+/g, '-')}-mob-ore-container`;
             const containerElement = document.getElementById(containerId);
             if (containerElement) {
                 containerElement.style.display = 'none';
@@ -296,7 +296,7 @@
             let html = '';
             for (let i = 0; i < items.length; i += 8) {
                 const rowItems = items.slice(i, i + 8);
-                const rowHTML = rowItems.map(item => `<img src="../assets/images/${item.replace(/[\s-]+/g, '_')}.png" alt="${item}" class="mob-ore-item">`).join('');
+                const rowHTML = rowItems.map(item => `<img src="../assets/images/${item.replace(/[\s]+/g, '-')}.png" alt="${item}" class="mob-ore-item">`).join('');
                 html += `<div class="mob-ore-row">${rowHTML}</div>`;
             }
             return html;
