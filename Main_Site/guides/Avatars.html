@@ -29,7 +29,10 @@
 
         .resource-list li span {
             font-weight: bold;
-            color: orange; /* Цвет текста как в подсветке "Серый аватар" */
+        }
+
+        .resource-list li span .quantity {
+            color: orange; /* Цвет цифр как в подсветке "Серый аватар" */
         }
     </style>
 </head>
@@ -301,13 +304,14 @@
                 <h4>Ресурсы:</h4>
                 <ul class="resource-list">
                     ${resources.map(resource => {
-                        const resourceName = resource.split(' ')[0];
+                        const resourceName = resource.split(' ')[0].replace(' ', '_');
                         const resourceImage = resourceImages[resourceName] || '';
+                        const quantity = resource.split(' ')[1];
                         console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
                         return `
                             <li>
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
-                                <span>${resource}</span>
+                                <span>${resourceName} <span class="quantity">${quantity}</span></span>
                             </li>
                         `;
                     }).join('')}
