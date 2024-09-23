@@ -298,11 +298,12 @@
                     ${resources.map(resource => {
                         const resourceName = resource.split(' ')[0].replace(' ', '_');
                         const resourceImage = resourceImages[resourceName] || '';
+                        const displayName = resource.split(' ')[0].replace(/_/g, ' '); // Убираем нижнее подчёркивание в отображаемом тексте
                         console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
                         return `
                             <li>
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
-                                ${resource}
+                                ${displayName} ${resource.split(' ')[1]}
                             </li>
                         `;
                     }).join('')}
