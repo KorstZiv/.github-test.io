@@ -156,6 +156,7 @@
         <div class="right-panel" id="right-panel">
             <div class="right-panel-content">
                 <!-- Информация об аватаре будет отображаться здесь -->
+                <div id="resource-info"></div> <!-- Контейнер для информации о ресурсах -->
                 <div id="mob-ore-display" class="mob-ore-display"></div> <!-- Новый контейнер для мобов и руды -->
             </div>
         </div>
@@ -191,13 +192,13 @@
             "Organic Polymers": { mobs: ["Баран", "Лазер_гриб"], ores: [] },
             "Biological Extract": { mobs: ["Жаба", "Мама_жаба", "Лазер_гриб"], ores: [] },
             "Genetically-Modified Enzymes": { mobs: ["Мама_жаба", "Трель"], ores: [] },
-            "Heat Regulating Glands": { mobs: ["Баран", "Жаба", "Мама_жаба"], ores: [] },
+            "Heat Regulating Glands": { mobs: ["Баран", "Жаба", "Мама_��аба"], ores: [] },
             "Photon Gel": { mobs: ["Турель"], ores: [] },
             "Plasma Condensate": { mobs: ["Дрон", "Турль"], ores: [] },
             "Exotic Spores": { mobs: ["Лазер_гриб", "Горилла"], ores: [] },
             "Nanofibers": { mobs: ["Баран", "Горилла"], ores: [] },
             "Uncommon Shard": { mobs: ["Лицензионный_Аватар", "Баран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Rare Shard": { mobs: ["Лицензионный_Аватар", "Мама_жаба", "Турель", "Гвард", "Горилла", "У��итка"], ores: [] },
+            "Rare Shard": { mobs: ["Лицензионный_Аватар", "Мама_жаба", "Турель", "Гвард", "Горилла", "Уитка"], ores: [] },
             "Epic Shard": { mobs: ["Лицензионный_Аватар", "Гвард", "Горилла", "Улитка"], ores: [] }
         };
 
@@ -405,7 +406,7 @@
                 textColor = "#DA70D6"; // Светло-фиолетовый цвет для Epic
             }
 
-            rightPanel.innerHTML = `
+            const resourceInfo = `
                 <div class="class-header" style="color: ${textColor}; text-align: center;">
                     <img src="../assets/images/Avatars/${className}.png" alt="${className}" class="class-icon">
                     <h3 style="font-size: 24px;">${className}</h3>
@@ -426,6 +427,9 @@
                     }).join('')}
                 </ul>
             `;
+
+            document.getElementById('resource-info').innerHTML = resourceInfo;
+            hideMobsAndOres(); // Очищаем контейнер мобов и руды при смене класса
         }
 
         function updateCenterIconsState() {
