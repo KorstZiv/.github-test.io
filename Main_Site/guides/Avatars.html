@@ -20,11 +20,11 @@
     <div class="welcome-text-container collapsed">
         <div class="toggle-description">Развернуть описание</div>
         <div class="welcome-text">
-            <p>Аватары в игре представляют собой ваших персонажей, которыми вы можете высаживаться на станцию и добывать ресурсы из различных месторождений руды, сражаясь с мобами и ��ругими игроками.</p>
+            <p>Аватары в игре представляют собой ваших персонажей, которыми вы можете высаживаться на станцию и добывать ресурсы из различных месторождений руды, сражаясь с мобами и ругими игроками.</p>
             <p>Существует два основных типа аватаров: Серые и Лицензионные.</p>
             <p>Серые аватары доступны каждому игроку с самого начала. Они представляют собой бесплатные болванки с невысокими характеристиками и экипировкой, которая выдается случайным образом. Низкий заряд энергии позволяет им исследовать небольшие карты, где они могут собирать ресурсы и охотиться на животных, представляющих собой низкий и средний уровень опасности.</p>
             <p>Лицензионные аватары становятся доступными только тем, кто приобрел лицензию у корпораций и собрал или купил ресурсы на аукционе. Их характеристики зависят от качества и класса.</p>
-            <p>Качество аватара влияет на его характеристики и количество аварийных ячеек, которые п��зволяют сохранить самый ценный лут при гибели аватара.</p>
+            <p>Качество аватара влияет на его характеристики и количество аварийных ячеек, которые пзволяют сохранить самый ценный лут при гибели аватара.</p>
             <p>Всего в игре представлено пять классов аватаров, каждый из которых обладает не только уникальными характеристиками, но и специальными умениями, значительно влияющими на игровой опыт и стиль игры.</p>
             <p>В модуле ниже вы можете посмотреть стоимость каждого аватара в зависимости от качества и класса, а также с кого или чего добываются ресурсы для их сборки.</p>
         </div>
@@ -65,15 +65,37 @@
         let selectedAvatar = null;
         let selectedCenterIcon = null;
 
-        const avatarData = [
-            { name: "Uncommon", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
-            { name: "Rare", image: "../assets/images/Avatars/Drop_Pods__Rare.png", resources: ["Magnetite", "Robotic Module", "Energy Crystal"] },
-            { name: "Epic", image: "../assets/images/Avatars/Drop_Pods__Epic.png", resources: ["Photon Gel", "Plasma Condensate", "Organic Polymers"] },
-        ];
+        const AVATAR_QUALITIES = {
+            Uncommon: { color: "green", shardName: "Uncommon Shard" },
+            Rare: { color: "#00BFFF", shardName: "Rare Shard" },
+            Epic: { color: "#DA70D6", shardName: "Epic Shard" }
+        };
 
-        const centerIcons = [
-            "courier.png", "explorer.png", "survivor.png", "marauder.png", "warrior.png"
-        ];
+        const CLASSES = ["courier", "explorer", "survivor", "marauder", "warrior"];
+
+        const classResources = {
+            Uncommon: {
+                courier: ["Biological Extract 200", "Organic Polymers 200", "Coal 200", "Uncommon Shard 20"],
+                explorer: ["Acid 200", "Robotic Module 200", "Iron Ore 200", "Uncommon Shard 20"],
+                survivor: ["Coal 200", "Protein Fiber 200", "Quartz 200", "Uncommon Shard 20"],
+                marauder: ["Energy Crystal 200", "Copper Ore 200", "Acid 200", "Uncommon Shard 20"],
+                warrior: ["Protein Fiber 200", "Robotic Module 200", "Quartz 200", "Uncommon Shard 20"]
+            },
+            Rare: {
+                courier: ["Plasma Condensate 300", "Exotic Spores 300", "Magnetite 300", "Rare Shard 30"],
+                explorer: ["Genetically-Modified Enzymes 300", "Rare Earth Elements 300", "Lithium Ore 300", "Rare Shard 30"],
+                marauder: ["Heat Regulating Glands 300", "Radioactive Isotopes 300", "Photon Gel 300", "Rare Shard 30"],
+                survivor: ["Lithium Ore 300", "Nanofibers 300", "Magnetite 300", "Rare Shard 30"],
+                warrior: ["Rare Earth Elements 300", "Exotic Spores 300", "Nanofibers 300", "Rare Shard 30"]
+            },
+            Epic: {
+                courier: ["Photon Gel 570", "Nanofibers 570", "Lithium Ore 570", "Epic Shard 40"],
+                explorer: ["Exotic Spores 570", "Radioactive Isotopes 570", "Photon Gel 570", "Epic Shard 40"],
+                marauder: ["Rare Earth Elements 570", "Heat Regulating Glands 570", "Plasma Condensate 570", "Epic Shard 40"],
+                survivor: ["Heat Regulating Glands 570", "Radioactive Isotopes 570", "Genetically-Modified Enzymes 570", "Epic Shard 40"],
+                warrior: ["Plasma Condensate 570", "Genetically-Modified Enzymes 570", "Magnetite 570", "Epic Shard 40"]
+            }
+        };
 
         const resourceData = {
             "Quartz": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
@@ -127,40 +149,16 @@
             "Epic_Shard": "../assets/images/Epic_Shard.png"
         };
 
-        const classResources = {
-            "Uncommon": {
-                "courier": ["Biological_Extract 200 шт", "Organic_Polymers 200 шт", "Coal 200 шт", "Uncommon_Shard 20 шт"],
-                "explorer": ["Acid 200 шт", "Robotic_Module 200 шт", "Iron_Ore 200 шт", "Uncommon_Shard 20 шт"],
-                "survivor": ["Coal 200 шт", "Protein_Fiber 200 шт", "Quartz 200 шт", "Uncommon_Shard 20 шт"],
-                "marauder": ["Energy_Crystal 200 шт", "Copper_Ore 200 шт", "Acid 200 шт", "Uncommon_Shard 20 шт"],
-                "warrior": ["Protein_Fiber 200 шт", "Robotic_Module 200 шт", "Quartz 200 шт", "Uncommon_Shard 20 шт"]
-            },
-            "Rare": {
-                "courier": ["Plasma_Condensate 300 шт", "Exotic_Spores 300 шт", "Magnetite 300 шт", "Rare_Shard 30 шт"],
-                "explorer": ["Genetically-Modified Enzymes 300 шт", "Rare_Earth_Elements 300 шт", "Lithium_Ore 300 шт", "Rare_Shard 30 шт"],
-                "marauder": ["Heat_Regulating_Glands 300 шт", "Radioactive_Isotopes 300 шт", "Photon_Gel 300 шт", "Rare_Shard 30 шт"],
-                "survivor": ["Lithium_Ore 300 шт", "Nanofibers 300 шт", "Magnetite 300 шт", "Rare_Shard 30 шт"],
-                "warrior": ["Rare_Earth_Elements 300 шт", "Exotic_Spores 300 шт", "Nanofibers 300 шт", "Rare_Shard 30 шт"]
-            },
-            "Epic": {
-                "courier": ["Photon_Gel 570 шт", "Nanofibers 570 шт", "Lithium_Ore 570 шт", "Epic_Shard 40 шт"],
-                "explorer": ["Exotic_Spores 570 шт", "Radioactive_Isotopes 570 шт", "Photon_Gel 570 шт", "Epic_Shard 40 шт"],
-                "marauder": ["Rare_Earth_Elements 570 шт", "Heat_Regulating_Glands 570 шт", "Plasma_Condensate 570 шт", "Epic_Shard 40 шт"],
-                "survivor": ["Heat_Regulating_Glands 570 шт", "Radioactive_Isotopes 570 шт", "Genetically-Modified Enzymes 570 шт", "Epic_Shard 40 шт"],
-                "warrior": ["Plasma_Condensate 570 шт", "Genetically-Modified Enzymes 570 шт", "Magnetite 570 шт", "Epic_Shard 40 шт"]
-            }
-        };
-
         function generateAvatarGrid() {
             const grid = document.getElementById('avatar-grid');
             grid.innerHTML = ''; // Очищаем сетку пред генерацией
-            avatarData.forEach(avatar => {
+            Object.keys(AVATAR_QUALITIES).forEach(avatar => {
                 const div = document.createElement('div');
                 div.classList.add('avatar-item');
-                div.setAttribute('data-avatar', avatar.name);
-                div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" class="avatar-image"><p>${avatar.name}</p>`;
+                div.setAttribute('data-avatar', avatar);
+                div.innerHTML = `<img src="../assets/images/Avatars/Drop_Pods_${avatar}.png" alt="${avatar}" class="avatar-image"><p>${avatar}</p>`;
                 div.onclick = () => showAvatarInfo(avatar);
-                if (avatar.name === selectedAvatar) {
+                if (avatar === selectedAvatar) {
                     div.classList.add('selected');
                 }
                 grid.appendChild(div);
@@ -174,12 +172,12 @@
             const iconContainer = document.createElement('div');
             iconContainer.className = 'center-icon-container';
 
-            centerIcons.forEach((icon, index) => {
+            CLASSES.forEach((icon, index) => {
                 const wrapper = document.createElement('div');
                 wrapper.className = 'center-icon-wrapper';
                 
                 const img = document.createElement('img');
-                img.src = `../assets/images/Avatars/${icon}`;
+                img.src = `../assets/images/Avatars/${icon}.png`;
                 img.alt = icon.replace('.png', '');
                 img.classList.add('center-icon');
                 
@@ -229,7 +227,7 @@
             }
 
             // Подсвечиваем новый выбранный аватар
-            const newSelected = document.querySelector(`.avatar-item[data-avatar="${avatar.name}"]`);
+            const newSelected = document.querySelector(`.avatar-item[data-avatar="${avatar}"]`);
             if (newSelected) {
                 newSelected.classList.add('selected');
             }
@@ -237,15 +235,15 @@
             // Подсвечиваем центральную панель
             const centerPanel = document.querySelector('.center-panel');
             centerPanel.classList.remove('green-glow', 'blue-glow', 'purple-glow');
-            if (avatar.name === "Uncommon") {
+            if (avatar === "Uncommon") {
                 centerPanel.classList.add('green-glow');
-            } else if (avatar.name === "Rare") {
+            } else if (avatar === "Rare") {
                 centerPanel.classList.add('blue-glow');
-            } else if (avatar.name === "Epic") {
+            } else if (avatar === "Epic") {
                 centerPanel.classList.add('purple-glow');
             }
 
-            selectedAvatar = avatar.name;
+            selectedAvatar = avatar;
             updateCenterIconsState();
         }
 
@@ -265,94 +263,77 @@
         }
 
         function showMobsAndOres(resource) {
-            const resourceId = resource.replace(/[\s-]+/g, '-');
-            const resourceElement = document.querySelector(`.resource-card:has(.resource-name:contains('${resource}'))`);
-            if (!resourceElement) return;
-            
-            const containerId = `${resourceId}-mob-ore-container`;
-            let containerElement = document.getElementById(containerId);
+            const rightPanel = document.querySelector('.right-panel-content');
+            const mobsAndOres = resourceData[resource] || { mobs: [], ores: [] };
 
-            if (!containerElement) {
-                containerElement = document.createElement('div');
-                containerElement.id = containerId;
-                containerElement.className = 'mob-ore-container';
-                resourceElement.appendChild(containerElement);
-            }
+            const mobsAndOresHTML = `
+                <div class="mobs-ores-container">
+                    ${generateMobOreHTML(mobsAndOres.mobs, 'Мобы')}
+                    ${generateMobOreHTML(mobsAndOres.ores, 'Руда')}
+                </div>
+            `;
 
-            if (resourceData[resource]) {
-                containerElement.innerHTML = generateMobOreHTML(resourceData[resource]);
-                containerElement.style.display = 'flex';
-            }
+            rightPanel.insertAdjacentHTML('beforeend', mobsAndOresHTML);
         }
 
-        function hideMobsAndOres(resource) {
-            const containerId = `${resource.replace(/[\s-]+/g, '-')}-mob-ore-container`;
-            const containerElement = document.getElementById(containerId);
-            if (containerElement) {
-                containerElement.style.display = 'none';
-            }
-        }
+        function generateMobOreHTML(items, title) {
+            if (items.length === 0) return '';
 
-        function generateMobOreHTML(data) {
-            const items = [...data.mobs, ...data.ores];
-            let html = '';
-            for (let i = 0; i < items.length; i += 8) {
-                const rowItems = items.slice(i, i + 8);
-                const rowHTML = rowItems.map(item => `
-                    <div class="mob-ore-item">
-                        <img src="../assets/images/${item.replace(/[\s]+/g, '-')}.png" alt="${item}">
-                        <span class="mob-ore-name">${item}</span>
+            return `
+                <div class="mob-ore-section">
+                    <h4>${title}</h4>
+                    <div class="mob-ore-grid">
+                        ${items.map(createMobOreElement).join('')}
                     </div>
-                `).join('');
-                html += `<div class="mob-ore-row">${rowHTML}</div>`;
+                </div>
+            `;
+        }
+
+        function createMobOreElement(item) {
+            return `
+                <div class="mob-ore-item">
+                    <img src="../assets/images/${item.replace(/[\s]+/g, '-')}.png" alt="${item}">
+                    <span class="mob-ore-name">${item}</span>
+                </div>
+            `;
+        }
+
+        function hideMobsAndOres() {
+            const mobsOresContainer = document.querySelector('.mobs-ores-container');
+            if (mobsOresContainer) {
+                mobsOresContainer.remove();
             }
-            return html;
         }
 
         function showClassInfo(className) {
-            if (!selectedAvatar) return; // Проверка на наличие выбранного аватара
-
-            // Удаляем активный класс у всех иконок
-            document.querySelectorAll('.center-icon-wrapper').forEach(wrapper => {
-                wrapper.classList.remove('active');
-            });
-
-            // Добавляем активный класс выбранной иконке
-            const selectedWrapper = document.querySelector(`.center-icon-wrapper img[alt="${className}"]`).parentNode;
-            selectedWrapper.classList.add('active');
+            if (!selectedAvatar) return;
 
             const rightPanel = document.querySelector('.right-panel-content');
-            const resources = classResources[selectedAvatar] ? classResources[selectedAvatar][className] : [];
-
-            // Определяем цвет текста в зависимости от качества аватара
-            let textColor;
-            if (selectedAvatar === "Uncommon") {
-                textColor = "green";
-            } else if (selectedAvatar === "Rare") {
-                textColor = "#00BFFF"; // Используем цвет подсветки для Rare
-            } else if (selectedAvatar === "Epic") {
-                textColor = "#DA70D6"; // Светло-фиолетовый цвет для Epic
-            }
+            const resources = classResources[selectedAvatar][className];
+            const { color } = AVATAR_QUALITIES[selectedAvatar];
 
             rightPanel.innerHTML = `
-                <div class="class-header" style="color: ${textColor}; text-align: center;">
+                <div class="class-header" style="color: ${color}; text-align: center;">
                     <img src="../assets/images/Avatars/${className}.png" alt="${className}" class="class-icon">
                     <h3 style="font-size: 24px;">${className}</h3>
                 </div>
                 <ul class="resource-list">
-                    ${resources.map(resource => {
-                        const [resourceName, quantity] = resource.split(' ');
-                        const resourceImage = resourceImages[resourceName.replace(/-/g, '_')] || '';
-                        const displayName = resourceName.replace(/_/g, ' ');
-                        return `
-                            <li class="resource-card" onmouseover="showMobsAndOres('${displayName}')" onmouseout="hideMobsAndOres('${displayName}')">
-                                <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
-                                <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity} шт</span>
-                                <div id="${displayName.replace(/[\s-]+/g, '-')}-mob-ore-container" class="mob-ore-container"></div>
-                            </li>
-                        `;
-                    }).join('')}
+                    ${resources.map(resource => createResourceElement(resource, color)).join('')}
                 </ul>
+            `;
+        }
+
+        function createResourceElement(resource, color) {
+            const [resourceName, quantity] = resource.split(' ');
+            const resourceImage = resourceImages[resourceName.replace(/-/g, '_')] || '';
+            const displayName = resourceName.replace(/_/g, ' ');
+            
+            return `
+                <li class="resource-card" onmouseover="showMobsAndOres('${displayName}')" onmouseout="hideMobsAndOres()">
+                    <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
+                    <span class="resource-name">${displayName}</span>
+                    <span class="resource-quantity" style="font-weight: bold; color: ${color};">${quantity} шт</span>
+                </li>
             `;
         }
 
@@ -394,11 +375,14 @@
             }
         });
 
-        window.onload = function() {
+        // Инициализация
+        function initializeAvatarSystem() {
             generateAvatarGrid();
             generateCenterIcons();
             updateCenterIconsState();
-        };
+        }
+
+        window.onload = initializeAvatarSystem;
 
         document.addEventListener('DOMContentLoaded', function() {
             const toggleButton = document.querySelector('.toggle-description');
