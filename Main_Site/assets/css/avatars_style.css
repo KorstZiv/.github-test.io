@@ -355,7 +355,7 @@ main {
 .mob-ore-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 20px; /* Уменьшен отступ до 20px */
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -533,4 +533,9 @@ main {
     height: auto;
     max-height: 100%;
     object-fit: contain;
+}
+
+.mob-ore-item {
+    padding: 5px;
+    box-sizing: border-box;
 }
