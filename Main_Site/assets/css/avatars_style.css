@@ -492,3 +492,92 @@ main {
     margin-bottom: 18px;
     text-align: left;
 }
+
+.mob-ore-container {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.mob-ore-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.mob-ore-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    height: 100px;
+    text-align: center;
+}
+
+.mob-ore-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 5px;
+}
+
+.mob-ore-item span {
+    font-size: 12px;
+    word-wrap: break-word;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.resource-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.resource-card:hover {
+    transform: scale(1.05);
+}
+
+.resource-quantity {
+    display: block;
+    margin-top: 5px;
+}
+
+.center-icon-wrapper {
+    opacity: 0.5;
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+.center-icon-wrapper.active {
+    opacity: 1;
+}
+
+.center-icon-wrapper.clicked {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tooltip {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+#greyAvatarVideo {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
