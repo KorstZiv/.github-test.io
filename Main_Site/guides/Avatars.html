@@ -72,7 +72,6 @@
             justify-content: center; /* Центрируем содержимое */
             gap: 10px; /* Отступ между элементами */
             margin-top: 10px; /* Отступ сверху */
-            max-width: 640px; /* Максимальная ширина для 8 иконок по 80px */
         }
 
         .mob-ore-item {
@@ -92,7 +91,7 @@
 
         .welcome-text p {
             margin-bottom: 18px;
-            text-align: left; /* Выравнивание по левому краю для каждого ��араграфа */
+            text-align: left; /* Выравнивание по левому краю для каждого параграфа */
         }
     </style>
 </head>
@@ -374,6 +373,7 @@
                 `;
                 containerElement.style.display = 'flex';
                 containerElement.style.flexWrap = 'wrap';
+                containerElement.style.justifyContent = 'center';
             }
         }
 
