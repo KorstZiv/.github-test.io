@@ -418,10 +418,10 @@ main {
 }
 
 .mob-ore-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Центрируем элементы */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
     gap: 10px;
+    justify-content: center; /* Центрируем элементы */
     max-width: 1000px;
     margin: 0 auto;
 }
