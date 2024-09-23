@@ -73,7 +73,7 @@
             // Здесь нужно добавить данные о ресурсах, мобах и руде из гайда Ресурсы
             // Пример:
             "Lithium Ore": { mobs: ["Камень_Синий"], ores: ["Камень_Синий"] },
-            // ... добавьте остальные ресурсы
+            // ... добавьте остальные ресурс��
         };
 
         const resourceImages = {
@@ -169,19 +169,7 @@
 
         function showAvatarInfo(avatar) {
             const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = `
-                <h3>${avatar.name}</h3>
-                <img src="${avatar.image}" alt="${avatar.name}" class="avatar-image" style="max-width: 200px;">
-                <h4>Необходимые ресурсы:</h4>
-                <ul class="resource-list">
-                    ${avatar.resources.map(resource => `
-                        <li class="resource-item" onmouseover="showMobsAndOres('${resource}')" onmouseout="hideMobsAndOres('${resource}')">
-                            ${resource}
-                            <div class="mob-ore-list" id="${resource.replace(/\s+/g, '-')}-list"></div>
-                        </li>
-                    `).join('')}
-                </ul>
-            `;
+            rightPanel.innerHTML = ''; // Очищаем правую панель при выборе аватара
 
             // Снимаем подсветку с предыдущего выбранного аватара
             if (selectedAvatar) {
@@ -244,11 +232,13 @@
         }
 
         function showClassInfo(className) {
+            if (!selectedAvatar) return; // Проверка на наличие выбранного аватара
+
             // Удаляем активный класс у всех иконок
             document.querySelectorAll('.center-icon-wrapper').forEach(wrapper => {
                 wrapper.classList.remove('active');
             });
-            
+
             // Добавляем активный класс выбранной иконке
             const selectedWrapper = document.querySelector(`.center-icon-wrapper img[alt="${className}"]`).parentNode;
             selectedWrapper.classList.add('active');
