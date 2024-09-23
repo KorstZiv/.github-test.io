@@ -581,3 +581,74 @@ main {
     max-height: 100%;
     object-fit: contain;
 }
+
+.resource-image, .avatar-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.resources-container, .avatars-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    padding: 10px;
+}
+
+.resource-card, .avatar-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    height: 180px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.resource-card:hover, .avatar-card:hover {
+    transform: scale(1.05);
+}
+
+.resource-quantity, .avatar-quantity {
+    display: block;
+    margin-top: 5px;
+}
+
+.center-icon-wrapper {
+    opacity: 0.5;
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+.center-icon-wrapper.active {
+    opacity: 1;
+}
+
+.center-icon-wrapper.clicked {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tooltip {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+#greyAvatarVideo {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.resource-image, .avatar-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
