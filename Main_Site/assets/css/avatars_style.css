@@ -207,6 +207,7 @@ main {
     align-items: center;
     gap: 10px;
     margin-top: 10px;
+    justify-content: center;
 }
 
 .mob-ore-row {
