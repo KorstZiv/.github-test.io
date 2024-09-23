@@ -66,9 +66,9 @@
         let selectedCenterIcon = null;
 
         const avatarData = [
-            { name: "Uncommon", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
-            { name: "Rare", image: "../assets/images/Avatars/Drop_Pods__Rare.png", resources: ["Magnetite", "Robotic Module", "Energy Crystal"] },
-            { name: "Epic", image: "../assets/images/Avatars/Drop_Pods__Epic.png", resources: ["Photon Gel", "Plasma Condensate", "Organic Polymers"] },
+            { name: "Uncommon", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium_Ore", "Quartz", "Rare_Earth_Elements"] },
+            { name: "Rare", image: "../assets/images/Avatars/Drop_Pods__Rare.png", resources: ["Magnetite", "Robotic_Module", "Energy_Crystal"] },
+            { name: "Epic", image: "../assets/images/Avatars/Drop_Pods__Epic.png", resources: ["Photon_Gel", "Plasma_Condensate", "Organic_Polymers"] },
         ];
 
         const centerIcons = [
@@ -78,27 +78,27 @@
         const resourceData = {
             "Quartz": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Coal": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Iron Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Фиолетовый"] },
-            "Copper Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Radioactive Isotopes": { mobs: [], ores: ["Камень_Зелёный"] },
-            "Rare Earth Elements": { mobs: [], ores: ["Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Iron_Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Фиолетовый"] },
+            "Copper_Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Radioactive_Isotopes": { mobs: [], ores: ["Камень_Зелёный"] },
+            "Rare_Earth_Elements": { mobs: [], ores: ["Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Magnetite": { mobs: [], ores: ["Камень_Зелёный", "Камень_Фиолетовый"] },
-            "Lithium Ore": { mobs: [], ores: ["Камень_Синий"] },
-            "Robotic Module": { mobs: ["Дрон", "Турель"], ores: [] },
-            "Protein Fiber": { mobs: ["Баран", "Лазер_гриб"], ores: [] },
+            "Lithium_Ore": { mobs: [], ores: ["Камень_Синий"] },
+            "Robotic_Module": { mobs: ["Дрон", "Турель"], ores: [] },
+            "Protein_Fiber": { mobs: ["Баран", "Лазер_гриб"], ores: [] },
             "Acid": { mobs: ["Жаба", "Мама_жаба"], ores: [] },
-            "Energy Crystal": { mobs: ["Дрон", "Турель"], ores: [] },
-            "Organic Polymers": { mobs: ["Баран", "Лазер_гриб"], ores: [] },
-            "Biological Extract": { mobs: ["Жаба", "Мама_жаба", "Лазер_гриб"], ores: [] },
-            "Genetically-Modified Enzymes": { mobs: ["Мама_жаба", "Трель"], ores: [] },
-            "Heat Regulating Glands": { mobs: ["Баран", "Жаба", "Мама_жаба"], ores: [] },
-            "Photon Gel": { mobs: ["Турель"], ores: [] },
-            "Plasma Condensate": { mobs: ["Дрон", "Турель"], ores: [] },
-            "Exotic Spores": { mobs: ["Лазер_гриб", "Горилла"], ores: [] },
+            "Energy_Crystal": { mobs: ["Дрон", "Турель"], ores: [] },
+            "Organic_Polymers": { mobs: ["Баран", "Лазер_гриб"], ores: [] },
+            "Biological_Extract": { mobs: ["Жаба", "Мама_жаба", "Лазер_гриб"], ores: [] },
+            "Genetically_Modified_Enzymes": { mobs: ["Мама_жаба", "Трель"], ores: [] },
+            "Heat_Regulating_Glands": { mobs: ["Баран", "Жаба", "Мама_жаба"], ores: [] },
+            "Photon_Gel": { mobs: ["Турель"], ores: [] },
+            "Plasma_Condensate": { mobs: ["Дрон", "Турель"], ores: [] },
+            "Exotic_Spores": { mobs: ["Лазер_гриб", "Горилла"], ores: [] },
             "Nanofibers": { mobs: ["Баан", "Горилла"], ores: [] },
-            "Uncommon Shard": { mobs: ["Лицензионный_Аватар", "Баран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Rare Shard": { mobs: ["Лицензионный_Аватар", "Мама_жаба", "Турель", "Гвард", "Горилла", "Улитка"], ores: [] },
-            "Epic Shard": { mobs: ["Лицензионный_Аватар", "Гвард", "Горилла", "Улитка"], ores: [] }
+            "Uncommon_Shard": { mobs: ["Лицензионный_Аватар", "Баран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Rare_Shard": { mobs: ["Лицензионный_Аватар", "Мама_жаба", "Турель", "Гвард", "Горилла", "Улитка"], ores: [] },
+            "Epic_Shard": { mobs: ["Лицензионный_Аватар", "Гвард", "Горилла", "Улитка"], ores: [] }
         };
 
         const resourceImages = {
