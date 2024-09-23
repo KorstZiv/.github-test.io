@@ -10,21 +10,20 @@ header {
 }
 
 main {
-    position: relative;
+    flex-grow: 1;
     display: flex;
-    height: calc(100vh - 100px); /* Предполагаем, что верхний отступ 100px */
     overflow: hidden;
 }
 
 .left-panel, .center-panel, .right-panel {
-    height: 100%; /* Устанавливаем высоту всех панелей на 100% */
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
 
 .right-panel {
     flex-grow: 1;
-    background-color: #000000; /* Устанавливаем черный фон для всей правой панели */
+    background-color: #000000;
 }
 
 .right-panel-content {
@@ -459,7 +458,7 @@ main {
     width: 90px;
     height: 110px;
     text-align: center;
-    margin: 5px; /* Добавляем отступы для выравнивания */
+    margin: 5px; /* обавляем отступы для выравнивания */
 }
 
 .mob-ore-item img {
