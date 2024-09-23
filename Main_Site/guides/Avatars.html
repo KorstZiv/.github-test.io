@@ -59,6 +59,10 @@
                 <!-- Информация об аватаре будет отображаться здесь -->
             </div>
         </div>
+
+        <!-- Добавьте этот контейнер после .right-panel-content -->
+        <div id="mob-ore-container" class="mob-ore-container"></div>
+
     </main>
 
     <script>
@@ -76,28 +80,28 @@
         ];
 
         const resourceData = {
-            "Quartz": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Coal": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Iron_Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Фиолетовый"] },
-            "Copper_Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Radioactive_Isotopes": { mobs: [], ores: ["Камень_Зелёный"] },
-            "Rare_Earth_Elements": { mobs: [], ores: ["Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Magnetite": { mobs: [], ores: ["Камень_Зелёный", "Камень_Фиолетовый"] },
+            "Quartz": { mobs: [], ores: ["Камень_Темный", "Камень_Желтый", "Камень_Зеленый", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Coal": { mobs: [], ores: ["Камень_Темный", "Камень_Желтый", "Камень_Зеленый", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Iron_Ore": { mobs: [], ores: ["Камень_Темный", "Камень_Желтый", "Камень_Фиолетовый"] },
+            "Copper_Ore": { mobs: [], ores: ["Камень_Темный", "Камень_Желтый", "Камень_Зеленый", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Radioactive_Isotopes": { mobs: [], ores: ["Камень_Зеленый"] },
+            "Rare_Earth_Elements": { mobs: [], ores: ["Камень_Зеленый", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Magnetite": { mobs: [], ores: ["Камень_Зеленый", "Камень_Фиолетовый"] },
             "Lithium_Ore": { mobs: [], ores: ["Камень_Синий"] },
             "Robotic_Module": { mobs: ["Дрон", "Турель"], ores: [] },
-            "Protein_Fiber": { mobs: ["Баран", "Лазер_гриб"], ores: [] },
-            "Acid": { mobs: ["Жаба", "Мама_жаба"], ores: [] },
+            "Protein_Fiber": { mobs: ["Баран", "Лазер_Гриб"], ores: [] },
+            "Acid": { mobs: ["Жаба", "Мама_Жаба"], ores: [] },
             "Energy_Crystal": { mobs: ["Дрон", "Турель"], ores: [] },
-            "Organic_Polymers": { mobs: ["Баран", "Лазер_гриб"], ores: [] },
-            "Biological_Extract": { mobs: ["Жаба", "Мама_жаба", "Лазер_гриб"], ores: [] },
-            "Genetically_Modified_Enzymes": { mobs: ["Мама_жаба", "Турель"], ores: [] },
-            "Heat_Regulating_Glands": { mobs: ["Баран", "Жаба", "Мама_жаба"], ores: [] },
+            "Organic_Polymers": { mobs: ["Баран", "Лазер_Гриб"], ores: [] },
+            "Biological_Extract": { mobs: ["Жаба", "Мама_Жаба", "Лазер_Гриб"], ores: [] },
+            "Genetically_Modified_Enzymes": { mobs: ["Мама_Жаба", "Турель"], ores: [] },
+            "Heat_Regulating_Glands": { mobs: ["Баран", "Жаба", "Мама_Жаба"], ores: [] },
             "Photon_Gel": { mobs: ["Турель"], ores: [] },
             "Plasma_Condensate": { mobs: ["Дрон", "Турель"], ores: [] },
-            "Exotic_Spores": { mobs: ["Лазер_гриб", "Горилла"], ores: [] },
+            "Exotic_Spores": { mobs: ["Лазер_Гриб", "Горилла"], ores: [] },
             "Nanofibers": { mobs: ["Баран", "Горилла"], ores: [] },
-            "Uncommon_Shard": { mobs: ["Лицензионный_Аватар", "Баран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
-            "Rare_Shard": { mobs: ["Лицензионный_Аватар", "Мама_жаба", "Турель", "Гвард", "Горилла", "Улитка"], ores: [] },
+            "Uncommon_Shard": { mobs: ["Лицензионный_Аватар", "Баран", "Лазер_Гриб", "Жаба", "Мама_Жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Темный", "Камень_Желтый", "Камень_Зеленый", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Rare_Shard": { mobs: ["Лицензионный_Аватар", "Мама_Жаба", "Турель", "Гвард", "Горилла", "Улитка"], ores: [] },
             "Epic_Shard": { mobs: ["Лицензионный_Аватар", "Гвард", "Горилла", "Улитка"], ores: [] }
         };
 
@@ -151,11 +155,11 @@
             }
         };
 
-        // Добавьте этот массив в начало вашего JavaScript кода
+        // Добавьте этот массив в начало вашего JavaScript кда
         const availableImages = [
-            "Баран", "Горилла", "Гвард", "Дрон", "Жаба", "Камень_Жёлтый", "Камень_Зелёный", 
-            "Камень_Синий", "Камень_Тёмный", "Камень_Фиолетовый", "Лазер_гриб", "Лицензионный_Аватар", 
-            "Мама_жаба", "Турель", "Улитка"
+            "Баран", "Горилла", "Гвард", "Дрон", "Жаба", "Камень_Желтый", "Камень_Зеленый", 
+            "Камень_Синий", "Камень_Темный", "Камень_Фиолетовый", "Лазер_Гриб", "Лицензионный_Аватар", 
+            "Мама_Жаба", "Турель", "Улитка"
         ];
 
         // Новая функция для отображения мобов и руды
@@ -165,19 +169,16 @@
             
             if (!data) return;
             
-            let html = '<div class="mob-ore-row">';
+            let html = '<div class="mob-ore-grid">';
             const allItems = [...data.mobs, ...data.ores];
             
-            allItems.forEach((item, index) => {
-                if (index > 0 && index % 9 === 0) {
-                    html += '</div><div class="mob-ore-row">';
-                }
-                const imageName = availableImages.find(img => img.toLowerCase() === item.toLowerCase()) || item;
-                const displayName = imageName.replace(/_/g, ' ');
+            allItems.forEach(item => {
+                const itemName = item.replace(/_/g, ' ');
+                const imageName = item.toLowerCase().replace(/_/g, '_');
                 html += `
                     <div class="mob-ore-item">
-                        <img src="../assets/images/${imageName}.png" alt="${displayName}" onerror="this.src='../assets/images/placeholder.png';">
-                        <span>${displayName}</span>
+                        <img src="../assets/images/${imageName}.png" alt="${itemName}" onerror="this.onerror=null; this.src='../assets/images/placeholder.png';">
+                        <span class="mob-ore-name">${itemName}</span>
                     </div>
                 `;
             });
@@ -227,18 +228,17 @@
                     ${resources.map(resource => {
                         const resourceName = resource.split(' ')[0].replace(' ', '_');
                         const resourceImage = resourceImages[resourceName] || '';
-                        const displayName = resource.split(' ')[0].replace(/_/g, ' '); // Убираем нижнее подчёркивание в отображаемом тексте
+                        const displayName = resource.split(' ')[0].replace(/_/g, ' '); // Убираем нижнее подчеркивание в отображаемом тексте
                         const quantity = resource.split(' ')[1]; // Количество ресурса
                         console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
                         return `
-                            <li class="resource-card" onmouseover="showMobsAndOres('${resourceName}')" onmouseout="hideMobsAndOres()">
+                            <li class="resource-card" onmouseenter="showMobsAndOres('${resourceName}')" onmouseout="hideMobsAndOres()">
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
                                 <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
                             </li>
                         `;
                     }).join('')}
                 </ul>
-                <div id="mob-ore-container" class="mob-ore-container"></div>
             `;
         }
 
@@ -260,10 +260,8 @@
 
         function generateCenterIcons() {
             const centerPanel = document.getElementById('center-panel');
-            centerPanel.innerHTML = '';
-            
             const iconContainer = document.createElement('div');
-            iconContainer.className = 'center-icon-container';
+            iconContainer.className = 'icon-container';
 
             centerIcons.forEach((icon, index) => {
                 const wrapper = document.createElement('div');
