@@ -400,12 +400,16 @@ main {
     margin-right: 10px; /* Добавляем отступ справа от иконки */
 }
 
-.mob-ore-container {
+.mob-ore-display {
     display: flex;
     flex-wrap: wrap; /* Перенос строк */
     justify-content: center; /* Центрируем содержимое */
     gap: 10px; /* Отступ между элементами */
-    margin-top: 10px; /* Отступ сверху */
+    margin-top: 20px; /* Отступ сверху */
+    padding: 10px; /* Отступ внутри контейнера */
+    border: 1px solid #ccc; /* Рамка вокруг контейнера */
+    border-radius: 8px; /* Скругляем углы контейнера */
+    background-color: rgba(255, 255, 255, 0.1); /* Легкий фон */
 }
 
 .mob-ore-item {
