@@ -6,6 +6,27 @@
     <title>Аватары</title>
     <link rel="stylesheet" href="../assets/css/res_style.css">
     <link rel="stylesheet" href="../assets/css/avatars_style.css">
+    <style>
+        .resource-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .resource-list li {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            width: 120px; /* Увеличиваем ширину для большего изображения */
+        }
+
+        .resource-image {
+            width: 80px; /* Увеличиваем размер изображения */
+            height: 80px; /* Увеличиваем размер изображения */
+            margin-bottom: 10px; /* Добавляем отступ снизу */
+        }
+    </style>
 </head>
 <body>
     <a href="https://korstziv.github.io/.github-test.io/" class="home-button">
@@ -280,7 +301,7 @@
                         console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
                         return `
                             <li>
-                                <img src="${resourceImage}" alt="${resourceName}" class="resource-image" style="width:50px;height:50px; margin-right: 10px;">
+                                <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
                                 ${resource}
                             </li>
                         `;
