@@ -272,7 +272,6 @@
             items.forEach(item => {
                 const itemName = item.replace(/_/g, ' ');
                 const imageName = item.toLowerCase().replace(/_/g, '_');
-                console.log(`Trying to load image: ../assets/images/${imageName}.png`);
                 html += `
                     <div class="mob-ore-item">
                         <img src="../assets/images/${imageName}.png" alt="${itemName}" onerror="this.onerror=null; this.src='../assets/images/placeholder.png';">
@@ -348,10 +347,8 @@
                         `;
                     }).join('')}
                 </ul>
+                <div id="mob-ore-container" class="mob-ore-container"></div>
             `;
-            
-            // Добавляем контейнер для мобов и руды после списка ресурсов
-            rightPanel.innerHTML += '<div id="mob-ore-container" class="mob-ore-container"></div>';
         }
 
         function updateCenterIconsState() {
