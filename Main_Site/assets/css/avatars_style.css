@@ -419,7 +419,7 @@ main {
 
 .mob-ore-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    grid-template-columns: repeat(9, 1fr); /* Ограничиваем количество иконок в ряду до 9 */
     gap: 10px;
     justify-content: center; /* Центрируем элементы */
     max-width: 1000px;
