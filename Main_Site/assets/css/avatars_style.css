@@ -328,12 +328,13 @@ main {
 }
 
 .right-panel-content {
+    display: flex;
+    flex-direction: column; /* Перемещаем иконку класса и название наверх */
+    align-items: center;
+    justify-content: flex-start;
+    color: #ffffff; /* Добавляем белый цвет текста для контраста */
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff; /* Добавляем белый цвет текста для контраста */
 }
 
 #greyAvatarVideo {
