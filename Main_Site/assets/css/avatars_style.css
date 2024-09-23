@@ -11,15 +11,41 @@ header {
 
 main {
     position: relative;
-    padding-top: 80px;
     display: flex;
-    justify-content: space-between;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 100px); /* Предполагаем, что верхний отступ 100px */
     overflow: hidden;
 }
 
-.left-panel, .right-panel {
+.left-panel, .center-panel, .right-panel {
+    height: 100%; /* Устанавливаем высоту всех панелей на 100% */
+    display: flex;
+    flex-direction: column;
+}
+
+.right-panel {
+    flex-grow: 1;
+    background-color: #000000; /* Устанавливаем черный фон для всей правой панели */
+}
+
+.right-panel-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     overflow-y: auto;
+}
+
+#greyAvatarVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Убедимся, что контент не выходит за пределы панели */
+.right-panel-content > * {
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .left-panel {
