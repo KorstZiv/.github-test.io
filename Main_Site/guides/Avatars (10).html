@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аватары</title>
+    <link rel="stylesheet" href="../assets/css/res_style.css">
+    <link rel="stylesheet" href="../assets/css/avatars_style.css">
+    <style>
+        .resource-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .resource-list li {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            width: 120px; /* Увеличиваем ширину для большего изображения */
+        }
+
+        .resource-image {
+            width: 80px; /* Увеличиваем размер изображения */
+            height: 80px; /* Увеличиваем размер изображения */
+            margin-bottom: 10px; /* Добавляем отступ снизу */
+        }
+    </style>
+</head>
+<body>
+    <a href="https://korstziv.github.io/.github-test.io/" class="home-button">
+        <img src="../assets/images/home_icon.png" alt="Домой" class="home-icon">
+    </a>
+
+    <header>
+        <h2 class="clan-title-fire">Аватары</h2>
+        <h1>База знаний 2040World</h1>
+    </header>
+
+    <div class="welcome-text-container collapsed">
+        <div class="toggle-description">Развернуть описание</div>
+        <div class="welcome-text">
+            <p class="description">Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от нео зависит ваш ировой опыт.</p>
+        </div>
+    </div>
+
+    <main>
+        <div class="left-panel">
+            <h2>Качества Аватаров</h2>
+            <div class="avatar-grid" id="avatar-grid">
+                <div class="avatar-item" data-avatar="Uncommon">
+                    <img src="../assets/images/Avatars/Drop_Pods_Uncommon.png" alt="Uncommon" class="avatar-image">
+                    <span class="avatar-name">Uncommon</span>
+                </div>
+                <div class="avatar-item" data-avatar="Rare">
+                    <img src="../assets/images/Avatars/Drop_Pods__Rare.png" alt="Rare" class="avatar-image">
+                    <span class="avatar-name">Rare</span>
+                </div>
+                <div class="avatar-item" data-avatar="Epic">
+                    <img src="../assets/images/Avatars/Drop_Pods__Epic.png" alt="Epic" class="avatar-image">
+                    <span class="avatar-name">Epic</span>
+                </div>
+            </div>
+            <p class="grey-avatar-link">Серый Аватар</p>
+        </div>
+
+        <div class="center-panel" id="center-panel">
+            <!-- Центральные иконки будут добавлены здесь -->
+        </div>
+
+        <div class="right-panel" id="right-panel">
+            <div class="right-panel-content">
+                <!-- Информация об аватаре будет отображаться здесь -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let selectedAvatar = null;
+        let selectedCenterIcon = null;
+
+        const avatarData = [
+            { name: "Uncommon", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
+            { name: "Rare", image: "../assets/images/Avatars/Drop_Pods__Rare.png", resources: ["Magnetite", "Robotic Module", "Energy Crystal"] },
+            { name: "Epic", image: "../assets/images/Avatars/Drop_Pods__Epic.png", resources: ["Photon Gel", "Plasma Condensate", "Organic Polymers"] },
+        ];
+
+        const centerIcons = [
+            "courier.png", "explorer.png", "survivor.png", "marauder.png", "warrior.png"
+        ];
+
+        const resourceData = {
+            // Здесь нужно добавить данные о ресурсах, мобах и руде из гайда Ресурсы
+            // Пример:
+            "Lithium Ore": { mobs: ["Камень_Синий"], ores: ["Камень_Синий"] },
+            // ... добавьте остальные ресурс
+        };
+
+        const resourceImages = {
+            "Biological_Extract": "../assets/images/Biological_Extract.png",
+            "Organic_Polymers": "../assets/images/Organic_Polymers.png",
+            "Coal": "../assets/images/Coal.png",
+            "Uncommon_Shard": "../assets/images/Uncommon_Shard.png",
+            "Acid": "../assets/images/Acid.png",
+            "Robotic_Module": "../assets/images/Robotic_Module.png",
+            "Iron_Ore": "../assets/images/Iron_Ore.png",
+            "Protein_Fiber": "../assets/images/Protein_Fiber.png",
+            "Quartz": "../assets/images/Quartz.png",
+            "Energy_Crystal": "../assets/images/Energy_Crystal.png",
+            "Copper_Ore": "../assets/images/Copper_Ore.png",
+            "Plasma_Condensate": "../assets/images/Plasma_Condensate.png",
+            "Exotic_Spores": "../assets/images/Exotic_Spores.png",
+            "Magnetite": "../assets/images/Magnetite.png",
+            "Rare_Shard": "../assets/images/Rare_Shard.png",
+            "Genetically_Modified_Enzymes": "../assets/images/Genetically_Modified_Enzymes.png",
+            "Rare_Earth_Elements": "../assets/images/Rare_Earth_Elements.png",
+            "Lithium_Ore": "../assets/images/Lithium_Ore.png",
+            "Heat_Regulating_Glands": "../assets/images/Heat_Regulating_Glands.png",
+            "Radioactive_Isotopes": "../assets/images/Radioactive_Isotopes.png",
+            "Photon_Gel": "../assets/images/Photon_Gel.png",
+            "Nanofibers": "../assets/images/Nanofibers.png",
+            "Epic_Shard": "../assets/images/Epic_Shard.png"
+        };
+
+        const classResources = {
+            "Uncommon": {
+                "courier": ["Biological_Extract 200 шт", "Organic_Polymers 200 шт", "Coal 200 шт", "Uncommon_Shard 20 шт"],
+                "explorer": ["Acid 200 шт", "Robotic_Module 200 шт", "Iron_Ore 200 шт", "Uncommon_Shard 20 шт"],
+                "survivor": ["Coal 200 шт", "Protein_Fiber 200 шт", "Quartz 200 шт", "Uncommon_Shard 20 шт"],
+                "marauder": ["Energy_Crystal 200 шт", "Copper_Ore 200 шт", "Acid 200 шт", "Uncommon_Shard 20 шт"],
+                "warrior": ["Protein_Fiber 200 шт", "Robotic_Module 200 шт", "Quartz 200 шт", "Uncommon_Shard 20 шт"]
+            },
+            "Rare": {
+                "courier": ["Plasma_Condensate 300 шт", "Exotic_Spores 300 шт", "Magnetite 300 шт", "Rare_Shard 30 шт"],
+                "explorer": ["Genetically_Modified_Enzymes 300 шт", "Rare_Earth_Elements 300 шт", "Lithium_Ore 300 шт", "Rare_Shard 30 шт"],
+                "marauder": ["Heat_Regulating_Glands 300 шт", "Radioactive_Isotopes 300 шт", "Photon_Gel 300 шт", "Rare_Shard 30 шт"],
+                "survivor": ["Lithium_Ore 300 шт", "Nanofibers 300 шт", "Magnetite 300 шт", "Rare_Shard 30 шт"],
+                "warrior": ["Rare_Earth_Elements 300 шт", "Exotic_Spores 300 шт", "Nanofibers 300 шт", "Rare_Shard 30 шт"]
+            },
+            "Epic": {
+                "courier": ["Photon_Gel 570 шт", "Nanofibers 570 шт", "Lithium_Ore 570 шт", "Epic_Shard 40 шт"],
+                "explorer": ["Exotic_Spores 570 шт", "Radioactive_Isotopes 570 шт", "Photon_Gel 570 шт", "Epic_Shard 40 шт"],
+                "marauder": ["Rare_Earth_Elements 570 шт", "Heat_Regulating_Glands 570 шт", "Plasma_Condensate 570 шт", "Epic_Shard 40 шт"],
+                "survivor": ["Heat_Regulating_Glands 570 шт", "Radioactive_Isotopes 570 шт", "Genetically_Modified_Enzymes 570 шт", "Epic_Shard 40 шт"],
+                "warrior": ["Plasma_Condensate 570 шт", "Genetically_Modified_Enzymes 570 шт", "Magnetite 570 шт", "Epic_Shard 40 шт"]
+            }
+        };
+
+        function generateAvatarGrid() {
+            const grid = document.getElementById('avatar-grid');
+            grid.innerHTML = ''; // Очищаем сетку пред генерацией
+            avatarData.forEach(avatar => {
+                const div = document.createElement('div');
+                div.classList.add('avatar-item');
+                div.setAttribute('data-avatar', avatar.name);
+                div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" class="avatar-image"><p>${avatar.name}</p>`;
+                div.onclick = () => showAvatarInfo(avatar);
+                if (avatar.name === selectedAvatar) {
+                    div.classList.add('selected');
+                }
+                grid.appendChild(div);
+            });
+        }
+
+        function generateCenterIcons() {
+            const centerPanel = document.getElementById('center-panel');
+            centerPanel.innerHTML = '';
+            
+            const iconContainer = document.createElement('div');
+            iconContainer.className = 'center-icon-container';
+
+            centerIcons.forEach((icon, index) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'center-icon-wrapper';
+                
+                const img = document.createElement('img');
+                img.src = `../assets/images/Avatars/${icon}`;
+                img.alt = icon.replace('.png', '');
+                img.classList.add('center-icon');
+                
+                const text = document.createElement('span');
+                text.className = 'center-icon-text';
+                text.textContent = icon.replace('.png', '');
+                
+                wrapper.appendChild(img);
+                wrapper.appendChild(text);
+                wrapper.addEventListener('click', () => {
+                    if (selectedAvatar) {
+                        if (selectedCenterIcon) {
+                            selectedCenterIcon.classList.remove('clicked');
+                        }
+                        wrapper.classList.add('clicked');
+                        selectedCenterIcon = wrapper;
+                        showClassInfo(icon.replace('.png', ''));
+                    }
+                });
+                
+                wrapper.addEventListener('mousemove', (e) => {
+                    if (!selectedAvatar) {
+                        showTooltip(e, "Выберите качество Аватара");
+                    }
+                });
+                
+                wrapper.addEventListener('mouseleave', () => {
+                    hideTooltip();
+                });
+                
+                iconContainer.appendChild(wrapper);
+            });
+
+            centerPanel.appendChild(iconContainer);
+        }
+
+        function showAvatarInfo(avatar) {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = ''; // Очищаем правую панель при выборе аватара
+
+            // Снимаем подсветку с предыдущего выбранного аватара
+            if (selectedAvatar) {
+                const prevSelected = document.querySelector(`.avatar-item[data-avatar="${selectedAvatar}"]`);
+                if (prevSelected) {
+                    prevSelected.classList.remove('selected');
+                }
+            }
+
+            // Подсвечиваем новый выбранный аватар
+            const newSelected = document.querySelector(`.avatar-item[data-avatar="${avatar.name}"]`);
+            if (newSelected) {
+                newSelected.classList.add('selected');
+            }
+
+            // Подсвечиваем центральную панель
+            const centerPanel = document.querySelector('.center-panel');
+            centerPanel.classList.remove('green-glow', 'blue-glow', 'purple-glow');
+            if (avatar.name === "Uncommon") {
+                centerPanel.classList.add('green-glow');
+            } else if (avatar.name === "Rare") {
+                centerPanel.classList.add('blue-glow');
+            } else if (avatar.name === "Epic") {
+                centerPanel.classList.add('purple-glow');
+            }
+
+            selectedAvatar = avatar.name;
+            updateCenterIconsState();
+        }
+
+        function showGreyAvatarVideo() {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = `
+                <video width="100%" height="auto" autoplay loop muted>
+                    <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        }
+
+        function hideGreyAvatarVideo() {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
+        }
+
+        function showMobsAndOres(resource) {
+            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
+            if (resourceData[resource]) {
+                listElement.innerHTML = `
+                    ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
+                    ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
+                `;
+                listElement.style.display = 'block';
+            }
+        }
+
+        function hideMobsAndOres(resource) {
+            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
+            listElement.style.display = 'none';
+        }
+
+        function showClassInfo(className) {
+            if (!selectedAvatar) return; // Проверка на наличие выбранного аватара
+
+            // Удаляем активный класс у всех иконок
+            document.querySelectorAll('.center-icon-wrapper').forEach(wrapper => {
+                wrapper.classList.remove('active');
+            });
+
+            // Добавляем активный класс выбранной иконке
+            const selectedWrapper = document.querySelector(`.center-icon-wrapper img[alt="${className}"]`).parentNode;
+            selectedWrapper.classList.add('active');
+
+            const rightPanel = document.querySelector('.right-panel-content');
+            const resources = classResources[selectedAvatar] ? classResources[selectedAvatar][className] : [];
+
+            rightPanel.innerHTML = `
+                <h3>${className}</h3>
+                <h4>Ресурсы:</h4>
+                <ul class="resource-list">
+                    ${resources.map(resource => {
+                        const resourceName = resource.split(' ')[0].replace(' ', '_');
+                        const resourceImage = resourceImages[resourceName] || '';
+                        console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
+                        return `
+                            <li>
+                                <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
+                                ${resource}
+                            </li>
+                        `;
+                    }).join('')}
+                </ul>
+            `;
+        }
+
+        function updateCenterIconsState() {
+            const centerIcons = document.querySelectorAll('.center-icon-wrapper');
+            centerIcons.forEach(icon => {
+                if (selectedAvatar) {
+                    icon.classList.add('active');
+                    icon.classList.remove('clicked');
+                } else {
+                    icon.classList.remove('active', 'clicked');
+                }
+            });
+            selectedCenterIcon = null;
+        }
+
+        function showTooltip(e, text) {
+            hideTooltip(); // Удаляем предыдущий тултип, если он есть
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = text;
+            document.body.appendChild(tooltip);
+
+            tooltip.style.left = `${e.clientX + 10}px`;
+            tooltip.style.top = `${e.clientY + 10}px`;
+        }
+
+        function hideTooltip() {
+            const tooltip = document.querySelector('.tooltip');
+            if (tooltip) {
+                tooltip.remove();
+            }
+        }
+
+        // Добавляем обработчик для скрытия тултипа при движении мыши вне иконок
+        document.addEventListener('mousemove', (e) => {
+            if (!e.target.closest('.center-icon-wrapper')) {
+                hideTooltip();
+            }
+        });
+
+        window.onload = function() {
+            generateAvatarGrid();
+            generateCenterIcons();
+            updateCenterIconsState();
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.querySelector('.toggle-description');
+            const container = document.querySelector('.welcome-text-container');
+
+            if (toggleButton && container) {
+                console.log('Elements found');
+                toggleButton.addEventListener('click', function() {
+                    console.log('Button clicked');
+                    if (container.classList.contains('collapsed')) {
+                        container.classList.remove('collapsed');
+                        container.classList.add('expanded');
+                        this.textContent = 'Свернуть описание';
+                        console.log('Panel expanded');
+                    } else {
+                        container.classList.remove('expanded');
+                        container.classList.add('collapsed');
+                        this.textContent = 'Развернуть описание';
+                        console.log('Panel collapsed');
+                    }
+                });
+            } else {
+                console.error('Required elements not found');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const greyAvatarLink = document.querySelector('.grey-avatar-link');
+            const rightPanel = document.querySelector('.right-panel-content');
+            let videoElement = null;
+
+            greyAvatarLink.addEventListener('mouseenter', function() {
+                rightPanel.innerHTML = `
+                    <video id="greyAvatarVideo" autoplay loop muted>
+                        <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео тег.
+                    </video>
+                `;
+                videoElement = document.getElementById('greyAvatarVideo');
+                videoElement.play().catch(e => console.error("Error playing video:", e));
+            });
+
+            greyAvatarLink.addEventListener('mouseleave', function() {
+                if (videoElement) {
+                    videoElement.pause();
+                    videoElement.currentTime = 0;
+                }
+                rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
+            });
+        });
+    </script>
+</body>
+</html>
