@@ -10,11 +10,11 @@ header {
 }
 
 main {
-    position: relative; /* Добавлено */
-    padding-top: 80px; /* Изменено с 40px на 80px */
+    position: relative;
+    padding-top: 80px;
     display: flex;
     justify-content: space-between;
-    height: calc(100vh - 100px); /* Учитываем высоту header */
+    height: calc(100vh - 100px);
     overflow: hidden;
 }
 
@@ -23,16 +23,16 @@ main {
 }
 
 .left-panel {
-    width: 30%; /* 30% от ширины экрана */
-    padding: 15px 50px; /* Отступы по 50px слева и справа */
+    width: 30%;
+    padding: 15px 50px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Изменено с space-between на flex-start */
-    align-items: center; /* Центрируем содержимое по горизонтали */
+    justify-content: flex-start;
+    align-items: center;
     overflow-y: auto;
-    overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
-    padding-top: 65px; /* Увеличено с 40px до 65px */
+    overflow-x: hidden;
+    padding-top: 65px;
 }
 
 .center-panel {
@@ -44,7 +44,7 @@ main {
     justify-content: space-around;
     align-items: center;
     padding: 10px 0;
-    height: 100%; /* Занимает всю высоту */
+    height: 100%;
 }
 
 .center-panel.green-glow {
@@ -61,83 +61,82 @@ main {
 
 .right-panel {
     flex-grow: 1;
-    padding: 0; /* Убираем отступы */
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Скрываем содержимое, выходящее за границы */
-    background-color: #000000; /* Добавляем черный фон */
-    height: 100%; /* Занимает всю высоту main */
+    overflow: hidden;
+    background-color: #000000;
+    height: 100%;
 }
 
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Увеличиваем отступ между элементами */
+    gap: 20px;
     width: 100%;
-    margin-top: 25px; /* Добавляем отступ сверху */
+    margin-top: 25px;
 }
 
 .avatar-item {
-    /* Сохраняем существующие стили */
     position: relative;
     display: flex;
     align-items: center;
-    width: 100%; /* Занимает всю ширину родителя */
+    width: 100%;
     box-sizing: border-box;
-    flex-direction: column; /* Вертикальное расположение */
+    flex-direction: column;
     justify-content: center;
     border: 2px solid;
-    border-radius: 10px; /* Увеличиваем скругление углов */
+    border-radius: 10px;
     padding: 15px;
     margin: 0;
-    height: 210px; /* Увеличиваем высоту в три раза */
-    aspect-ratio: 16 / 9; /* Задаем соотношение сторон */
+    height: 210px;
+    aspect-ratio: 16 / 9;
     text-align: center;
     transition: all 0.3s ease;
-    transform: scale(1); /* Возвращаем к исходному размеру */
+    transform: scale(1);
     cursor: pointer;
 }
 
 .avatar-item:hover, .avatar-item.hovered, .avatar-item.selected {
-    background-color: rgba(255, 255, 255, 0.2); /* Более заметная подсветк для выбранного аватара */
+    background-color: rgba(255, 255, 255, 0.2);
     border-color: #fff;
 }
 
 .avatar-item[data-avatar="Uncommon"]:hover {
-    background-color: rgba(0, 255, 0, 0.1); /* Легкая подсветка зеленым */
+    background-color: rgba(0, 255, 0, 0.1);
 }
 
 .avatar-item[data-avatar="Rare"]:hover {
-    background-color: rgba(0, 191, 255, 0.1); /* Легкая подсветка синим */
+    background-color: rgba(0, 191, 255, 0.1);
 }
 
 .avatar-item[data-avatar="Epic"]:hover {
-    background-color: rgba(138, 43, 226, 0.1); /* Легкая подсветка фиолетовым */
+    background-color: rgba(138, 43, 226, 0.1);
 }
 
 .avatar-item[data-avatar="Uncommon"].selected {
-    background-color: rgba(0, 255, 0, 0.3); /* Яркая подсветка зеленым */
+    background-color: rgba(0, 255, 0, 0.3);
 }
 
 .avatar-item[data-avatar="Rare"].selected {
-    background-color: rgba(0, 191, 255, 0.3); /* Яркая подсветка синим */
+    background-color: rgba(0, 191, 255, 0.3);
 }
 
 .avatar-item[data-avatar="Epic"].selected {
-    background-color: rgba(138, 43, 226, 0.3); /* Яркая подсветка фиолетовым */
+    background-color: rgba(138, 43, 226, 0.3);
 }
 
 .avatar-image {
-    height: 90%; /* Увеличиваем высоту иконки до 90% от высоты рамки */
-    width: auto; /* Автоматическая ширина для сохранения пропорций */
+    height: 90%;
+    width: auto;
     object-fit: contain;
-    margin-left: 5px; /* Небольшой отступ слева */
+    margin-left: 5px;
 }
 
 .avatar-name {
     position: absolute;
-    right: 10px; /* Отступ от правого края */
+    right: 10px;
     font-size: 18px;
     color: #fff;
 }
@@ -154,9 +153,9 @@ main {
 
 .mob-ore-list {
     display: none;
-    margin-top: 10px; /* Отступ сверху */
-    justify-content: center; /* Центрируем содержимое */
-    gap: 10px; /* Отступ между элементами */
+    margin-top: 10px;
+    justify-content: center;
+    gap: 10px;
 }
 
 .mob-ore-item {
@@ -170,15 +169,14 @@ main {
     margin-top: 20px;
     cursor: pointer;
     font-weight: bold;
-    color: #808080; /* Серый цвет */
-    transition: color 0.3s ease; /* Плавный переход цвета */
+    color: #808080;
+    transition: color 0.3s ease;
 }
 
 .grey-avatar-link:hover {
-    color: #FF4500; /* Красноватый цвет при наведении */
+    color: #FF4500;
 }
 
-/* Если у вас нет класса clan-title-fire, дбавьте его сюда */
 .clan-title-fire {
     color: #FF4500;
 }
@@ -202,8 +200,8 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 120px; /* Увеличиваем высоту */
-    width: 100px; /* Увеличиваем ширину */
+    height: 120px;
+    width: 100px;
 }
 
 .center-icon-wrapper.active {
@@ -220,9 +218,9 @@ main {
 }
 
 .center-icon {
-    width: 60px; /* Увеличиваем размер иконки */
+    width: 60px;
     height: 60px;
-    margin-bottom: 10px; /* Добавляем отступ снизу */
+    margin-bottom: 10px;
     transition: all 0.3s ease;
 }
 
@@ -231,10 +229,10 @@ main {
 }
 
 .center-icon-text {
-    font-size: 14px; /* Увеличиваем размер шрифта */
+    font-size: 14px;
     text-align: center;
-    word-wrap: break-word; /* Переносим длинные слова */
-    max-width: 100%; /* Ограничиваем ширину текста */
+    word-wrap: break-word;
+    max-width: 100%;
 }
 
 .tooltip {
@@ -248,8 +246,6 @@ main {
     pointer-events: none;
 }
 
-/* Удаляем стили для .center-icon:first-child и .center-icon:last-child */
-
 .welcome-text-container {
     position: absolute;
     top: 140px;
@@ -260,8 +256,8 @@ main {
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     z-index: 1000;
-    width: 90%; /* Ограничиваем ширину контейнера */
-    margin: 0 auto; /* Центрируем контейнер */
+    width: 90%;
+    margin: 0 auto;
 }
 
 .welcome-text-container.collapsed {
@@ -269,21 +265,21 @@ main {
 }
 
 .welcome-text-container.expanded {
-    max-height: 750px; /* Увеличиваем максимальную высоту на 50% */
+    max-height: 750px;
 }
 
 .welcome-text {
-    padding: 30px; /* Уивеличиваем отступы */
+    padding: 30px;
     font-size: 20px;
     line-height: 1.5;
     max-height: 720px;
     overflow-y: auto;
-    text-align: left; /* Добавляем выравнивание по левому краю */
+    text-align: left;
 }
 
 .welcome-text p {
     margin-bottom: 15px;
-    text-align: left; /* Добавляем выравнивание по левому краю для каждого параграфа */
+    text-align: left;
 }
 
 .description {
@@ -296,13 +292,13 @@ main {
     left: 0;
     right: 0;
     text-align: center;
-    padding: 8px; /* Увеличиваем отступ */
+    padding: 8px;
     cursor: pointer;
     color: white;
     background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1001; /* Убедимся, что кнопка всегда поверх */
-    font-size: 16px; /* Увеличиваем размер шрифта кнопки */
-    font-weight: bold; /* Делаем текст кнопки жирным */
+    z-index: 1001;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .toggle-description:hover {
@@ -331,10 +327,10 @@ main {
 
 .right-panel-content {
     display: flex;
-    flex-direction: column; /* Перемещаем иконку класса и название наверх */
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    color: #ffffff; /* Добавляем белый цвет текста для контраста */
+    color: #ffffff;
     width: 100%;
     height: 100%;
 }
@@ -342,7 +338,7 @@ main {
 #greyAvatarVideo {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Растягиваем видео на всю область, сохраняя пропорции */
+    object-fit: cover;
 }
 
 .resource-image {
@@ -363,21 +359,22 @@ main {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    width: 120px; /* Увеличиваем ширину для большего изображения */
-    border: 1px solid #ccc; /* Добавляем рамку */
-    padding: 10px; /* Добавляем отступ */
-    border-radius: 8px; /* Скругляем углы */
-    transition: transform 0.2s; /* Добавляем анимацию */
+    width: 120px;
+    height: 180px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    transition: transform 0.2s;
 }
 
 .resource-list li:hover {
-    transform: scale(1.05); /* Увеличиваем элемент при наведении */
+    transform: scale(1.05);
 }
 
 .resource-image {
-    width: 80px; /* Увеличиваем размер изображения */
-    height: 80px; /* Увеличиваем размер изображения */
-    margin-bottom: 10px; /* Добавляем отступ снизу */
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
 }
 
 .resource-name {
@@ -391,11 +388,44 @@ main {
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
-    flex-direction: row; /* Перемещаем иконку и текст в одну строку */
+    flex-direction: row;
 }
 
 .class-icon {
     width: 40px;
     height: 40px;
-    margin-right: 10px; /* Добавляем отступ справа от иконки */
+    margin-right: 10px;
+}
+
+.mob-ore-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.mob-ore-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mob-ore-item {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+}
+
+.welcome-text {
+    padding: 30px;
+    font-size: 15px;
+    line-height: 1.5;
+    max-height: 720px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.welcome-text p {
+    margin-bottom: 18px;
+    text-align: left;
 }
