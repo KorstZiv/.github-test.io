@@ -94,7 +94,6 @@
                 </div>
             </div>
         </div>
-
         <div class="right-panel" id="right-panel">
             <div class="right-panel-content" id="infoPanel">
                 <!-- Информация об аватаре будет отображаться здесь -->
@@ -162,19 +161,11 @@
         }
 
         function selectAvatar(quality) {
-            const avatars = document.querySelectorAll('.avatar-item');
-            avatars.forEach(avatar => avatar.classList.remove('highlighted'));
-            document.querySelector(`[data-avatar="${quality}"]`).classList.add('highlighted');
-
             selectedAvatar = quality;
             updateSelection();
         }
 
         function selectClass(avatarClass) {
-            const classes = document.querySelectorAll('.center-icon-wrapper');
-            classes.forEach(cls => cls.classList.remove('highlighted'));
-            document.querySelector(`[onclick="selectClass('${avatarClass}')"]`).classList.add('highlighted');
-
             selectedClass = avatarClass;
             updateSelection();
         }
