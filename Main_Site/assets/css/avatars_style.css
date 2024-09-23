@@ -399,3 +399,17 @@ main {
     height: 40px;
     margin-right: 10px; /* Добавляем отступ справа от иконки */
 }
+
+.mob-ore-container {
+    display: flex;
+    flex-wrap: wrap; /* Перенос строк */
+    justify-content: center; /* Центрируем содержимое */
+    gap: 10px; /* Отступ между элементами */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+.mob-ore-item {
+    width: 80px; /* Размер иконок мобов и руды */
+    height: 80px; /* Размер иконок мобов и руды */
+    margin: 5px; /* Отступ между иконками */
+}
