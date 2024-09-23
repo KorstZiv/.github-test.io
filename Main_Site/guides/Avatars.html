@@ -337,18 +337,65 @@
                         const resourceImage = resourceImages[resourceName] || '';
                         const displayName = resourceName.replace(/_/g, ' ');
                         return `
-                            <li class="resource-card" 
-                                onmouseenter="showMobsAndOres('${resourceName}')" 
-                                onmouseleave="hideMobsAndOres()">
+                            <li class="resource-card" data-resource="${resourceName}">
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
                                 <span class="resource-name">${displayName}</span> 
                                 <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
+                                <div class="resource-popup"></div>
                             </li>
                         `;
                     }).join('')}
                 </ul>
-                <div id="mob-ore-container" class="mob-ore-container"></div>
             `;
+
+            // Добавляем обработчики событий после создания HTML
+            const resourceCards = rightPanel.querySelectorAll('.resource-card');
+            resourceCards.forEach(card => {
+                const popup = card.querySelector('.resource-popup');
+                const resourceName = card.dataset.resource;
+
+                card.addEventListener('mouseenter', () => {
+                    showResourceInfo(resourceName, popup);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    popup.innerHTML = '';
+                });
+            });
+        }
+
+        function showResourceInfo(resourceName, popupElement) {
+            if (resourceData[resourceName]) {
+                const { mobs, ores } = resourceData[resourceName];
+                let html = '<div class="resource-info">';
+                
+                if (mobs.length > 0) {
+                    html += '<h4>Мобы:</h4><div class="resource-items">';
+                    mobs.forEach(mob => {
+                        html += `<div class="resource-item">
+                            <img src="../assets/images/${mob.toLowerCase().replace(/_/g, '_')}.png" alt="${mob}" onerror="this.onerror=null; this.src='../assets/images/placeholder.png';">
+                            <span>${mob.replace(/_/g, ' ')}</span>
+                        </div>`;
+                    });
+                    html += '</div>';
+                }
+                
+                if (ores.length > 0) {
+                    html += '<h4>Руды:</h4><div class="resource-items">';
+                    ores.forEach(ore => {
+                        html += `<div class="resource-item">
+                            <img src="../assets/images/${ore.toLowerCase().replace(/_/g, '_')}.png" alt="${ore}" onerror="this.onerror=null; this.src='../assets/images/placeholder.png';">
+                            <span>${ore.replace(/_/g, ' ')}</span>
+                        </div>`;
+                    });
+                    html += '</div>';
+                }
+                
+                html += '</div>';
+                popupElement.innerHTML = html;
+            } else {
+                console.log(`Данные не найдены для ресурса: ${resourceName}`);
+            }
         }
 
         function updateCenterIconsState() {
