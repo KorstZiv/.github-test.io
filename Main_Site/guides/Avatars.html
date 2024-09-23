@@ -94,8 +94,9 @@
                 </div>
             </div>
         </div>
+
         <div class="right-panel" id="right-panel">
-            <div class="right-panel-content">
+            <div class="right-panel-content" id="infoPanel">
                 <!-- Информация об аватаре будет отображаться здесь -->
             </div>
         </div>
@@ -103,82 +104,90 @@
 
     <script>
         let selectedAvatar = null;
+        let selectedClass = null;
 
-        function showAvatarInfo(avatar) {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = `
-                <h3>${avatar.name}</h3>
-                <img src="${avatar.image}" alt="${avatar.name}" class="avatar-image" style="max-width: 200px;">
-                <h4>Необходимые ресурсы:</h4>
-                <ul class="resource-list">
-                    ${avatar.resources.map(resource => `
-                        <li class="resource-item" onmouseover="showMobsAndOres('${resource}')" onmouseout="hideMobsAndOres('${resource}')">
-                            ${resource}
-                            <div class="mob-ore-list" id="${resource.replace(/\s+/g, '-')}-list"></div>
-                        </li>
-                    `).join('')}
-                </ul>
-            `;
-
-            // Снимаем подсветку с предыдущего выбранного аватара
-            if (selectedAvatar) {
-                const prevSelected = document.querySelector(`.avatar-item[data-avatar="${selectedAvatar}"]`);
-                if (prevSelected) {
-                    prevSelected.classList.remove('selected');
-                }
+        const avatarData = {
+            uncommon: {
+                courier: [
+                    { name: "Biological Extract", quantity: 200, img: "../assets/images/Biological_Extract.png" },
+                    { name: "Organic Polymers", quantity: 200, img: "../assets/images/Organic_Polymers.png" },
+                    { name: "Coal", quantity: 200, img: "../assets/images/Coal.png" },
+                    { name: "Uncommon Shard", quantity: 20, img: "../assets/images/Uncommon_Shard.png" }
+                ],
+                explorer: [
+                    { name: "Acid", quantity: 200, img: "../assets/images/Acid.png" },
+                    { name: "Robotic Module", quantity: 200, img: "../assets/images/Robotic_Module.png" },
+                    { name: "Iron Ore", quantity: 200, img: "../assets/images/Iron_Ore.png" },
+                    { name: "Uncommon Shard", quantity: 20, img: "../assets/images/Uncommon_Shard.png" }
+                ],
+                survivor: [
+                    { name: "Coal", quantity: 200, img: "../assets/images/Coal.png" },
+                    { name: "Protein Fiber", quantity: 200, img: "../assets/images/Protein_Fiber.png" },
+                    { name: "Quartz", quantity: 200, img: "../assets/images/Quartz.png" },
+                    { name: "Uncommon Shard", quantity: 20, img: "../assets/images/Uncommon_Shard.png" }
+                ],
+                marauder: [
+                    { name: "Energy Crystal", quantity: 200, img: "../assets/images/Energy_Crystal.png" },
+                    { name: "Copper Ore", quantity: 200, img: "../assets/images/Copper_Ore.png" },
+                    { name: "Acid", quantity: 200, img: "../assets/images/Acid.png" },
+                    { name: "Uncommon Shard", quantity: 20, img: "../assets/images/Uncommon_Shard.png" }
+                ],
+                warrior: [
+                    { name: "Protein Fiber", quantity: 200, img: "../assets/images/Protein_Fiber.png" },
+                    { name: "Robotic Module", quantity: 200, img: "../assets/images/Robotic_Module.png" },
+                    { name: "Quartz", quantity: 200, img: "../assets/images/Quartz.png" },
+                    { name: "Uncommon Shard", quantity: 20, img: "../assets/images/Uncommon_Shard.png" }
+                ]
             }
+        };
 
-            // Подсвечиваем новый выбранный аватар
-            const newSelected = document.querySelector(`.avatar-item[data-avatar="${avatar.name}"]`);
-            if (newSelected) {
-                newSelected.classList.add('selected');
-            }
+        function displayInfo(quality, avatarClass) {
+            const infoPanel = document.getElementById('infoPanel');
+            infoPanel.innerHTML = ''; // Очистка панели
 
-            // Подсвечиваем центральную панель
-            const centerPanel = document.querySelector('.center-panel');
-            centerPanel.classList.remove('green-glow', 'blue-glow', 'purple-glow');
-            if (avatar.name === "Uncommon") {
-                centerPanel.classList.add('green-glow');
-            } else if (avatar.name === "Rare") {
-                centerPanel.classList.add('blue-glow');
-            } else if (avatar.name === "Epic") {
-                centerPanel.classList.add('purple-glow');
-            }
-
-            selectedAvatar = avatar.name;
-            updateCenterIconsState();
-        }
-
-        function showGreyAvatarVideo() {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = `
-                <video width="100%" height="auto" autoplay loop muted>
-                    <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            `;
-        }
-
-        function hideGreyAvatarVideo() {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
-        }
-
-        function showMobsAndOres(resource) {
-            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
-            if (resourceData[resource]) {
-                listElement.innerHTML = `
-                    ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
-                    ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
-                `;
-                listElement.style.display = 'block';
+            if (avatarData[quality] && avatarData[quality][avatarClass]) {
+                const resources = avatarData[quality][avatarClass];
+                resources.forEach(resource => {
+                    const resourceElement = document.createElement('div');
+                    resourceElement.className = 'resource';
+                    resourceElement.innerHTML = `
+                        <img src="${resource.img}" alt="${resource.name}" width="50" height="50">
+                        <div><strong>${resource.name}</strong>: ${resource.quantity} шт.</div>
+                    `;
+                    infoPanel.appendChild(resourceElement);
+                });
+            } else {
+                infoPanel.innerHTML = 'Информация не найдена.';
             }
         }
 
-        function hideMobsAndOres(resource) {
-            const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
-            listElement.style.display = 'none';
+        function selectAvatar(quality) {
+            const avatars = document.querySelectorAll('.avatar-item');
+            avatars.forEach(avatar => avatar.classList.remove('highlighted'));
+            document.querySelector(`[data-avatar="${quality}"]`).classList.add('highlighted');
+
+            selectedAvatar = quality;
+            updateSelection();
         }
+
+        function selectClass(avatarClass) {
+            const classes = document.querySelectorAll('.center-icon-wrapper');
+            classes.forEach(cls => cls.classList.remove('highlighted'));
+            document.querySelector(`[onclick="selectClass('${avatarClass}')"]`).classList.add('highlighted');
+
+            selectedClass = avatarClass;
+            updateSelection();
+        }
+
+        function updateSelection() {
+            if (selectedAvatar && selectedClass) {
+                displayInfo(selectedAvatar, selectedClass);
+            }
+        }
+
+        window.onload = function() {
+            // Инициализация
+        };
 
         document.addEventListener('DOMContentLoaded', function() {
             const toggleButton = document.querySelector('.toggle-description');
