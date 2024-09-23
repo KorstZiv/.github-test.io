@@ -388,6 +388,7 @@ main {
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
+    flex-direction: column; /* Перемещаем иконку и текст над изображениями */
 }
 
 .class-icon {
