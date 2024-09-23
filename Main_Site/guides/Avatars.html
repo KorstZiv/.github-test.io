@@ -77,29 +77,54 @@
         };
 
         const resourceImages = {
-            "Biological_Extract": "../assets/images/Biological_Extract.png",
-            "Organic_Polymers": "../assets/images/Organic_Polymers.png",
+            "Biological Extract": "../assets/images/Biological_Extract.png",
+            "Organic Polymers": "../assets/images/Organic_Polymers.png",
             "Coal": "../assets/images/Coal.png",
-            "Uncommon_Shard": "../assets/images/Uncommon_Shard.png",
+            "Uncommon Shard": "../assets/images/Uncommon_Shard.png",
             "Acid": "../assets/images/Acid.png",
-            "Robotic_Module": "../assets/images/Robotic_Module.png",
-            "Iron_Ore": "../assets/images/Iron_Ore.png",
-            "Protein_Fiber": "../assets/images/Protein_Fiber.png",
+            "Robotic Module": "../assets/images/Robotic_Module.png",
+            "Iron Ore": "../assets/images/Iron_Ore.png",
+            "Protein Fiber": "../assets/images/Protein_Fiber.png",
             "Quartz": "../assets/images/Quartz.png",
-            "Energy_Crystal": "../assets/images/Energy_Crystal.png",
-            "Copper_Ore": "../assets/images/Copper_Ore.png",
+            "Energy Crystal": "../assets/images/Energy_Crystal.png",
+            "Copper Ore": "../assets/images/Copper_Ore.png",
+            "Generically - Modified Enzymes": "../assets/images/Generically_Modified_Enzymes.png",
+            "Rare Earth Elements": "../assets/images/Rare_Earth_Elements.png",
+            "Lithium ore": "../assets/images/Lithium_ore.png",
+            "Rare Shard": "../assets/images/Rare_Shard.png",
+            "Heat Regulating Glands": "../assets/images/Heat_Regulating_Glands.png",
+            "Radioactive isotopes": "../assets/images/Radioactive_isotopes.png",
+            "Photon Gel": "../assets/images/Photon_Gel.png",
+            "Nanofibers": "../assets/images/Nanofibers.png",
+            "Magnetite": "../assets/images/Magnetite.png",
+            "Exotic Spires": "../assets/images/Exotic_Spires.png",
+            "Exotic Spores": "../assets/images/Exotic_Spores.png",
+            "Plasma Condensate": "../assets/images/Plasma_Condensate.png",
+            "Epic Shard": "../assets/images/Epic_Shard.png",
             // Добавьте остальные ресурсы
         };
 
         const classResources = {
             "Uncommon": {
-                "courier": ["Biological_Extract 200 шт", "Organic_Polymers 200 шт", "Coal 200 шт", "Uncommon_Shard 20 шт"],
-                "explorer": ["Acid 200 шт", "Robotic_Module 200 шт", "Iron_Ore 200 шт", "Uncommon_Shard 20 шт"],
-                "survivor": ["Coal 200 шт", "Protein_Fiber 200 шт", "Quartz 200 шт", "Uncommon_Shard 20 шт"],
-                "marauder": ["Energy_Crystal 200 шт", "Copper_Ore 200 шт", "Acid 200 шт", "Uncommon_Shard 20 шт"],
-                "warrior": ["Protein_Fiber 200 шт", "Robotic_Module 200 шт", "Quartz 200 шт", "Uncommon_Shard 20 шт"]
+                "courier": ["Biological Extract 200 шт", "Organic Polymers 200 шт", "Coal 200 шт", "Uncommon Shard 20 шт"],
+                "explorer": ["Acid 200 шт", "Robotic Module 200 шт", "Iron Ore 200 шт", "Uncommon Shard 20 шт"],
+                "survivor": ["Coal 200 шт", "Protein Fiber 200 шт", "Quartz 200 шт", "Uncommon Shard 20 шт"],
+                "marauder": ["Energy Crystal 200 шт", "Copper Ore 200 шт", "Acid 200 шт", "Uncommon Shard 20 шт"],
+                "warrior": ["Protein Fiber 200 шт", "Robotic Module 200 шт", "Quartz 200 шт", "Uncommon Shard 20 шт"]
             },
-            // Добавьте данные для других качеств аватаров и классов
+            "Rare": {
+                "explorer": ["Generically - Modified Enzymes 300 шт", "Rare Earth Elements 300 шт", "Lithium ore 300 шт", "Rare Shard 30 шт"],
+                "marauder": ["Heat Regulating Glands 300 шт", "Radioactive isotopes 300 шт", "Photon Gel 300 шт", "Rare Shard 30 шт"],
+                "survivor": ["Lithium ore 300 шт", "Nanofibers 300 шт", "Magnetite 300 шт", "Rare Shard 30 шт"],
+                "warrior": ["Generically - Rare Earth Elements 300 шт", "Exotic Spires 300 шт", "Nanofibers 300 шт", "Rare Shard 30 шт"]
+            },
+            "Epic": {
+                "courier": ["Photon Gel 570 шт", "Nanofibers 570 шт", "Lithium ore 570 шт", "Epic Shard 40 шт"],
+                "explorer": ["Exotic Spores 570 шт", "Radioactive isotopes 570 шт", "Photon Gel 570 шт", "Epic Shard 40 шт"],
+                "marauder": ["Rare Earth Elements 570 шт", "Heat Regulating Glands 570 шт", "Plasma Condensate 570 шт", "Epic Shard 40 шт"],
+                "survivor": ["Heat Regulating Glands 570 шт", "Radioactive isotopes 570 шт", "Genetically - Modified Enzymes 570 шт", "Epic Shard 40 шт"],
+                "warrior": ["Plasma Condensate 570 шт", "Genetically - Modified Enzymes 570 шт", "Magnetite 570 шт", "Epic Shard 40 шт"]
+            }
         };
 
         function generateAvatarGrid() {
