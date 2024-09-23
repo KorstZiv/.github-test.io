@@ -271,7 +271,7 @@ main {
 }
 
 .welcome-text {
-    padding: 30px; /* Увеличиваем отступы */
+    padding: 30px; /* У��и��иваем отступы */
     font-size: 20px;
     line-height: 1.5;
     max-height: 720px;
@@ -347,4 +347,50 @@ main {
     height: 50px;
     margin-right: 10px;
     vertical-align: middle;
+}
+
+.resource-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.resource-list li {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 120px; /* Увеличиваем ширину для большего изображения */
+    border: 1px solid #ccc; /* Добавляем рамку */
+    padding: 10px; /* Добавляем отступ */
+    border-radius: 8px; /* Скругляем углы */
+    transition: transform 0.2s; /* Добавляем анимацию */
+}
+
+.resource-list li:hover {
+    transform: scale(1.05); /* Увеличиваем элемент при наведении */
+}
+
+.resource-image {
+    width: 80px; /* Увеличиваем размер изображения */
+    height: 80px; /* Увеличиваем размер изображения */
+    margin-bottom: 10px; /* Добавляем отступ снизу */
+}
+
+.resource-name {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.class-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.class-icon {
+    width: 40px;
+    height: 40px;
 }
