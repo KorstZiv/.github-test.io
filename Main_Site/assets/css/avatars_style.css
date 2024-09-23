@@ -1,401 +1,532 @@
-body {
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аватары</title>
+    <link rel="stylesheet" href="../assets/css/res_style.css">
+    <link rel="stylesheet" href="../assets/css/avatars_style.css">
+    <style>
+        .resource-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-header {
-    flex-shrink: 0;
-}
+        .resource-list li {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            width: 120px; /* Увеличиваем ширину для большего изображения */
+            border: 1px solid #ccc; /* Добавляем рамку */
+            padding: 10px; /* Добавляем отступ */
+            border-radius: 8px; /* Скругляем углы */
+            transition: transform 0.2s; /* Добавляем анимацию */
+        }
 
-main {
-    position: relative; /* Добавлено */
-    padding-top: 80px; /* Изменено с 40px на 80px */
-    display: flex;
-    justify-content: space-between;
-    height: calc(100vh - 100px); /* Учитываем высоту header */
-    overflow: hidden;
-}
+        .resource-list li:hover {
+            transform: scale(1.05); /* Увеличиваем элемент при наведени */
+        }
 
-.left-panel, .right-panel {
-    overflow-y: auto;
-}
+        .resource-image {
+            width: 80px; /* Увеличиваем размер изображения */
+            height: 80px; /* Увеличиваем размер изображения */
+            margin-bottom: 10px; /* Добавляем отступ снизу */
+        }
 
-.left-panel {
-    width: 30%; /* 30% от ширины экрана */
-    padding: 15px 50px; /* Отступы по 50px слева и справа */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Изменено с space-between на flex-start */
-    align-items: center; /* Центрируем содержимое по горизонтали */
-    overflow-y: auto;
-    overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
-    padding-top: 65px; /* Увеличено с 40px до 65px */
-}
+        .resource-name {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-.center-panel {
-    width: 120px;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    height: 100%; /* Занимает всю высоту */
-}
+        .class-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-direction: row; /* Перемещаем иконку и текст в одну строку */
+        }
 
-.center-panel.green-glow {
-    background-color: rgba(0, 255, 0, 0.3);
-}
+        .class-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px; /* Добавляем отступ справа от иконки */
+        }
 
-.center-panel.blue-glow {
-    background-color: rgba(0, 191, 255, 0.3);
-}
+        .right-panel-content {
+            display: flex;
+            flex-direction: column; /* Перемещаем иконку класса и название наверх */
+            align-items: center;
+            justify-content: flex-start;
+            color: #ffffff; /* Добавляем белый цвет текста для контраста */
+            width: 100%;
+            height: 100%;
+        }
 
-.center-panel.purple-glow {
-    background-color: rgba(138, 43, 226, 0.3);
-}
+        .mob-ore-container {
+            display: flex;
+            flex-wrap: wrap; /* Добавляем перенос строк */
+            justify-content: center; /* Центрируем содержимое */
+            gap: 10px; /* Отступ между элементами */
+            margin-top: 10px; /* Отступ сверху */
+        }
 
-.right-panel {
-    flex-grow: 1;
-    padding: 0; /* Убираем отступы */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Скрываем содержимое, выходящее за границы */
-    background-color: #000000; /* Добавляем черный фон */
-    height: 100%; /* Занимает всю высоту main */
-}
+        .mob-ore-item {
+            width: 80px; /* Размер иконок мобов и руды */
+            height: 80px; /* Размер иконок мобов и руды */
+            margin: 5px; /* Отступ между иконками */
+        }
 
-.avatar-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Увеличиваем отступ между элементами */
-    width: 100%;
-    margin-top: 25px; /* Добавляем отступ сверху */
-}
+        .welcome-text {
+            padding: 30px; /* Увеличиваем отступы */
+            font-size: 15px; /* Устанавливаем размер текста */
+            line-height: 1.5;
+            max-height: 720px;
+            overflow-y: auto;
+            text-align: left; /* Выравнивание по левому краю */
+        }
 
-.avatar-item {
-    /* Сохраняем существующие стили */
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: 100%; /* Занимает всю ширину родителя */
-    box-sizing: border-box;
-    flex-direction: column; /* Вертикальное расположение */
-    justify-content: center;
-    border: 2px solid;
-    border-radius: 10px; /* Увеличиваем скругление углов */
-    padding: 15px;
-    margin: 0;
-    height: 210px; /* Увеличиваем высоту в три раза */
-    aspect-ratio: 16 / 9; /* Задаем соотношение сторон */
-    text-align: center;
-    transition: all 0.3s ease;
-    transform: scale(1); /* Возвращаем к исходному размеру */
-    cursor: pointer;
-}
+        .welcome-text p {
+            margin-bottom: 18px;
+            text-align: left; /* Выравнивание по левому краю для каждого параграфа */
+        }
 
-.avatar-item:hover, .avatar-item.hovered, .avatar-item.selected {
-    background-color: rgba(255, 255, 255, 0.2); /* Более заметная подсветк для выбранного аватара */
-    border-color: #fff;
-}
+        .mob-ore-display {
+            display: none;
+            flex-wrap: wrap; /* Перенос строк */
+            justify-content: center; /* Центрируем содержимое */
+            gap: 10px; /* Отступ между элементами */
+            margin-top: 20px; /* Отступ сверху */
+            padding: 10px; /* Отступ внутри контейнера */
+            border: 1px solid #ccc; /* Рамка вокруг контейнера */
+            border-radius: 8px; /* Скругляем углы контейнера */
+            background-color: rgba(255, 255, 255, 0.1); /* Легкий фон */
+            position: absolute; /* Абсолютное позиционирование */
+            z-index: 1000; /* Поверх всех элементов */
+        }
+    </style>
+</head>
+<body>
+    <a href="https://korstziv.github.io/.github-test.io/" class="home-button">
+        <img src="../assets/images/home_icon.png" alt="Домой" class="home-icon">
+    </a>
 
-.avatar-item[data-avatar="Uncommon"]:hover {
-    background-color: rgba(0, 255, 0, 0.1); /* Легкая подсветка зеленым */
-}
+    <header>
+        <h2 class="clan-title-fire">Аватары</h2>
+        <h1>База знаний 2040World</h1>
+    </header>
 
-.avatar-item[data-avatar="Rare"]:hover {
-    background-color: rgba(0, 191, 255, 0.1); /* Легкая подсветка синим */
-}
+    <div class="welcome-text-container collapsed">
+        <div class="toggle-description">Развернуть описание</div>
+        <div class="welcome-text">
+            <p>Аватары в игре представляют собой ваших персонажей, которыми вы можете высаживаться на станцию и добывать ресурсы из различных месторождений руды, сражаясь с мобами и другими игроками.</p>
+            <p>Существует два основных типа аватаров: Серые и Лицензионные.</p>
+            <p>Серые аватары доступны каждому игроку с самого начала. Они представляют собой бесплатные болванки с невысокими характеристиками и экипировкой, которая выдается случайным образом. Низкий заряд энергии позволяет им исследовать небольшие карты, где они могут собирать ресурсы и охотиться на животных, представляющих собой низкий и средний уровень опасности.</p>
+            <p>Лицензионные аватары становятся доступными только тем, кто приобрел лицензию у корпораций и собрал или купил ресурсы на аукционе. Их характеристики зависят от качества и класса.</p>
+            <p>Качество аватара влияет на его характеристики и количество аварийных ячеек, которые позволяют сохранить самый ценный лут при гибели аватара.</p>
+            <p>Всего в игре представлено пять классов аватаров, каждый из которых обладает не только уникальными характеристиками, но и специальными умениями, значительно влияющими на игровой опыт и стиль игры.</p>
+            <p>В модуле ниже вы можете посмотреть стоимость каждого аватара в зависимости от качества и класса, а также с кого или чего добываются ресурсы для их сборки.</p>
+        </div>
+    </div>
 
-.avatar-item[data-avatar="Epic"]:hover {
-    background-color: rgba(138, 43, 226, 0.1); /* Легкая подсветка фиолетовым */
-}
+    <main>
+        <div class="left-panel">
+            <h2>Качества Аватаров</h2>
+            <div class="avatar-grid" id="avatar-grid">
+                <div class="avatar-item" data-avatar="Uncommon">
+                    <img src="../assets/images/Avatars/Drop_Pods_Uncommon.png" alt="Uncommon" class="avatar-image">
+                    <span class="avatar-name">Uncommon</span>
+                </div>
+                <div class="avatar-item" data-avatar="Rare">
+                    <img src="../assets/images/Avatars/Drop_Pods__Rare.png" alt="Rare" class="avatar-image">
+                    <span class="avatar-name">Rare</span>
+                </div>
+                <div class="avatar-item" data-avatar="Epic">
+                    <img src="../assets/images/Avatars/Drop_Pods__Epic.png" alt="Epic" class="avatar-image">
+                    <span class="avatar-name">Epic</span>
+                </div>
+            </div>
+            <p class="grey-avatar-link">Серый Аватар</p>
+        </div>
 
-.avatar-item[data-avatar="Uncommon"].selected {
-    background-color: rgba(0, 255, 0, 0.3); /* Яркая подсветка зеленым */
-}
+        <div class="center-panel" id="center-panel">
+            <!-- Центральные иконки будут добавлены здесь -->
+        </div>
 
-.avatar-item[data-avatar="Rare"].selected {
-    background-color: rgba(0, 191, 255, 0.3); /* Яркая подсветка синим */
-}
+        <div class="right-panel" id="right-panel">
+            <div class="right-panel-content">
+                <!-- Информация об аватаре будет отображаться здесь -->
+            </div>
+        </div>
+    </main>
 
-.avatar-item[data-avatar="Epic"].selected {
-    background-color: rgba(138, 43, 226, 0.3); /* Яркая подсветка фиолетовым */
-}
+    <div id="mob-ore-display" class="mob-ore-display"></div>
 
-.avatar-image {
-    height: 90%; /* Увеличиваем высоту иконки до 90% от высоты рамки */
-    width: auto; /* Автоматическая ширина для сохранения пропорций */
-    object-fit: contain;
-    margin-left: 5px; /* Небольшой отступ слева */
-}
+    <script>
+        let selectedAvatar = null;
+        let selectedCenterIcon = null;
 
-.avatar-name {
-    position: absolute;
-    right: 10px; /* Отступ от правого края */
-    font-size: 18px;
-    color: #fff;
-}
+        const avatarData = [
+            { name: "Uncommon", image: "../assets/images/Avatars/Drop_Pods_Uncommon.png", resources: ["Lithium Ore", "Quartz", "Rare Earth Elements"] },
+            { name: "Rare", image: "../assets/images/Avatars/Drop_Pods__Rare.png", resources: ["Magnetite", "Robotic Module", "Energy Crystal"] },
+            { name: "Epic", image: "../assets/images/Avatars/Drop_Pods__Epic.png", resources: ["Photon Gel", "Plasma Condensate", "Organic Polymers"] },
+        ];
 
-.resource-list {
-    list-style-type: none;
-    padding: 0;
-}
+        const centerIcons = [
+            "courier.png", "explorer.png", "survivor.png", "marauder.png", "warrior.png"
+        ];
 
-.resource-item {
-    margin-bottom: 10px;
-    cursor: pointer;
-}
+        const resourceData = {
+            "Quartz": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Coal": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Iron Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Фиолетовый"] },
+            "Copper Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Radioactive Isotopes": { mobs: [], ores: ["Камень_Зелёный"] },
+            "Rare Earth Elements": { mobs: [], ores: ["Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Magnetite": { mobs: [], ores: ["Камень_Зелёный", "Камень_Фиолетовый"] },
+            "Lithium Ore": { mobs: [], ores: ["Камень_Синий"] },
+            "Robotic Module": { mobs: ["Дрон", "Турель"], ores: [] },
+            "Protein Fiber": { mobs: ["Баран", "Лазер_гриб"], ores: [] },
+            "Acid": { mobs: ["Жаба", "Мама_жаба"], ores: [] },
+            "Energy Crystal": { mobs: ["Дрон", "Турель"], ores: [] },
+            "Organic Polymers": { mobs: ["Баран", "Лазер_гриб"], ores: [] },
+            "Biological Extract": { mobs: ["Жаба", "Мама_жаба", "Лазер_гриб"], ores: [] },
+            "Genetically-Modified Enzymes": { mobs: ["Мама_жаба", "Трель"], ores: [] },
+            "Heat Regulating Glands": { mobs: ["Баран", "Жаба", "Мама_жаба"], ores: [] },
+            "Photon Gel": { mobs: ["Турель"], ores: [] },
+            "Plasma Condensate": { mobs: ["Дрон", "Турль"], ores: [] },
+            "Exotic Spores": { mobs: ["Лазер_гриб", "Горилла"], ores: [] },
+            "Nanofibers": { mobs: ["Баран", "Горилла"], ores: [] },
+            "Uncommon Shard": { mobs: ["Лицензионный_Аватар", "Баран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
+            "Rare Shard": { mobs: ["Лицензионный_Аватар", "Мама_жаба", "Турель", "Гвард", "Горилла", "Улитка"], ores: [] },
+            "Epic Shard": { mobs: ["Лицензионный_Аватар", "Гвард", "Горилла", "Улитка"], ores: [] }
+        };
 
-.mob-ore-list {
-    display: none;
-    margin-top: 10px; /* Отступ сверху */
-    justify-content: center; /* Центрируем содержимое */
-    gap: 10px; /* Отступ между элементами */
-}
+        const resourceImages = {
+            "Biological_Extract": "../assets/images/Biological_Extract.png",
+            "Organic_Polymers": "../assets/images/Organic_Polymers.png",
+            "Coal": "../assets/images/Coal.png",
+            "Uncommon_Shard": "../assets/images/Uncommon_Shard.png",
+            "Acid": "../assets/images/Acid.png",
+            "Robotic_Module": "../assets/images/Robotic_Module.png",
+            "Iron_Ore": "../assets/images/Iron_Ore.png",
+            "Protein_Fiber": "../assets/images/Protein_Fiber.png",
+            "Quartz": "../assets/images/Quartz.png",
+            "Energy_Crystal": "../assets/images/Energy_Crystal.png",
+            "Copper_Ore": "../assets/images/Copper_Ore.png",
+            "Plasma_Condensate": "../assets/images/Plasma_Condensate.png",
+            "Exotic_Spores": "../assets/images/Exotic_Spores.png",
+            "Magnetite": "../assets/images/Magnetite.png",
+            "Rare_Shard": "../assets/images/Rare_Shard.png",
+            "Genetically_Modified_Enzymes": "../assets/images/Genetically_Modified_Enzymes.png",
+            "Rare_Earth_Elements": "../assets/images/Rare_Earth_Elements.png",
+            "Lithium_Ore": "../assets/images/Lithium_Ore.png",
+            "Heat_Regulating_Glands": "../assets/images/Heat_Regulating_Glands.png",
+            "Radioactive_Isotopes": "../assets/images/Radioactive_Isotopes.png",
+            "Photon_Gel": "../assets/images/Photon_Gel.png",
+            "Nanofibers": "../assets/images/Nanofibers.png",
+            "Epic_Shard": "../assets/images/Epic_Shard.png"
+        };
 
-.mob-ore-item {
-    display: inline-block;
-    margin-right: 10px;
-}
+        const classResources = {
+            "Uncommon": {
+                "courier": ["Biological_Extract 200 шт", "Organic_Polymers 200 шт", "Coal 200 шт", "Uncommon_Shard 20 шт"],
+                "explorer": ["Acid 200 шт", "Robotic_Module 200 шт", "Iron_Ore 200 шт", "Uncommon_Shard 20 шт"],
+                "survivor": ["Coal 200 шт", "Protein_Fiber 200 шт", "Quartz 200 шт", "Uncommon_Shard 20 шт"],
+                "marauder": ["Energy_Crystal 200 шт", "Copper_Ore 200 шт", "Acid 200 шт", "Uncommon_Shard 20 шт"],
+                "warrior": ["Protein_Fiber 200 шт", "Robotic_Module 200 шт", "Quartz 200 шт", "Uncommon_Shard 20 шт"]
+            },
+            "Rare": {
+                "courier": ["Plasma_Condensate 300 шт", "Exotic_Spores 300 шт", "Magnetite 300 шт", "Rare_Shard 30 шт"],
+                "explorer": ["Genetically_Modified_Enzymes 300 шт", "Rare_Earth_Elements 300 шт", "Lithium_Ore 300 шт", "Rare_Shard 30 шт"],
+                "marauder": ["Heat_Regulating_Glands 300 шт", "Radioactive_Isotopes 300 шт", "Photon_Gel 300 шт", "Rare_Shard 30 шт"],
+                "survivor": ["Lithium_Ore 300 шт", "Nanofibers 300 шт", "Magnetite 300 шт", "Rare_Shard 30 шт"],
+                "warrior": ["Rare_Earth_Elements 300 шт", "Exotic_Spores 300 шт", "Nanofibers 300 шт", "Rare_Shard 30 шт"]
+            },
+            "Epic": {
+                "courier": ["Photon_Gel 570 шт", "Nanofibers 570 шт", "Lithium_Ore 570 шт", "Epic_Shard 40 шт"],
+                "explorer": ["Exotic_Spores 570 шт", "Radioactive_Isotopes 570 шт", "Photon_Gel 570 шт", "Epic_Shard 40 шт"],
+                "marauder": ["Rare_Earth_Elements 570 шт", "Heat_Regulating_Glands 570 шт", "Plasma_Condensate 570 шт", "Epic_Shard 40 шт"],
+                "survivor": ["Heat_Regulating_Glands 570 шт", "Radioactive_Isotopes 570 шт", "Genetically_Modified_Enzymes 570 шт", "Epic_Shard 40 шт"],
+                "warrior": ["Plasma_Condensate 570 шт", "Genetically_Modified_Enzymes 570 шт", "Magnetite 570 шт", "Epic_Shard 40 шт"]
+            }
+        };
 
-.grey-avatar-link {
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #808080; /* Серый цвет */
-    transition: color 0.3s ease; /* Плавный переход цвета */
-}
+        function generateAvatarGrid() {
+            const grid = document.getElementById('avatar-grid');
+            grid.innerHTML = ''; // Очищае�� сетку пред генерацией
+            avatarData.forEach(avatar => {
+                const div = document.createElement('div');
+                div.classList.add('avatar-item');
+                div.setAttribute('data-avatar', avatar.name);
+                div.innerHTML = `<img src="${avatar.image}" alt="${avatar.name}" class="avatar-image"><p>${avatar.name}</p>`;
+                div.onclick = () => showAvatarInfo(avatar);
+                if (avatar.name === selectedAvatar) {
+                    div.classList.add('selected');
+                }
+                grid.appendChild(div);
+            });
+        }
 
-.grey-avatar-link:hover {
-    color: #FF4500; /* Красноватый цвет при наведении */
-}
+        function generateCenterIcons() {
+            const centerPanel = document.getElementById('center-panel');
+            centerPanel.innerHTML = '';
+            
+            const iconContainer = document.createElement('div');
+            iconContainer.className = 'center-icon-container';
 
-/* Если у вас нет класса clan-title-fire, дбавьте его сюда */
-.clan-title-fire {
-    color: #FF4500;
-}
+            centerIcons.forEach((icon, index) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'center-icon-wrapper';
+                
+                const img = document.createElement('img');
+                img.src = `../assets/images/Avatars/${icon}`;
+                img.alt = icon.replace('.png', '');
+                img.classList.add('center-icon');
+                
+                const text = document.createElement('span');
+                text.className = 'center-icon-text';
+                text.textContent = icon.replace('.png', '');
+                
+                wrapper.appendChild(img);
+                wrapper.appendChild(text);
+                wrapper.addEventListener('click', () => {
+                    if (selectedAvatar) {
+                        if (selectedCenterIcon) {
+                            selectedCenterIcon.classList.remove('clicked');
+                        }
+                        wrapper.classList.add('clicked');
+                        selectedCenterIcon = wrapper;
+                        showClassInfo(icon.replace('.png', ''));
+                    }
+                });
+                
+                wrapper.addEventListener('mousemove', (e) => {
+                    if (!selectedAvatar) {
+                        showTooltip(e, "Выберите качество Аватара");
+                    }
+                });
+                
+                wrapper.addEventListener('mouseleave', () => {
+                    hideTooltip();
+                });
+                
+                iconContainer.appendChild(wrapper);
+            });
 
-.center-icon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: calc(100% - 200px);
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
+            centerPanel.appendChild(iconContainer);
+        }
 
-.center-icon-wrapper {
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 15px 10px;
-    margin: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 120px; /* Увеличиваем высоту */
-    width: 100px; /* Увеличиваем ширину */
-}
+        function showAvatarInfo(avatar) {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = ''; // Очищаем правую панель при выборе аватара
 
-.center-icon-wrapper.active {
-    opacity: 1;
-}
+            // Снимаем подсветку с предыдущего выбранного аватара
+            if (selectedAvatar) {
+                const prevSelected = document.querySelector(`.avatar-item[data-avatar="${selectedAvatar}"]`);
+                if (prevSelected) {
+                    prevSelected.classList.remove('selected');
+                }
+            }
 
-.center-icon-wrapper:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-}
+            // Подсвечиваем новый выбранный аватар
+            const newSelected = document.querySelector(`.avatar-item[data-avatar="${avatar.name}"]`);
+            if (newSelected) {
+                newSelected.classList.add('selected');
+            }
 
-.center-icon-wrapper.clicked {
-    background-color: black;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
+            // Подсвечиваем центральную панель
+            const centerPanel = document.querySelector('.center-panel');
+            centerPanel.classList.remove('green-glow', 'blue-glow', 'purple-glow');
+            if (avatar.name === "Uncommon") {
+                centerPanel.classList.add('green-glow');
+            } else if (avatar.name === "Rare") {
+                centerPanel.classList.add('blue-glow');
+            } else if (avatar.name === "Epic") {
+                centerPanel.classList.add('purple-glow');
+            }
 
-.center-icon {
-    width: 60px; /* Увеличиваем размер иконки */
-    height: 60px;
-    margin-bottom: 10px; /* Добавляем отступ снизу */
-    transition: all 0.3s ease;
-}
+            selectedAvatar = avatar.name;
+            updateCenterIconsState();
+        }
 
-.center-icon-wrapper.clicked .center-icon {
-    filter: brightness(0) invert(1);
-}
+        function showGreyAvatarVideo() {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = `
+                <video width="100%" height="auto" autoplay loop muted>
+                    <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+        }
 
-.center-icon-text {
-    font-size: 14px; /* Увеличиваем размер шрифта */
-    text-align: center;
-    word-wrap: break-word; /* Переносим длинные слова */
-    max-width: 100%; /* Ограничиваем ширину текста */
-}
+        function hideGreyAvatarVideo() {
+            const rightPanel = document.querySelector('.right-panel-content');
+            rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
+        }
 
-.tooltip {
-    position: fixed;
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    z-index: 1000;
-    pointer-events: none;
-}
+        function showMobsAndOres(resource, event) {
+            const mobOreDisplay = document.getElementById('mob-ore-display');
+            if (resourceData[resource]) {
+                mobOreDisplay.innerHTML = `
+                    ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item">`).join('')}
+                    ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item">`).join('')}
+                `;
+                mobOreDisplay.style.display = 'flex';
+                mobOreDisplay.style.top = `${event.clientY + window.scrollY}px`; // Позиционируем по вертикали
+                mobOreDisplay.style.left = `${event.clientX + 20}px`; // Позиционируем по горизонтали
+            }
+        }
 
-/* Удаляем стили для .center-icon:first-child и .center-icon:last-child */
+        function hideMobsAndOres() {
+            const mobOreDisplay = document.getElementById('mob-ore-display');
+            mobOreDisplay.innerHTML = ''; // Очищаем содержимое контейнера
+            mobOreDisplay.style.display = 'none'; // Скрываем контейнер
+        }
 
-.welcome-text-container {
-    position: absolute;
-    top: 140px;
-    left: 0;
-    right: 0;
-    background-color: rgba(128, 128, 128, 0.5);
-    border-radius: 5px;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    z-index: 1000;
-    width: 90%; /* Ограничиваем ширину контейнера */
-    margin: 0 auto; /* Центрируем контейнер */
-}
+        function showClassInfo(className) {
+            if (!selectedAvatar) return; // Проверка на наличие выбранного аватара
 
-.welcome-text-container.collapsed {
-    max-height: 30px;
-}
+            // Удаляем активный класс у всех иконок
+            document.querySelectorAll('.center-icon-wrapper').forEach(wrapper => {
+                wrapper.classList.remove('active');
+            });
 
-.welcome-text-container.expanded {
-    max-height: 750px; /* Увеличиваем максимальную высоту на 50% */
-}
+            // Добавляем активный класс выбранной иконке
+            const selectedWrapper = document.querySelector(`.center-icon-wrapper img[alt="${className}"]`).parentNode;
+            selectedWrapper.classList.add('active');
 
-.welcome-text {
-    padding: 30px; /* Уивеличиваем отступы */
-    font-size: 20px;
-    line-height: 1.5;
-    max-height: 720px;
-    overflow-y: auto;
-    text-align: left; /* Добавляем выравнивание по левому краю */
-}
+            const rightPanel = document.querySelector('.right-panel-content');
+            const resources = classResources[selectedAvatar] ? classResources[selectedAvatar][className] : [];
 
-.welcome-text p {
-    margin-bottom: 15px;
-    text-align: left; /* Добавляем выравнивание по левому краю для каждого параграфа */
-}
+            // Определяем цвет текста в зависимости от качества аватара
+            let textColor;
+            if (selectedAvatar === "Uncommon") {
+                textColor = "green";
+            } else if (selectedAvatar === "Rare") {
+                textColor = "#00BFFF"; // Используем цвет подсветки для Rare
+            } else if (selectedAvatar === "Epic") {
+                textColor = "#DA70D6"; // Светло-фиолетовый цвет для Epic
+            }
 
-.description {
-    margin: 0;
-}
+            rightPanel.innerHTML = `
+                <div class="class-header" style="color: ${textColor}; text-align: center;">
+                    <img src="../assets/images/Avatars/${className}.png" alt="${className}" class="class-icon">
+                    <h3 style="font-size: 24px;">${className}</h3>
+                </div>
+                <ul class="resource-list">
+                    ${resources.map(resource => {
+                        const resourceName = resource.split(' ')[0].replace(' ', '_');
+                        const resourceImage = resourceImages[resourceName] || '';
+                        const displayName = resource.split(' ')[0].replace(/_/g, ' '); // Убираем нижнее подчёркивание в отображаемом тексте
+                        const quantity = resource.split(' ')[1]; // Количество ресурса
+                        console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
+                        return `
+                            <li class="resource-card" onmouseover="showMobsAndOres('${displayName}', event)" onmouseout="hideMobsAndOres()">
+                                <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
+                                <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
+                            </li>
+                        `;
+                    }).join('')}
+                </ul>
+            `;
+        }
 
-.toggle-description {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    padding: 8px; /* Увеличиваем отступ */
-    cursor: pointer;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1001; /* Убедимся, что кнопка всегда поверх */
-    font-size: 16px; /* Увеличиваем размер шрифта кнопки */
-    font-weight: bold; /* Делаем текст кнопки жирным */
-}
+        function updateCenterIconsState() {
+            const centerIcons = document.querySelectorAll('.center-icon-wrapper');
+            centerIcons.forEach(icon => {
+                if (selectedAvatar) {
+                    icon.classList.add('active');
+                    icon.classList.remove('clicked');
+                } else {
+                    icon.classList.remove('active', 'clicked');
+                }
+            });
+            selectedCenterIcon = null;
+        }
 
-.toggle-description:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-}
+        function showTooltip(e, text) {
+            hideTooltip(); // Удаляем предыдущий тултип, если он есть
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = text;
+            document.body.appendChild(tooltip);
 
-#videoOverlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-}
+            tooltip.style.left = `${e.clientX + 10}px`;
+            tooltip.style.top = `${e.clientY + 10}px`;
+        }
 
-#videoPlayer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90%;
-    max-height: 90%;
-}
+        function hideTooltip() {
+            const tooltip = document.querySelector('.tooltip');
+            if (tooltip) {
+                tooltip.remove();
+            }
+        }
 
-.right-panel-content {
-    display: flex;
-    flex-direction: column; /* Перемещаем иконку класса и название наверх */
-    align-items: center;
-    justify-content: flex-start;
-    color: #ffffff; /* Добавляем белый цвет текста для контраста */
-    width: 100%;
-    height: 100%;
-}
+        // Добавляем обработчик для скрытия тултипа при движении мыши вне иконок
+        document.addEventListener('mousemove', (e) => {
+            if (!e.target.closest('.center-icon-wrapper')) {
+                hideTooltip();
+            }
+        });
 
-#greyAvatarVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Растягиваем видео на всю область, сохраняя пропорции */
-}
+        window.onload = function() {
+            generateAvatarGrid();
+            generateCenterIcons();
+            updateCenterIconsState();
+        };
 
-.resource-image {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-    vertical-align: middle;
-}
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.querySelector('.toggle-description');
+            const container = document.querySelector('.welcome-text-container');
 
-.resource-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+            if (toggleButton && container) {
+                console.log('Elements found');
+                toggleButton.addEventListener('click', function() {
+                    console.log('Button clicked');
+                    if (container.classList.contains('collapsed')) {
+                        container.classList.remove('collapsed');
+                        container.classList.add('expanded');
+                        this.textContent = 'Свернуть описание';
+                        console.log('Panel expanded');
+                    } else {
+                        container.classList.remove('expanded');
+                        container.classList.add('collapsed');
+                        this.textContent = 'Развернуть описание';
+                        console.log('Panel collapsed');
+                    }
+                });
+            } else {
+                console.error('Required elements not found');
+            }
+        });
 
-.resource-list li {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    width: 120px; /* Увеличиваем ширину для большего изображения */
-    border: 1px solid #ccc; /* Добавляем рамку */
-    padding: 10px; /* Добавляем отступ */
-    border-radius: 8px; /* Скругляем углы */
-    transition: transform 0.2s; /* Добавляем анимацию */
-}
+        document.addEventListener('DOMContentLoaded', function() {
+            const greyAvatarLink = document.querySelector('.grey-avatar-link');
+            const rightPanel = document.querySelector('.right-panel-content');
+            let videoElement = null;
 
-.resource-list li:hover {
-    transform: scale(1.05); /* Увеличиваем элемент при наведении */
-}
+            greyAvatarLink.addEventListener('mouseenter', function() {
+                rightPanel.innerHTML = `
+                    <video id="greyAvatarVideo" autoplay loop muted>
+                        <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
+                        Ваш браузер не поддерживает видео тег.
+                    </video>
+                `;
+                videoElement = document.getElementById('greyAvatarVideo');
+                videoElement.play().catch(e => console.error("Error playing video:", e));
+            });
 
-.resource-image {
-    width: 80px; /* Увеличиваем размер изображения */
-    height: 80px; /* Увеличиваем размер изображения */
-    margin-bottom: 10px; /* Добавляем отступ снизу */
-}
-
-.resource-name {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.class-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    flex-direction: row; /* Перемещаем иконку и текст в одну строку */
-}
-
-.class-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px; /* Добавляем отступ справа от иконки */
-}
+            greyAvatarLink.addEventListener('mouseleave', function() {
+                if (videoElement) {
+                    videoElement.pause();
+                    videoElement.currentTime = 0;
+                }
+                rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
+            });
+        });
+    </script>
+</body>
+</html>
