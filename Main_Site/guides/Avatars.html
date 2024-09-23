@@ -20,7 +20,7 @@
     <div class="welcome-text-container collapsed">
         <div class="toggle-description">Развернуть описание</div>
         <div class="welcome-text">
-            <p class="description">Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от него зависит ваш ировой опыт.</p>
+            <p class="description">Аватары - это ваше воплощение в мире 2040. Они обладают уникальными способностями и характеристиками. Выберите своего аватара мудро, ведь от нео зависит ваш ировой опыт.</p>
         </div>
     </div>
 
@@ -73,31 +73,31 @@
             // Здесь нужно добавить данные о ресурсах, мобах и руде из гайда Ресурсы
             // Пример:
             "Lithium Ore": { mobs: ["Камень_Синий"], ores: ["Камень_Синий"] },
-            // ... добавьте остальные ресурс��
+            // ... добавьте остальные ресурс
         };
 
         const resourceImages = {
-            "Biological Extract": "../assets/images/Biological_Extract.png",
-            "Organic Polymers": "../assets/images/Organic_Polymers.png",
+            "Biological_Extract": "../assets/images/Biological_Extract.png",
+            "Organic_Polymers": "../assets/images/Organic_Polymers.png",
             "Coal": "../assets/images/Coal.png",
-            "Uncommon Shard": "../assets/images/Uncommon_Shard.png",
+            "Uncommon_Shard": "../assets/images/Uncommon_Shard.png",
             "Acid": "../assets/images/Acid.png",
-            "Robotic Module": "../assets/images/Robotic_Module.png",
-            "Iron Ore": "../assets/images/Iron_Ore.png",
-            "Protein Fiber": "../assets/images/Protein_Fiber.png",
+            "Robotic_Module": "../assets/images/Robotic_Module.png",
+            "Iron_Ore": "../assets/images/Iron_Ore.png",
+            "Protein_Fiber": "../assets/images/Protein_Fiber.png",
             "Quartz": "../assets/images/Quartz.png",
-            "Energy Crystal": "../assets/images/Energy_Crystal.png",
-            "Copper Ore": "../assets/images/Copper_Ore.png",
+            "Energy_Crystal": "../assets/images/Energy_Crystal.png",
+            "Copper_Ore": "../assets/images/Copper_Ore.png",
             // Добавьте остальные ресурсы
         };
 
         const classResources = {
             "Uncommon": {
-                "courier": ["Biological Extract 200 шт", "Organic Polymers 200 шт", "Coal 200 шт", "Uncommon Shard 20 шт"],
-                "explorer": ["Acid 200 шт", "Robotic Module 200 шт", "Iron Ore 200 шт", "Uncommon Shard 20 шт"],
-                "survivor": ["Coal 200 шт", "Protein Fiber 200 шт", "Quartz 200 шт", "Uncommon Shard 20 шт"],
-                "marauder": ["Energy Crystal 200 шт", "Copper Ore 200 шт", "Acid 200 шт", "Uncommon Shard 20 шт"],
-                "warrior": ["Protein Fiber 200 шт", "Robotic Module 200 шт", "Quartz 200 шт", "Uncommon Shard 20 шт"]
+                "courier": ["Biological_Extract 200 шт", "Organic_Polymers 200 шт", "Coal 200 шт", "Uncommon_Shard 20 шт"],
+                "explorer": ["Acid 200 шт", "Robotic_Module 200 шт", "Iron_Ore 200 шт", "Uncommon_Shard 20 шт"],
+                "survivor": ["Coal 200 шт", "Protein_Fiber 200 шт", "Quartz 200 шт", "Uncommon_Shard 20 шт"],
+                "marauder": ["Energy_Crystal 200 шт", "Copper_Ore 200 шт", "Acid 200 шт", "Uncommon_Shard 20 шт"],
+                "warrior": ["Protein_Fiber 200 шт", "Robotic_Module 200 шт", "Quartz 200 шт", "Uncommon_Shard 20 шт"]
             },
             // Добавьте данные для других качеств аватаров и классов
         };
@@ -251,8 +251,9 @@
                 <h4>Ресурсы:</h4>
                 <ul class="resource-list">
                     ${resources.map(resource => {
-                        const resourceName = resource.split(' ')[0];
+                        const resourceName = resource.split(' ')[0].replace(' ', '_');
                         const resourceImage = resourceImages[resourceName] || '';
+                        console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
                         return `
                             <li>
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image" style="width:50px;height:50px; margin-right: 10px;">
