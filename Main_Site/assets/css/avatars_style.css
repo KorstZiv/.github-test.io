@@ -247,6 +247,7 @@ main {
     height: 60px;
     margin-bottom: 10px;
     transition: all 0.3s ease;
+    z-index: 1;
 }
 
 .center-icon-wrapper.clicked .center-icon {
@@ -258,6 +259,8 @@ main {
     text-align: center;
     word-wrap: break-word;
     max-width: 100%;
+    color: white;
+    z-index: 1;
 }
 
 .tooltip {
@@ -579,6 +582,7 @@ main {
 .center-icon-wrapper {
     opacity: 0.5;
     transition: opacity 0.3s, background-color 0.3s;
+    padding: 5px;
 }
 
 .center-icon-wrapper.active {
@@ -586,7 +590,7 @@ main {
 }
 
 .center-icon-wrapper.clicked {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: black;
 }
 
 .tooltip {
@@ -654,6 +658,7 @@ main {
 .center-icon-wrapper {
     opacity: 0.5;
     transition: opacity 0.3s, background-color 0.3s;
+    padding: 5px;
 }
 
 .center-icon-wrapper.active {
@@ -661,7 +666,7 @@ main {
 }
 
 .center-icon-wrapper.clicked {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: black;
 }
 
 .tooltip {
@@ -722,8 +727,10 @@ main {
 }
 
 .mob-ore-item img {
-    width: 80px;
-    height: 80px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100px;
     object-fit: contain;
 }
 
