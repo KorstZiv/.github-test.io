@@ -92,6 +92,18 @@
             margin-bottom: 18px;
             text-align: left; /* Выравнивание по левому краю для каждого параграфа */
         }
+
+        .mob-ore-display {
+            display: flex;
+            flex-wrap: wrap; /* Перенос строк */
+            justify-content: center; /* Центрируем содержимое */
+            gap: 10px; /* Отступ между элементами */
+            margin-top: 20px; /* Отступ сверху */
+            padding: 10px; /* Отступ внутри контейнера */
+            border: 1px solid #ccc; /* Рамка вокруг контейнера */
+            border-radius: 8px; /* Скругляем углы контейнера */
+            background-color: rgba(255, 255, 255, 0.1); /* Легкий фон */
+        }
     </style>
 </head>
 <body>
@@ -113,7 +125,7 @@
             <p>Лицензионные аватары становятся доступными только тем, кто приобрел лицензию у корпораций и собрал или купил ресурсы на аукционе. Их характеристики зависят от качества и класса.</p>
             <p>Качество аватара влияет на его характеристики и количество аварийных ячеек, которые позволяют сохранить самый ценный лут при гибели аватара.</p>
             <p>Всего в игре представлено пять классов аватаров, каждый из которых обладает не только уникальными характеристиками, но и специальными умениями, значительно влияющими на игровой опыт и стиль игры.</p>
-            <p>В модуле ниже вы можете посмотреть стоимость каждого аватара в зависимости от ��ачества и класса, а также с кого или чего добываются ресурсы для их сборки.</p>
+            <p>В модуле ниже вы можете посмотреть стоимость каждого аватара в зависимости от ачества и класса, а также с кого или чего добываются ресурсы для их сборки.</p>
         </div>
     </div>
 
@@ -144,6 +156,7 @@
         <div class="right-panel" id="right-panel">
             <div class="right-panel-content">
                 <!-- Информация об аватаре будет отображаться здесь -->
+                <div id="mob-ore-display" class="mob-ore-display"></div> <!-- Новый контейнер для мобов и руды -->
             </div>
         </div>
     </main>
@@ -180,7 +193,7 @@
             "Genetically-Modified Enzymes": { mobs: ["Мама_жаба", "Трель"], ores: [] },
             "Heat Regulating Glands": { mobs: ["Баран", "Жаба", "Мама_жаба"], ores: [] },
             "Photon Gel": { mobs: ["Турель"], ores: [] },
-            "Plasma Condensate": { mobs: ["Дрон", "Турель"], ores: [] },
+            "Plasma Condensate": { mobs: ["Дрон", "Турль"], ores: [] },
             "Exotic Spores": { mobs: ["Лазер_гриб", "Горилла"], ores: [] },
             "Nanofibers": { mobs: ["Баран", "Горилла"], ores: [] },
             "Uncommon Shard": { mobs: ["Лицензионный_Аватар", "Баран", "Лазер_гриб", "Жаба", "Мама_жаба", "Дрон", "Турель", "Гвард", "Горилла", "Улитка"], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
@@ -352,32 +365,19 @@
         }
 
         function showMobsAndOres(resource) {
-            const resourceElement = document.getElementById(`${resource.replace(/\s+/g, '-')}`);
-            const containerId = `${resource.replace(/\s+/g, '-')}-mob-ore-container`;
-            let containerElement = document.getElementById(containerId);
-
-            if (!containerElement) {
-                containerElement = document.createElement('div');
-                containerElement.id = containerId;
-                containerElement.className = 'mob-ore-container';
-                resourceElement.parentNode.insertBefore(containerElement, resourceElement.nextSibling);
-            }
-
+            const mobOreDisplay = document.getElementById('mob-ore-display');
             if (resourceData[resource]) {
-                containerElement.innerHTML = `
+                mobOreDisplay.innerHTML = `
                     ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item">`).join('')}
                     ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item">`).join('')}
                 `;
-                containerElement.style.display = 'flex';
+                mobOreDisplay.style.display = 'flex';
             }
         }
 
-        function hideMobsAndOres(resource) {
-            const containerId = `${resource.replace(/\s+/g, '-')}-mob-ore-container`;
-            const containerElement = document.getElementById(containerId);
-            if (containerElement) {
-                containerElement.style.display = 'none';
-            }
+        function hideMobsAndOres() {
+            const mobOreDisplay = document.getElementById('mob-ore-display');
+            mobOreDisplay.innerHTML = ''; // Очищаем содержимое контейнера
         }
 
         function showClassInfo(className) {
@@ -418,10 +418,9 @@
                         const quantity = resource.split(' ')[1]; // Количество ресурса
                         console.log(`Resource: ${resourceName}, Image Path: ${resourceImage}`); // Отладочный вывод
                         return `
-                            <li class="resource-card" onmouseover="showMobsAndOres('${displayName}')" onmouseout="hideMobsAndOres('${displayName}')">
+                            <li class="resource-card" onmouseover="showMobsAndOres('${displayName}')" onmouseout="hideMobsAndOres()">
                                 <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
                                 <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
-                                <div id="${displayName.replace(/\s+/g, '-')}-mob-ore-container" class="mob-ore-container"></div>
                             </li>
                         `;
                     }).join('')}
