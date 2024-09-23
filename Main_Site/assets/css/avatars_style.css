@@ -271,7 +271,7 @@ main {
 }
 
 .welcome-text {
-    padding: 30px; /* Увеличиваем отступы */
+    padding: 30px; /* Уеличиваем отступы */
     font-size: 20px;
     line-height: 1.5;
     max-height: 720px;
@@ -331,9 +331,12 @@ main {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column; /* Добавлено */
     justify-content: center;
     align-items: center;
     color: #ffffff; /* Добавляем белый цвет текста для контраста */
+    overflow-y: auto; /* Добавлено */
+    padding: 20px; /* Добавлено */
 }
 
 #greyAvatarVideo {
