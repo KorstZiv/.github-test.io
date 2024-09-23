@@ -70,11 +70,25 @@
             margin-top: 10px; /* Отступ сверху */
             justify-content: center; /* Центрируем содержимое */
             gap: 10px; /* Отступ между элементами */
+            flex-wrap: wrap; /* Перенос на следующую строку */
         }
 
         .mob-ore-item {
-            display: inline-block;
-            margin-right: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 5px;
+        }
+
+        .mob-ore-item img {
+            width: 80px; /* Увеличиваем размер изображения */
+            height: 80px; /* Увеличиваем размер изображения */
+        }
+
+        .mob-ore-item span {
+            margin-top: 5px;
+            font-size: 12px;
+            text-align: center;
         }
 
         .welcome-text {
@@ -294,7 +308,7 @@
                 wrapper.addEventListener('mouseleave', () => {
                     hideTooltip();
                 });
-                
+
                 iconContainer.appendChild(wrapper);
             });
 
@@ -302,59 +316,27 @@
         }
 
         function showAvatarInfo(avatar) {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = ''; // Очищаем правую панель при выборе аватара
-
-            // Снимаем подсветку с предыдущего выбранного аватара
-            if (selectedAvatar) {
-                const prevSelected = document.querySelector(`.avatar-item[data-avatar="${selectedAvatar}"]`);
-                if (prevSelected) {
-                    prevSelected.classList.remove('selected');
-                }
-            }
-
-            // Подсвечиваем новый выбранный аватар
-            const newSelected = document.querySelector(`.avatar-item[data-avatar="${avatar.name}"]`);
-            if (newSelected) {
-                newSelected.classList.add('selected');
-            }
-
-            // Подсвечиваем центральную панель
-            const centerPanel = document.querySelector('.center-panel');
-            centerPanel.classList.remove('green-glow', 'blue-glow', 'purple-glow');
-            if (avatar.name === "Uncommon") {
-                centerPanel.classList.add('green-glow');
-            } else if (avatar.name === "Rare") {
-                centerPanel.classList.add('blue-glow');
-            } else if (avatar.name === "Epic") {
-                centerPanel.classList.add('purple-glow');
-            }
-
             selectedAvatar = avatar.name;
-            updateCenterIconsState();
-        }
-
-        function showGreyAvatarVideo() {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = `
-                <video width="100%" height="auto" autoplay loop muted>
-                    <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            `;
-        }
-
-        function hideGreyAvatarVideo() {
-            const rightPanel = document.querySelector('.right-panel-content');
-            rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
+            generateAvatarGrid();
+            generateCenterIcons();
         }
 
         function showMobsAndOres(resource) {
             const listElement = document.getElementById(`${resource.replace(/\s+/g, '-')}-list`);
             if (resourceData[resource]) {
                 listElement.innerHTML = `
-                    ${resourceData[resource].mobs.map(mob => `<img src="../assets/images/${mob}.png" alt="${mob}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
-                    ${resourceData[resource].ores.map(ore => `<img src="../assets/images/${ore}.png" alt="${ore}" class="mob-ore-item" style="width:50px;height:50px;">`).join('')}
+                    ${resourceData[resource].mobs.map(mob => `
+                        <div class="mob-ore-item">
+                            <img src="../assets/images/${mob}.png" alt="${mob}">
+                            <span>${mob.replace(/_/g, ' ')}</span>
+                        </div>
+                    `).join('')}
+                    ${resourceData[resource].ores.map(ore => `
+                        <div class="mob-ore-item">
+                            <img src="../assets/images/${ore}.png" alt="${ore}">
+                            <span>${ore.replace(/_/g, ' ')}</span>
+                        </div>
+                    `).join('')}
                 `;
                 listElement.style.display = 'flex';
             }
@@ -383,7 +365,7 @@
             // Определяем цвет текста в зависимости от качества аватара
             let textColor;
             if (selectedAvatar === "Uncommon") {
-                textColor = "green";
+                textColor = "00BB00";
             } else if (selectedAvatar === "Rare") {
                 textColor = "#00BFFF"; // Используем цвет подсветки для Rare
             } else if (selectedAvatar === "Epic") {
@@ -414,98 +396,35 @@
             `;
         }
 
-        function updateCenterIconsState() {
-            const centerIcons = document.querySelectorAll('.center-icon-wrapper');
-            centerIcons.forEach(icon => {
-                if (selectedAvatar) {
-                    icon.classList.add('active');
-                    icon.classList.remove('clicked');
-                } else {
-                    icon.classList.remove('active', 'clicked');
-                }
-            });
-            selectedCenterIcon = null;
-        }
-
-        function showTooltip(e, text) {
-            hideTooltip(); // Удаляем предыдущий тултип, если он есть
-            const tooltip = document.createElement('div');
-            tooltip.className = 'tooltip';
+        function showTooltip(event, text) {
+            let tooltip = document.getElementById('tooltip');
+            if (!tooltip) {
+                tooltip = document.createElement('div');
+                tooltip.id = 'tooltip';
+                tooltip.style.position = 'absolute';
+                tooltip.style.backgroundColor = '#333';
+                tooltip.style.color = '#fff';
+                tooltip.style.padding = '5px 10px';
+                tooltip.style.borderRadius = '5px';
+                tooltip.style.zIndex = '1000';
+                document.body.appendChild(tooltip);
+            }
             tooltip.textContent = text;
-            document.body.appendChild(tooltip);
-
-            tooltip.style.left = `${e.clientX + 10}px`;
-            tooltip.style.top = `${e.clientY + 10}px`;
+            tooltip.style.left = `${event.pageX + 10}px`;
+            tooltip.style.top = `${event.pageY + 10}px`;
+            tooltip.style.display = 'block';
         }
 
         function hideTooltip() {
-            const tooltip = document.querySelector('.tooltip');
+            const tooltip = document.getElementById('tooltip');
             if (tooltip) {
-                tooltip.remove();
+                tooltip.style.display = 'none';
             }
         }
 
-        // Добавляем обработчик для скрытия тултипа при движении мыши вне иконок
-        document.addEventListener('mousemove', (e) => {
-            if (!e.target.closest('.center-icon-wrapper')) {
-                hideTooltip();
-            }
-        });
-
-        window.onload = function() {
+        document.addEventListener('DOMContentLoaded', () => {
             generateAvatarGrid();
             generateCenterIcons();
-            updateCenterIconsState();
-        };
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleButton = document.querySelector('.toggle-description');
-            const container = document.querySelector('.welcome-text-container');
-
-            if (toggleButton && container) {
-                console.log('Elements found');
-                toggleButton.addEventListener('click', function() {
-                    console.log('Button clicked');
-                    if (container.classList.contains('collapsed')) {
-                        container.classList.remove('collapsed');
-                        container.classList.add('expanded');
-                        this.textContent = 'Свернуть описание';
-                        console.log('Panel expanded');
-                    } else {
-                        container.classList.remove('expanded');
-                        container.classList.add('collapsed');
-                        this.textContent = 'Развернуть описание';
-                        console.log('Panel collapsed');
-                    }
-                });
-            } else {
-                console.error('Required elements not found');
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const greyAvatarLink = document.querySelector('.grey-avatar-link');
-            const rightPanel = document.querySelector('.right-panel-content');
-            let videoElement = null;
-
-            greyAvatarLink.addEventListener('mouseenter', function() {
-                rightPanel.innerHTML = `
-                    <video id="greyAvatarVideo" autoplay loop muted>
-                        <source src="../assets/images/Avatars/Grey_Avatar.mp4" type="video/mp4">
-                        Ваш браузер не поддерживает видео тег.
-                    </video>
-                `;
-                videoElement = document.getElementById('greyAvatarVideo');
-                videoElement.play().catch(e => console.error("Error playing video:", e));
-            });
-
-            greyAvatarLink.addEventListener('mouseleave', function() {
-                if (videoElement) {
-                    videoElement.pause();
-                    videoElement.currentTime = 0;
-                }
-                rightPanel.innerHTML = ''; // Очищаем содержимое правой панели
-            });
         });
     </script>
 </body>
