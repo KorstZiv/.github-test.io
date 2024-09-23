@@ -421,7 +421,9 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
+    max-width: 800px; /* Ограничиваем ширину, чтобы было не более 8 иконок в ряду */
+    margin: 0 auto;
 }
 
 .mob-ore-item {
@@ -429,6 +431,7 @@ main {
     flex-direction: column;
     align-items: center;
     width: 80px;
+    height: 100px; /* Фиксированная высота для всех элементов */
     text-align: center;
 }
 
@@ -443,6 +446,10 @@ main {
     margin-top: 5px;
     word-wrap: break-word;
     max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 2.4em; /* Высота для двух строк текста */
+    line-height: 1.2em; /* Высота строки */
 }
 
 .right-panel-content {
