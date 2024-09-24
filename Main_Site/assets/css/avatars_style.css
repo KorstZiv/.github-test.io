@@ -165,14 +165,11 @@ main {
     justify-content: flex-start;
     text-align: center;
     width: 100%;
-    height: auto; /* Изменено с фиксированной высоты на auto */
 }
 
 .mob-ore-item img {
-    width: 100%; /* Изменено с фиксированной ширины на 100% */
-    height: auto; /* Изменено с фиксированной высоты на auto */
-    max-width: 80px; /* Добавлено ограничение максимальной ширины */
-    max-height: 80px; /* Добавлено ограничение максимальной высоты */
+    width: 100%;
+    height: auto;
     object-fit: contain;
 }
 
@@ -512,21 +509,17 @@ main {
     justify-content: flex-start;
     text-align: center;
     width: 100%;
-    height: auto; /* Изменено с фиксированной высоты на auto */
 }
 
 .mob-ore-item img {
-    width: 100%; /* Изменено с фиксированной ширины на 100% */
-    height: auto; /* Изменено с фиксированной высоты на auto */
-    max-width: 80px; /* Добавлено ограничение максимальной ширины */
-    max-height: 80px; /* Добавлено ограничение максимальной высоты */
+    width: 100%;
+    height: auto;
     object-fit: contain;
 }
 
 .mob-ore-name {
     font-size: 12px;
     margin-top: 5px;
-    max-width: 80px;
     word-wrap: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
