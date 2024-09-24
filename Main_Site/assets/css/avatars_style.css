@@ -375,15 +375,16 @@ main {
     flex-direction: column;
     text-align: center;
     width: 120px;
-    height: 180px;
+    height: 185px; /* Увеличиваем высоту на 5px */
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 8px;
     transition: transform 0.2s;
+    margin-top: -15px; /* Поднимаем иконки на 15px вверх */
 }
 
 .resource-list li:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Увеличиваем размер элемента на 5% при наведении курсора */
 }
 
 .resource-image {
