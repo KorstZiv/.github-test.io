@@ -497,8 +497,8 @@ main {
 
 .mob-ore-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px 10px;
     margin-top: 20px;
     width: 100%;
 }
@@ -510,6 +510,10 @@ main {
     justify-content: flex-start;
     text-align: center;
     width: 100%;
+}
+
+.mob-ore-item:nth-child(n+9) {
+    margin-top: 30px;
 }
 
 .mob-ore-item img {
@@ -532,7 +536,7 @@ main {
 
 .mob-ore-container {
     width: 100%;
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 .resource-specific-grid .mob-ore-item img {
