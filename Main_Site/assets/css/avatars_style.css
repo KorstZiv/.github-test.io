@@ -403,7 +403,7 @@ main {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 40px; /* Добавляем от��туп сверху */
+    margin-top: 40px; /* Добавляем оттуп сверху */
     margin-bottom: 30px;
 }
 
@@ -498,18 +498,40 @@ main {
 
 .mob-ore-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr); /* 8 колонок в ряду */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Устанавливаем минимальный размер колонок */
     gap: 10px;
     justify-content: center; /* Центрируем иконки по ширине */
 }
 
 .mob-ore-item {
     text-align: center; /* Центрируем текст под иконками */
+    width: 100px; /* Ограничиваем ширину контейнера */
+    height: auto; /* Убираем фиксированную высоту */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .mob-ore-item img {
     width: 100%; /* Иконки будут занимать всю ширину контейнера */
     height: auto; /* Сохраняем пропорции иконок */
+    max-width: 100px; /* Ограничиваем максимальную ширину */
+    max-height: 100px; /* Ограничиваем максимальную высоту */
+    object-fit: contain; /* Сохраняем пропорции иконок */
+}
+
+.mob-ore-name {
+    font-size: 12px;
+    margin-top: 5px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-width: 100px; /* Ограничиваем максимальную ширину текста */
 }
 
 .welcome-text {
@@ -732,18 +754,27 @@ main {
 
 .mob-ore-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr); /* 8 колонок в ряду */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Устанавливаем минимальный размер колонок */
     gap: 10px;
     justify-content: center; /* Центрируем иконки по ширине */
 }
 
 .mob-ore-item {
     text-align: center; /* Центрируем текст под иконками */
+    width: 100px; /* Ограничиваем ширину контейнера */
+    height: auto; /* Убираем фиксированную высоту */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .mob-ore-item img {
     width: 100%; /* Иконки будут занимать всю ширину контейнера */
     height: auto; /* Сохраняем пропорции иконок */
+    max-width: 100px; /* Ограничиваем максимальную ширину */
+    max-height: 100px; /* Ограничиваем максимальную высоту */
+    object-fit: contain; /* Сохраняем пропорции иконок */
 }
 
 .mob-ore-name {
@@ -756,6 +787,7 @@ main {
     -webkit-line-clamp: 2;
     line-clamp: 2;
     -webkit-box-orient: vertical;
+    max-width: 100px; /* Ограничиваем максимальную ширину текста */
 }
 
 .mob-ore-container {
