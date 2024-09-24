@@ -229,11 +229,11 @@ main {
 }
 
 .center-icon-wrapper.clicked .center-icon-text {
-    font-size: 16px; /* Увеличено на 2px */
+    font-size: 18px; /* Увеличено на 2px */
 }
 
 .center-icon-text {
-    font-size: 14px;
+    font-size: 16px; /* Увеличено на 2px */
     text-align: center;
     word-wrap: break-word;
     max-width: 100%;
@@ -339,6 +339,7 @@ main {
     height: 100%;
     overflow-y: auto;
     padding: 20px;
+    font-size: 18px; /* Увеличено на 2px */
 }
 
 #greyAvatarVideo {
