@@ -44,7 +44,8 @@
         </div>
     </section>
 
-        <script src="Main_Site/assets/css/js/search.js"></script>
+    <!-- Замените существующий скрипт на следующий -->
+    <script src="Main_Site/assets/css/js/search.js"></script>
     <script>
         // Инициализация: переменные для панели и кнопки
         const sidebar = document.getElementById("sidebar");
@@ -58,13 +59,13 @@
         function toggleMenu() {
             if (isSidebarOpen) {
                 // Закрыть панель
-                sidebar.style.transform = "translateX(-250px)";
+                sidebar.style.transform = "translateX(-300px)";
                 toggleBtn.style.left = "10px"; // Вернуть кнопку к краю экрана
                 arrow.innerHTML = "&rarr;"; // Меняем на стрелку вправо
             } else {
                 // Открыть панель
                 sidebar.style.transform = "translateX(0)";
-                toggleBtn.style.left = "250px"; // Сдвинуть кнопку при открытии
+                toggleBtn.style.left = "300px"; // Сдвинуть кнопку при открытии
                 arrow.innerHTML = "&larr;"; // Меняем на стрелку влево
             }
             isSidebarOpen = !isSidebarOpen;
@@ -72,7 +73,7 @@
 
         // Изначально панель скрыта, но кнопку нужно инициализировать корректно
         window.onload = function() {
-            sidebar.style.transform = "translateX(-250px)";
+            sidebar.style.transform = "translateX(-300px)";
             toggleBtn.style.left = "10px"; // Кнопка на краю экрана
             arrow.innerHTML = "&rarr;"; // Установить стрелку вправо
         };
