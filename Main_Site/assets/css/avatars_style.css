@@ -499,7 +499,7 @@ main {
 
 .mob-ore-grid {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: 10px;
     margin-top: 20px;
     width: 100%;
@@ -539,4 +539,12 @@ main {
 .mob-ore-container {
     width: 100%;
     overflow-x: auto;
+}
+
+.resource-specific-grid .mob-ore-item img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 80px !important;
+    max-height: 80px !important;
+    object-fit: contain !important;
 }
