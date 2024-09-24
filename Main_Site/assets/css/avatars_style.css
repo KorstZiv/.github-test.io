@@ -213,8 +213,12 @@ main {
 }
 
 .center-icon-wrapper.clicked {
-    background-color: black;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background-color: black; /* Изменено с rgba(255, 255, 255, 0.2) на black */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Подсветка по краям рамки */
+}
+
+.center-icon-wrapper.clicked .center-icon {
+    filter: brightness(0) invert(1);
 }
 
 .center-icon {
@@ -224,8 +228,8 @@ main {
     transition: all 0.3s ease;
 }
 
-.center-icon-wrapper.clicked .center-icon {
-    filter: brightness(0) invert(1);
+.center-icon-wrapper.clicked .center-icon-text {
+    font-size: 16px; /* Увеличено на 2px */
 }
 
 .center-icon-text {
@@ -456,7 +460,8 @@ main {
 }
 
 .center-icon-wrapper.clicked {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: black; /* Изменено с rgba(255, 255, 255, 0.2) на black */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Подсветка по краям рамки */
 }
 
 .tooltip {
