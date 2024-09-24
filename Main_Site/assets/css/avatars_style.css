@@ -778,3 +778,7 @@ main {
     max-height: 80px !important;
     object-fit: contain !important;
 }
+
+.mob-ore-item:nth-child(8n+1) {
+    clear: both; /* Начинаем новый ряд после каждых 8 иконок */
+}
