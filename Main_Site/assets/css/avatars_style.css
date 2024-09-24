@@ -403,7 +403,7 @@ main {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 40px; /* Добавляем отступ сверху */
+    margin-top: 40px; /* Добавляем от��туп сверху */
     margin-bottom: 30px;
 }
 
@@ -497,17 +497,13 @@ main {
 }
 
 .mob-ore-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Центрируем иконки по ширине */
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 колонок в ряду */
     gap: 10px;
-    max-width: 100%; /* Ограничиваем максимальную ширину */
+    justify-content: center; /* Центрируем иконки по ширине */
 }
 
 .mob-ore-item {
-    flex: 1 1 100px; /* Иконки будут занимать минимум 100px и подстраиваться под свободное место */
-    max-width: 100px; /* Ограничиваем максимальную ширину иконок */
-    box-sizing: border-box; /* Учитываем padding и border в ширине и высоте */
     text-align: center; /* Центрируем текст под иконками */
 }
 
@@ -735,17 +731,13 @@ main {
 }
 
 .mob-ore-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Центрируем иконки по ширине */
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 колонок в ряду */
     gap: 10px;
-    max-width: 100%; /* Ограничиваем максимальную ширину */
+    justify-content: center; /* Центрируем иконки по ширине */
 }
 
 .mob-ore-item {
-    flex: 1 1 100px; /* Иконки будут занимать минимум 100px и подстраиваться под свободное место */
-    max-width: 100px; /* Ограничиваем максимальную ширину иконок */
-    box-sizing: border-box; /* Учитываем padding и border в ширине и высоте */
     text-align: center; /* Центрируем текст под иконками */
 }
 
