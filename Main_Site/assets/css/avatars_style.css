@@ -3,6 +3,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    overflow: hidden; /* Добавлено для предотвращения прокрутки */
 }
 
 header {
@@ -11,10 +12,10 @@ header {
 
 main {
     position: relative;
-    padding-top: 50px; /* Изменено с 65px на 50px */
+    padding-top: 5vh; /* Изменено с 65px на 5vh */
     display: flex;
     justify-content: space-between;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 10vh);
     overflow: hidden;
 }
 
@@ -24,7 +25,7 @@ main {
 
 .left-panel {
     width: 30%;
-    padding: 15px 50px;
+    padding: 1.5vh 5vw;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -32,18 +33,18 @@ main {
     align-items: center;
     overflow-y: auto;
     overflow-x: hidden;
-    padding-top: 35px; /* Изменено с 50px на 35px */
+    padding-top: 3.5vh; /* Изменено с 50px на 3.5vh */
 }
 
 .center-panel {
-    width: 120px;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    width: 12vw;
+    border-left: 0.1vw solid #ccc;
+    border-right: 0.1vw solid #ccc;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding: 10px 0;
+    padding: 1vh 0;
     height: 100%;
 }
 
@@ -73,9 +74,9 @@ main {
 .avatar-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 2vh;
     width: 100%;
-    margin-top: 25px;
+    margin-top: 2.5vh;
 }
 
 .avatar-item {
@@ -86,11 +87,11 @@ main {
     box-sizing: border-box;
     flex-direction: column;
     justify-content: center;
-    border: 2px solid;
-    border-radius: 10px;
-    padding: 15px;
+    border: 0.2vw solid;
+    border-radius: 1vw;
+    padding: 1.5vh;
     margin: 0;
-    height: 210px;
+    height: 21vh;
     aspect-ratio: 16 / 9;
     text-align: center;
     transition: all 0.3s ease;
@@ -131,13 +132,13 @@ main {
     height: 90%;
     width: auto;
     object-fit: contain;
-    margin-left: 5px;
+    margin-left: 0.5vw;
 }
 
 .avatar-name {
     position: absolute;
-    right: 10px;
-    font-size: 18px;
+    right: 1vw;
+    font-size: 1.8vh;
     color: #fff;
 }
 
@@ -147,26 +148,26 @@ main {
 }
 
 .resource-item {
-    margin-bottom: 10px;
+    margin-bottom: 1vh;
     cursor: pointer;
 }
 
 .mob-ore-list {
     display: none;
-    margin-top: 10px;
+    margin-top: 1vh;
     justify-content: center;
-    gap: 10px;
+    gap: 1vh;
 }
 
 .mob-ore-item {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 1vh;
 }
 
 .grey-avatar-link {
     text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
+    padding: 1vh 0;
+    margin-top: 2vh;
     cursor: pointer;
     font-weight: bold;
     color: #808080;
@@ -186,22 +187,22 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: calc(100% - 200px);
-    margin-top: 100px;
-    margin-bottom: 100px;
+    height: calc(100% - 20vh);
+    margin-top: 10vh;
+    margin-bottom: 10vh;
 }
 
 .center-icon-wrapper {
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 15px 10px;
-    margin: 10px 0;
+    border: 0.2vw solid #ccc;
+    border-radius: 1vw;
+    padding: 1.5vh 1vw;
+    margin: 1vh 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 120px;
-    width: 100px;
+    height: 12vh;
+    width: 10vw;
 }
 
 .center-icon-wrapper.active {
@@ -214,26 +215,26 @@ main {
 
 .center-icon-wrapper.clicked {
     background-color: black; /* Изменено с rgba(255, 255, 255, 0.2) на black */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Подсветка по краям рамки */
+    box-shadow: 0 0 1vw rgba(255, 255, 255, 0.5); /* Подсветка по краям рамки */
 }
 
 .center-icon-wrapper.clicked .center-icon {
     filter: brightness(0) invert(1);
 }
 
-.center-icon-wrapper.clicked .center-icon-text {
-    font-size: 18px; /* Увеличено на 2px */
-}
-
 .center-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
+    width: 6vw;
+    height: 6vw;
+    margin-bottom: 1vh;
     transition: all 0.3s ease;
 }
 
+.center-icon-wrapper.clicked .center-icon-text {
+    font-size: 1.6vh; /* Увеличено на 2px */
+}
+
 .center-icon-text {
-    font-size: 16px; /* Увеличено на 2px */
+    font-size: 1.4vh;
     text-align: center;
     word-wrap: break-word;
     max-width: 100%;
@@ -243,20 +244,20 @@ main {
     position: fixed;
     background-color: #333;
     color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
+    padding: 0.5vh 1vw;
+    border-radius: 0.5vw;
+    font-size: 1.4vh;
     z-index: 1000;
     pointer-events: none;
 }
 
 .welcome-text-container {
     position: absolute;
-    top: 140px;
+    top: 14vh;
     left: 0;
     right: 0;
     background-color: rgba(128, 128, 128, 0.5);
-    border-radius: 5px;
+    border-radius: 0.5vw;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     z-index: 1000;
@@ -265,24 +266,24 @@ main {
 }
 
 .welcome-text-container.collapsed {
-    max-height: 30px;
+    max-height: 3vh;
 }
 
 .welcome-text-container.expanded {
-    max-height: 750px;
+    max-height: 75vh;
 }
 
 .welcome-text {
-    padding: 30px;
-    font-size: 22px; /* Увеличено на 2px */
+    padding: 3vh;
+    font-size: 2.2vh; /* Увеличено на 2px */
     line-height: 1.5;
-    max-height: 720px;
+    max-height: 72vh;
     overflow-y: auto;
     text-align: left;
 }
 
 .welcome-text p {
-    margin-bottom: 15px;
+    margin-bottom: 1.5vh;
     text-align: left;
 }
 
@@ -296,12 +297,12 @@ main {
     left: 0;
     right: 0;
     text-align: center;
-    padding: 8px;
+    padding: 0.8vh;
     cursor: pointer;
     color: white;
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 1001;
-    font-size: 16px;
+    font-size: 1.6vh;
     font-weight: bold;
 }
 
@@ -338,8 +339,8 @@ main {
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    padding: 20px;
-    font-size: 20px; /* Увеличено на 2px */
+    padding: 2vh;
+    font-size: 2vh; /* Увеличено на 2px */
 }
 
 #greyAvatarVideo {
@@ -349,19 +350,19 @@ main {
 }
 
 .resource-image {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
+    width: 5vw;
+    height: 5vw;
+    margin-right: 1vw;
     vertical-align: middle;
 }
 
 .resource-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 2vh;
     justify-content: center;
     width: 100%;
-    margin-top: 20px; /* Добавляем отступ от заголовка класса */
+    margin-top: 2vh; /* Добавляем отступ от заголовка класса */
 }
 
 .resource-list li {
@@ -369,11 +370,11 @@ main {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    width: 120px;
-    height: 180px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 8px;
+    width: 12vw;
+    height: 18vh;
+    border: 0.1vw solid #ccc;
+    padding: 1vh;
+    border-radius: 0.8vw;
     transition: transform 0.2s;
 }
 
@@ -382,32 +383,32 @@ main {
 }
 
 .resource-image {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
+    width: 8vw;
+    height: 8vw;
+    margin-bottom: 1vh;
 }
 
 .resource-name {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.5vh;
 }
 
 .class-header {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-top: 40px; /* Добавляем отступ сверху */
-    margin-bottom: 30px;
+    gap: 1vw;
+    margin-top: 4vh; /* Добавляем отступ сверху */
+    margin-bottom: 3vh;
 }
 
 .class-icon {
-    width: 60px;
-    height: 60px;
+    width: 6vw;
+    height: 6vw;
 }
 
 .class-name {
-    font-size: 24px;
+    font-size: 2.4vh;
     font-weight: bold;
 }
 
@@ -420,20 +421,20 @@ main {
     width: 100%;
     height: 100%;
     overflow-y: auto;
-    padding-bottom: 60px;
+    padding-bottom: 6vh;
 }
 
 .welcome-text {
-    padding: 30px;
-    font-size: 22px; /* Увеличено на 2px */
+    padding: 3vh;
+    font-size: 2.2vh; /* Увеличено на 2px */
     line-height: 1.5;
-    max-height: 720px;
+    max-height: 72vh;
     overflow-y: auto;
     text-align: left;
 }
 
 .welcome-text p {
-    margin-bottom: 18px;
+    margin-bottom: 1.8vh;
     text-align: left;
 }
 
@@ -448,7 +449,7 @@ main {
 
 .resource-quantity {
     display: block;
-    margin-top: 5px;
+    margin-top: 0.5vh;
 }
 
 .center-icon-wrapper {
@@ -462,16 +463,16 @@ main {
 
 .center-icon-wrapper.clicked {
     background-color: black; /* Изменено с rgba(255, 255, 255, 0.2) на black */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Подсветка по краям рамки */
+    box-shadow: 0 0 1vw rgba(255, 255, 255, 0.5); /* Подсветка по краям рамки */
 }
 
 .tooltip {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 0.5vh 1vw;
+    border-radius: 0.4vw;
+    font-size: 1.4vh;
     z-index: 1000;
     pointer-events: none;
 }
@@ -485,8 +486,8 @@ main {
 
 .mob-ore-container {
     width: 100%;
-    margin-top: 20px;
-    padding: 10px;
+    margin-top: 2vh;
+    padding: 1vh;
     box-sizing: border-box;
 }
 
@@ -494,20 +495,20 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 1vh;
 }
 
 .mob-ore-row {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 1vh;
     width: 100%;
 }
 
 .mob-ore-item {
-    width: 80px;
-    height: 100px;
+    width: 8vw;
+    height: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -516,13 +517,13 @@ main {
 }
 
 .mob-ore-item img {
-    width: 60px;
-    height: 60px;
+    width: 6vw;
+    height: 6vw;
     object-fit: contain;
 }
 
 .mob-ore-name {
-    font-size: 12px;
+    font-size: 1.2vh;
     word-wrap: break-word;
     max-width: 100%;
     overflow: hidden;
@@ -531,5 +532,5 @@ main {
     -webkit-line-clamp: 2;
     line-clamp: 2;
     -webkit-box-orient: vertical;
-    margin-top: 5px;
+    margin-top: 0.5vh;
 }
