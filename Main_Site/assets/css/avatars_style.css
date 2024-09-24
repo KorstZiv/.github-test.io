@@ -334,6 +334,7 @@ main {
     width: 100%;
     height: 100%;
     overflow-y: auto;
+    padding: 20px;
 }
 
 #greyAvatarVideo {
@@ -353,6 +354,9 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px; /* Добавляем отступ от заголовка класса */
 }
 
 .resource-list li {
@@ -388,75 +392,18 @@ main {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 20px;
-    flex-direction: row;
+    margin-top: 40px; /* Добавляем отступ сверху */
+    margin-bottom: 30px;
 }
 
 .class-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.right-panel-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    color: #ffffff;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-}
-
-.mob-ore-container {
-    display: none;
-    width: 100%;
-    margin-top: 40px;
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: transparent;
-}
-
-.mob-ore-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.mob-ore-row {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.mob-ore-item {
-    width: 80px;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.mob-ore-item img {
     width: 60px;
     height: 60px;
-    object-fit: contain;
 }
 
-.mob-ore-name {
-    font-size: 12px;
-    word-wrap: break-word;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    margin-top: 5px;
+.class-name {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .right-panel-content {
