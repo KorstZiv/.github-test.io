@@ -26,13 +26,14 @@ body {
     background-color: #00aaff;
     border: none;
     color: white;
-    font-size: 24px;
+    font-size: 48px; /* Увеличиваем размер шрифта в два раза */
     cursor: pointer;
     z-index: 10000; /* Поверх панели */
+    padding: 20px; /* Увеличиваем размер кнопки */
 }
 
 .toggle-btn #arrow {
-    font-size: 20px;
+    font-size: 40px; /* Увеличиваем размер стрелки */
 }
 
 .sidebar .menu {
