@@ -6,6 +6,32 @@
     <title>Аватары</title>
     <link rel="stylesheet" href="../assets/css/res_style.css">
     <link rel="stylesheet" href="../assets/css/avatars_style.css">
+    <style>
+        .mob-ore-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .mob-ore-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .mob-ore-name {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .mob-ore-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 10px;
+        }
+    </style>
 </head>
 <body>
     <a href="https://korstziv.github.io/.github-test.io/" class="home-button">
@@ -153,7 +179,7 @@
 
         // Добавьте этот массив в начало вашего JavaScript кода
         const availableImages = [
-            "Баран", "Горилла", "Гвард", "Дрон", "Жаба", "а��ень_Жёлтый", "Камень_Зелёный", 
+            "Баран", "Горилла", "Гвард", "Дрон", "Жаба", "аень_Жёлтый", "Камень_Зелёный", 
             "Камень_Синий", "Камень_Тёмный", "Камень_Фиолетовый", "Лазер_гриб", "Лицензионный_Аватар", 
             "Мама_жаба", "Турель", "Улитка"
         ];
@@ -169,13 +195,7 @@
             
             let html = '<div class="mob-ore-grid">';
             
-            for (let i = 0; i < allItems.length; i++) {
-                if (i % 8 === 0) {
-                    if (i !== 0) html += '</div>'; // Закрываем предыдущий ряд
-                    html += '<div class="mob-ore-row">'; // Открываем новый ряд
-                }
-                
-                const item = allItems[i];
+            allItems.forEach(item => {
                 const imageName = availableImages.find(img => img.toLowerCase() === item.toLowerCase()) || item;
                 const displayName = imageName.replace(/_/g, ' ');
                 
@@ -185,11 +205,7 @@
                         <span class="mob-ore-name">${displayName}</span>
                     </div>
                 `;
-            }
-            
-            if (allItems.length > 0) {
-                html += '</div>'; // Закрываем последний ряд
-            }
+            });
             
             html += '</div>';
             container.innerHTML = html;
