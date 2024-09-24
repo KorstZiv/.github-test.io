@@ -505,8 +505,8 @@ main {
 }
 
 .mob-ore-item {
-    width: 80px;
-    height: 100px;
+    width: 100px; /* Увеличено с 80px на 100px */
+    height: 120px; /* Увеличено с 100px на 120px */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -515,13 +515,13 @@ main {
 }
 
 .mob-ore-item img {
-    width: 60px;
-    height: 60px;
+    width: 80px; /* Увеличено с 60px на 80px */
+    height: 80px; /* Увеличено с 60px на 80px */
     object-fit: contain;
 }
 
 .mob-ore-name {
-    font-size: 12px;
+    font-size: 14px; /* Увеличено с 12px на 14px */
     word-wrap: break-word;
     max-width: 100%;
     overflow: hidden;
