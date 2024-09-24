@@ -24,7 +24,7 @@
             <p>Существует два основных типа аватаров: Серые и Лицензионные.</p>
             <p>Серые аватары доступны каждому игроку с самого начала. Они представляют собой бесплатные болванки с невысокими характеристиками и экипировкой, которая выдается случайным образом. Низкий заряд энергии позволяет им исследовать небольшие карты, где они могут собирать ресурсы и охтиться на животных, представляющих собой низкий и средний уровень опасности.</p>
             <p>Лицензионные аватары становятся доступными только тем, кто приобрел лицензию у корпораций и собрал или купил ресурсы на аукционе. Их характеристики зависят от качества и класса.</p>
-            <p>Качество аватара влияет на его характеристики и количество аварийных ячеек, которые позволяют сохранить самый ценный лут при гибели аватара.</p>
+            <p>Качество аватара влияет на его характеристики  количество аварийных ячеек, которые позволяют сохранить самый ценный лут при гибели аватара.</p>
             <p>Всего в игре представлено пять классов аватаров, каждый из которых обладает не только уникальными характеристиками, но и специальными умениями, значительно влияющими на игровой опыт и стиль игры.</p>
             <p>В модуле ниже вы можете посмотреть стоимость каждого аватара в зависимости от качества и класса, а также с кого или чего добываются ресурсы для их сборки.</p>
         </div>
@@ -54,9 +54,18 @@
             <!-- Центральные иконки будут добавлены здесь -->
         </div>
 
-        <div class="right-panel" id="right-panel">
+        <div class="right-panel">
             <div class="right-panel-content">
-                <!-- Информация об аватаре будет отображаться здесь -->
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="resources">Ресурсы</button>
+                    <button class="tab-button" data-tab="sources">Источники</button>
+                </div>
+                <div id="resources-tab" class="tab-content active">
+                    <!-- Здесь будет отображаться сетка ресурсов -->
+                </div>
+                <div id="sources-tab" class="tab-content">
+                    <!-- Здесь будут отображаться мобы и руды -->
+                </div>
             </div>
         </div>
     </main>
@@ -191,52 +200,83 @@
 
         // Обновите функцию showClassInfo, чтобы использовать новые функции
         function showClassInfo(className) {
-            if (!selectedAvatar) return;
-
-            // Удаляем активный класс у всех иконок
-            document.querySelectorAll('.center-icon-wrapper').forEach(wrapper => {
-                wrapper.classList.remove('active');
-            });
-
-            // Добавляем активный класс выбранной иконке
-            const selectedWrapper = document.querySelector(`.center-icon-wrapper img[alt="${className}"]`).parentNode;
-            selectedWrapper.classList.add('active');
-
             const rightPanel = document.querySelector('.right-panel-content');
-            const resources = classResources[selectedAvatar] ? classResources[selectedAvatar][className] : [];
+            const resourcesTab = document.getElementById('resources-tab');
+            const sourcesTab = document.getElementById('sources-tab');
 
-            // Определяем цвет текста в зависимости от качества аватара
-            let textColor;
-            if (selectedAvatar === "Uncommon") {
-                textColor = "green";
-            } else if (selectedAvatar === "Rare") {
-                textColor = "#00BFFF"; // Используем цвет подсветки для Rare
-            } else if (selectedAvatar === "Epic") {
-                textColor = "#DA70D6"; // Светло-фиолетовый цвет для Epic
-            }
-
-            rightPanel.innerHTML = `
-                <div class="class-header" style="color: ${textColor}; text-align: center;">
+            // Заполняем вкладку ресурсов
+            resourcesTab.innerHTML = `
+                <div class="class-header" style="color: ${textColor};">
                     <img src="../assets/images/Avatars/${className}.png" alt="${className}" class="class-icon">
                     <h3 style="font-size: 24px;">${className}</h3>
                 </div>
-                <ul class="resource-list">
-                    ${resources.map(resource => {
-                        const resourceName = resource.split(' ')[0].replace(' ', '_');
-                        const resourceImage = resourceImages[resourceName] || '';
-                        const displayName = resource.split(' ')[0].replace(/_/g, ' ');
-                        const quantity = resource.split(' ')[1];
-                        return `
-                            <li class="resource-card" onmouseover="showMobsAndOres('${resourceName}')" onmouseout="hideMobsAndOres()">
-                                <img src="${resourceImage}" alt="${resourceName}" class="resource-image">
-                                <span class="resource-name">${displayName}</span> <span class="resource-quantity" style="font-weight: bold; color: ${textColor};">${quantity}</span>
-                            </li>
-                        `;
-                    }).join('')}
-                </ul>
-                <div id="mob-ore-container" class="mob-ore-container"></div>
+                <div class="resource-grid">
+                    ${resources.map(resource => createResourceCard(resource, textColor)).join('')}
+                </div>
+            `;
+
+            // Очищаем вкладку источников
+            sourcesTab.innerHTML = '';
+
+            // Добавляем обработчики событий
+            const resourceCards = resourcesTab.querySelectorAll('.resource-card');
+            resourceCards.forEach(card => {
+                card.addEventListener('click', () => showResourceSources(card.dataset.resource));
+            });
+        }
+
+        function createResourceCard(resource, textColor) {
+            const [name, quantity] = resource.split(' ');
+            const imageName = name.replace(' ', '_');
+            return `
+                <div class="resource-card" data-resource="${imageName}">
+                    <img src="../assets/images/${imageName}.png" alt="${name}" class="resource-image">
+                    <span class="resource-name">${name}</span>
+                    <span class="resource-quantity" style="color: ${textColor};">${quantity}</span>
+                </div>
             `;
         }
+
+        function showResourceSources(resourceName) {
+            const sourcesTab = document.getElementById('sources-tab');
+            const data = resourceData[resourceName];
+
+            if (!data) return;
+
+            const allItems = [...data.mobs, ...data.ores];
+            
+            sourcesTab.innerHTML = `
+                <h4>Источники ресурса ${resourceName.replace(/_/g, ' ')}</h4>
+                <div class="mob-ore-grid">
+                    ${allItems.map(item => createMobOreItem(item)).join('')}
+                </div>
+            `;
+
+            // Переключаемся на вкладку источников
+            document.querySelector('[data-tab="sources"]').click();
+        }
+
+        function createMobOreItem(item) {
+            const imageName = item.toLowerCase().replace(/ /g, '_');
+            return `
+                <div class="mob-ore-item">
+                    <img src="../assets/images/${imageName}.png" 
+                         alt="${item}" 
+                         onerror="this.onerror=null; this.src='../assets/images/placeholder.png';">
+                    <span class="mob-ore-name">${item.replace(/_/g, ' ')}</span>
+                </div>
+            `;
+        }
+
+        // Обработчик для переключения вкладок
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                button.classList.add('active');
+                document.getElementById(`${button.dataset.tab}-tab`).classList.add('active');
+            });
+        });
 
         function generateAvatarGrid() {
             const grid = document.getElementById('avatar-grid');
