@@ -221,15 +221,15 @@ main {
     filter: brightness(0) invert(1);
 }
 
+.center-icon-wrapper.clicked .center-icon-text {
+    font-size: 18px; /* Увеличено на 2px */
+}
+
 .center-icon {
     width: 60px;
     height: 60px;
     margin-bottom: 10px;
     transition: all 0.3s ease;
-}
-
-.center-icon-wrapper.clicked .center-icon-text {
-    font-size: 18px; /* Увеличено на 2px */
 }
 
 .center-icon-text {
@@ -274,7 +274,7 @@ main {
 
 .welcome-text {
     padding: 30px;
-    font-size: 20px;
+    font-size: 22px; /* Увеличено на 2px */
     line-height: 1.5;
     max-height: 720px;
     overflow-y: auto;
@@ -339,7 +339,7 @@ main {
     height: 100%;
     overflow-y: auto;
     padding: 20px;
-    font-size: 18px; /* Увеличено на 2px */
+    font-size: 20px; /* Увеличено на 2px */
 }
 
 #greyAvatarVideo {
@@ -425,7 +425,7 @@ main {
 
 .welcome-text {
     padding: 30px;
-    font-size: 15px;
+    font-size: 22px; /* Увеличено на 2px */
     line-height: 1.5;
     max-height: 720px;
     overflow-y: auto;
