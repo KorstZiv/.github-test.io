@@ -79,7 +79,7 @@
             "Quartz": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Coal": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Iron_Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Фиолетовый"] },
-            "Copper_Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_��иний", "Камень_Фиолетовый"] },
+            "Copper_Ore": { mobs: [], ores: ["Камень_Тёмный", "Камень_Жёлтый", "Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Radioactive_Isotopes": { mobs: [], ores: ["Камень_Зелёный"] },
             "Rare_Earth_Elements": { mobs: [], ores: ["Камень_Зелёный", "Камень_Синий", "Камень_Фиолетовый"] },
             "Magnetite": { mobs: [], ores: ["Камень_Зелёный", "Камень_Фиолетовый"] },
@@ -153,7 +153,7 @@
 
         // Добавьте этот массив в начало вашего JavaScript кода
         const availableImages = [
-            "Баран", "Горилла", "Гвард", "Дрон", "Жаба", "аень_Жёлтый", "Камень_Зелёный", 
+            "Баран", "Горилла", "Гвард", "Дрон", "Жаба", "Камень_Жёлтый", "Камень_Зелёный", 
             "Камень_Синий", "Камень_Тёмный", "Камень_Фиолетовый", "Лазер_гриб", "Лицензионный_Аватар", 
             "Мама_жаба", "Турель", "Улитка"
         ];
@@ -173,8 +173,11 @@
                 const imageName = availableImages.find(img => img.toLowerCase() === item.toLowerCase()) || item;
                 const displayName = imageName.replace(/_/g, ' ');
                 
+                // Уменьшаем размер на 15% только для Uncommon Shard
+                const scaleStyle = resourceName === "Uncommon_Shard" ? 'style="transform: scale(0.85);"' : '';
+                
                 html += `
-                    <div class="mob-ore-item">
+                    <div class="mob-ore-item" ${scaleStyle}>
                         <img src="../assets/images/${imageName}.png" alt="${displayName}" onerror="this.src='../assets/images/placeholder.png';">
                         <span class="mob-ore-name">${displayName}</span>
                     </div>
